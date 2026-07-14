@@ -22,7 +22,7 @@ Connected to Vercel; auto-deploys on push to `main`.
 
 ## Source content
 
-Everything in this site mirrors the canonical content under `../devya-social/`:
+Everything in this site mirrors the canonical source-content folder (kept outside this repo):
 
 - `STATUS.md` — single source of truth
 - `ROADMAP.md` — 6-phase plan
