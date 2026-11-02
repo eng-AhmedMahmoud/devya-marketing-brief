@@ -9,7 +9,7 @@ const LIVE = [
   { channel: 'LinkedIn company', what: 'Name → "Devya Software Solutions"' },
   { channel: 'LinkedIn company', what: 'Tagline → "Software that ships. Web · mobile · AI for MENA founders, serving worldwide. devya.dev"' },
   { channel: 'LinkedIn company', what: 'Overview (1,060 chars, founder-voice)' },
-  { channel: 'LinkedIn company', what: 'Phone +201055930032, Year founded 2024' },
+  { channel: 'LinkedIn company', what: 'Phone +201024672684, Year founded 2024' },
   { channel: 'LinkedIn company', what: 'Post 1 (devya-contracts launch) published + Featured pinned' },
   { channel: 'LinkedIn personal', what: 'Headline → founder-first (Devya + _VOIS + ITI)' },
   { channel: 'LinkedIn personal', what: 'About (1,681 chars founder-voice)' },
