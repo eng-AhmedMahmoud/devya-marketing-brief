@@ -2,7 +2,7 @@
 # Control the Devya daily social routine (launchd label com.ahmedmahmoud.devya-social-daily).
 #
 #   ctl.sh install    copy the launcher + this script to ~/.config/devya-social/bin,
-#                     write the plist (10:00, 19:30, 21:00), load it, register it in brain
+#                     write the plist (10:00, 13:00, 19:30, 21:00), load it, register it in brain
 #   ctl.sh pause [why]  keep the schedule but make every run exit at once
 #   ctl.sh resume     undo pause
 #   ctl.sh status     loaded?, paused?, what is due now, last log lines
@@ -33,7 +33,7 @@ cmd_install() {
       const fs = require("fs"); const f = process.argv[1]; const j = JSON.parse(fs.readFileSync(f, "utf8"));
       j.routines[process.argv[2]] = {
         name: "Devya Social Daily",
-        description: "Publishes the next devya-marketing-brief social calendar entry on Devya'"'"'s LinkedIn page (10:00), Facebook page (19:30) and Instagram (21:00) through Claude in Chrome on the ceo seat (Chrome Profile 2), logs each post to social/log.md, and tops the calendar up when fewer than 7 days remain.",
+        description: "Publishes the next devya-marketing-brief social calendar entry on Devya'"'"'s LinkedIn page (10:00 post, 13:00 video), Facebook page and Instagram (13:00 Reels, 19:30/21:00 posts and Stories) through Claude in Chrome on the ceo seat (Chrome Profile 2), logs each post to social/log.md, and tops the calendar up when fewer than 7 days remain.",
         group: "routine",
         logs: "~/Library/Logs/devya-social-daily.log",
         output: "~/.config/devya-social/devya-marketing-brief/social/log.md"

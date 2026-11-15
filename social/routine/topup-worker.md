@@ -26,6 +26,7 @@ You may read any file and fetch pages from `www.devya.dev`. You may write only `
   "basis": "where the idea comes from (blog post, product page, intel item)",
   "linkedinLink": true,              // about half the days true, half false
   "card": { "en": {...}, "ar": {...}, /* plus code | terminal | cut | shot/shotLabel as the layout needs */ },
+  "reel": { "en": "one line for the day's vertical video", "ar": "the same idea in Arabic" },
   "posts": {
     "linkedin":  { "lang": "en", "caption": "..." },
     "facebook":  { "lang": "ar | en", "caption": "..." },
@@ -33,6 +34,8 @@ You may read any file and fetch pages from `www.devya.dev`. You may write only `
   }
 }
 ```
+
+`reel` is a one-line hook (under 160 characters) for the day's 10-second vertical video. The merge step builds the Reel, Story and LinkedIn video captions from it and from the day's posts, so do not write `reels` or `stories` yourself.
 
 Card fields by layout (look at existing days for real examples):
 - all: `kicker`, `title` (wrap one or two accent words in `*asterisks*`), optional `sub`

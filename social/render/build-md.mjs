@@ -17,7 +17,7 @@ const out = [
   '# Devya social calendar',
   '',
   `Generated from \`calendar.json\` by \`render/build-md.mjs\`. Edit the JSON, not this file. Times are ${cal.timezone}.`,
-  `Slots: LinkedIn ${cal.slots.linkedin}, Facebook ${cal.slots.facebook}, Instagram ${cal.slots.instagram}.`,
+  `Slots: LinkedIn ${cal.slots.linkedin}, LinkedIn video + Reels ${cal.slots.facebook_reel}, Facebook + Story ${cal.slots.facebook}, Instagram + Story ${cal.slots.instagram}.`,
   '',
   '| Day | Date | Pillar | Layout | Topic | FB / IG language |',
   '|---|---|---|---|---|---|',
@@ -35,6 +35,15 @@ for (const d of cal.days) {
     out.push(`### ${NET[net]} · ${cal.slots[net]} · ${LANG[p.lang]}`, '');
     out.push(`<img src="visuals/${d.date}/${net}.png" alt="${NET[net]} card, ${d.date}" width="${net === 'linkedin' ? 480 : 320}"> \`${w}×${h}\``, '');
     out.push('```text', p.caption, '```', '');
+  }
+  if (d.reels) {
+    out.push(`### Vertical video · 1080×1920, 10 s · \`visuals/${d.date}/reel-<lang>.mp4\` (rendered on the day)`, '');
+    out.push(`One-liner EN: ${d.reel.en}`, '', `One-liner AR: ${d.reel.ar}`, '');
+    for (const [net, label, slot] of [['linkedin', 'LinkedIn video', 'linkedin_video'], ['facebook', 'Facebook Reel', 'facebook_reel'], ['instagram', 'Instagram Reel', 'instagram_reel']]) {
+      const r = d.reels[net];
+      out.push(`**${label}** · ${cal.slots[slot]} · ${LANG[r.lang]}`, '', '```text', r.caption, '```', '');
+    }
+    out.push(`**Stories** (same video, no caption): Facebook ${cal.slots.facebook_story} ${LANG[d.stories.facebook.lang]} · Instagram ${cal.slots.instagram_story} ${LANG[d.stories.instagram.lang]}`, '');
   }
 }
 writeFileSync(join(SOCIAL, 'calendar.md'), out.join('\n'));

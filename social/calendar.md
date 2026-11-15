@@ -1,7 +1,7 @@
 # Devya social calendar
 
 Generated from `calendar.json` by `render/build-md.mjs`. Edit the JSON, not this file. Times are Africa/Cairo.
-Slots: LinkedIn 10:00, Facebook 19:30, Instagram 21:00.
+Slots: LinkedIn 10:00, LinkedIn video + Reels 13:00, Facebook + Story 19:30, Instagram + Story 21:00.
 
 | Day | Date | Pillar | Layout | Topic | FB / IG language |
 |---|---|---|---|---|---|
@@ -74,6 +74,38 @@ All three are free and open source. Link in bio.
 #BuildWithDevya #OpenSource #WebDevelopment #NodeJS #DevSecOps #Cairo
 ```
 
+### Vertical video · 1080×1920, 10 s · `visuals/2026-11-15/reel-<lang>.mp4` (rendered on the day)
+
+One-liner EN: Three checks on every Devya repo, all open source: leakhook, envcheck, i18n-check.
+
+One-liner AR: ثلاثة فحوص على كل مستودع لدينا، وكلها مفتوحة المصدر: leakhook و envcheck و i18n-check.
+
+**LinkedIn video** · 13:00 · English
+
+```text
+Three checks on every Devya repo, all open source: leakhook, envcheck, i18n-check.
+
+#BuildWithDevya #OpenSource #DevSecOps
+```
+
+**Facebook Reel** · 13:00 · Arabic
+
+```text
+ثلاثة فحوص على كل مستودع لدينا، وكلها مفتوحة المصدر: leakhook و envcheck و i18n-check.
+
+التفاصيل: https://www.devya.dev/projects/leakhook?utm_source=facebook&utm_medium=social&utm_content=reel
+```
+
+**Instagram Reel** · 13:00 · English
+
+```text
+Three checks on every Devya repo, all open source: leakhook, envcheck, i18n-check.
+
+#BuildWithDevya #OpenSource #WebDevelopment #NodeJS #DevSecOps
+```
+
+**Stories** (same video, no caption): Facebook 19:30 Arabic · Instagram 21:00 English
+
 ## Day 2 · Mon 16 Nov · Ask for a v1 cut line before you ask for a quote
 
 Pillar **client-value** · layout **checklist** · accent ember · source https://www.devya.dev/services
@@ -130,6 +162,38 @@ Save this for your next quote.
 #BuildWithDevya #Startups #ProductDevelopment #AppDevelopment #Founders #MVP
 ```
 
+### Vertical video · 1080×1920, 10 s · `visuals/2026-11-16/reel-<lang>.mp4` (rendered on the day)
+
+One-liner EN: Before the quote, ask for the cut line: what ships in v1, and what waits.
+
+One-liner AR: قبل عرض السعر، اطلب خط الإصدار الأول: ما الذي يُبنى الآن، وما الذي ينتظر.
+
+**LinkedIn video** · 13:00 · English
+
+```text
+Before the quote, ask for the cut line: what ships in v1, and what waits.
+
+#ProductDevelopment #Startups #MENA
+```
+
+**Facebook Reel** · 13:00 · Arabic
+
+```text
+قبل عرض السعر، اطلب خط الإصدار الأول: ما الذي يُبنى الآن، وما الذي ينتظر.
+
+التفاصيل: https://www.devya.dev/services?utm_source=facebook&utm_medium=social&utm_content=reel
+```
+
+**Instagram Reel** · 13:00 · English
+
+```text
+Before the quote, ask for the cut line: what ships in v1, and what waits.
+
+#BuildWithDevya #Startups #ProductDevelopment #AppDevelopment #Founders
+```
+
+**Stories** (same video, no caption): Facebook 19:30 Arabic · Instagram 21:00 English
+
 ## Day 3 · Tue 17 Nov · N+1 queries: fast locally, slow in production
 
 Pillar **engineering** · layout **code** · accent azure · source https://www.devya.dev/blogs/n-plus-1-queries-nodejs-dataloader-query-budget-field-notes
@@ -183,6 +247,38 @@ How we do it, in our engineering notes: https://www.devya.dev/blogs/n-plus-1-que
 
 #برمجة #تطوير_البرمجيات #قواعد_البيانات #تقنية #مصر #BuildWithDevya
 ```
+
+### Vertical video · 1080×1920, 10 s · `visuals/2026-11-17/reel-<lang>.mp4` (rendered on the day)
+
+One-liner EN: Fast on your laptop, slow in production: the N+1 query, and the fix.
+
+One-liner AR: سريع على جهازك وبطيء في الإنتاج: استعلام N+1 وحلّه في بضعة أسطر.
+
+**LinkedIn video** · 13:00 · English
+
+```text
+Fast on your laptop, slow in production: the N+1 query, and the fix.
+
+#NodeJS #PostgreSQL #BackendEngineering
+```
+
+**Facebook Reel** · 13:00 · English
+
+```text
+Fast on your laptop, slow in production: the N+1 query, and the fix.
+
+More: https://www.devya.dev/blogs/n-plus-1-queries-nodejs-dataloader-query-budget-field-notes?utm_source=facebook&utm_medium=social&utm_content=reel
+```
+
+**Instagram Reel** · 13:00 · Arabic
+
+```text
+سريع على جهازك وبطيء في الإنتاج: استعلام N+1 وحلّه في بضعة أسطر.
+
+#برمجة #تطوير_البرمجيات #قواعد_البيانات #تقنية #مصر
+```
+
+**Stories** (same video, no caption): Facebook 19:30 English · Instagram 21:00 Arabic
 
 ## Day 4 · Wed 18 Nov · Devya X-Ray: an engineering review that reads the code
 
@@ -238,6 +334,38 @@ Devya X-Ray checks 114 engineering practices against the actual repository, ever
 
 #BuildWithDevya #CodeReview #SoftwareEngineering #CTO #TechLeadership #SaaS
 ```
+
+### Vertical video · 1080×1920, 10 s · `visuals/2026-11-18/reel-<lang>.mp4` (rendered on the day)
+
+One-liner EN: Devya X-Ray reads your code, not your slide deck. Free 15-minute snapshot.
+
+One-liner AR: أداة Devya X-Ray تقرأ الكود نفسه، لا العرض التقديمي. لقطة أولية مجانية في 15 دقيقة.
+
+**LinkedIn video** · 13:00 · English
+
+```text
+Devya X-Ray reads your code, not your slide deck. Free 15-minute snapshot.
+
+#EngineeringLeadership #CodeQuality #CTO
+```
+
+**Facebook Reel** · 13:00 · Arabic
+
+```text
+أداة Devya X-Ray تقرأ الكود نفسه، لا العرض التقديمي. لقطة أولية مجانية في 15 دقيقة.
+
+التفاصيل: https://www.devya.dev/projects/devya-xray?utm_source=facebook&utm_medium=social&utm_content=reel
+```
+
+**Instagram Reel** · 13:00 · English
+
+```text
+Devya X-Ray reads your code, not your slide deck. Free 15-minute snapshot.
+
+#BuildWithDevya #CodeReview #SoftwareEngineering #CTO #TechLeadership
+```
+
+**Stories** (same video, no caption): Facebook 19:30 Arabic · Instagram 21:00 English
 
 ## Day 5 · Thu 19 Nov · The five lines a weekly dev update should contain
 
@@ -298,6 +426,38 @@ Send this to whoever builds your product.
 #BuildWithDevya #Founders #ProductManagement #SoftwareDevelopment #TechTips #Startups
 ```
 
+### Vertical video · 1080×1920, 10 s · `visuals/2026-11-19/reel-<lang>.mp4` (rendered on the day)
+
+One-liner EN: Five lines every weekly update from your dev team should have.
+
+One-liner AR: خمسة أسطر يجب أن يتضمنها كل تقرير أسبوعي من فريق التطوير.
+
+**LinkedIn video** · 13:00 · English
+
+```text
+Five lines every weekly update from your dev team should have.
+
+#ProjectManagement #Startups #SoftwareDevelopment
+```
+
+**Facebook Reel** · 13:00 · Arabic
+
+```text
+خمسة أسطر يجب أن يتضمنها كل تقرير أسبوعي من فريق التطوير.
+
+التفاصيل: https://www.devya.dev/services?utm_source=facebook&utm_medium=social&utm_content=reel
+```
+
+**Instagram Reel** · 13:00 · English
+
+```text
+Five lines every weekly update from your dev team should have.
+
+#BuildWithDevya #Founders #ProductManagement #SoftwareDevelopment #TechTips
+```
+
+**Stories** (same video, no caption): Facebook 19:30 Arabic · Instagram 21:00 English
+
 ## Day 6 · Fri 20 Nov · What 'done' means at Devya: merged isn't done
 
 Pillar **bts** · layout **statement** · accent lime · source https://www.devya.dev/about
@@ -351,6 +511,38 @@ Boring rules, written down, so deadlines can't skip them.
 #BuildWithDevya #SoftwareEngineering #DevOps #WebDevelopment #CodeQuality
 ```
 
+### Vertical video · 1080×1920, 10 s · `visuals/2026-11-20/reel-<lang>.mp4` (rendered on the day)
+
+One-liner EN: Merged isn't done. Here's what done means at Devya.
+
+One-liner AR: الدمج ليس نهاية العمل. هكذا نعرّف العمل المنتهي في ديفيا.
+
+**LinkedIn video** · 13:00 · English
+
+```text
+Merged isn't done. Here's what done means at Devya.
+
+#SoftwareEngineering #DevOps #QualityAssurance
+```
+
+**Facebook Reel** · 13:00 · Arabic
+
+```text
+الدمج ليس نهاية العمل. هكذا نعرّف العمل المنتهي في ديفيا.
+
+التفاصيل: https://www.devya.dev/about?utm_source=facebook&utm_medium=social&utm_content=reel
+```
+
+**Instagram Reel** · 13:00 · English
+
+```text
+Merged isn't done. Here's what done means at Devya.
+
+#BuildWithDevya #SoftwareEngineering #DevOps #WebDevelopment #CodeQuality
+```
+
+**Stories** (same video, no caption): Facebook 19:30 Arabic · Instagram 21:00 English
+
 ## Day 7 · Sat 21 Nov · Arabic Business Resources: a verified bilingual guide we built
 
 Pillar **case-study** · layout **compare** · accent lime · source https://www.devya.dev/projects/arabic-business-resources
@@ -399,6 +591,38 @@ Free to use: https://www.devya.dev/projects/arabic-business-resources?utm_source
 
 #ريادة_الأعمال #الاستثمار #تعلم #اللغة_العربية #مصادر_مجانية #BuildWithDevya
 ```
+
+### Vertical video · 1080×1920, 10 s · `visuals/2026-11-21/reel-<lang>.mp4` (rendered on the day)
+
+One-liner EN: Free Arabic resources for finance and investment, verified and tagged.
+
+One-liner AR: مصادر عربية مجانية للمال والاستثمار، موثّقة ومصنّفة.
+
+**LinkedIn video** · 13:00 · English
+
+```text
+Free Arabic resources for finance and investment, verified and tagged.
+
+#Arabic #FinancialLiteracy #OpenKnowledge
+```
+
+**Facebook Reel** · 13:00 · English
+
+```text
+Free Arabic resources for finance and investment, verified and tagged.
+
+More: https://www.devya.dev/projects/arabic-business-resources?utm_source=facebook&utm_medium=social&utm_content=reel
+```
+
+**Instagram Reel** · 13:00 · Arabic
+
+```text
+مصادر عربية مجانية للمال والاستثمار، موثّقة ومصنّفة.
+
+#ريادة_الأعمال #الاستثمار #تعلم #اللغة_العربية #مصادر_مجانية
+```
+
+**Stories** (same video, no caption): Facebook 19:30 English · Instagram 21:00 Arabic
 
 ## Day 8 · Sun 22 Nov · Build MENA products Arabic-first, then derive English
 
@@ -451,6 +675,38 @@ Design RTL from day one, write Arabic for the reader, then derive the English. R
 #BuildWithDevya #RTL #Localization #UXDesign #ProductDesign #SaudiArabia
 ```
 
+### Vertical video · 1080×1920, 10 s · `visuals/2026-11-22/reel-<lang>.mp4` (rendered on the day)
+
+One-liner EN: Selling to Egypt or the Gulf? Build it Arabic-first.
+
+One-liner AR: تبيع لعملاء في مصر أو الخليج؟ ابنِ منتجك بالعربية أولًا.
+
+**LinkedIn video** · 13:00 · English
+
+```text
+Selling to Egypt or the Gulf? Build it Arabic-first.
+
+#Localization #RTL #ProductDesign
+```
+
+**Facebook Reel** · 13:00 · Arabic
+
+```text
+تبيع لعملاء في مصر أو الخليج؟ ابنِ منتجك بالعربية أولًا.
+
+التفاصيل: https://www.devya.dev/services?utm_source=facebook&utm_medium=social&utm_content=reel
+```
+
+**Instagram Reel** · 13:00 · English
+
+```text
+Selling to Egypt or the Gulf? Build it Arabic-first.
+
+#BuildWithDevya #RTL #Localization #UXDesign #ProductDesign
+```
+
+**Stories** (same video, no caption): Facebook 19:30 Arabic · Instagram 21:00 English
+
 ## Day 9 · Mon 23 Nov · Mocks agree with you, Postgres does not: Testcontainers
 
 Pillar **engineering** · layout **terminal** · accent azure · source https://www.devya.dev/blogs/testcontainers-nodejs-postgres-integration-tests-field-notes
@@ -502,6 +758,38 @@ Link in bio.
 #BuildWithDevya #Testing #PostgreSQL #NodeJS #SoftwareEngineering #DevOps
 ```
 
+### Vertical video · 1080×1920, 10 s · `visuals/2026-11-23/reel-<lang>.mp4` (rendered on the day)
+
+One-liner EN: Your mocks agree with you. A real Postgres won't.
+
+One-liner AR: المحاكاة توافقك دائمًا، أما قاعدة البيانات الحقيقية فلا.
+
+**LinkedIn video** · 13:00 · English
+
+```text
+Your mocks agree with you. A real Postgres won't.
+
+#NodeJS #PostgreSQL #Testing
+```
+
+**Facebook Reel** · 13:00 · Arabic
+
+```text
+المحاكاة توافقك دائمًا، أما قاعدة البيانات الحقيقية فلا.
+
+التفاصيل: https://www.devya.dev/blogs/testcontainers-nodejs-postgres-integration-tests-field-notes?utm_source=facebook&utm_medium=social&utm_content=reel
+```
+
+**Instagram Reel** · 13:00 · English
+
+```text
+Your mocks agree with you. A real Postgres won't.
+
+#BuildWithDevya #Testing #PostgreSQL #NodeJS #SoftwareEngineering
+```
+
+**Stories** (same video, no caption): Facebook 19:30 Arabic · Instagram 21:00 English
+
 ## Day 10 · Tue 24 Nov · CopyForge: Arabic ad copy that doesn't read translated
 
 Pillar **product** · layout **product** · accent lime · source https://www.devya.dev/projects/copyforge
@@ -551,6 +839,38 @@ Try it: https://www.devya.dev/projects/copyforge?utm_source=facebook&utm_medium=
 
 #تسويق_إلكتروني #التجارة_الإلكترونية #سلة #زد #كتابة_إعلانية #BuildWithDevya
 ```
+
+### Vertical video · 1080×1920, 10 s · `visuals/2026-11-24/reel-<lang>.mp4` (rendered on the day)
+
+One-liner EN: CopyForge: Arabic ad copy that doesn't read like a translation.
+
+One-liner AR: أداة CopyForge تكتب نصوصًا إعلانية عربية لا تبدو مترجمة.
+
+**LinkedIn video** · 13:00 · English
+
+```text
+CopyForge: Arabic ad copy that doesn't read like a translation.
+
+#ArabicMarketing #Ecommerce #AI
+```
+
+**Facebook Reel** · 13:00 · English
+
+```text
+CopyForge: Arabic ad copy that doesn't read like a translation.
+
+More: https://www.devya.dev/projects/copyforge?utm_source=facebook&utm_medium=social&utm_content=reel
+```
+
+**Instagram Reel** · 13:00 · Arabic
+
+```text
+أداة CopyForge تكتب نصوصًا إعلانية عربية لا تبدو مترجمة.
+
+#تسويق_إلكتروني #التجارة_الإلكترونية #سلة #زد #كتابة_إعلانية
+```
+
+**Stories** (same video, no caption): Facebook 19:30 English · Instagram 21:00 Arabic
 
 ## Day 11 · Wed 25 Nov · Engineer swaps: the handover clauses to ask for
 
@@ -613,6 +933,38 @@ Save it for your next contract.
 #BuildWithDevya #Founders #Outsourcing #ProjectManagement #TechTips #Startups
 ```
 
+### Vertical video · 1080×1920, 10 s · `visuals/2026-11-25/reel-<lang>.mp4` (rendered on the day)
+
+One-liner EN: Your vendor is swapping your engineer. Ask for these five things.
+
+One-liner AR: شركة البرمجة ستغيّر مهندس مشروعك؟ اطلب هذه البنود الخمسة.
+
+**LinkedIn video** · 13:00 · English
+
+```text
+Your vendor is swapping your engineer. Ask for these five things.
+
+#ProjectManagement #Outsourcing #Startups
+```
+
+**Facebook Reel** · 13:00 · Arabic
+
+```text
+شركة البرمجة ستغيّر مهندس مشروعك؟ اطلب هذه البنود الخمسة.
+
+التفاصيل: https://www.devya.dev/services?utm_source=facebook&utm_medium=social&utm_content=reel
+```
+
+**Instagram Reel** · 13:00 · English
+
+```text
+Your vendor is swapping your engineer. Ask for these five things.
+
+#BuildWithDevya #Founders #Outsourcing #ProjectManagement #TechTips
+```
+
+**Stories** (same video, no caption): Facebook 19:30 Arabic · Instagram 21:00 English
+
 ## Day 12 · Thu 26 Nov · Parallel AI coding agents with git worktrees
 
 Pillar **engineering** · layout **code** · accent azure · source https://www.devya.dev/blogs/git-worktrees-parallel-ai-coding-agents-field-notes
@@ -666,6 +1018,38 @@ Link in bio.
 #BuildWithDevya #AI #Git #DeveloperTools #SoftwareEngineering #Coding
 ```
 
+### Vertical video · 1080×1920, 10 s · `visuals/2026-11-26/reel-<lang>.mp4` (rendered on the day)
+
+One-liner EN: Running AI coding agents in parallel? Give each one a git worktree.
+
+One-liner AR: تشغّل عدة وكلاء برمجة معًا؟ امنح كلًّا منهم worktree خاصًا.
+
+**LinkedIn video** · 13:00 · English
+
+```text
+Running AI coding agents in parallel? Give each one a git worktree.
+
+#AIEngineering #Git #DeveloperProductivity
+```
+
+**Facebook Reel** · 13:00 · Arabic
+
+```text
+تشغّل عدة وكلاء برمجة معًا؟ امنح كلًّا منهم worktree خاصًا.
+
+التفاصيل: https://www.devya.dev/blogs/git-worktrees-parallel-ai-coding-agents-field-notes?utm_source=facebook&utm_medium=social&utm_content=reel
+```
+
+**Instagram Reel** · 13:00 · English
+
+```text
+Running AI coding agents in parallel? Give each one a git worktree.
+
+#BuildWithDevya #AI #Git #DeveloperTools #SoftwareEngineering
+```
+
+**Stories** (same video, no caption): Facebook 19:30 Arabic · Instagram 21:00 English
+
 ## Day 13 · Fri 27 Nov · Urania: a bilingual guide to the constellations we built
 
 Pillar **case-study** · layout **product** · accent lime · source https://www.devya.dev/projects/urania
@@ -709,6 +1093,38 @@ Link in bio.
 
 #BuildWithDevya #Astronomy #Constellations #Arabic #WebDesign #SideProject
 ```
+
+### Vertical video · 1080×1920, 10 s · `visuals/2026-11-27/reel-<lang>.mp4` (rendered on the day)
+
+One-liner EN: Urania: the constellations and their myths, in English and Arabic.
+
+One-liner AR: دليل Urania يشرح الكوكبات النجمية وأساطيرها، بالعربية والإنجليزية.
+
+**LinkedIn video** · 13:00 · English
+
+```text
+Urania: the constellations and their myths, in English and Arabic.
+
+#Arabic #Bilingual #Astronomy
+```
+
+**Facebook Reel** · 13:00 · Arabic
+
+```text
+دليل Urania يشرح الكوكبات النجمية وأساطيرها، بالعربية والإنجليزية.
+
+التفاصيل: https://www.devya.dev/projects/urania?utm_source=facebook&utm_medium=social&utm_content=reel
+```
+
+**Instagram Reel** · 13:00 · English
+
+```text
+Urania: the constellations and their myths, in English and Arabic.
+
+#BuildWithDevya #Astronomy #Constellations #Arabic #WebDesign
+```
+
+**Stories** (same video, no caption): Facebook 19:30 Arabic · Instagram 21:00 English
 
 ## Day 14 · Sat 28 Nov · Stop adding Postgres indexes by guesswork: EXPLAIN ANALYZE
 
@@ -756,3 +1172,35 @@ Engineering notes: https://www.devya.dev/blogs/postgres-explain-analyze-query-pl
 
 #قواعد_البيانات #برمجة #تطوير_البرمجيات #تقنية #مطورين #BuildWithDevya
 ```
+
+### Vertical video · 1080×1920, 10 s · `visuals/2026-11-28/reel-<lang>.mp4` (rendered on the day)
+
+One-liner EN: Stop adding indexes by guesswork. Read the plan first.
+
+One-liner AR: توقف عن إضافة الفهارس بالتخمين. اقرأ خطة التنفيذ أولًا.
+
+**LinkedIn video** · 13:00 · English
+
+```text
+Stop adding indexes by guesswork. Read the plan first.
+
+#PostgreSQL #Database #BackendEngineering
+```
+
+**Facebook Reel** · 13:00 · English
+
+```text
+Stop adding indexes by guesswork. Read the plan first.
+
+More: https://www.devya.dev/blogs/postgres-explain-analyze-query-plans-indexes-field-notes?utm_source=facebook&utm_medium=social&utm_content=reel
+```
+
+**Instagram Reel** · 13:00 · Arabic
+
+```text
+توقف عن إضافة الفهارس بالتخمين. اقرأ خطة التنفيذ أولًا.
+
+#قواعد_البيانات #برمجة #تطوير_البرمجيات #تقنية #مطورين
+```
+
+**Stories** (same video, no caption): Facebook 19:30 English · Instagram 21:00 Arabic

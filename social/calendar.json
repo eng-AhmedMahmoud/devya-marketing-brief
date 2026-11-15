@@ -17,8 +17,13 @@
   },
   "slots": {
     "linkedin": "10:00",
+    "linkedin_video": "13:00",
+    "facebook_reel": "13:00",
+    "instagram_reel": "13:00",
     "facebook": "19:30",
-    "instagram": "21:00"
+    "facebook_story": "19:30",
+    "instagram": "21:00",
+    "instagram_story": "21:00"
   },
   "sizes": {
     "linkedin": [
@@ -32,7 +37,14 @@
     "instagram": [
       1080,
       1350
+    ],
+    "video": [
+      1080,
+      1920
     ]
+  },
+  "pausedChannels": {
+    "instagram_story": "Instagram web has no story composer, and Meta Business Suite (which has one) first asks to accept the Devya Solutions business-portfolio terms. Accept them in Business Suite, then delete this key."
   },
   "days": [
     {
@@ -79,6 +91,32 @@
         "instagram": {
           "lang": "en",
           "caption": "Three boring checks on every repo we touch:\n🔒 leakhook blocks secrets at commit time\n🧾 envcheck checks .env against .env.example\n🌐 i18n-check catches missing Arabic or English keys\nAll three are free and open source. Link in bio.\n\n#BuildWithDevya #OpenSource #WebDevelopment #NodeJS #DevSecOps #Cairo"
+        }
+      },
+      "reel": {
+        "en": "Three checks on every Devya repo, all open source: leakhook, envcheck, i18n-check.",
+        "ar": "ثلاثة فحوص على كل مستودع لدينا، وكلها مفتوحة المصدر: leakhook و envcheck و i18n-check."
+      },
+      "reels": {
+        "linkedin": {
+          "lang": "en",
+          "caption": "Three checks on every Devya repo, all open source: leakhook, envcheck, i18n-check.\n\n#BuildWithDevya #OpenSource #DevSecOps"
+        },
+        "facebook": {
+          "lang": "ar",
+          "caption": "ثلاثة فحوص على كل مستودع لدينا، وكلها مفتوحة المصدر: leakhook و envcheck و i18n-check.\n\nالتفاصيل: https://www.devya.dev/projects/leakhook?utm_source=facebook&utm_medium=social&utm_content=reel"
+        },
+        "instagram": {
+          "lang": "en",
+          "caption": "Three checks on every Devya repo, all open source: leakhook, envcheck, i18n-check.\n\n#BuildWithDevya #OpenSource #WebDevelopment #NodeJS #DevSecOps"
+        }
+      },
+      "stories": {
+        "facebook": {
+          "lang": "ar"
+        },
+        "instagram": {
+          "lang": "en"
         }
       }
     },
@@ -133,6 +171,32 @@
           "lang": "en",
           "caption": "Don't ask \"how much for the app?\"\nAsk for a cut line: every feature ranked, a cost on each, and a line where your budget ends. Above the line ships in v1. Below it waits for real users.\nSave this for your next quote.\n\n#BuildWithDevya #Startups #ProductDevelopment #AppDevelopment #Founders #MVP"
         }
+      },
+      "reel": {
+        "en": "Before the quote, ask for the cut line: what ships in v1, and what waits.",
+        "ar": "قبل عرض السعر، اطلب خط الإصدار الأول: ما الذي يُبنى الآن، وما الذي ينتظر."
+      },
+      "reels": {
+        "linkedin": {
+          "lang": "en",
+          "caption": "Before the quote, ask for the cut line: what ships in v1, and what waits.\n\n#ProductDevelopment #Startups #MENA"
+        },
+        "facebook": {
+          "lang": "ar",
+          "caption": "قبل عرض السعر، اطلب خط الإصدار الأول: ما الذي يُبنى الآن، وما الذي ينتظر.\n\nالتفاصيل: https://www.devya.dev/services?utm_source=facebook&utm_medium=social&utm_content=reel"
+        },
+        "instagram": {
+          "lang": "en",
+          "caption": "Before the quote, ask for the cut line: what ships in v1, and what waits.\n\n#BuildWithDevya #Startups #ProductDevelopment #AppDevelopment #Founders"
+        }
+      },
+      "stories": {
+        "facebook": {
+          "lang": "ar"
+        },
+        "instagram": {
+          "lang": "en"
+        }
       }
     },
     {
@@ -185,6 +249,32 @@
           "lang": "ar",
           "caption": "تطبيق سريع في العرض التجريبي ثم بطيء بعد الإطلاق؟\nأحد الأسباب الشائعة اسمه «استعلام N+1»: التطبيق يجلب قائمة، ثم يعود إلى قاعدة البيانات مرة لكل عنصر فيها.\nالحل غالبًا بضعة أسطر، والأهم أن تراقب عدد الاستعلامات قبل أن يلاحظ عملاؤك.\nالرابط في البايو.\n\n#برمجة #تطوير_البرمجيات #قواعد_البيانات #تقنية #مصر #BuildWithDevya"
         }
+      },
+      "reel": {
+        "en": "Fast on your laptop, slow in production: the N+1 query, and the fix.",
+        "ar": "سريع على جهازك وبطيء في الإنتاج: استعلام N+1 وحلّه في بضعة أسطر."
+      },
+      "reels": {
+        "linkedin": {
+          "lang": "en",
+          "caption": "Fast on your laptop, slow in production: the N+1 query, and the fix.\n\n#NodeJS #PostgreSQL #BackendEngineering"
+        },
+        "facebook": {
+          "lang": "en",
+          "caption": "Fast on your laptop, slow in production: the N+1 query, and the fix.\n\nMore: https://www.devya.dev/blogs/n-plus-1-queries-nodejs-dataloader-query-budget-field-notes?utm_source=facebook&utm_medium=social&utm_content=reel"
+        },
+        "instagram": {
+          "lang": "ar",
+          "caption": "سريع على جهازك وبطيء في الإنتاج: استعلام N+1 وحلّه في بضعة أسطر.\n\n#برمجة #تطوير_البرمجيات #قواعد_البيانات #تقنية #مصر"
+        }
+      },
+      "stories": {
+        "facebook": {
+          "lang": "en"
+        },
+        "instagram": {
+          "lang": "ar"
+        }
       }
     },
     {
@@ -234,6 +324,32 @@
         "instagram": {
           "lang": "en",
           "caption": "Your team says the codebase is fine. Does the code agree?\nDevya X-Ray checks 114 engineering practices against the actual repository, every finding quoted to a file and line. Start with a free 15-minute snapshot. Link in bio.\n\n#BuildWithDevya #CodeReview #SoftwareEngineering #CTO #TechLeadership #SaaS"
+        }
+      },
+      "reel": {
+        "en": "Devya X-Ray reads your code, not your slide deck. Free 15-minute snapshot.",
+        "ar": "أداة Devya X-Ray تقرأ الكود نفسه، لا العرض التقديمي. لقطة أولية مجانية في 15 دقيقة."
+      },
+      "reels": {
+        "linkedin": {
+          "lang": "en",
+          "caption": "Devya X-Ray reads your code, not your slide deck. Free 15-minute snapshot.\n\n#EngineeringLeadership #CodeQuality #CTO"
+        },
+        "facebook": {
+          "lang": "ar",
+          "caption": "أداة Devya X-Ray تقرأ الكود نفسه، لا العرض التقديمي. لقطة أولية مجانية في 15 دقيقة.\n\nالتفاصيل: https://www.devya.dev/projects/devya-xray?utm_source=facebook&utm_medium=social&utm_content=reel"
+        },
+        "instagram": {
+          "lang": "en",
+          "caption": "Devya X-Ray reads your code, not your slide deck. Free 15-minute snapshot.\n\n#BuildWithDevya #CodeReview #SoftwareEngineering #CTO #TechLeadership"
+        }
+      },
+      "stories": {
+        "facebook": {
+          "lang": "ar"
+        },
+        "instagram": {
+          "lang": "en"
         }
       }
     },
@@ -285,6 +401,32 @@
           "lang": "en",
           "caption": "Five lines every weekly dev update should have:\n1 What shipped (with a link)\n2 What slipped (and the new date)\n3 Risks on both sides\n4 Decisions needed from you\n5 Budget used vs plan\nSend this to whoever builds your product.\n\n#BuildWithDevya #Founders #ProductManagement #SoftwareDevelopment #TechTips #Startups"
         }
+      },
+      "reel": {
+        "en": "Five lines every weekly update from your dev team should have.",
+        "ar": "خمسة أسطر يجب أن يتضمنها كل تقرير أسبوعي من فريق التطوير."
+      },
+      "reels": {
+        "linkedin": {
+          "lang": "en",
+          "caption": "Five lines every weekly update from your dev team should have.\n\n#ProjectManagement #Startups #SoftwareDevelopment"
+        },
+        "facebook": {
+          "lang": "ar",
+          "caption": "خمسة أسطر يجب أن يتضمنها كل تقرير أسبوعي من فريق التطوير.\n\nالتفاصيل: https://www.devya.dev/services?utm_source=facebook&utm_medium=social&utm_content=reel"
+        },
+        "instagram": {
+          "lang": "en",
+          "caption": "Five lines every weekly update from your dev team should have.\n\n#BuildWithDevya #Founders #ProductManagement #SoftwareDevelopment #TechTips"
+        }
+      },
+      "stories": {
+        "facebook": {
+          "lang": "ar"
+        },
+        "instagram": {
+          "lang": "en"
+        }
       }
     },
     {
@@ -322,6 +464,32 @@
         "instagram": {
           "lang": "en",
           "caption": "Merged isn't done.\nDone here means: CI green on the pull request, secrets scanned on every commit, both languages checked in bilingual products, and the live URL opened after deploy.\nBoring rules, written down, so deadlines can't skip them.\n\n#BuildWithDevya #SoftwareEngineering #DevOps #WebDevelopment #CodeQuality"
+        }
+      },
+      "reel": {
+        "en": "Merged isn't done. Here's what done means at Devya.",
+        "ar": "الدمج ليس نهاية العمل. هكذا نعرّف العمل المنتهي في ديفيا."
+      },
+      "reels": {
+        "linkedin": {
+          "lang": "en",
+          "caption": "Merged isn't done. Here's what done means at Devya.\n\n#SoftwareEngineering #DevOps #QualityAssurance"
+        },
+        "facebook": {
+          "lang": "ar",
+          "caption": "الدمج ليس نهاية العمل. هكذا نعرّف العمل المنتهي في ديفيا.\n\nالتفاصيل: https://www.devya.dev/about?utm_source=facebook&utm_medium=social&utm_content=reel"
+        },
+        "instagram": {
+          "lang": "en",
+          "caption": "Merged isn't done. Here's what done means at Devya.\n\n#BuildWithDevya #SoftwareEngineering #DevOps #WebDevelopment #CodeQuality"
+        }
+      },
+      "stories": {
+        "facebook": {
+          "lang": "ar"
+        },
+        "instagram": {
+          "lang": "en"
         }
       }
     },
@@ -395,6 +563,32 @@
           "lang": "ar",
           "caption": "تبحث عن مصادر عربية مجانية لتعلّم مصطلحات المال والاستثمار؟\nجمعنا أكثر من 20 مصدرًا موثّقًا في دليل واحد ثنائي اللغة، وكل مصدر مصنّف فصحى أو عامية، مجاني أو مدفوع، مع تاريخ آخر تحقق.\nالرابط في البايو.\n\n#ريادة_الأعمال #الاستثمار #تعلم #اللغة_العربية #مصادر_مجانية #BuildWithDevya"
         }
+      },
+      "reel": {
+        "en": "Free Arabic resources for finance and investment, verified and tagged.",
+        "ar": "مصادر عربية مجانية للمال والاستثمار، موثّقة ومصنّفة."
+      },
+      "reels": {
+        "linkedin": {
+          "lang": "en",
+          "caption": "Free Arabic resources for finance and investment, verified and tagged.\n\n#Arabic #FinancialLiteracy #OpenKnowledge"
+        },
+        "facebook": {
+          "lang": "en",
+          "caption": "Free Arabic resources for finance and investment, verified and tagged.\n\nMore: https://www.devya.dev/projects/arabic-business-resources?utm_source=facebook&utm_medium=social&utm_content=reel"
+        },
+        "instagram": {
+          "lang": "ar",
+          "caption": "مصادر عربية مجانية للمال والاستثمار، موثّقة ومصنّفة.\n\n#ريادة_الأعمال #الاستثمار #تعلم #اللغة_العربية #مصادر_مجانية"
+        }
+      },
+      "stories": {
+        "facebook": {
+          "lang": "en"
+        },
+        "instagram": {
+          "lang": "ar"
+        }
       }
     },
     {
@@ -467,6 +661,32 @@
           "lang": "en",
           "caption": "Selling to Egypt or the Gulf? Build it Arabic-first.\nDesign RTL from day one, write Arabic for the reader, then derive the English. Retrofitting Arabic later means broken buttons, backwards arrows and copy that reads translated.\n\n#BuildWithDevya #RTL #Localization #UXDesign #ProductDesign #SaudiArabia"
         }
+      },
+      "reel": {
+        "en": "Selling to Egypt or the Gulf? Build it Arabic-first.",
+        "ar": "تبيع لعملاء في مصر أو الخليج؟ ابنِ منتجك بالعربية أولًا."
+      },
+      "reels": {
+        "linkedin": {
+          "lang": "en",
+          "caption": "Selling to Egypt or the Gulf? Build it Arabic-first.\n\n#Localization #RTL #ProductDesign"
+        },
+        "facebook": {
+          "lang": "ar",
+          "caption": "تبيع لعملاء في مصر أو الخليج؟ ابنِ منتجك بالعربية أولًا.\n\nالتفاصيل: https://www.devya.dev/services?utm_source=facebook&utm_medium=social&utm_content=reel"
+        },
+        "instagram": {
+          "lang": "en",
+          "caption": "Selling to Egypt or the Gulf? Build it Arabic-first.\n\n#BuildWithDevya #RTL #Localization #UXDesign #ProductDesign"
+        }
+      },
+      "stories": {
+        "facebook": {
+          "lang": "ar"
+        },
+        "instagram": {
+          "lang": "en"
+        }
       }
     },
     {
@@ -510,6 +730,32 @@
         "instagram": {
           "lang": "en",
           "caption": "Green tests, broken app?\nMocks agree with your assumptions, even when the SQL is wrong. We run repository tests against a real Postgres in a container, migrations and all. Slower, and worth it.\nLink in bio.\n\n#BuildWithDevya #Testing #PostgreSQL #NodeJS #SoftwareEngineering #DevOps"
+        }
+      },
+      "reel": {
+        "en": "Your mocks agree with you. A real Postgres won't.",
+        "ar": "المحاكاة توافقك دائمًا، أما قاعدة البيانات الحقيقية فلا."
+      },
+      "reels": {
+        "linkedin": {
+          "lang": "en",
+          "caption": "Your mocks agree with you. A real Postgres won't.\n\n#NodeJS #PostgreSQL #Testing"
+        },
+        "facebook": {
+          "lang": "ar",
+          "caption": "المحاكاة توافقك دائمًا، أما قاعدة البيانات الحقيقية فلا.\n\nالتفاصيل: https://www.devya.dev/blogs/testcontainers-nodejs-postgres-integration-tests-field-notes?utm_source=facebook&utm_medium=social&utm_content=reel"
+        },
+        "instagram": {
+          "lang": "en",
+          "caption": "Your mocks agree with you. A real Postgres won't.\n\n#BuildWithDevya #Testing #PostgreSQL #NodeJS #SoftwareEngineering"
+        }
+      },
+      "stories": {
+        "facebook": {
+          "lang": "ar"
+        },
+        "instagram": {
+          "lang": "en"
         }
       }
     },
@@ -561,6 +807,32 @@
           "lang": "ar",
           "caption": "إعلانات عربية لا تبدو مترجمة.\nأداة CopyForge تكتب إعلانات ميتا وتيك توك وأوصاف منتجات سلة وزد بالفصحى أو المصرية أو الخليجية، حسب اختيارك.\nعشرون رصيدًا مجانيًا لكل حساب جديد. الرابط في البايو.\n\n#تسويق_إلكتروني #التجارة_الإلكترونية #سلة #زد #كتابة_إعلانية #BuildWithDevya"
         }
+      },
+      "reel": {
+        "en": "CopyForge: Arabic ad copy that doesn't read like a translation.",
+        "ar": "أداة CopyForge تكتب نصوصًا إعلانية عربية لا تبدو مترجمة."
+      },
+      "reels": {
+        "linkedin": {
+          "lang": "en",
+          "caption": "CopyForge: Arabic ad copy that doesn't read like a translation.\n\n#ArabicMarketing #Ecommerce #AI"
+        },
+        "facebook": {
+          "lang": "en",
+          "caption": "CopyForge: Arabic ad copy that doesn't read like a translation.\n\nMore: https://www.devya.dev/projects/copyforge?utm_source=facebook&utm_medium=social&utm_content=reel"
+        },
+        "instagram": {
+          "lang": "ar",
+          "caption": "أداة CopyForge تكتب نصوصًا إعلانية عربية لا تبدو مترجمة.\n\n#تسويق_إلكتروني #التجارة_الإلكترونية #سلة #زد #كتابة_إعلانية"
+        }
+      },
+      "stories": {
+        "facebook": {
+          "lang": "en"
+        },
+        "instagram": {
+          "lang": "ar"
+        }
       }
     },
     {
@@ -611,6 +883,32 @@
           "lang": "en",
           "caption": "Your vendor is swapping your engineer. Ask for:\n1 Two weeks' written notice\n2 An overlap period\n3 A written handover note\n4 A demo from the new engineer\n5 Your sign-off before it's final\nSave it for your next contract.\n\n#BuildWithDevya #Founders #Outsourcing #ProjectManagement #TechTips #Startups"
         }
+      },
+      "reel": {
+        "en": "Your vendor is swapping your engineer. Ask for these five things.",
+        "ar": "شركة البرمجة ستغيّر مهندس مشروعك؟ اطلب هذه البنود الخمسة."
+      },
+      "reels": {
+        "linkedin": {
+          "lang": "en",
+          "caption": "Your vendor is swapping your engineer. Ask for these five things.\n\n#ProjectManagement #Outsourcing #Startups"
+        },
+        "facebook": {
+          "lang": "ar",
+          "caption": "شركة البرمجة ستغيّر مهندس مشروعك؟ اطلب هذه البنود الخمسة.\n\nالتفاصيل: https://www.devya.dev/services?utm_source=facebook&utm_medium=social&utm_content=reel"
+        },
+        "instagram": {
+          "lang": "en",
+          "caption": "Your vendor is swapping your engineer. Ask for these five things.\n\n#BuildWithDevya #Founders #Outsourcing #ProjectManagement #TechTips"
+        }
+      },
+      "stories": {
+        "facebook": {
+          "lang": "ar"
+        },
+        "instagram": {
+          "lang": "en"
+        }
       }
     },
     {
@@ -655,6 +953,32 @@
         "instagram": {
           "lang": "en",
           "caption": "Running several AI coding agents on one repo?\nGive each its own git worktree: own folder, own branch, same repository. Then split what worktrees don't: ports, localhost cookies and the database.\nLink in bio.\n\n#BuildWithDevya #AI #Git #DeveloperTools #SoftwareEngineering #Coding"
+        }
+      },
+      "reel": {
+        "en": "Running AI coding agents in parallel? Give each one a git worktree.",
+        "ar": "تشغّل عدة وكلاء برمجة معًا؟ امنح كلًّا منهم worktree خاصًا."
+      },
+      "reels": {
+        "linkedin": {
+          "lang": "en",
+          "caption": "Running AI coding agents in parallel? Give each one a git worktree.\n\n#AIEngineering #Git #DeveloperProductivity"
+        },
+        "facebook": {
+          "lang": "ar",
+          "caption": "تشغّل عدة وكلاء برمجة معًا؟ امنح كلًّا منهم worktree خاصًا.\n\nالتفاصيل: https://www.devya.dev/blogs/git-worktrees-parallel-ai-coding-agents-field-notes?utm_source=facebook&utm_medium=social&utm_content=reel"
+        },
+        "instagram": {
+          "lang": "en",
+          "caption": "Running AI coding agents in parallel? Give each one a git worktree.\n\n#BuildWithDevya #AI #Git #DeveloperTools #SoftwareEngineering"
+        }
+      },
+      "stories": {
+        "facebook": {
+          "lang": "ar"
+        },
+        "instagram": {
+          "lang": "en"
         }
       }
     },
@@ -706,6 +1030,32 @@
           "lang": "en",
           "caption": "Not everything we build is for a client.\nUrania is a free, illustrated guide to the constellations and their Greek myths, in English and Arabic. It's where we practise Arabic typography and RTL layouts that are designed, not flipped.\nLink in bio.\n\n#BuildWithDevya #Astronomy #Constellations #Arabic #WebDesign #SideProject"
         }
+      },
+      "reel": {
+        "en": "Urania: the constellations and their myths, in English and Arabic.",
+        "ar": "دليل Urania يشرح الكوكبات النجمية وأساطيرها، بالعربية والإنجليزية."
+      },
+      "reels": {
+        "linkedin": {
+          "lang": "en",
+          "caption": "Urania: the constellations and their myths, in English and Arabic.\n\n#Arabic #Bilingual #Astronomy"
+        },
+        "facebook": {
+          "lang": "ar",
+          "caption": "دليل Urania يشرح الكوكبات النجمية وأساطيرها، بالعربية والإنجليزية.\n\nالتفاصيل: https://www.devya.dev/projects/urania?utm_source=facebook&utm_medium=social&utm_content=reel"
+        },
+        "instagram": {
+          "lang": "en",
+          "caption": "Urania: the constellations and their myths, in English and Arabic.\n\n#BuildWithDevya #Astronomy #Constellations #Arabic #WebDesign"
+        }
+      },
+      "stories": {
+        "facebook": {
+          "lang": "ar"
+        },
+        "instagram": {
+          "lang": "en"
+        }
       }
     },
     {
@@ -750,6 +1100,32 @@
         "instagram": {
           "lang": "ar",
           "caption": "توقف عن إضافة الفهارس إلى قاعدة البيانات بالتخمين.\nابحث أولًا عن الاستعلام الأعلى تكلفة إجمالًا، ثم اقرأ خطة التنفيذ الفعلية عبر EXPLAIN ANALYZE، وأضف الفهرس الذي تطلبه الخطة فقط، ثم قِس من جديد.\nالرابط في البايو.\n\n#قواعد_البيانات #برمجة #تطوير_البرمجيات #تقنية #مطورين #BuildWithDevya"
+        }
+      },
+      "reel": {
+        "en": "Stop adding indexes by guesswork. Read the plan first.",
+        "ar": "توقف عن إضافة الفهارس بالتخمين. اقرأ خطة التنفيذ أولًا."
+      },
+      "reels": {
+        "linkedin": {
+          "lang": "en",
+          "caption": "Stop adding indexes by guesswork. Read the plan first.\n\n#PostgreSQL #Database #BackendEngineering"
+        },
+        "facebook": {
+          "lang": "en",
+          "caption": "Stop adding indexes by guesswork. Read the plan first.\n\nMore: https://www.devya.dev/blogs/postgres-explain-analyze-query-plans-indexes-field-notes?utm_source=facebook&utm_medium=social&utm_content=reel"
+        },
+        "instagram": {
+          "lang": "ar",
+          "caption": "توقف عن إضافة الفهارس بالتخمين. اقرأ خطة التنفيذ أولًا.\n\n#قواعد_البيانات #برمجة #تطوير_البرمجيات #تقنية #مطورين"
+        }
+      },
+      "stories": {
+        "facebook": {
+          "lang": "en"
+        },
+        "instagram": {
+          "lang": "ar"
         }
       }
     }

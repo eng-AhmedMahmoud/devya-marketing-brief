@@ -97,6 +97,27 @@ cal.days.forEach((d, i) => {
     if (post.lang === 'en' && ar > 0) err(d, `${net}: English caption contains Arabic (never blob both languages)`);
     if (checkImages && !existsSync(join(SOCIAL, 'visuals', d.date, `${net}.png`))) err(d, `${net}: image missing`);
   }
+
+  // Vertical video: one-liner per language, composed reels, stories in the feed languages.
+  if (!d.reel?.en || !d.reel?.ar) err(d, 'reel needs en and ar one-liners');
+  else {
+    if ((d.reel.en.match(ARABIC) || []).length) err(d, 'reel.en contains Arabic');
+    if (!(d.reel.ar.match(ARABIC) || []).length) err(d, 'reel.ar has no Arabic');
+    if (d.reel.en.length > 160 || d.reel.ar.length > 160) err(d, 'reel one-liner over 160 chars');
+    if (BANNED.test(d.reel.en + d.reel.ar)) err(d, 'reel: banned word or domain');
+  }
+  const r = d.reels || {};
+  if (r.linkedin?.lang !== 'en') err(d, 'reels.linkedin must be English');
+  if (r.facebook?.lang !== p.facebook?.lang || r.instagram?.lang !== p.instagram?.lang) err(d, 'reels must match the day\'s Facebook/Instagram languages');
+  if (d.stories?.facebook?.lang !== p.facebook?.lang || d.stories?.instagram?.lang !== p.instagram?.lang) err(d, 'stories must match the day\'s Facebook/Instagram languages');
+  for (const [net, lo, hi] of [['linkedin', 1, 3], ['facebook', 0, 0], ['instagram', 3, 6]]) {
+    const cap = r[net]?.caption || '';
+    const n = (cap.match(/(^|\s)#[\p{L}\p{N}_]+/gu) || []).length;
+    if (n < lo || n > hi) err(d, `reels.${net}: ${n} hashtags, want ${lo}-${hi}`);
+    for (const url of cap.match(/https?:\/\/\S+/g) || []) {
+      if (net !== 'facebook' || !url.startsWith('https://www.devya.dev/') || !url.includes('utm_source=facebook&utm_medium=social')) err(d, `reels.${net}: bad link ${url}`);
+    }
+  }
 });
 
 if (errors.length) {

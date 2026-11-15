@@ -23,7 +23,7 @@ const payload = JSON.parse(readFileSync(0, 'utf8'));
 const { date, results } = payload;
 if (!/^\d{4}-\d{2}-\d{2}$/.test(date || '') || !results) { console.error('record: bad payload'); process.exit(1); }
 const day = cal.days.find((d) => d.date === date);
-const NET = { linkedin: 'LinkedIn', facebook: 'Facebook', instagram: 'Instagram' };
+const NET = { linkedin: 'LinkedIn', facebook: 'Facebook', instagram: 'Instagram', linkedin_video: 'LinkedIn video', facebook_reel: 'Facebook Reel', instagram_reel: 'Instagram Reel', facebook_story: 'Facebook Story', instagram_story: 'Instagram Story' };
 const ALLOWED_HOST = { linkedin: /^https:\/\/(www\.)?linkedin\.com\//, facebook: /^https:\/\/(www\.)?facebook\.com\//, instagram: /^https:\/\/(www\.)?instagram\.com\// };
 
 const state = existsSync(statePath) ? JSON.parse(readFileSync(statePath, 'utf8')) : { version: 1, published: {} };
@@ -38,7 +38,8 @@ let problems = 0;
 for (const [net, r] of Object.entries(results)) {
   if (!NET[net]) continue;
   let { status, url, proof, note } = r;
-  if (status === 'published' && url && url !== 'posted' && !ALLOWED_HOST[net].test(url)) { note = `rejected url ${url}`; url = null; status = 'failed'; }
+  const platform = net.split('_')[0];
+  if (status === 'published' && url && url !== 'posted' && !ALLOWED_HOST[platform].test(url)) { note = `rejected url ${url}`; url = null; status = 'failed'; }
   let proofRel = '';
   if (proof && existsSync(proof)) {
     mkdirSync(join(SOCIAL, 'proof'), { recursive: true });
@@ -50,7 +51,7 @@ for (const [net, r] of Object.entries(results)) {
   } else {
     problems++;
   }
-  const lang = day?.posts?.[net]?.lang?.toUpperCase() ?? '';
+  const lang = (day?.posts?.[net] || day?.reels?.[platform === 'linkedin' && net !== 'linkedin' ? 'linkedin' : platform] || {}).lang?.toUpperCase() ?? '';
   const link = url && url !== 'posted' ? `[open](${url})` : (url || '');
   const clean = (s) => String(s || '').replace(/\|/g, '/').replace(/\n/g, ' ').slice(0, 200);
   appendFileSync(logPath, `| ${date} | ${day?.day ?? ''} | ${NET[net]} | ${lang} | ${status} | ${stamp} | ${link} | ${proofRel ? `[shot](${proofRel})` : ''} | ${clean(note)} |\n`);

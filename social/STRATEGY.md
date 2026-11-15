@@ -1,7 +1,7 @@
 # Devya social: content strategy
 
 Daily organic presence on Devya's own **Instagram**, **Facebook** and **LinkedIn** company page.
-One post per network per day. Written 2026-11-15, revised the same day after an advisor pressure-test (summary at the end).
+Every day: one feed post per network, plus one 10-second vertical video used as a **Facebook Reel**, an **Instagram Reel**, a **LinkedIn native video**, and a **Facebook and Instagram Story** (added 2026-11-15 at the developer's request). Written 2026-11-15, revised the same day after an advisor pressure-test (summary at the end).
 
 Inputs: brand canon, strategy roadmap and parked decisions (this site's `/brand`, `/strategy`, `/decisions`),
 the public site and blog at https://www.devya.dev, and the latest `devya-market-intel` competitor report
@@ -72,6 +72,14 @@ Six layouts rotate so the grid never reads as one template: **statement** (one b
 
 No stock photos, no AI-generated imagery, no client logos or screenshots of client work.
 
+## Reels, Stories and LinkedIn video
+
+- **One vertical video a day**, 1080×1920, 10 s, 30 fps, H.264 with a silent track (no licensed music). It is the day's card, animated: the mark and kicker fade in, the title rises word by word, the checklist / code / terminal / comparison / product screenshot builds line by line, then a two-second end card (`</>DEVYA`, `devya.dev`, `@devyasoftware`). Rendered by `render/render-reel.mjs` in English and Arabic; all text sits inside the Reels/Stories safe area.
+- **Language follows the day's feed**: the Facebook Reel and Story use Facebook's language that day, the Instagram Reel and Story use Instagram's, the LinkedIn video is English.
+- **Captions**: one authored hook per day (`reel.en` / `reel.ar` in the calendar). Reel captions are that hook plus 3–5 hashtags on Instagram, plus a tracked link (`utm_content=reel`) on Facebook, plus 3 hashtags on LinkedIn. Stories carry no caption.
+- **Why the same video everywhere**: Stories exist to push followers to the day's Reel and post; reusing the video keeps the daily cost at one render, and every network still sees it once.
+- **Instagram Stories are held** until the developer accepts the Devya Solutions business-portfolio terms in Meta Business Suite: Instagram's desktop site has no story composer, and Business Suite (which has one) asks for that acceptance first. The calendar's `pausedChannels` holds the channel; deleting the key switches it on.
+
 ## Hashtags
 
 - **LinkedIn**: 3–4 per post, one brand tag plus topic tags. Brand: `#BuildWithDevya`. Topic examples: `#SoftwareEngineering #NextJS #NodeJS #PostgreSQL #ProductDevelopment #MENA #Egypt #SaudiArabia`.
@@ -82,13 +90,14 @@ No stock photos, no AI-generated imagery, no client logos or screenshots of clie
 
 Egypt's work week is Sunday–Thursday; Friday and Saturday are the weekend. Gulf buyers sit one hour ahead.
 
-| Network | Time | Notes |
+| Channel | Time | Notes |
 |---|---|---|
-| LinkedIn | **10:00** (11:00 KSA, start of the work day) | Fri/Sat get the lightest posts (culture, case studies); reach there is low in Egypt and the Gulf. |
-| Facebook | **19:30** | Evening scroll peak. |
-| Instagram | **21:00** | Spaced from Facebook so no follower gets both within minutes. |
+| LinkedIn post | **10:00** (11:00 KSA, start of the work day) | Fri/Sat get the lightest posts (culture, case studies); reach there is low in Egypt and the Gulf. |
+| LinkedIn video, Facebook Reel, Instagram Reel | **13:00** | Lunch-break scroll; the video teases the evening posts. |
+| Facebook post + Story | **19:30** | Evening scroll peak. |
+| Instagram post + Story | **21:00** | Spaced from Facebook so no follower gets both within minutes. |
 
-The daily routine runs at **10:00, 19:30 and 21:00**. Each run publishes every network whose slot has passed and that has not been published today, so a missed run is caught by the next one. Ramadan shifts all of this later; revisit before it.
+The daily routine runs at **10:00, 13:00, 19:30 and 21:00**. Each run publishes every network whose slot has passed and that has not been published today, so a missed run is caught by the next one. Ramadan shifts all of this later; revisit before it.
 
 ## Links and tracking
 

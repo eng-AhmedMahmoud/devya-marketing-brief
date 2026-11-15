@@ -10,6 +10,7 @@ import { readFileSync, writeFileSync, rmSync, existsSync } from 'node:fs';
 import { dirname, join } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { spawnSync } from 'node:child_process';
+import { composeReels } from '../render/compose.mjs';
 
 const SOCIAL = join(dirname(fileURLToPath(import.meta.url)), '..');
 const RENDER = join(SOCIAL, 'render');
@@ -28,7 +29,8 @@ let expect = next(cal.days.at(-1).date);
 const added = [];
 for (const d of days) {
   if (d.date !== expect) { console.error(`merge: expected ${expect}, draft has ${d.date}`); process.exit(1); }
-  added.push({ ...d, day: cal.days.length + added.length + 1, skip: false });
+  if (!d.reel?.en || !d.reel?.ar || !d.posts) { console.error(`merge: ${d.date} needs reel.en, reel.ar and posts`); process.exit(1); }
+  added.push({ ...d, day: cal.days.length + added.length + 1, skip: false, ...composeReels(d) });
   expect = next(expect);
 }
 
@@ -44,6 +46,7 @@ cal.days.push(...added);
 writeFileSync(calPath, JSON.stringify(cal, null, 2) + '\n');
 if (run('validate.mjs') !== 0) restore('validation failed');
 for (const d of added) if (run('render.mjs', ['--date', d.date, '--force']) !== 0) restore(`render failed for ${d.date}`);
+for (const d of added) if (run('render-reel.mjs', ['--date', d.date, '--force']) !== 0) restore(`reel render failed for ${d.date}`);
 if (run('validate.mjs', ['--images']) !== 0) restore('images missing after render');
 run('build-md.mjs');
 rmSync(inbox, { force: true });

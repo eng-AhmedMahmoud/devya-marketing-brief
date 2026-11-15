@@ -14,7 +14,7 @@
 import { chromium } from 'playwright-core';
 import { readFileSync, existsSync, mkdirSync } from 'node:fs';
 import { dirname, join } from 'node:path';
-import { fileURLToPath } from 'node:url';
+import { fileURLToPath, pathToFileURL } from 'node:url';
 
 const HERE = dirname(fileURLToPath(import.meta.url));
 const SOCIAL = join(HERE, '..');
@@ -25,23 +25,23 @@ const flag = (n) => args.includes(n);
 const opt = (n) => { const i = args.indexOf(n); return i >= 0 ? args[i + 1] : undefined; };
 
 const font = (f) => readFileSync(join(HERE, 'fonts', f)).toString('base64');
-const FONTS = `
+export const FONTS = `
 @font-face{font-family:Sora;font-weight:300 800;src:url(data:font/woff2;base64,${font('Sora-latin.woff2')}) format('woff2')}
 @font-face{font-family:Cairo;font-weight:300 900;src:url(data:font/woff2;base64,${font('Cairo-arabic.woff2')}) format('woff2');unicode-range:U+0600-06FF,U+0750-077F,U+0870-08FF,U+FB50-FDFF,U+FE70-FEFF,U+200C-200E}
 @font-face{font-family:Cairo;font-weight:300 900;src:url(data:font/woff2;base64,${font('Cairo-latin.woff2')}) format('woff2');unicode-range:U+0000-00FF,U+2000-206F}
 @font-face{font-family:JBMono;font-weight:400 700;src:url(data:font/woff2;base64,${font('JetBrainsMono-latin.woff2')}) format('woff2')}`;
 
-const ACCENT = { ember: '#F97316', azure: '#3B82F6', lime: '#10B981' };
+export const ACCENT = { ember: '#F97316', azure: '#3B82F6', lime: '#10B981' };
 const SIZE = { portrait: [1080, 1350], landscape: [1200, 627] };
 const CUT_LABEL = { en: 'v1 cut line', ar: 'خط الإصدار الأول' };
-const GLOW = { statement: '85% 12%', checklist: '100% 100%', code: '0% 100%', terminal: '100% 0%', compare: '50% 110%', product: '0% 0%' };
+export const GLOW = { statement: '85% 12%', checklist: '100% 100%', code: '0% 100%', terminal: '100% 0%', compare: '50% 110%', product: '0% 0%' };
 
-const esc = (s = '') => String(s).replace(/[&<>"]/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
+export const esc = (s = '') => String(s).replace(/[&<>"]/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
 // *word* in a title or line renders in the day's accent colour.
-const rich = (s = '') => esc(s).replace(/\*(.+?)\*/g, '<em>$1</em>');
+export const rich = (s = '') => esc(s).replace(/\*(.+?)\*/g, '<em>$1</em>');
 
 const KW = /\b(const|let|await|async|for|of|in|return|function|import|from|new|if|else|await|using|select|from|where|join|on|group|by|order|limit|explain|analyze)\b/gi;
-function highlight(code) {
+export function highlight(code) {
   return code.split('\n').map((line) => {
     const c = line.search(/(\/\/|#|--\s)/);
     let body = c >= 0 ? line.slice(0, c) : line;
@@ -53,7 +53,7 @@ function highlight(code) {
   }).join('\n');
 }
 
-function terminal(lines) {
+export function terminal(lines) {
   return lines.map((l) => {
     if (l.startsWith('$ ')) return `<div><span class="p">$</span> ${esc(l.slice(2))}</div>`;
     if (/^(✗|error|ERROR|FAIL)/.test(l)) return `<div class="bad">${esc(l)}</div>`;
@@ -151,7 +151,7 @@ footer{display:flex;justify-content:space-between;align-items:center;border-top:
 </body></html>`;
 }
 
-async function shoot(browser, url, out) {
+export async function shoot(browser, url, out) {
   const ctx = await browser.newContext({ viewport: { width: 1280, height: 760 }, deviceScaleFactor: 1, colorScheme: 'dark' });
   const page = await ctx.newPage();
   await page.goto(url, { waitUntil: 'networkidle', timeout: 60000 });
@@ -202,4 +202,4 @@ async function main() {
   if (overflow) process.exit(1);
 }
 
-main().catch((e) => { console.error(e); process.exit(1); });
+if (process.argv[1] && import.meta.url === pathToFileURL(process.argv[1]).href) main().catch((e) => { console.error(e); process.exit(1); });

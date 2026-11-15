@@ -7,3 +7,4 @@ dist
 *.log
 social/inbox/
 social/visuals/*/shot.png
+social/visuals/*/reel-*

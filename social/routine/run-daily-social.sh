@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# Devya daily social routine. launchd fires it at 10:00, 19:30 and 21:00
+# Devya daily social routine. launchd fires it at 10:00, 13:00, 19:30 and 21:00
 # (com.ahmedmahmoud.devya-social-daily). Each run:
 #   1. syncs a routine-owned clone of devya-marketing-brief to origin/main;
 #   2. asks routine/due.mjs which networks are due now (slot passed, not yet
@@ -88,11 +88,16 @@ DUE_JSON="$(node social/routine/due.mjs "$@")" || { echo "ERROR: due.mjs failed"
 TODAY="$(printf '%s' "$DUE_JSON" | node -pe 'JSON.parse(require("fs").readFileSync(0,"utf8")).date')"
 COUNT="$(printf '%s' "$DUE_JSON" | node -pe 'JSON.parse(require("fs").readFileSync(0,"utf8")).due.length')"
 REMAINING="$(printf '%s' "$DUE_JSON" | node -pe 'JSON.parse(require("fs").readFileSync(0,"utf8")).remaining')"
+echo "held (pausedChannels): $(printf '%s' "$DUE_JSON" | node -pe 'JSON.parse(require("fs").readFileSync(0,"utf8")).held.map(h=>h.network).join(", ")||"none"')"
 echo "today $TODAY · due now: $(printf '%s' "$DUE_JSON" | node -pe 'JSON.parse(require("fs").readFileSync(0,"utf8")).due.map(d=>d.network).join(", ")||"none"') · calendar days left after today: $REMAINING"
 
 RC=0
 if [[ "$COUNT" -gt 0 ]]; then
   node social/render/render.mjs --date "$TODAY" || echo "WARN: render reported a problem for $TODAY"
+  # Reels, stories and the LinkedIn video use the day's vertical video (git-ignored, rendered here).
+  if printf '%s' "$DUE_JSON" | grep -q '"kind": "\(reel\|video\|story\)"'; then
+    node social/render/render-reel.mjs --date "$TODAY" || echo "WARN: reel render reported a problem for $TODAY"
+  fi
 
   # Seat preflight: the ceo seat's Chrome profile open, CIC connected and paired as ceo@devya.dev.
   if command -v brain >/dev/null 2>&1; then

@@ -6,7 +6,7 @@
 //
 //   node due.mjs [--now 2026-11-16T19:45] [--only linkedin,facebook]
 //
-// Output: {"date","day","remaining","due":[{network,lang,caption,image}],"skipped":bool}
+// Output: {date, day, remaining, held:[{network,reason}], due:[{network,platform,kind,lang,caption,media,cover?,alt?}]}
 
 import { readFileSync, existsSync } from 'node:fs';
 import { dirname, join } from 'node:path';
@@ -35,21 +35,33 @@ const day = cal.days.find((d) => d.date === now.date);
 const remaining = cal.days.filter((d) => d.date > now.date).length;
 const done = state.published?.[now.date] || {};
 
+// Every publish channel of a day: feed posts (PNG), the day's vertical video as
+// LinkedIn video / Facebook + Instagram Reels (MP4), and the same video as Stories.
+const KIND = { linkedin: 'post', facebook: 'post', instagram: 'post', linkedin_video: 'video', facebook_reel: 'reel', instagram_reel: 'reel', facebook_story: 'story', instagram_story: 'story' };
+const paused = cal.pausedChannels || {};
 const due = [];
+const held = [];
 if (day && !day.skip) {
-  for (const [network, post] of Object.entries(day.posts)) {
-    if (only && !only.includes(network)) continue;
-    if (done[network]?.url) continue;
-    if (now.time < cal.slots[network]) continue;
-    const t = day.card[post.lang];
+  const vid = (lang) => join(SOCIAL, 'visuals', day.date, `reel-${lang}.mp4`);
+  const altFor = (lang) => {
+    const t = day.card[lang];
     const detail = t.sub || (t.items || t.right?.items || []).join(', ');
-    const alt = `${post.lang === 'ar' ? 'بطاقة من ديفيا' : 'Devya card'}: ${t.title.replace(/\*/g, '')}${detail ? ` ${detail.replace(/\*/g, '')}` : ''}`;
-    due.push({
-      network, lang: post.lang, caption: post.caption, alt,
-      image: join(SOCIAL, 'visuals', day.date, `${network}.png`),
-      account: cal.accounts[network],
-    });
+    return `${lang === 'ar' ? 'بطاقة من ديفيا' : 'Devya card'}: ${t.title.replace(/\*/g, '')}${detail ? ` ${detail.replace(/\*/g, '')}` : ''}`;
+  };
+  const channels = [];
+  for (const [net, post] of Object.entries(day.posts)) channels.push({ network: net, platform: net, lang: post.lang, caption: post.caption, media: join(SOCIAL, 'visuals', day.date, `${net}.png`), alt: altFor(post.lang) });
+  for (const [net, reel] of Object.entries(day.reels || {})) {
+    const key = net === 'linkedin' ? 'linkedin_video' : `${net}_reel`;
+    channels.push({ network: key, platform: net, lang: reel.lang, caption: reel.caption, media: vid(reel.lang), cover: vid(reel.lang).replace(/\.mp4$/, '-cover.jpg') });
+  }
+  for (const [net, story] of Object.entries(day.stories || {})) channels.push({ network: `${net}_story`, platform: net, lang: story.lang, caption: null, media: vid(story.lang) });
+  for (const ch of channels) {
+    if (only && !only.includes(ch.network)) continue;
+    if (done[ch.network]?.url) continue;
+    if (now.time < (cal.slots[ch.network] || '23:59')) continue;
+    if (paused[ch.network]) { held.push({ network: ch.network, reason: paused[ch.network] }); continue; }
+    due.push({ ...ch, kind: KIND[ch.network], account: cal.accounts[ch.platform] });
   }
 }
 
-console.log(JSON.stringify({ now, date: now.date, day: day?.day ?? null, topic: day?.topic ?? null, skipped: !!day?.skip, remaining, lastDate: cal.days.at(-1)?.date, due }, null, 2));
+console.log(JSON.stringify({ now, date: now.date, day: day?.day ?? null, topic: day?.topic ?? null, skipped: !!day?.skip, remaining, lastDate: cal.days.at(-1)?.date, held, due }, null, 2));
