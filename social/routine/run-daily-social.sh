@@ -24,6 +24,9 @@ if [[ "${DEVYA_SOCIAL_CAFFEINATED:-0}" != "1" ]]; then
 fi
 
 export PATH="/opt/homebrew/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:$HOME/bin"
+# pnpm on this Mac comes from nvm's corepack shim; append nvm's bins after Homebrew so Homebrew's node stays first.
+for _d in "$HOME"/.nvm/versions/node/*/bin; do [[ -d "$_d" ]] && PATH="$PATH:$_d"; done
+command -v pnpm >/dev/null 2>&1 || echo "WARN: pnpm not found on PATH ($PATH)"
 export USER="${USER:-$(id -un)}" LOGNAME="${LOGNAME:-$(id -un)}"
 unset ANTHROPIC_API_KEY ANTHROPIC_AUTH_TOKEN CLAUDECODE CLAUDE_CODE_ENTRYPOINT
 
