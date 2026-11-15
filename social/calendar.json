@@ -1,0 +1,757 @@
+{
+  "version": 1,
+  "timezone": "Africa/Cairo",
+  "accounts": {
+    "linkedin": {
+      "name": "Devya Software Solutions",
+      "admin": "https://www.linkedin.com/company/103174555/admin/page-posts/published/"
+    },
+    "facebook": {
+      "name": "Devya Solutions",
+      "page": "https://www.facebook.com/devyasoftware"
+    },
+    "instagram": {
+      "name": "@devyasoftware",
+      "profile": "https://www.instagram.com/devyasoftware/"
+    }
+  },
+  "slots": {
+    "linkedin": "10:00",
+    "facebook": "19:30",
+    "instagram": "21:00"
+  },
+  "sizes": {
+    "linkedin": [
+      1200,
+      627
+    ],
+    "facebook": [
+      1080,
+      1350
+    ],
+    "instagram": [
+      1080,
+      1350
+    ]
+  },
+  "days": [
+    {
+      "day": 1,
+      "date": "2026-11-15",
+      "pillar": "bts",
+      "layout": "terminal",
+      "accent": "lime",
+      "topic": "Three open-source guardrails on every repo: leakhook, envcheck, i18n-check",
+      "source": "https://www.devya.dev/projects/leakhook",
+      "basis": "Devya open-source projects envcheck, leakhook, i18n-check (devya.dev/projects)",
+      "linkedinLink": true,
+      "skip": false,
+      "card": {
+        "en": {
+          "kicker": "Behind the scenes",
+          "title": "Three guardrails on *every* repo.",
+          "sub": "Open source, zero dependencies, boring on purpose."
+        },
+        "ar": {
+          "kicker": "من داخل ديفيا",
+          "title": "ثلاثة فحوص على *كل* مستودع.",
+          "sub": "مفتوحة المصدر، بلا اعتماديات، وبسيطة عن قصد."
+        },
+        "terminal": [
+          "$ git commit",
+          "leakhook › staged diff: keys, JWTs, DB URLs → blocked",
+          "$ envcheck",
+          ".env vs .env.example › missing, empty, wrong type",
+          "$ i18n-check",
+          "ar vs en › missing, extra and empty keys",
+          "✓ any finding exits non-zero, so CI stops the build"
+        ]
+      },
+      "posts": {
+        "linkedin": {
+          "lang": "en",
+          "caption": "Three checks run on every Devya repo before code reaches a reviewer. We open-sourced all three.\n\n1. leakhook: a pre-commit hook that scans the staged diff for AWS, GitHub, Stripe, Slack and Google keys, private-key blocks, JWTs and database URLs with credentials. The commit stops before anything leaks.\n2. envcheck: treats .env.example as the schema and checks the real .env against it, flagging missing keys, empty required values and wrong types. It exits non-zero, so CI catches it before a deploy does.\n3. i18n-check: compares every locale file against the base and reports missing, extra and empty keys. On bilingual EN/AR products, this is the check that stops a half-translated screen from shipping.\n\nEach one is zero-dependency and small enough to read in one sitting. None of them is clever. That's the point: guardrails that are boring to install actually get installed.\n\nCode and docs: https://www.devya.dev/projects/leakhook?utm_source=linkedin&utm_medium=social\n\n#BuildWithDevya #OpenSource #DevSecOps #NodeJS"
+        },
+        "facebook": {
+          "lang": "ar",
+          "caption": "قبل أن يصل أي سطر برمجي إلى المراجعة، تمر مشاريعنا بثلاثة فحوص بسيطة، وقد أتحناها مجانًا للجميع:\n\n• أداة leakhook تمنع رفع المفاتيح السرية وكلمات المرور إلى المستودع.\n• أداة envcheck تتأكد من اكتمال إعدادات التشغيل قبل أن يعمل التطبيق.\n• أداة i18n-check تكشف النصوص الناقصة بين النسختين العربية والإنجليزية.\n\nلماذا يهمك هذا كصاحب مشروع؟ لأن كثيرًا من الأعطال المحرجة لا يأتي من أكواد معقدة، بل من خطأ صغير لم يُفحص.\n\nالتفاصيل: https://www.devya.dev/projects/leakhook?utm_source=facebook&utm_medium=social"
+        },
+        "instagram": {
+          "lang": "en",
+          "caption": "Three boring checks on every repo we touch:\n🔒 leakhook blocks secrets at commit time\n🧾 envcheck checks .env against .env.example\n🌐 i18n-check catches missing Arabic or English keys\nAll three are free and open source. Link in bio.\n\n#BuildWithDevya #OpenSource #WebDevelopment #NodeJS #DevSecOps #Cairo"
+        }
+      }
+    },
+    {
+      "day": 2,
+      "date": "2026-11-16",
+      "pillar": "client-value",
+      "layout": "checklist",
+      "accent": "ember",
+      "topic": "Ask for a v1 cut line before you ask for a quote",
+      "source": "https://www.devya.dev/services",
+      "basis": "devya-market-intel 2026-11-15 guide.do: costed feature list with a v1 cut line",
+      "linkedinLink": false,
+      "skip": false,
+      "card": {
+        "cut": 4,
+        "en": {
+          "kicker": "Before you sign",
+          "title": "Ask for a *cut line* before you ask for a quote.",
+          "items": [
+            "Sign-up and login",
+            "Booking and calendar",
+            "Online payments",
+            "Admin dashboard",
+            "Loyalty points",
+            "AI recommendations"
+          ]
+        },
+        "ar": {
+          "kicker": "قبل التوقيع",
+          "title": "اطلب *خط الإصدار الأول* قبل أن تطلب عرض السعر.",
+          "items": [
+            "التسجيل وتسجيل الدخول",
+            "الحجز والتقويم",
+            "الدفع الإلكتروني",
+            "لوحة الإدارة",
+            "نقاط الولاء",
+            "توصيات بالذكاء الاصطناعي"
+          ]
+        }
+      },
+      "posts": {
+        "linkedin": {
+          "lang": "en",
+          "caption": "Most quotes answer the wrong question. \"How much for the whole app?\" gets you one number and no way to change it.\n\nAsk for a cut line instead:\n\n1. Every feature listed, ranked by what it's worth to your users.\n2. A cost next to each one.\n3. A line drawn where your budget ends.\n4. Everything above the line is v1. Everything below waits until real users ask for it.\n\nNow you can trade: drop loyalty points, keep online payments, and watch the total move. You stay in control of scope, and the team you hire has to understand your users before it can rank anything.\n\nIf a vendor can't produce this list, they haven't understood the product yet. That's worth knowing before you sign.\n\n#ProductDevelopment #Startups #MENA #BuildWithDevya"
+        },
+        "facebook": {
+          "lang": "ar",
+          "caption": "قبل أن تطلب عرض سعر لتطبيقك، اطلب شيئًا أهم: «خط الإصدار الأول».\n\nالفكرة بسيطة:\n1. قائمة بكل الميزات، مرتبة حسب قيمتها لعملائك.\n2. تكلفة واضحة أمام كل ميزة.\n3. خط عند حدود ميزانيتك.\n\nما فوق الخط يُبنى في الإصدار الأول، وما تحته ينتظر حتى يطلبه المستخدمون فعلًا. بهذا تتحكم في النطاق والتكلفة، بدل رقم إجمالي واحد لا تعرف ما وراءه.\n\nتخطط لتطبيق جديد؟ ابدأ من هنا: https://www.devya.dev/contact?utm_source=facebook&utm_medium=social"
+        },
+        "instagram": {
+          "lang": "en",
+          "caption": "Don't ask \"how much for the app?\"\nAsk for a cut line: every feature ranked, a cost on each, and a line where your budget ends. Above the line ships in v1. Below it waits for real users.\nSave this for your next quote.\n\n#BuildWithDevya #Startups #ProductDevelopment #AppDevelopment #Founders #MVP"
+        }
+      }
+    },
+    {
+      "day": 3,
+      "date": "2026-11-17",
+      "pillar": "engineering",
+      "layout": "code",
+      "accent": "azure",
+      "topic": "N+1 queries: fast locally, slow in production",
+      "source": "https://www.devya.dev/blogs/n-plus-1-queries-nodejs-dataloader-query-budget-field-notes",
+      "basis": "Devya blog field notes: N+1 queries, DataLoader, query budget",
+      "linkedinLink": true,
+      "skip": false,
+      "card": {
+        "en": {
+          "kicker": "Engineering",
+          "title": "Fast on your laptop. *Slow in production.*"
+        },
+        "ar": {
+          "kicker": "هندسة البرمجيات",
+          "title": "سريع على جهازك. *بطيء في الإنتاج.*"
+        },
+        "code": [
+          {
+            "label": {
+              "en": "N+1: one query per row",
+              "ar": "قبل: استعلام لكل صف"
+            },
+            "code": "const orders = await db.order.findMany();\nfor (const o of orders) {\n  o.customer = await db.customer.findUnique({\n    where: { id: o.customerId },\n  });\n}"
+          },
+          {
+            "label": {
+              "en": "Batched: same queries at any list size",
+              "ar": "بعد: العدد نفسه مهما طالت القائمة"
+            },
+            "code": "const orders = await db.order.findMany({\n  include: { customer: true },\n});"
+          }
+        ]
+      },
+      "posts": {
+        "linkedin": {
+          "lang": "en",
+          "caption": "An N+1 query is invisible on your laptop. Ten seed rows, a local database, and every page feels instant.\n\nIn production the same loop runs once per row: one query for the list, then one more for every item in it. A page with 200 orders makes 201 round trips, and each one pays network latency.\n\nWhat we do now:\n→ Load relations in one go (include or JOIN), or batch per request with DataLoader.\n→ Log query counts per request in development, so the loop shows up before a customer notices.\n→ Give each endpoint a query budget in tests and fail the build when it goes over.\n\nThe fix is usually five lines. Finding it is the hard part, so make the count visible.\n\nField notes with the full setup: https://www.devya.dev/blogs/n-plus-1-queries-nodejs-dataloader-query-budget-field-notes?utm_source=linkedin&utm_medium=social\n\n#NodeJS #PostgreSQL #BackendEngineering #BuildWithDevya"
+        },
+        "facebook": {
+          "lang": "en",
+          "caption": "Why does an app that felt fast in the demo slow down after launch?\n\nOne common reason has a name: the N+1 query. The app fetches a list, then goes back to the database once for every item in it. With 10 test records nobody notices. With thousands of real customers, every page waits.\n\nIt's cheap to fix and easy to prevent: count the database queries on every request during development, and fail the build when a page goes over its budget.\n\nHow we do it, in our engineering notes: https://www.devya.dev/blogs/n-plus-1-queries-nodejs-dataloader-query-budget-field-notes?utm_source=facebook&utm_medium=social"
+        },
+        "instagram": {
+          "lang": "ar",
+          "caption": "تطبيق سريع في العرض التجريبي ثم بطيء بعد الإطلاق؟\nأحد الأسباب الشائعة اسمه «استعلام N+1»: التطبيق يجلب قائمة، ثم يعود إلى قاعدة البيانات مرة لكل عنصر فيها.\nالحل غالبًا بضعة أسطر، والأهم أن تراقب عدد الاستعلامات قبل أن يلاحظ عملاؤك.\nالرابط في البايو.\n\n#برمجة #تطوير_البرمجيات #قواعد_البيانات #تقنية #مصر #BuildWithDevya"
+        }
+      }
+    },
+    {
+      "day": 4,
+      "date": "2026-11-18",
+      "pillar": "product",
+      "layout": "product",
+      "accent": "lime",
+      "topic": "Devya X-Ray: an engineering review that reads the code",
+      "source": "https://www.devya.dev/projects/devya-xray",
+      "basis": "devya.dev/projects/devya-xray (live at xray.devya.dev, free snapshot)",
+      "linkedinLink": true,
+      "skip": false,
+      "card": {
+        "shot": "https://xray.devya.dev/en",
+        "shotLabel": "xray.devya.dev",
+        "en": {
+          "kicker": "Devya product",
+          "title": "Devya *X-Ray*",
+          "sub": "An engineering review that reads your code, not your slide deck.",
+          "items": [
+            "114 practices · 7 pillars",
+            "Findings quoted to file and line",
+            "Free 15-minute snapshot"
+          ]
+        },
+        "ar": {
+          "kicker": "من منتجات ديفيا",
+          "title": "Devya *X-Ray*",
+          "sub": "مراجعة هندسية تقرأ الكود نفسه، لا العرض التقديمي.",
+          "items": [
+            "114 ممارسة في 7 محاور",
+            "كل ملاحظة مرتبطة بملف وسطر",
+            "لقطة أولية مجانية في 15 دقيقة"
+          ]
+        }
+      },
+      "posts": {
+        "linkedin": {
+          "lang": "en",
+          "caption": "Ask an engineering team how healthy its codebase is and you get what the team believes. Open the repository and you get what is actually there.\n\nDevya X-Ray does both:\n→ Your team self-assesses against 114 practices in seven pillars, from delivery and requirements to security, reliability and AI-native engineering.\n→ We then check every claim against the code itself. Each finding is quoted to a file and line.\n→ You get a code-verified report and a prioritised 90-day roadmap. Access is read-only, and code is never copied.\n\nIt starts with a free snapshot that takes about fifteen minutes, with no card and no call.\n\nUseful before a fundraise, in a new CTO's first month, or when you've inherited a codebase from another vendor.\n\nhttps://www.devya.dev/projects/devya-xray?utm_source=linkedin&utm_medium=social\n\n#EngineeringLeadership #CodeQuality #CTO #BuildWithDevya"
+        },
+        "facebook": {
+          "lang": "ar",
+          "caption": "هل ورثت تطبيقًا من شركة برمجة سابقة ولا تعرف حالته الحقيقية؟\n\nأداة Devya X-Ray تراجع الكود نفسه، لا الوعود:\n• يقيّم فريقك نفسه وفق 114 ممارسة هندسية في سبعة محاور.\n• ثم نتحقق من كل إجابة في الكود، وكل ملاحظة مرتبطة بملف وسطر محددين.\n• تحصل على تقرير موثّق وخطة أولويات لمدة 90 يومًا.\n\nالبداية بلقطة مجانية تستغرق نحو 15 دقيقة، دون بطاقة دفع ودون مكالمة.\n\nhttps://www.devya.dev/projects/devya-xray?utm_source=facebook&utm_medium=social"
+        },
+        "instagram": {
+          "lang": "en",
+          "caption": "Your team says the codebase is fine. Does the code agree?\nDevya X-Ray checks 114 engineering practices against the actual repository, every finding quoted to a file and line. Start with a free 15-minute snapshot. Link in bio.\n\n#BuildWithDevya #CodeReview #SoftwareEngineering #CTO #TechLeadership #SaaS"
+        }
+      }
+    },
+    {
+      "day": 5,
+      "date": "2026-11-19",
+      "pillar": "client-value",
+      "layout": "checklist",
+      "accent": "ember",
+      "topic": "The five lines a weekly dev update should contain",
+      "source": "https://www.devya.dev/services",
+      "basis": "devya-market-intel 2026-11-15 guide.avoid: silent schedule risk, unlogged client-side risks",
+      "linkedinLink": false,
+      "skip": false,
+      "card": {
+        "en": {
+          "kicker": "For founders",
+          "title": "What a *weekly update* from your dev team should say.",
+          "items": [
+            "What shipped, with a link you can click",
+            "What slipped, and the new date",
+            "Risks on our side and on yours",
+            "Decisions needed from you, and by when",
+            "Hours and budget used so far"
+          ]
+        },
+        "ar": {
+          "kicker": "لأصحاب المشاريع",
+          "title": "ماذا يجب أن يقول *التقرير الأسبوعي* من فريق التطوير؟",
+          "items": [
+            "ما الذي أُنجز، مع رابط يمكنك فتحه",
+            "ما الذي تأخر، وما الموعد الجديد",
+            "المخاطر من جهتنا ومن جهتك",
+            "القرارات المطلوبة منك، ومتى",
+            "الساعات والميزانية المستهلكة حتى الآن"
+          ]
+        }
+      },
+      "posts": {
+        "linkedin": {
+          "lang": "en",
+          "caption": "A good weekly update is boring to read and impossible to misread. Five lines are enough:\n\n1. What shipped, with a link you can click, not a percentage.\n2. What slipped, and the new date. Sent the day it slips, not the day it was due.\n3. Risks on both sides: ours (a hard integration, an engineer out sick) and yours (late approvals, missing content, a change of sponsor).\n4. Decisions needed from you, each with a date.\n5. Hours and budget used against the plan.\n\nIf your vendor's update is a paragraph of adjectives, ask for these five lines. If they can't fill line 2 honestly, they will fill it later with overtime and a surprise.\n\n#ProjectManagement #Startups #SoftwareDevelopment #BuildWithDevya"
+        },
+        "facebook": {
+          "lang": "ar",
+          "caption": "هل تعرف فعلًا ما الذي يحدث في مشروعك البرمجي هذا الأسبوع؟\n\nالتقرير الأسبوعي الجيد من فريق التطوير لا يحتاج إلى أكثر من خمسة أسطر:\n1. ما الذي أُنجز، مع رابط تستطيع فتحه بنفسك.\n2. ما الذي تأخر، وما الموعد الجديد.\n3. المخاطر من جهة الفريق ومن جهتك، مثل تأخر الموافقات أو المحتوى.\n4. القرارات المطلوبة منك، ومتى.\n5. الساعات والميزانية المستهلكة مقارنة بالخطة.\n\nإن لم يصلك تقرير بهذا الوضوح، فاطلبه. من حقك أن تعرف.\n\nhttps://www.devya.dev/contact?utm_source=facebook&utm_medium=social"
+        },
+        "instagram": {
+          "lang": "en",
+          "caption": "Five lines every weekly dev update should have:\n1 What shipped (with a link)\n2 What slipped (and the new date)\n3 Risks on both sides\n4 Decisions needed from you\n5 Budget used vs plan\nSend this to whoever builds your product.\n\n#BuildWithDevya #Founders #ProductManagement #SoftwareDevelopment #TechTips #Startups"
+        }
+      }
+    },
+    {
+      "day": 6,
+      "date": "2026-11-20",
+      "pillar": "bts",
+      "layout": "statement",
+      "accent": "lime",
+      "topic": "What 'done' means at Devya: merged isn't done",
+      "source": "https://www.devya.dev/about",
+      "basis": "Devya engineering rules: CI gate on every PR, global secret-scan pre-commit hook, bilingual checks, post-deploy verification",
+      "linkedinLink": false,
+      "skip": false,
+      "card": {
+        "en": {
+          "kicker": "Behind the scenes",
+          "title": "*Merged* isn't done.",
+          "sub": "Done means CI green, secrets scanned, both languages checked, and the live URL opened after deploy."
+        },
+        "ar": {
+          "kicker": "من داخل ديفيا",
+          "title": "الدمج *ليس* نهاية العمل.",
+          "sub": "النهاية: فحوص آلية ناجحة، ولا مفاتيح مسرّبة، ومراجعة اللغتين، وفتح الرابط الحي بعد النشر."
+        }
+      },
+      "posts": {
+        "linkedin": {
+          "lang": "en",
+          "caption": "A pull request being merged doesn't mean the work is done. Here's the bar every change at Devya clears before we call it done:\n\n→ The CI check on the pull request is green. No merging on red, and no merging without it.\n→ Every commit passed a secret scan on the developer's machine first.\n→ In bilingual products, anything a user reads exists in English and Arabic, and someone opened both.\n→ After deploy, someone loads the live URL and checks the change is actually there.\n\nNone of this is novel. It's written down so it doesn't depend on who's on shift or how close the deadline is.\n\nWhat's on your team's definition of done that most teams skip?\n\n#SoftwareEngineering #DevOps #QualityAssurance #BuildWithDevya"
+        },
+        "facebook": {
+          "lang": "ar",
+          "caption": "متى نعتبر العمل «منتهيًا» في ديفيا؟ ليس عند دمج الكود، بل عندما:\n• تنجح الفحوص الآلية على طلب التعديل، فلا دمج قبلها.\n• يمر كل حفظ للكود بفحص يمنع تسريب المفاتيح السرية.\n• نراجع النصوص العربية والإنجليزية بأنفسنا في المنتجات ثنائية اللغة.\n• نفتح الرابط الحي بعد النشر ونتأكد أن التعديل يعمل فعلًا.\n\nقواعد بسيطة، لكنها مكتوبة حتى لا تتخطاها ضغوط المواعيد.\n\nhttps://www.devya.dev/?utm_source=facebook&utm_medium=social"
+        },
+        "instagram": {
+          "lang": "en",
+          "caption": "Merged isn't done.\nDone here means: CI green on the pull request, secrets scanned on every commit, both languages checked in bilingual products, and the live URL opened after deploy.\nBoring rules, written down, so deadlines can't skip them.\n\n#BuildWithDevya #SoftwareEngineering #DevOps #WebDevelopment #CodeQuality"
+        }
+      }
+    },
+    {
+      "day": 7,
+      "date": "2026-11-21",
+      "pillar": "case-study",
+      "layout": "compare",
+      "accent": "lime",
+      "topic": "Arabic Business Resources: a verified bilingual guide we built",
+      "source": "https://www.devya.dev/projects/arabic-business-resources",
+      "basis": "devya.dev/projects/arabic-business-resources (live, 20+ verified sources, 5 categories)",
+      "linkedinLink": true,
+      "skip": false,
+      "card": {
+        "en": {
+          "kicker": "Case study · our build",
+          "title": "Arabic Business *Resources*",
+          "left": {
+            "label": "Scattered sources",
+            "items": [
+              "Links of unknown age",
+              "Formal or colloquial? No sign",
+              "Free or paid? Unclear",
+              "Spread across platforms"
+            ]
+          },
+          "right": {
+            "label": "Our guide",
+            "items": [
+              "Last-verified date on every card",
+              "Tagged MSA or colloquial",
+              "Tagged free or paid",
+              "Five filterable categories"
+            ]
+          }
+        },
+        "ar": {
+          "kicker": "دراسة حالة · من بنائنا",
+          "title": "دليل *المصادر العربية* للأعمال",
+          "left": {
+            "label": "مصادر متفرقة",
+            "items": [
+              "روابط لا يُعرف تاريخها",
+              "لا تمييز بين الفصحى والعامية",
+              "مجاني أم مدفوع؟ غير واضح",
+              "موزعة على منصات كثيرة"
+            ]
+          },
+          "right": {
+            "label": "دليلنا",
+            "items": [
+              "تاريخ آخر تحقق على كل بطاقة",
+              "تصنيف فصحى أو عامية",
+              "تصنيف مجاني أو مدفوع",
+              "خمس فئات قابلة للتصفية"
+            ]
+          }
+        }
+      },
+      "posts": {
+        "linkedin": {
+          "lang": "en",
+          "caption": "Free Arabic material on finance and investment terminology exists, but it's scattered, and nothing tells you whether a source is formal MSA or regional colloquial, still online, or actually free.\n\nSo we built a small guide that fixes exactly that:\n→ 20+ verified sources in five categories: official glossaries, course platforms, podcast case studies, governance and risk, and a Pan-Arab section.\n→ Every entry tagged MSA or colloquial, free or paid.\n→ Every card links straight to the primary source and shows when it was last verified, so a dead link never hides.\n\nIt's a static, bilingual page with full RTL and zero dependencies. Small, careful and maintained beats big and stale.\n\nhttps://www.devya.dev/projects/arabic-business-resources?utm_source=linkedin&utm_medium=social\n\n#Arabic #FinancialLiteracy #OpenKnowledge #BuildWithDevya"
+        },
+        "facebook": {
+          "lang": "en",
+          "caption": "Learning finance or investment terms in Arabic? Free material exists, but it's scattered, and it's hard to tell a formal government glossary from a colloquial podcast.\n\nWe put together a free bilingual guide: 20+ verified sources in five categories, each tagged MSA or colloquial and free or paid, each linking straight to the original, with the date it was last checked.\n\nFree to use: https://www.devya.dev/projects/arabic-business-resources?utm_source=facebook&utm_medium=social"
+        },
+        "instagram": {
+          "lang": "ar",
+          "caption": "تبحث عن مصادر عربية مجانية لتعلّم مصطلحات المال والاستثمار؟\nجمعنا أكثر من 20 مصدرًا موثّقًا في دليل واحد ثنائي اللغة، وكل مصدر مصنّف فصحى أو عامية، مجاني أو مدفوع، مع تاريخ آخر تحقق.\nالرابط في البايو.\n\n#ريادة_الأعمال #الاستثمار #تعلم #اللغة_العربية #مصادر_مجانية #BuildWithDevya"
+        }
+      }
+    },
+    {
+      "day": 8,
+      "date": "2026-11-22",
+      "pillar": "client-value",
+      "layout": "compare",
+      "accent": "ember",
+      "topic": "Build MENA products Arabic-first, then derive English",
+      "source": "https://www.devya.dev/services",
+      "basis": "devya-market-intel 2026-11-15 guide.do: Arabic-first copy and RTL layouts, local formats from sprint one",
+      "linkedinLink": false,
+      "skip": false,
+      "card": {
+        "en": {
+          "kicker": "For MENA products",
+          "title": "Build it *Arabic-first*. Derive the English.",
+          "left": {
+            "label": "Translated later",
+            "items": [
+              "Arabic overflows the buttons",
+              "Arrows point the wrong way",
+              "Dates and phone numbers break",
+              "Copy reads like a translation"
+            ]
+          },
+          "right": {
+            "label": "Arabic-first",
+            "items": [
+              "RTL layouts from day one",
+              "Icons and navigation mirrored",
+              "Local dates, currency, phones",
+              "Copy written for the reader"
+            ]
+          }
+        },
+        "ar": {
+          "kicker": "لمنتجات المنطقة",
+          "title": "ابنِ بالعربية *أولًا*، ثم اشتق الإنجليزية.",
+          "left": {
+            "label": "ترجمة لاحقة",
+            "items": [
+              "نصوص تخرج عن حدود الأزرار",
+              "أسهم في الاتجاه الخطأ",
+              "تواريخ وأرقام هواتف مكسورة",
+              "نصوص تبدو مترجمة"
+            ]
+          },
+          "right": {
+            "label": "العربية أولًا",
+            "items": [
+              "تصميم من اليمين منذ اليوم الأول",
+              "أيقونات وتنقّل معكوسة بدقة",
+              "تواريخ وعملات وأرقام محلية",
+              "نصوص مكتوبة لقارئها"
+            ]
+          }
+        }
+      },
+      "posts": {
+        "linkedin": {
+          "lang": "en",
+          "caption": "If your customers are in Egypt or the Gulf, the Arabic version isn't a translation task at the end of the project. It's the primary product.\n\nWhat goes wrong when Arabic comes last:\n→ Labels overflow their buttons, because Arabic runs a different length.\n→ Arrows, progress bars and swipe gestures point the wrong way.\n→ Dates, currency and phone numbers break in RTL.\n→ The copy reads like it was translated, because it was.\n\nWhat we do instead: design the RTL layout first, write the Arabic for the reader, then derive the English. Mirroring, local formats (SAR and EGP, Hijri dates where they're needed, +966 and +20 phone numbers) and bilingual admin screens belong in sprint one, not in a \"localisation phase\".\n\nStarting this way is cheaper than retrofitting it.\n\n#Localization #RTL #ProductDesign #SaudiArabia"
+        },
+        "facebook": {
+          "lang": "ar",
+          "caption": "إذا كان عملاؤك في مصر أو الخليج، فالنسخة العربية من تطبيقك ليست ترجمة تُضاف في النهاية، بل هي المنتج الأساسي.\n\nحين تأتي العربية متأخرة تظهر المشكلات: نصوص تخرج عن الأزرار، وأسهم في الاتجاه المعاكس، وتواريخ وأرقام هواتف لا تُعرض بشكل صحيح، وكلام يبدو مترجمًا.\n\nلذلك نبدأ بتصميم الواجهة العربية من اليمين إلى اليسار، ونكتب النص العربي لقارئه، ثم نشتق النسخة الإنجليزية.\n\nتخطط لمنتج لعملاء عرب؟ تحدث معنا: https://www.devya.dev/contact?utm_source=facebook&utm_medium=social"
+        },
+        "instagram": {
+          "lang": "en",
+          "caption": "Selling to Egypt or the Gulf? Build it Arabic-first.\nDesign RTL from day one, write Arabic for the reader, then derive the English. Retrofitting Arabic later means broken buttons, backwards arrows and copy that reads translated.\n\n#BuildWithDevya #RTL #Localization #UXDesign #ProductDesign #SaudiArabia"
+        }
+      }
+    },
+    {
+      "day": 9,
+      "date": "2026-11-23",
+      "pillar": "engineering",
+      "layout": "terminal",
+      "accent": "azure",
+      "topic": "Mocks agree with you, Postgres does not: Testcontainers",
+      "source": "https://www.devya.dev/blogs/testcontainers-nodejs-postgres-integration-tests-field-notes",
+      "basis": "Devya blog field notes: integration tests against real PostgreSQL with Testcontainers",
+      "linkedinLink": true,
+      "skip": false,
+      "card": {
+        "en": {
+          "kicker": "Engineering",
+          "title": "Your mocks agree with you. *Postgres won't.*"
+        },
+        "ar": {
+          "kicker": "هندسة البرمجيات",
+          "title": "المحاكاة توافقك دائمًا. *قاعدة البيانات لا.*"
+        },
+        "terminal": [
+          "$ npm test",
+          "✓ unit suite passed (repository mocked)",
+          "$ npm run test:integration",
+          "starting postgres in a container, applying migrations…",
+          "✗ error: column \"refunded_at\" does not exist",
+          "✗ the SQL was wrong all along"
+        ]
+      },
+      "posts": {
+        "linkedin": {
+          "lang": "en",
+          "caption": "Mocked repositories have one flaw: they agree with whatever you assumed. Our tests stayed green while the SQL underneath was wrong.\n\nSo our repository tests now run against a real PostgreSQL, started for each test run with Testcontainers:\n→ The same database engine production runs, with the real migrations applied.\n→ Unit tests may mock the repository. Repository tests never do.\n→ CI runs the same containers as the laptop, so \"works on my machine\" stops being an argument.\n\nIt's slower than a mock. In exchange, a renamed column or a wrong JOIN fails on the laptop instead of in front of a customer.\n\nHow we set it up in Node.js: https://www.devya.dev/blogs/testcontainers-nodejs-postgres-integration-tests-field-notes?utm_source=linkedin&utm_medium=social\n\n#NodeJS #PostgreSQL #Testing #BuildWithDevya"
+        },
+        "facebook": {
+          "lang": "ar",
+          "caption": "كيف تنجح كل الاختبارات ثم يتعطل التطبيق عند العميل؟\n\nأحد الأسباب: اختبارات تعتمد على «محاكاة» لقاعدة البيانات بدل قاعدة بيانات حقيقية. المحاكاة توافق دائمًا على افتراضاتك، حتى لو كان الاستعلام خاطئًا.\n\nلهذا نشغّل اختبارات طبقة البيانات على قاعدة PostgreSQL حقيقية داخل حاوية، مع ملفات الترحيل نفسها المستخدمة في الإنتاج. أبطأ قليلًا، لكن الخطأ يظهر على جهاز المطوّر لا أمام عملائك.\n\nالتفاصيل التقنية: https://www.devya.dev/blogs/testcontainers-nodejs-postgres-integration-tests-field-notes?utm_source=facebook&utm_medium=social"
+        },
+        "instagram": {
+          "lang": "en",
+          "caption": "Green tests, broken app?\nMocks agree with your assumptions, even when the SQL is wrong. We run repository tests against a real Postgres in a container, migrations and all. Slower, and worth it.\nLink in bio.\n\n#BuildWithDevya #Testing #PostgreSQL #NodeJS #SoftwareEngineering #DevOps"
+        }
+      }
+    },
+    {
+      "day": 10,
+      "date": "2026-11-24",
+      "pillar": "product",
+      "layout": "product",
+      "accent": "lime",
+      "topic": "CopyForge: Arabic ad copy that doesn't read translated",
+      "source": "https://www.devya.dev/projects/copyforge",
+      "basis": "devya.dev/projects/copyforge (live, 20 free credits, MSA/Egyptian/Khaleeji)",
+      "linkedinLink": true,
+      "skip": false,
+      "card": {
+        "shot": "https://copyforge.devya-solutions.com",
+        "shotLabel": "copyforge.devya-solutions.com",
+        "en": {
+          "kicker": "Devya product",
+          "title": "Copy*Forge*",
+          "sub": "Arabic ad copy that doesn't read like a translation.",
+          "items": [
+            "MSA, Egyptian or Khaleeji",
+            "Meta and TikTok ad sets",
+            "Salla and Zid product pages"
+          ]
+        },
+        "ar": {
+          "kicker": "من منتجات ديفيا",
+          "title": "Copy*Forge*",
+          "sub": "نصوص إعلانية عربية لا تبدو مترجمة.",
+          "items": [
+            "فصحى أو مصرية أو خليجية",
+            "إعلانات ميتا وتيك توك",
+            "أوصاف منتجات سلة وزد"
+          ]
+        }
+      },
+      "posts": {
+        "linkedin": {
+          "lang": "en",
+          "caption": "Most AI writing tools were built for English first. Ask them for Arabic and you get a translation: correct, stiff, and obviously not written by someone from the market.\n\nCopyForge is our answer for MENA sellers:\n→ One generation returns a full ad set for Meta or TikTok (five hooks, three bodies, three calls to action) or a complete Salla or Zid product description.\n→ Written natively in the dialect you pick: Modern Standard Arabic, Egyptian or Khaleeji.\n→ Credits instead of a subscription. Credits never expire, and new accounts start with 20 free.\n→ Recent generations stay in your browser, not on our servers.\n\nBuilt on the Vercel AI SDK with Google Gemini. Live in Arabic and English.\n\nhttps://www.devya.dev/projects/copyforge?utm_source=linkedin&utm_medium=social\n\n#ArabicMarketing #Ecommerce #AI #BuildWithDevya"
+        },
+        "facebook": {
+          "lang": "en",
+          "caption": "Selling on Salla or Zid, or running Meta and TikTok ads in Arabic?\n\nCopyForge writes your ad sets and product descriptions natively in Modern Standard Arabic, Egyptian or Khaleeji, so they don't read like a translation. One credit per generation, credits never expire, and every new account starts with 20 free credits.\n\nTry it: https://www.devya.dev/projects/copyforge?utm_source=facebook&utm_medium=social"
+        },
+        "instagram": {
+          "lang": "ar",
+          "caption": "إعلانات عربية لا تبدو مترجمة.\nأداة CopyForge تكتب إعلانات ميتا وتيك توك وأوصاف منتجات سلة وزد بالفصحى أو المصرية أو الخليجية، حسب اختيارك.\nعشرون رصيدًا مجانيًا لكل حساب جديد. الرابط في البايو.\n\n#تسويق_إلكتروني #التجارة_الإلكترونية #سلة #زد #كتابة_إعلانية #BuildWithDevya"
+        }
+      }
+    },
+    {
+      "day": 11,
+      "date": "2026-11-25",
+      "pillar": "client-value",
+      "layout": "checklist",
+      "accent": "ember",
+      "topic": "Engineer swaps: the handover clauses to ask for",
+      "source": "https://www.devya.dev/services",
+      "basis": "devya-market-intel 2026-11-15 guide.avoid: engineer swaps without a handover protocol",
+      "linkedinLink": false,
+      "skip": false,
+      "card": {
+        "en": {
+          "kicker": "Before you sign",
+          "title": "If your vendor swaps an engineer, ask for *this*.",
+          "items": [
+            "Two weeks' written notice",
+            "An overlap: old and new engineer together",
+            "A written handover note you can read",
+            "A demo from the new engineer first",
+            "Your approval before it is final"
+          ]
+        },
+        "ar": {
+          "kicker": "قبل التوقيع",
+          "title": "إذا غيّرت شركة البرمجة مهندس مشروعك، فاطلب *هذا*.",
+          "items": [
+            "إشعار مكتوب قبل أسبوعين",
+            "فترة يعمل فيها المهندسان معًا",
+            "مذكرة تسليم مكتوبة تستطيع قراءتها",
+            "عرض عملي من المهندس الجديد أولًا",
+            "موافقتك قبل اعتماد التغيير"
+          ]
+        }
+      },
+      "posts": {
+        "linkedin": {
+          "lang": "en",
+          "caption": "Projects rarely fail on the day an engineer leaves. They fail three weeks later, when nobody remembers why the payment retry works the way it does.\n\nEngineer changes happen: people get sick, get promoted, move on. What matters is the handover. Put this in your contract:\n\n1. Two weeks' written notice before anyone rotates off your project.\n2. An overlap period where the leaving and joining engineers work together.\n3. A written handover note: open work, known risks, and the decisions behind the odd parts.\n4. A demo from the new engineer, on your codebase, before the handover is signed off.\n5. Your approval before the swap is final.\n\nA vendor who agrees to this easily has done it before. One who resists is telling you something.\n\n#ProjectManagement #Outsourcing #Startups #BuildWithDevya"
+        },
+        "facebook": {
+          "lang": "ar",
+          "caption": "تغيير المهندس المسؤول عن مشروعك أمر وارد، لكن التسليم السيئ هو ما يعطّل المشروع.\n\nإن كنت تتعامل مع شركة برمجة، فاطلب في العقد:\n1. إشعارًا مكتوبًا قبل أسبوعين من أي تغيير.\n2. فترة يعمل فيها المهندس القديم والجديد معًا.\n3. مذكرة تسليم مكتوبة بالأعمال المفتوحة والمخاطر المعروفة.\n4. عرضًا عمليًا من المهندس الجديد قبل اعتماد التسليم.\n5. موافقتك قبل أن يصبح التغيير نهائيًا.\n\nبنود بسيطة تحمي وقتك ومالك.\n\nhttps://www.devya.dev/contact?utm_source=facebook&utm_medium=social"
+        },
+        "instagram": {
+          "lang": "en",
+          "caption": "Your vendor is swapping your engineer. Ask for:\n1 Two weeks' written notice\n2 An overlap period\n3 A written handover note\n4 A demo from the new engineer\n5 Your sign-off before it's final\nSave it for your next contract.\n\n#BuildWithDevya #Founders #Outsourcing #ProjectManagement #TechTips #Startups"
+        }
+      }
+    },
+    {
+      "day": 12,
+      "date": "2026-11-26",
+      "pillar": "engineering",
+      "layout": "code",
+      "accent": "azure",
+      "topic": "Parallel AI coding agents with git worktrees",
+      "source": "https://www.devya.dev/blogs/git-worktrees-parallel-ai-coding-agents-field-notes",
+      "basis": "Devya blog field notes: running parallel AI coding agents with git worktrees",
+      "linkedinLink": true,
+      "skip": false,
+      "card": {
+        "en": {
+          "kicker": "Engineering",
+          "title": "Running AI agents in parallel? Give each one a *worktree*."
+        },
+        "ar": {
+          "kicker": "هندسة البرمجيات",
+          "title": "تشغّل عدة وكلاء ذكاء اصطناعي معًا؟ امنح كلًّا منهم *worktree*."
+        },
+        "code": [
+          {
+            "label": {
+              "en": "One checkout per agent",
+              "ar": "نسخة عمل لكل وكيل"
+            },
+            "code": "# one working tree and one branch per agent\ngit worktree add ../app-auth   -b feat/auth\ngit worktree add ../app-search -b feat/search\n\n# worktrees share ports, cookies and the database\ncd ../app-search && PORT=3101 pnpm dev\n\ngit worktree list               # every agent's tree\ngit worktree remove ../app-auth  # after merge"
+          }
+        ]
+      },
+      "posts": {
+        "linkedin": {
+          "lang": "en",
+          "caption": "We run several AI coding agents against the same repository at once. The first thing that breaks isn't the code. It's the shared folder: two agents editing one checkout overwrite each other's work.\n\nGit worktrees fix the file problem with one command. Each agent gets its own working directory on its own branch, all backed by one repository.\n\nWhat worktrees don't isolate, and you have to split yourself:\n→ Ports. Two dev servers both want 3000, so give each tree its own.\n→ Localhost cookies. Sessions on localhost leak between apps; use a separate hostname per tree.\n→ The database. A seed script in one tree can wipe data another tree depends on.\n\nTreat each worktree as a separate machine and parallel agents stop stepping on each other.\n\nField notes: https://www.devya.dev/blogs/git-worktrees-parallel-ai-coding-agents-field-notes?utm_source=linkedin&utm_medium=social\n\n#AIEngineering #Git #DeveloperProductivity #BuildWithDevya"
+        },
+        "facebook": {
+          "lang": "ar",
+          "caption": "نستخدم عدة وكلاء برمجة بالذكاء الاصطناعي على المشروع نفسه في الوقت ذاته. أول مشكلة واجهتنا لم تكن في الكود، بل في المجلد المشترك: وكيلان يعدّلان الملفات نفسها فيمحو أحدهما عمل الآخر.\n\nالحل في Git اسمه worktree: لكل وكيل مجلد عمل وفرع خاص به، وكلها مرتبطة بمستودع واحد.\n\nلكن انتبه: المنافذ وملفات تعريف الارتباط وقاعدة البيانات تبقى مشتركة ما لم تفصلها بنفسك.\n\nالملاحظات الكاملة: https://www.devya.dev/blogs/git-worktrees-parallel-ai-coding-agents-field-notes?utm_source=facebook&utm_medium=social"
+        },
+        "instagram": {
+          "lang": "en",
+          "caption": "Running several AI coding agents on one repo?\nGive each its own git worktree: own folder, own branch, same repository. Then split what worktrees don't: ports, localhost cookies and the database.\nLink in bio.\n\n#BuildWithDevya #AI #Git #DeveloperTools #SoftwareEngineering #Coding"
+        }
+      }
+    },
+    {
+      "day": 13,
+      "date": "2026-11-27",
+      "pillar": "case-study",
+      "layout": "product",
+      "accent": "lime",
+      "topic": "Urania: a bilingual guide to the constellations we built",
+      "source": "https://www.devya.dev/projects/urania",
+      "basis": "devya.dev/projects/urania (bilingual EN/AR illustrated constellation guide)",
+      "linkedinLink": false,
+      "skip": false,
+      "card": {
+        "shot": "https://urania.vercel.app",
+        "shotLabel": "urania.vercel.app",
+        "en": {
+          "kicker": "Case study · our build",
+          "title": "*Urania*: the night sky in two languages",
+          "sub": "An illustrated guide to the constellations and their Greek myths, in English and Arabic.",
+          "items": [
+            "English and Arabic",
+            "Illustrated constellations",
+            "The myth behind each one"
+          ]
+        },
+        "ar": {
+          "kicker": "دراسة حالة · من بنائنا",
+          "title": "*Urania*: السماء بلغتين",
+          "sub": "دليل مصوّر للكوكبات النجمية وأساطيرها الإغريقية، بالعربية والإنجليزية.",
+          "items": [
+            "بالعربية والإنجليزية",
+            "كوكبات مصوّرة",
+            "الأسطورة وراء كل كوكبة"
+          ]
+        }
+      },
+      "posts": {
+        "linkedin": {
+          "lang": "en",
+          "caption": "Not everything we build is for a client. Urania is a bilingual, illustrated guide to the constellations and the Greek myths behind them, in English and Arabic.\n\nSide projects like this are where we practise the details client work depends on: Arabic typography that holds up next to Latin, RTL layouts that are designed rather than flipped, and content that reads natively in both languages instead of one being a translation of the other.\n\nIt's free and open to anyone curious about the sky. Look up tonight.\n\n#Arabic #Bilingual #Astronomy #BuildWithDevya"
+        },
+        "facebook": {
+          "lang": "ar",
+          "caption": "ليس كل ما نبنيه لعملاء. «Urania» دليل مصوّر ومجاني للكوكبات النجمية والأساطير الإغريقية المرتبطة بها، بالعربية والإنجليزية.\n\nفي مشاريع كهذه نتدرّب على التفاصيل التي يحتاجها عملاؤنا: خط عربي واضح بجوار الإنجليزي، وتصميم من اليمين إلى اليسار مدروس لا مقلوب، ونصوص تُقرأ بطبيعية في اللغتين.\n\nجرّبه الليلة: https://www.devya.dev/projects/urania?utm_source=facebook&utm_medium=social"
+        },
+        "instagram": {
+          "lang": "en",
+          "caption": "Not everything we build is for a client.\nUrania is a free, illustrated guide to the constellations and their Greek myths, in English and Arabic. It's where we practise Arabic typography and RTL layouts that are designed, not flipped.\nLink in bio.\n\n#BuildWithDevya #Astronomy #Constellations #Arabic #WebDesign #SideProject"
+        }
+      }
+    },
+    {
+      "day": 14,
+      "date": "2026-11-28",
+      "pillar": "engineering",
+      "layout": "code",
+      "accent": "azure",
+      "topic": "Stop adding Postgres indexes by guesswork: EXPLAIN ANALYZE",
+      "source": "https://www.devya.dev/blogs/postgres-explain-analyze-query-plans-indexes-field-notes",
+      "basis": "Devya blog field notes: reading PostgreSQL EXPLAIN ANALYZE",
+      "linkedinLink": false,
+      "skip": false,
+      "card": {
+        "en": {
+          "kicker": "Engineering",
+          "title": "Stop adding indexes by *guesswork*."
+        },
+        "ar": {
+          "kicker": "هندسة البرمجيات",
+          "title": "توقف عن إضافة الفهارس *بالتخمين*."
+        },
+        "code": [
+          {
+            "label": {
+              "en": "Find it, then read the plan",
+              "ar": "اعثر عليه، ثم اقرأ الخطة"
+            },
+            "code": "-- 1. costliest in total, not slowest once\nSELECT query, calls, total_exec_time\nFROM pg_stat_statements\nORDER BY total_exec_time DESC LIMIT 5;\n\n-- 2. what the planner actually did\nEXPLAIN (ANALYZE, BUFFERS)\nSELECT * FROM orders WHERE customer_id = 42;"
+          }
+        ]
+      },
+      "posts": {
+        "linkedin": {
+          "lang": "en",
+          "caption": "We used to add PostgreSQL indexes the way most teams do: someone says a page is slow, someone adds an index, everyone hopes.\n\nOur process now has three steps:\n1. Find the costliest query in pg_stat_statements, ordered by total execution time rather than the slowest single run. A fast query called a million times can cost more than a slow report run once a day.\n2. Run EXPLAIN (ANALYZE, BUFFERS) on it and read what the planner actually did: sequential scans on big tables, row estimates that are far off, sorts spilling to disk.\n3. Add the one index the plan asks for, then run it again and compare.\n\nEvery index slows down writes and costs disk. Each one should come with the plan that justified it.\n\n#PostgreSQL #Database #BackendEngineering #BuildWithDevya"
+        },
+        "facebook": {
+          "lang": "en",
+          "caption": "When an app gets slow, the usual fix is to \"add an index\" and hope.\n\nWe do it in order instead: find the database query that costs the most in total, read the plan PostgreSQL actually used, add the one index that plan asks for, then measure again. Every index has a cost on writes, so each one has to earn its place.\n\nEngineering notes: https://www.devya.dev/blogs/postgres-explain-analyze-query-plans-indexes-field-notes?utm_source=facebook&utm_medium=social"
+        },
+        "instagram": {
+          "lang": "ar",
+          "caption": "توقف عن إضافة الفهارس إلى قاعدة البيانات بالتخمين.\nابحث أولًا عن الاستعلام الأعلى تكلفة إجمالًا، ثم اقرأ خطة التنفيذ الفعلية عبر EXPLAIN ANALYZE، وأضف الفهرس الذي تطلبه الخطة فقط، ثم قِس من جديد.\nالرابط في البايو.\n\n#قواعد_البيانات #برمجة #تطوير_البرمجيات #تقنية #مطورين #BuildWithDevya"
+        }
+      }
+    }
+  ]
+}

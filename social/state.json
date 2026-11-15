@@ -1,0 +1,25 @@
+{
+  "version": 1,
+  "published": {
+    "2026-11-15": {
+      "linkedin": {
+        "url": "https://www.linkedin.com/feed/update/urn:li:share:7527741612009889792/",
+        "at": "2026-11-15 16:45",
+        "by": "launch-session",
+        "proof": "proof/2026-11-15-linkedin.jpg"
+      },
+      "facebook": {
+        "url": "https://www.facebook.com/devyasoftware/posts/pfbid02JuatYyAuusSum6qp8Ku3Z6zPh5LH1ZJuwNMEWGu63nMzEdVLdYW3H6VVq3MfSctsl",
+        "at": "2026-11-15 16:45",
+        "by": "launch-session",
+        "proof": "proof/2026-11-15-facebook.jpg"
+      },
+      "instagram": {
+        "url": "https://www.instagram.com/p/DfxBbYTjWS1/",
+        "at": "2026-11-15 16:45",
+        "by": "launch-session",
+        "proof": "proof/2026-11-15-instagram.jpg"
+      }
+    }
+  }
+}

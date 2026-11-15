@@ -1,0 +1,17 @@
+{
+  "name": "devya-social-render",
+  "private": true,
+  "type": "module",
+  "description": "Renders the Devya social calendar's branded cards (HTML/CSS to PNG via Playwright) and validates calendar.json.",
+  "scripts": {
+    "render": "node render.mjs",
+    "validate": "node validate.mjs",
+    "build-md": "node build-md.mjs"
+  },
+  "dependencies": {
+    "playwright-core": "1.62.1"
+  },
+  "engines": {
+    "node": ">=22"
+  }
+}

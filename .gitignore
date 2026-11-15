@@ -5,3 +5,5 @@ dist
 !.env.example
 .DS_Store
 *.log
+social/inbox/
+social/visuals/*/shot.png
