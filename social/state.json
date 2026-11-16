@@ -69,6 +69,18 @@
         "at": "2026-11-16 13:11",
         "by": "routine",
         "proof": "proof/2026-11-16-instagram_reel.jpg"
+      },
+      "facebook": {
+        "url": "https://www.facebook.com/devyasoftware/posts/pfbid0ahy8a1h58aXkycFAzgT4t9kavAhZ3FdqUm4fDiq5KuHKLeRq6GSBdUXZe4JcWCwcl",
+        "at": "2026-11-16 19:35",
+        "by": "routine",
+        "proof": "proof/2026-11-16-facebook.jpg"
+      },
+      "facebook_story": {
+        "url": "posted",
+        "at": "2026-11-16 19:35",
+        "by": "routine",
+        "proof": "proof/2026-11-16-facebook_story.jpg"
       }
     }
   }
