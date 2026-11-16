@@ -44,6 +44,14 @@
         "by": "launch-session",
         "proof": "proof/2026-11-15-facebook_story.jpg"
       }
+    },
+    "2026-11-16": {
+      "linkedin": {
+        "url": "https://www.linkedin.com/feed/update/urn:li:share:7528004344412110848",
+        "at": "2026-11-16 10:02",
+        "by": "routine",
+        "proof": "proof/2026-11-16-linkedin.jpg"
+      }
     }
   }
 }
