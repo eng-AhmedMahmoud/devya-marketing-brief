@@ -19,3 +19,9 @@ One row per network per run. Written by `routine/record.mjs`; the routine's full
 | 2026-11-16 | 2 | Facebook | AR | published | 2026-11-16 19:35 | [open](https://www.facebook.com/devyasoftware/posts/pfbid0ahy8a1h58aXkycFAzgT4t9kavAhZ3FdqUm4fDiq5KuHKLeRq6GSBdUXZe4JcWCwcl) | [shot](proof/2026-11-16-facebook.jpg) | Image post as Devya Solutions page, caption verbatim (editor text matched exactly), Public, publish now, Boost off; no duplicate found (newest was earlier reel) |
 | 2026-11-16 | 2 | Facebook Story | AR | published | 2026-11-16 19:35 | posted | [shot](proof/2026-11-16-facebook_story.jpg) | reel-ar.mp4 shared to Devya Solutions story, AI label off, publish now; Stories shows 1 new |
 | 2026-11-16 | 2 | Instagram | EN | published | 2026-11-16 21:05 | [open](https://www.instagram.com/p/Df0D7N0DQ_T/) | [shot](proof/2026-11-16-instagram.jpg) | Shared as @devyasoftware at 4:5 with exact caption and alt text; AI label, schedule and FB share off. Image was still loading (grey) in proof screenshot after ~90s, probably still processing; check th |
+| 2026-11-19 | 5 | LinkedIn | EN | failed | 2026-11-19 19:46 |  |  | no Chrome browser connected (extension not connected); nothing posted |
+| 2026-11-19 | 5 | Facebook | AR | failed | 2026-11-19 19:46 |  |  | no Chrome browser connected (extension not connected); nothing posted |
+| 2026-11-19 | 5 | LinkedIn video | EN | failed | 2026-11-19 19:46 |  |  | no Chrome browser connected (extension not connected); nothing posted |
+| 2026-11-19 | 5 | Facebook Reel | AR | failed | 2026-11-19 19:46 |  |  | no Chrome browser connected (extension not connected); nothing posted |
+| 2026-11-19 | 5 | Instagram Reel | EN | failed | 2026-11-19 19:46 |  |  | no Chrome browser connected (extension not connected); nothing posted |
+| 2026-11-19 | 5 | Facebook Story | AR | failed | 2026-11-19 19:46 |  |  | no Chrome browser connected (extension not connected); nothing posted |
