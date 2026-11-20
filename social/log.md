@@ -25,3 +25,4 @@ One row per network per run. Written by `routine/record.mjs`; the routine's full
 | 2026-11-19 | 5 | Facebook Reel | AR | failed | 2026-11-19 19:46 |  |  | no Chrome browser connected (extension not connected); nothing posted |
 | 2026-11-19 | 5 | Instagram Reel | EN | failed | 2026-11-19 19:46 |  |  | no Chrome browser connected (extension not connected); nothing posted |
 | 2026-11-19 | 5 | Facebook Story | AR | failed | 2026-11-19 19:46 |  |  | no Chrome browser connected (extension not connected); nothing posted |
+| 2026-11-20 | 6 | LinkedIn | EN | failed | 2026-11-20 10:10 |  |  | No Chrome browser connected (list_connected_browsers empty; extension not connected). Nothing posted. |
