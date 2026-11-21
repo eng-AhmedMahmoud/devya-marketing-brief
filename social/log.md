@@ -36,3 +36,4 @@ One row per network per run. Written by `routine/record.mjs`; the routine's full
 | 2026-11-20 | 6 | Facebook Reel | AR | failed | 2026-11-20 19:30 |  |  | no Chrome browser connected; nothing attempted |
 | 2026-11-20 | 6 | Instagram Reel | EN | failed | 2026-11-20 19:30 |  |  | no Chrome browser connected; nothing attempted |
 | 2026-11-20 | 6 | Facebook Story | AR | failed | 2026-11-20 19:30 |  |  | no Chrome browser connected; nothing attempted |
+| 2026-11-21 | 7 | LinkedIn | EN | failed | 2026-11-21 10:07 |  |  | No Chrome browser connected (list_connected_browsers empty twice); nothing posted, no duplicate check done |
