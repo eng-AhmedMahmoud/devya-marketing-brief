@@ -1128,6 +1128,692 @@
           "lang": "ar"
         }
       }
+    },
+    {
+      "date": "2026-11-29",
+      "pillar": "client-value",
+      "layout": "checklist",
+      "accent": "ember",
+      "topic": "Ask for repo, staging and admin access from sprint one",
+      "source": "https://www.devya.dev/services",
+      "basis": "devya-market-intel latest guide.avoid: backend, database and logs kept closed to the client during the build; give read access to repo, staging and admin from the first sprint, even on fixed price",
+      "linkedinLink": false,
+      "card": {
+        "en": {
+          "kicker": "From sprint one",
+          "title": "Ask to *see* the work, not just the demo.",
+          "items": [
+            "Read access to the code repository",
+            "A staging link you can open any day",
+            "Your own login to the admin panel",
+            "From sprint one, even at a fixed price"
+          ]
+        },
+        "ar": {
+          "kicker": "من بداية المشروع",
+          "title": "اطلب أن *ترى* العمل، لا العرض فقط.",
+          "items": [
+            "صلاحية قراءة لمستودع الكود",
+            "رابط تجريبي تفتحه في أي يوم",
+            "حساب خاص بك في لوحة الإدارة",
+            "من البداية، حتى بسعر ثابت"
+          ]
+        }
+      },
+      "posts": {
+        "linkedin": {
+          "lang": "en",
+          "caption": "If the only way you see your product is a demo your vendor prepares, you're seeing what they chose to show you.\n\nAsk for access from the first sprint, and write it into the contract:\n→ Read access to the code repository. You don't have to read the code yourself; someone you trust can.\n→ A staging link you can open on any day, not only on demo day.\n→ Your own login to the admin panel, so you can try the real flows yourself.\n\nThis applies to fixed-price work too. A fixed price fixes the cost. It doesn't remove your right to see what you're paying for.\n\nAccess is cheap to give. If the answer is \"after launch\", you'll find the problems at the point where they cost the most to fix.\n\nA vendor who is confident in the work says yes on the first call.\n\n#Outsourcing #Founders #ProductDevelopment #BuildWithDevya"
+        },
+        "facebook": {
+          "lang": "ar",
+          "caption": "إن كنت لا ترى مشروعك إلا في العروض التي تجهّزها شركة البرمجة، فأنت ترى فقط ما اختارت أن تعرضه عليك.\n\nاطلب في العقد، ومن أول أسبوع عمل:\nصلاحية قراءة لمستودع الكود، ليراجعه شخص تثق به.\nرابطًا تجريبيًا تفتحه في أي يوم، لا في يوم العرض فقط.\nحسابًا خاصًا بك في لوحة الإدارة لتجرّب بنفسك.\n\nوهذا يشمل المشاريع ذات السعر الثابت أيضًا؛ فالسعر الثابت يحدد التكلفة، ولا يلغي حقك في رؤية ما تدفع ثمنه.\n\nتخطط لمشروعك القادم؟ تحدث معنا: https://www.devya.dev/contact?utm_source=facebook&utm_medium=social"
+        },
+        "instagram": {
+          "lang": "en",
+          "caption": "Demos show what your vendor picks.\nAsk for three things from sprint one: read access to the code repository, a staging link you can open any day, and your own admin login. A fixed price fixes the cost, not your right to see the work.\nSave this for your next contract. Link in bio.\n\n#BuildWithDevya #Founders #Startups #Outsourcing #TechTips #SoftwareDevelopment"
+        }
+      },
+      "reel": {
+        "en": "Only seeing your app in demos? Ask for repo, staging and admin access from sprint one.",
+        "ar": "ترى تطبيقك في العروض فقط؟ اطلب الوصول إلى الكود والنسخة التجريبية ولوحة الإدارة من البداية."
+      },
+      "day": 15,
+      "skip": false,
+      "reels": {
+        "linkedin": {
+          "lang": "en",
+          "caption": "Only seeing your app in demos? Ask for repo, staging and admin access from sprint one.\n\n#Outsourcing #Founders #ProductDevelopment"
+        },
+        "facebook": {
+          "lang": "ar",
+          "caption": "ترى تطبيقك في العروض فقط؟ اطلب الوصول إلى الكود والنسخة التجريبية ولوحة الإدارة من البداية.\n\nالتفاصيل: https://www.devya.dev/services?utm_source=facebook&utm_medium=social&utm_content=reel"
+        },
+        "instagram": {
+          "lang": "en",
+          "caption": "Only seeing your app in demos? Ask for repo, staging and admin access from sprint one.\n\n#BuildWithDevya #Founders #Startups #Outsourcing #TechTips"
+        }
+      },
+      "stories": {
+        "facebook": {
+          "lang": "ar"
+        },
+        "instagram": {
+          "lang": "en"
+        }
+      }
+    },
+    {
+      "date": "2026-11-30",
+      "pillar": "engineering",
+      "layout": "compare",
+      "accent": "azure",
+      "topic": "A JWT is encoded, not encrypted: decoding isn't verifying",
+      "source": "https://www.devya.dev/projects/jwt-inspector",
+      "basis": "devya.dev/projects/jwt-inspector: decodes header and payload in the browser with zero network calls; online decoders send tokens to servers you don't control; signature verification needs a key kept on your server (page copy read from the site source, lib/community-projects.ts)",
+      "linkedinLink": true,
+      "card": {
+        "en": {
+          "kicker": "Engineering",
+          "title": "Decoding a JWT is not *verifying* it.",
+          "left": {
+            "label": "Decoding",
+            "items": [
+              "Base64url: no key needed",
+              "Anyone holding the token can",
+              "Shows claims and expiry",
+              "Proves nothing about the signer"
+            ]
+          },
+          "right": {
+            "label": "Verifying",
+            "items": [
+              "Needs a key kept on your server",
+              "Rejects tampered tokens",
+              "Rejects expired tokens",
+              "Only then trust the claims"
+            ]
+          }
+        },
+        "ar": {
+          "kicker": "هندسة البرمجيات",
+          "title": "فك ترميز JWT *ليس* تحققًا منه.",
+          "left": {
+            "label": "فك الترميز",
+            "items": [
+              "لا يحتاج إلى أي مفتاح",
+              "يقدر عليه كل من يملك الرمز",
+              "يعرض البيانات وتاريخ الانتهاء",
+              "لا يثبت من وقّع الرمز"
+            ]
+          },
+          "right": {
+            "label": "التحقق",
+            "items": [
+              "يحتاج إلى مفتاح على خادمك",
+              "يرفض الرموز المعدّلة",
+              "يرفض الرموز المنتهية",
+              "بعده فقط تثق بالبيانات"
+            ]
+          }
+        }
+      },
+      "posts": {
+        "linkedin": {
+          "lang": "en",
+          "caption": "Paste a JWT into any online decoder and you'll usually see the user ID, the role and the expiry in plain text. Three things follow from that.\n\nFirst, a JWT is encoded, not encrypted. Anyone holding the token can read its payload, so keep secrets and personal data out of it.\n\nSecond, decoding proves nothing. A decoded token tells you what it claims, not who signed it. Only a signature check with a key you keep on your server makes those claims worth trusting.\n\nThird, those convenient online decoders send your token to a server you don't control. For anything but a throwaway token, that's a leak.\n\nSo we built jwt-inspector. It decodes the header and payload, shows the standard claims with readable dates and a live expiry status, and makes zero network calls. The token never leaves the page.\n\nhttps://www.devya.dev/projects/jwt-inspector?utm_source=linkedin&utm_medium=social\n\n#WebSecurity #JWT #Authentication #BuildWithDevya"
+        },
+        "facebook": {
+          "lang": "ar",
+          "caption": "رمز الدخول JWT الذي يستخدمه تطبيقك يستطيع أي شخص يحمله أن يقرأ محتواه، فهو مُرمَّز وليس مشفّرًا.\n\nلذلك لا تضع فيه أسرارًا أو بيانات شخصية.\nوقراءة الرمز لا تعني الثقة به؛ فالثقة تأتي بعد التحقق من توقيعه بمفتاح محفوظ على خادمك.\nوانتبه: مواقع فك الترميز السريعة على الإنترنت ترسل رمزك إلى خادم لا تتحكم فيه.\n\nلهذا بنينا أداة تفك الترميز داخل متصفحك فقط، دون أي اتصال بالشبكة، وتعرض تاريخ انتهاء الرمز بوضوح: https://www.devya.dev/projects/jwt-inspector?utm_source=facebook&utm_medium=social"
+        },
+        "instagram": {
+          "lang": "en",
+          "caption": "A JWT is encoded, not encrypted.\nAnyone holding the token can read the payload, so keep secrets out of it. And decoding proves nothing: trust the claims only after your server checks the signature.\nDebugging? Decode in your browser, not on someone else's server. Link in bio.\n\n#BuildWithDevya #WebSecurity #JWT #Authentication #DevTips #CyberSecurity"
+        }
+      },
+      "reel": {
+        "en": "A JWT is encoded, not encrypted. Decoding it proves nothing.",
+        "ar": "رمز JWT مُرمَّز وليس مشفّرًا، وفك ترميزه لا يثبت شيئًا."
+      },
+      "day": 16,
+      "skip": false,
+      "reels": {
+        "linkedin": {
+          "lang": "en",
+          "caption": "A JWT is encoded, not encrypted. Decoding it proves nothing.\n\n#WebSecurity #JWT #Authentication"
+        },
+        "facebook": {
+          "lang": "ar",
+          "caption": "رمز JWT مُرمَّز وليس مشفّرًا، وفك ترميزه لا يثبت شيئًا.\n\nالتفاصيل: https://www.devya.dev/projects/jwt-inspector?utm_source=facebook&utm_medium=social&utm_content=reel"
+        },
+        "instagram": {
+          "lang": "en",
+          "caption": "A JWT is encoded, not encrypted. Decoding it proves nothing.\n\n#BuildWithDevya #WebSecurity #JWT #Authentication #DevTips"
+        }
+      },
+      "stories": {
+        "facebook": {
+          "lang": "ar"
+        },
+        "instagram": {
+          "lang": "en"
+        }
+      }
+    },
+    {
+      "date": "2026-12-01",
+      "pillar": "product",
+      "layout": "product",
+      "accent": "lime",
+      "topic": "Devya Converse: AI chat that answers from your own content",
+      "source": "https://www.devya.dev/converse",
+      "basis": "devya.dev/converse: assistant trained on your docs with sources, Arabic-first bilingual replies, website/WhatsApp/Messenger/API, lead capture and booking, human hand-off, no-training or self-hosted option, three-step setup, 20-minute demo (page copy read from the site source, app/(pages)/converse)",
+      "linkedinLink": true,
+      "card": {
+        "shot": "https://www.devya.dev/converse",
+        "shotLabel": "devya.dev/converse",
+        "en": {
+          "kicker": "Devya product",
+          "title": "Devya *Converse*",
+          "sub": "AI chat that answers from your own content, in Arabic and English.",
+          "items": [
+            "Grounded in your docs",
+            "Website, WhatsApp, Messenger",
+            "Hands off to a person"
+          ]
+        },
+        "ar": {
+          "kicker": "من منتجات ديفيا",
+          "title": "Devya *Converse*",
+          "sub": "محادثة ذكية تجيب من محتواك أنت، بالعربية والإنجليزية.",
+          "items": [
+            "مبني على مستنداتك",
+            "الموقع وواتساب وماسنجر",
+            "يسلّم المحادثة لموظف عند الحاجة"
+          ]
+        }
+      },
+      "posts": {
+        "linkedin": {
+          "lang": "en",
+          "caption": "A chatbot that improvises is worse than no chatbot. One wrong answer about a refund policy costs more than the ticket it saved.\n\nDevya Converse is built the other way round:\n→ Trained on your own content. Point it at your docs, site and FAQs; every answer is grounded in that material, with sources.\n→ Arabic-first. It replies in Arabic or English, matching each customer's language automatically.\n→ One assistant, every channel: a website widget, WhatsApp, Messenger, or your own app through the API.\n→ It qualifies leads and books meetings into your calendar and CRM.\n→ It hands off cleanly to a person when it matters.\n→ Private by design: choose a no-training model or a self-hosted deployment.\n\nSetup is three steps: connect your content, shape and test it on real questions, then launch.\n\nBring a few real customer questions to a 20-minute demo and watch it answer them.\n\nhttps://www.devya.dev/converse?utm_source=linkedin&utm_medium=social\n\n#ConversationalAI #CustomerSupport #MENA #BuildWithDevya"
+        },
+        "facebook": {
+          "lang": "en",
+          "caption": "Your team answers the same customer questions all day.\n\nDevya Converse is an AI assistant trained on your own content: your site, documents, product catalogue and FAQs. It replies on your website, WhatsApp or Messenger, in Arabic or English, matching each customer's language. Every answer comes from your material, not guesswork. It can collect a customer's details, book the meeting in your calendar, and hand the conversation to a person when it matters.\n\nSee it answer your own questions in a short demo: https://www.devya.dev/converse?utm_source=facebook&utm_medium=social"
+        },
+        "instagram": {
+          "lang": "ar",
+          "caption": "مساعد محادثة يجيب عملاءك من محتواك أنت.\nخدمة Devya Converse تقرأ مستنداتك وأسئلتك الشائعة، ثم تردّ على عملائك بالعربية أو الإنجليزية عبر موقعك وواتساب وماسنجر، وتحجز المواعيد، وتسلّم المحادثة لموظف عند الحاجة.\nلا ردود مُختلقة: كل إجابة مبنية على موادك.\nالرابط في البايو.\n\n#ذكاء_اصطناعي #خدمة_العملاء #ريادة_الأعمال #التجارة_الإلكترونية #السعودية #BuildWithDevya"
+        }
+      },
+      "reel": {
+        "en": "Devya Converse: AI chat that answers from your own content, in Arabic and English.",
+        "ar": "مساعد Devya Converse يجيب عملاءك من محتواك أنت، بالعربية والإنجليزية."
+      },
+      "day": 17,
+      "skip": false,
+      "reels": {
+        "linkedin": {
+          "lang": "en",
+          "caption": "Devya Converse: AI chat that answers from your own content, in Arabic and English.\n\n#ConversationalAI #CustomerSupport #MENA"
+        },
+        "facebook": {
+          "lang": "en",
+          "caption": "Devya Converse: AI chat that answers from your own content, in Arabic and English.\n\nMore: https://www.devya.dev/converse?utm_source=facebook&utm_medium=social&utm_content=reel"
+        },
+        "instagram": {
+          "lang": "ar",
+          "caption": "مساعد Devya Converse يجيب عملاءك من محتواك أنت، بالعربية والإنجليزية.\n\n#ذكاء_اصطناعي #خدمة_العملاء #ريادة_الأعمال #التجارة_الإلكترونية #السعودية"
+        }
+      },
+      "stories": {
+        "facebook": {
+          "lang": "en"
+        },
+        "instagram": {
+          "lang": "ar"
+        }
+      }
+    },
+    {
+      "date": "2026-12-02",
+      "pillar": "client-value",
+      "layout": "statement",
+      "accent": "ember",
+      "topic": "Ask for the real start date and the named team in writing",
+      "source": "https://www.devya.dev/services",
+      "basis": "devya-market-intel latest guide.do: when the team is booked, give the real start date in writing with the named team, and offer a paid discovery phase in the gap",
+      "linkedinLink": false,
+      "card": {
+        "en": {
+          "kicker": "Hiring a dev team?",
+          "title": "A *real* start date beats an early start.",
+          "sub": "Ask for the date, and the names of the people who start on it, in writing."
+        },
+        "ar": {
+          "kicker": "تختار فريق برمجة؟",
+          "title": "موعد بدء *حقيقي* أفضل من بداية مبكرة.",
+          "sub": "اطلب الموعد، وأسماء من سيبدأ العمل فيه، مكتوبة."
+        }
+      },
+      "posts": {
+        "linkedin": {
+          "lang": "en",
+          "caption": "\"We can start Monday.\" Before you celebrate, ask who exactly will start.\n\nA fully booked vendor has two options. Start you early with whoever is free and fill the seats later, or tell you the real start date and wait for the right people. You want the second, in writing:\n→ The actual start date.\n→ The names and roles of the people who start on that date.\n→ What happens if either changes: notice, and your right to say no.\n\nIf you want momentum before then, ask for a short, paid discovery phase in the gap: user roles, existing systems, the flows that matter. It moves the project forward without pretending the build has started.\n\nAn honest wait is easier to plan around than a team that's thin from week one.\n\n#Outsourcing #Founders #ProjectManagement #BuildWithDevya"
+        },
+        "facebook": {
+          "lang": "ar",
+          "caption": "عبارة «نبدأ الأسبوع القادم» مطمئنة، لكن اسأل أولًا: من الذي سيبدأ؟\n\nحين تكون شركة البرمجة مشغولة، قد تبدأ مشروعك بمن هو متاح ثم تكمل الفريق لاحقًا.\n\nاطلب كتابةً:\nموعد البدء الحقيقي.\nأسماء أعضاء الفريق الذين سيبدؤون فيه وأدوارهم.\nما يحدث إذا تغيّر أحدهما، وحقك في الرفض.\n\nوإن أردت أن تستفيد من فترة الانتظار، فاطلب مرحلة استكشاف قصيرة ومدفوعة لتحديد المتطلبات.\n\nتحدث معنا عن مشروعك: https://www.devya.dev/contact?utm_source=facebook&utm_medium=social"
+        },
+        "instagram": {
+          "lang": "en",
+          "caption": "\"We can start Monday.\" Who, exactly?\nAsk your vendor for the real start date and the names of the people starting on it, in writing. Want momentum before then? Ask for a short paid discovery phase in the gap.\nAn honest date beats an early start with half a team. Link in bio.\n\n#BuildWithDevya #Founders #ProjectManagement #Startups #Egypt #SaudiArabia"
+        }
+      },
+      "reel": {
+        "en": "\"We can start Monday.\" Ask who, exactly, and get it in writing.",
+        "ar": "قبل أن توقّع: اطلب موعد البدء الحقيقي وأسماء الفريق مكتوبة."
+      },
+      "day": 18,
+      "skip": false,
+      "reels": {
+        "linkedin": {
+          "lang": "en",
+          "caption": "\"We can start Monday.\" Ask who, exactly, and get it in writing.\n\n#Outsourcing #Founders #ProjectManagement"
+        },
+        "facebook": {
+          "lang": "ar",
+          "caption": "قبل أن توقّع: اطلب موعد البدء الحقيقي وأسماء الفريق مكتوبة.\n\nالتفاصيل: https://www.devya.dev/services?utm_source=facebook&utm_medium=social&utm_content=reel"
+        },
+        "instagram": {
+          "lang": "en",
+          "caption": "\"We can start Monday.\" Ask who, exactly, and get it in writing.\n\n#BuildWithDevya #Founders #ProjectManagement #Startups #Egypt"
+        }
+      },
+      "stories": {
+        "facebook": {
+          "lang": "ar"
+        },
+        "instagram": {
+          "lang": "en"
+        }
+      }
+    },
+    {
+      "date": "2026-12-03",
+      "pillar": "engineering",
+      "layout": "code",
+      "accent": "azure",
+      "topic": "A wrong cron line still runs: read it back before it ships",
+      "source": "https://www.devya.dev/projects/cron-builder",
+      "basis": "devya.dev/projects/cron-builder: a misread cron field silently runs a job at the wrong time; plain-English description and next run times in the browser (page copy read from the site source, lib/community-projects.ts)",
+      "linkedinLink": true,
+      "card": {
+        "en": {
+          "kicker": "Engineering",
+          "title": "Read your cron line *back* before it ships."
+        },
+        "ar": {
+          "kicker": "هندسة البرمجيات",
+          "title": "راجع جدول cron *بالكلمات* قبل نشره."
+        },
+        "code": [
+          {
+            "label": {
+              "en": "Five fields, easy to misread",
+              "ar": "خمسة حقول يسهل الخطأ في قراءتها"
+            },
+            "code": "# min hour dom mon dow\n0 9 * * 1     # 09:00 every Monday\n0 9 1 * *     # 09:00 on the 1st of each month\n0 9 1 * 1     # the 1st AND every Monday,\n              # not \"the 1st if it's a Monday\"\n*/15 * * * *  # every 15 minutes"
+          }
+        ]
+      },
+      "posts": {
+        "linkedin": {
+          "lang": "en",
+          "caption": "Nothing breaks when a cron line is wrong. The job still runs, just at the wrong time, and nobody notices until a weekly report is missing or a reminder goes out twice.\n\nThe classic trap: 0 9 1 * 1 looks like \"9am on the 1st, if it's a Monday\". It isn't. When both the day-of-month and day-of-week fields are set, cron runs when either one matches: on the 1st of every month, and on every Monday.\n\nAnother one: the schedule runs in the server's time zone, which is often UTC rather than Cairo or Riyadh time.\n\nThe habit that catches most of this: before a schedule ships, read it back in plain English and check the next few run times.\n\ncron-builder does exactly that in the browser. Paste a standard five-field expression and get a plain-English description plus the upcoming run times, or build one from presets. No libraries, no server.\n\nhttps://www.devya.dev/projects/cron-builder?utm_source=linkedin&utm_medium=social\n\n#DevOps #Cron #BackendEngineering #BuildWithDevya"
+        },
+        "facebook": {
+          "lang": "ar",
+          "caption": "تقرير أسبوعي أو رسالة تذكير تُرسَل تلقائيًا؟ غالبًا ما يُجدوَل ذلك بسطر cron من خمسة حقول.\n\nخطأ واحد في هذا السطر لا يوقف المهمة، بل يشغّلها في توقيت خاطئ دون أن ينتبه أحد.\n\nمثال شائع: السطر «0 9 1 * 1» لا يعني «التاسعة صباحًا أول الشهر إذا وافق يوم اثنين»، بل يعني أول كل شهر وكل يوم اثنين أيضًا.\n\nنصيحتنا: اقرأ الجدول بكلمات واضحة، وراجع مواعيد التشغيل القادمة قبل اعتماده.\n\nأداتنا تفعل ذلك داخل المتصفح: https://www.devya.dev/projects/cron-builder?utm_source=facebook&utm_medium=social"
+        },
+        "instagram": {
+          "lang": "en",
+          "caption": "Get a cron line wrong and it still runs. Just at the wrong time.\n0 9 1 * 1 isn't \"9am on the 1st if it's a Monday\". It runs on the 1st of every month and on every Monday.\nRead a schedule back in plain English and check its next run times before it ships. Link in bio.\n\n#BuildWithDevya #DevOps #Cron #Linux #BackendDevelopment #CodingTips"
+        }
+      },
+      "reel": {
+        "en": "A wrong cron line doesn't fail. It runs at the wrong time.",
+        "ar": "سطر cron الخاطئ لا يتوقف، بل يعمل في التوقيت الخاطئ."
+      },
+      "day": 19,
+      "skip": false,
+      "reels": {
+        "linkedin": {
+          "lang": "en",
+          "caption": "A wrong cron line doesn't fail. It runs at the wrong time.\n\n#DevOps #Cron #BackendEngineering"
+        },
+        "facebook": {
+          "lang": "ar",
+          "caption": "سطر cron الخاطئ لا يتوقف، بل يعمل في التوقيت الخاطئ.\n\nالتفاصيل: https://www.devya.dev/projects/cron-builder?utm_source=facebook&utm_medium=social&utm_content=reel"
+        },
+        "instagram": {
+          "lang": "en",
+          "caption": "A wrong cron line doesn't fail. It runs at the wrong time.\n\n#BuildWithDevya #DevOps #Cron #Linux #BackendDevelopment"
+        }
+      },
+      "stories": {
+        "facebook": {
+          "lang": "ar"
+        },
+        "instagram": {
+          "lang": "en"
+        }
+      }
+    },
+    {
+      "date": "2026-12-04",
+      "pillar": "bts",
+      "layout": "checklist",
+      "accent": "lime",
+      "topic": "Our security practices on one page, before procurement asks",
+      "source": "https://www.devya.dev/security",
+      "basis": "devya.dev/security 'Our Security Practices': HTTPS/TLS with HSTS, argon2id, RBAC with lockout, audit logging, daily backups with documented restores, no trackers before consent, breach-response runbook (page copy read from the site source, app/security)",
+      "linkedinLink": true,
+      "card": {
+        "en": {
+          "kicker": "Behind the scenes",
+          "title": "Security answers, *before* you ask.",
+          "items": [
+            "HTTPS everywhere, HSTS on",
+            "Passwords hashed with argon2id",
+            "Role-based access, least privilege",
+            "Audit trail for admin events",
+            "Daily backups, documented restores",
+            "No trackers before consent"
+          ]
+        },
+        "ar": {
+          "kicker": "من داخل ديفيا",
+          "title": "إجابات الأمان، *قبل* أن تسأل.",
+          "items": [
+            "اتصال HTTPS في كل مكان مع HSTS",
+            "تجزئة كلمات المرور بـ argon2id",
+            "صلاحيات حسب الدور وبأقل قدر لازم",
+            "سجل تدقيق لعمليات الإدارة",
+            "نسخ احتياطي يومي واستعادة موثّقة",
+            "لا أدوات تتبّع قبل موافقتك"
+          ]
+        }
+      },
+      "posts": {
+        "linkedin": {
+          "lang": "en",
+          "caption": "Procurement teams send security questionnaires. We'd rather answer the common questions before they're asked, so they're published on one page.\n\nWhat it covers:\n→ Encryption in transit: HTTPS/TLS on every website, API and admin system, with HSTS enabled. No unencrypted endpoints.\n→ Passwords hashed with argon2id, a memory-hard algorithm built to resist GPU cracking. Never stored or logged in plaintext.\n→ Role-based access control on least privilege, with lockout after repeated failed sign-ins.\n→ An audit trail for sign-ins, permission changes, data exports and deletions.\n→ Automated daily backups with documented restore procedures.\n→ No analytics or marketing trackers before consent, and endpoints for data export and erasure requests.\n→ A documented breach-response runbook.\n\nIf you're assessing us, or any vendor, this is the list to ask for in writing.\n\nhttps://www.devya.dev/security?utm_source=linkedin&utm_medium=social\n\n#CyberSecurity #DataProtection #Procurement #BuildWithDevya"
+        },
+        "facebook": {
+          "lang": "ar",
+          "caption": "كيف نحمي بيانات عملائنا وبيانات مستخدميهم؟ جمعنا الإجابة في صفحة واحدة.\n\nاتصال مشفّر في كل مواقعنا وواجهاتنا وأنظمة الإدارة، دون أي نقطة غير مشفّرة.\nكلمات مرور لا تُحفظ ولا تُسجَّل كنص صريح أبدًا.\nصلاحيات لكل مستخدم بقدر ما يحتاجه فقط.\nسجل تدقيق لعمليات الدخول وتغيير الصلاحيات والتصدير والحذف.\nنسخ احتياطي يومي تلقائي، وخطوات استعادة موثّقة.\nولا أدوات تتبّع قبل موافقتك.\n\nإن كنت تقيّم أي شركة برمجة، فاطلب منها قائمة كهذه مكتوبة.\n\nالتفاصيل: https://www.devya.dev/security?utm_source=facebook&utm_medium=social"
+        },
+        "instagram": {
+          "lang": "en",
+          "caption": "Security answers, before you ask.\nHTTPS everywhere with HSTS. Passwords hashed with argon2id. Role-based access. An audit trail for admin actions. Daily backups with documented restores. No trackers before consent.\nAll on one page, written for procurement and due-diligence reviews. Link in bio.\n\n#BuildWithDevya #CyberSecurity #DataPrivacy #InfoSec #WebDevelopment #Cairo"
+        }
+      },
+      "reel": {
+        "en": "How we protect client data, on one page: argon2id, HSTS, audit logs, daily backups.",
+        "ar": "كيف نحمي بيانات عملائنا؟ الإجابة في صفحة واحدة: تشفير ونسخ احتياطي يومي وسجل تدقيق."
+      },
+      "day": 20,
+      "skip": false,
+      "reels": {
+        "linkedin": {
+          "lang": "en",
+          "caption": "How we protect client data, on one page: argon2id, HSTS, audit logs, daily backups.\n\n#CyberSecurity #DataProtection #Procurement"
+        },
+        "facebook": {
+          "lang": "ar",
+          "caption": "كيف نحمي بيانات عملائنا؟ الإجابة في صفحة واحدة: تشفير ونسخ احتياطي يومي وسجل تدقيق.\n\nالتفاصيل: https://www.devya.dev/security?utm_source=facebook&utm_medium=social&utm_content=reel"
+        },
+        "instagram": {
+          "lang": "en",
+          "caption": "How we protect client data, on one page: argon2id, HSTS, audit logs, daily backups.\n\n#BuildWithDevya #CyberSecurity #DataPrivacy #InfoSec #WebDevelopment"
+        }
+      },
+      "stories": {
+        "facebook": {
+          "lang": "ar"
+        },
+        "instagram": {
+          "lang": "en"
+        }
+      }
+    },
+    {
+      "date": "2026-12-05",
+      "pillar": "product",
+      "layout": "product",
+      "accent": "lime",
+      "topic": "og-preview: see your link card before you share it",
+      "source": "https://www.devya.dev/projects/og-preview",
+      "basis": "devya.dev/projects/og-preview: Google, Facebook, X and LinkedIn card previews, live character counters, ready-to-paste meta tags, single static page, free and open source (page copy read from the site source, lib/community-projects.ts)",
+      "linkedinLink": false,
+      "card": {
+        "shot": "https://og.devya.dev",
+        "shotLabel": "og.devya.dev",
+        "en": {
+          "kicker": "Devya free tool",
+          "title": "og-*preview*",
+          "sub": "See how your page looks when it's shared, before it goes live.",
+          "items": [
+            "Google, Facebook, X, LinkedIn",
+            "Live character counters",
+            "Copy-ready meta tags"
+          ]
+        },
+        "ar": {
+          "kicker": "أداة مجانية من ديفيا",
+          "title": "og-*preview*",
+          "sub": "اعرف كيف تبدو صفحتك عند مشاركتها، قبل نشرها.",
+          "items": [
+            "معاينة Google وFacebook وX وLinkedIn",
+            "عدّادات أحرف حيّة",
+            "وسوم meta جاهزة للنسخ"
+          ]
+        }
+      },
+      "posts": {
+        "linkedin": {
+          "lang": "en",
+          "caption": "The first time many teams see their link preview is when a customer shares it: the wrong image, a title cut in half, or no card at all.\n\nBy then the fix is expensive. The post is already out, and platforms cache what they saw.\n\nog-preview is a free tool we built to catch it earlier:\n→ Fill in the page's metadata and see it rendered as a Google result and as Facebook, X and LinkedIn cards.\n→ Live character counters show where your title and description get cut.\n→ Copy a ready-to-paste meta block in one click.\n\nIt's a single static page with zero dependencies. Nothing to install, it runs entirely in your browser, and it's open source.\n\nWorth a minute before your next launch page goes live.\n\n#SEO #OpenGraph #WebDevelopment #BuildWithDevya"
+        },
+        "facebook": {
+          "lang": "en",
+          "caption": "Shared your website link and got the wrong image, or a title cut in half?\n\nThat preview card is built from a few hidden tags on your page. og-preview, a free tool we built, shows how your page will look as a Google result and as Facebook, X and LinkedIn cards before you publish, then gives you the exact tags to paste in. It runs in your browser, with nothing to install.\n\nTry it before your next launch: https://www.devya.dev/projects/og-preview?utm_source=facebook&utm_medium=social"
+        },
+        "instagram": {
+          "lang": "ar",
+          "caption": "هل شاركت رابط موقعك فظهرت صورة خاطئة أو عنوان مقطوع؟\nأداة og-preview المجانية تريك كيف ستبدو صفحتك على Google وFacebook وX وLinkedIn قبل النشر، وتعطيك الوسوم الجاهزة للصق.\nتعمل داخل متصفحك، ولا تحتاج إلى تثبيت، وهي مفتوحة المصدر.\nالرابط في البايو.\n\n#تسويق_رقمي #تحسين_محركات_البحث #تطوير_المواقع #ريادة_الأعمال #مصر #BuildWithDevya"
+        }
+      },
+      "reel": {
+        "en": "See how your link looks on Google, Facebook, X and LinkedIn before you share it.",
+        "ar": "اعرف كيف يظهر رابطك على Google وFacebook وX وLinkedIn قبل أن تشاركه."
+      },
+      "day": 21,
+      "skip": false,
+      "reels": {
+        "linkedin": {
+          "lang": "en",
+          "caption": "See how your link looks on Google, Facebook, X and LinkedIn before you share it.\n\n#SEO #OpenGraph #WebDevelopment"
+        },
+        "facebook": {
+          "lang": "en",
+          "caption": "See how your link looks on Google, Facebook, X and LinkedIn before you share it.\n\nMore: https://www.devya.dev/projects/og-preview?utm_source=facebook&utm_medium=social&utm_content=reel"
+        },
+        "instagram": {
+          "lang": "ar",
+          "caption": "اعرف كيف يظهر رابطك على Google وFacebook وX وLinkedIn قبل أن تشاركه.\n\n#تسويق_رقمي #تحسين_محركات_البحث #تطوير_المواقع #ريادة_الأعمال #مصر"
+        }
+      },
+      "stories": {
+        "facebook": {
+          "lang": "en"
+        },
+        "instagram": {
+          "lang": "ar"
+        }
+      }
+    },
+    {
+      "date": "2026-12-06",
+      "pillar": "client-value",
+      "layout": "checklist",
+      "accent": "ember",
+      "topic": "Before launch, ask for a written test pass on real content",
+      "source": "https://www.devya.dev/services",
+      "basis": "devya-market-intel latest guide.avoid: no launch without a written pre-launch test pass on the client's real content, devices and payment or login paths; don't end the project on launch day (two-week support with visible bug triage)",
+      "linkedinLink": false,
+      "card": {
+        "en": {
+          "kicker": "Before launch day",
+          "title": "Test on your *real* content before launch.",
+          "items": [
+            "Your real products, prices and copy",
+            "The phones your customers use",
+            "Sign-up, login and password reset",
+            "A real payment, then a refund",
+            "Results written down, signed off",
+            "Two weeks of support after launch"
+          ]
+        },
+        "ar": {
+          "kicker": "قبل يوم الإطلاق",
+          "title": "اختبر على محتواك *الحقيقي* قبل الإطلاق.",
+          "items": [
+            "منتجاتك وأسعارك ونصوصك الفعلية",
+            "الهواتف التي يستخدمها عملاؤك",
+            "التسجيل والدخول واستعادة كلمة المرور",
+            "عملية دفع حقيقية ثم استرداد",
+            "نتائج مكتوبة توقّع عليها",
+            "أسبوعان من الدعم بعد الإطلاق"
+          ]
+        }
+      },
+      "posts": {
+        "linkedin": {
+          "lang": "en",
+          "caption": "Launch-day bugs are rarely new. Most were there all along; they just never met real data.\n\nTest content is tidy: short product names, round prices, one language. Real content isn't. A long Arabic title breaks a layout, a missing image breaks a page, and a payment flow that passed with a test card can fail with a real one.\n\nBefore you approve a launch, ask your vendor for a written test pass on:\n1. Your real products, prices and copy, in every language you ship.\n2. The phones and browsers your customers actually use.\n3. Every sign-up, login and password-reset path.\n4. A real payment, end to end, then a refund.\n\nAsk for the results in writing, and sign them off.\n\nThen don't let the project end on launch day. Agree a two-week support window with a daily bug review you can see. Real users will find what testing missed.\n\n#ProductLaunch #QA #Founders #BuildWithDevya"
+        },
+        "facebook": {
+          "lang": "ar",
+          "caption": "أخطاء يوم الإطلاق نادرًا ما تكون جديدة، فهي موجودة منذ البداية لكنها لم تُختبر على بيانات حقيقية.\n\nقبل أن توافق على إطلاق موقعك أو تطبيقك، اطلب من شركة البرمجة اختبارًا مكتوبًا يشمل:\nمنتجاتك وأسعارك ونصوصك الفعلية بكل اللغات.\nالهواتف والمتصفحات التي يستخدمها عملاؤك.\nالتسجيل والدخول واستعادة كلمة المرور.\nعملية دفع حقيقية كاملة، ثم استرداد المبلغ.\n\nولا تجعل المشروع ينتهي يوم الإطلاق: اتفق على أسبوعين من الدعم بعده.\n\nتحدث معنا: https://www.devya.dev/contact?utm_source=facebook&utm_medium=social"
+        },
+        "instagram": {
+          "lang": "en",
+          "caption": "Dummy data hides launch-day bugs.\nBefore you approve a launch, ask for a written test pass: your real products and prices, your customers' phones, every login path, and a real payment plus a refund. Then agree two weeks of support after launch.\nSave this for launch week. Link in bio.\n\n#BuildWithDevya #ProductLaunch #QA #Startups #Founders #AppDevelopment"
+        }
+      },
+      "reel": {
+        "en": "Launch-day bugs are rarely new. Test on your real content first.",
+        "ar": "أخطاء يوم الإطلاق نادرًا ما تكون جديدة. اختبر على محتواك الحقيقي أولًا."
+      },
+      "day": 22,
+      "skip": false,
+      "reels": {
+        "linkedin": {
+          "lang": "en",
+          "caption": "Launch-day bugs are rarely new. Test on your real content first.\n\n#ProductLaunch #QA #Founders"
+        },
+        "facebook": {
+          "lang": "ar",
+          "caption": "أخطاء يوم الإطلاق نادرًا ما تكون جديدة. اختبر على محتواك الحقيقي أولًا.\n\nالتفاصيل: https://www.devya.dev/services?utm_source=facebook&utm_medium=social&utm_content=reel"
+        },
+        "instagram": {
+          "lang": "en",
+          "caption": "Launch-day bugs are rarely new. Test on your real content first.\n\n#BuildWithDevya #ProductLaunch #QA #Startups #Founders"
+        }
+      },
+      "stories": {
+        "facebook": {
+          "lang": "ar"
+        },
+        "instagram": {
+          "lang": "en"
+        }
+      }
+    },
+    {
+      "date": "2026-12-07",
+      "pillar": "engineering",
+      "layout": "code",
+      "accent": "azure",
+      "topic": "Light grey text can fail WCAG contrast: measure it",
+      "source": "https://www.devya.dev/projects/contrast-check",
+      "basis": "devya.dev/projects/contrast-check: WCAG 2.1 ratio, AA/AAA pass-fail, real-text preview, nearest accessible colour; low-contrast text passes a visual review but fails users and audits (page copy read from the site source, lib/community-projects.ts)",
+      "linkedinLink": false,
+      "card": {
+        "en": {
+          "kicker": "Engineering",
+          "title": "Light grey looks clean. It can also *fail*."
+        },
+        "ar": {
+          "kicker": "هندسة البرمجيات",
+          "title": "الرمادي الفاتح أنيق، لكنه قد *يرسب*."
+        },
+        "code": [
+          {
+            "label": {
+              "en": "Measure it, don't eyeball it",
+              "ar": "احسبها ولا تقدّرها بالعين"
+            },
+            "code": "/* before: looks clean, fails AA */\n.hint { color: #9ca3af; } /* 2.54:1 on white */\n\n/* after: one shade darker, passes AA */\n.hint { color: #6b7280; } /* 4.83:1 on white */\n\n/* AA: 4.5:1 body text, 3:1 large text\n   AAA: 7:1 body text */"
+          }
+        ]
+      },
+      "posts": {
+        "linkedin": {
+          "lang": "en",
+          "caption": "Light grey text is a design favourite: placeholders, captions, helper text. It looks clean on a large monitor. On a phone in bright light, or for a reader with weaker eyesight, it fades away.\n\nContrast has a number. To pass WCAG 2.1 at level AA, body text needs a contrast ratio of at least 4.5:1 against its background, and large text 3:1. AAA asks for 7:1.\n\nA common case: the light grey 9CA3AF on white measures about 2.54:1 and fails AA. One shade darker, 6B7280, measures 4.83:1 and passes.\n\nLow-contrast text gets through a quick visual review, then fails real users and accessibility audits. Measuring it takes seconds.\n\ncontrast-check, a tool we built, does this in the browser: it computes the WCAG 2.1 ratio for any two colours, shows pass or fail at every level, previews real sample text, and suggests the nearest accessible colour when a pair fails. Nothing to install.\n\n#Accessibility #WebDesign #UXDesign #BuildWithDevya"
+        },
+        "facebook": {
+          "lang": "ar",
+          "caption": "في موقعك نصوص رمادية فاتحة تبدو أنيقة؟ قد يصعب على بعض عملائك قراءتها، خاصة على الهاتف.\n\nللوضوح مقياس معروف اسمه نسبة التباين، ومعيار WCAG يطلب 4.5 إلى 1 على الأقل للنص العادي.\n\nمثلًا، اللون الرمادي 9CA3AF على خلفية بيضاء نسبته نحو 2.5 فقط فيرسب، أما الأغمق قليلًا 6B7280 فنسبته نحو 4.8 فينجح.\n\nلا تعتمد على العين، بل احسبها.\n\nأداتنا تحسب النسبة داخل متصفحك وتقترح أقرب لون ناجح: https://www.devya.dev/projects/contrast-check?utm_source=facebook&utm_medium=social"
+        },
+        "instagram": {
+          "lang": "en",
+          "caption": "That pale grey text? Measure it.\nA typical light grey on white scores about 2.5:1. WCAG AA asks for 4.5:1 for body text, so one shade darker can be the difference between pass and fail.\nDon't eyeball contrast. Link in bio.\n\n#BuildWithDevya #Accessibility #WebDesign #UIDesign #UXDesign #A11y"
+        }
+      },
+      "reel": {
+        "en": "Light grey text looks clean. Measure it: it can fail WCAG contrast.",
+        "ar": "النص الرمادي الفاتح يبدو أنيقًا، لكنه قد يرسب في اختبار التباين. احسبه."
+      },
+      "day": 23,
+      "skip": false,
+      "reels": {
+        "linkedin": {
+          "lang": "en",
+          "caption": "Light grey text looks clean. Measure it: it can fail WCAG contrast.\n\n#Accessibility #WebDesign #UXDesign"
+        },
+        "facebook": {
+          "lang": "ar",
+          "caption": "النص الرمادي الفاتح يبدو أنيقًا، لكنه قد يرسب في اختبار التباين. احسبه.\n\nالتفاصيل: https://www.devya.dev/projects/contrast-check?utm_source=facebook&utm_medium=social&utm_content=reel"
+        },
+        "instagram": {
+          "lang": "en",
+          "caption": "Light grey text looks clean. Measure it: it can fail WCAG contrast.\n\n#BuildWithDevya #Accessibility #WebDesign #UIDesign #UXDesign"
+        }
+      },
+      "stories": {
+        "facebook": {
+          "lang": "ar"
+        },
+        "instagram": {
+          "lang": "en"
+        }
+      }
     }
   ]
 }
