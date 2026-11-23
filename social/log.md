@@ -41,3 +41,7 @@ One row per network per run. Written by `routine/record.mjs`; the routine's full
 | 2026-11-21 | 7 | LinkedIn video | EN | failed | 2026-11-21 13:01 |  |  | no Chrome browser connected; nothing posted |
 | 2026-11-21 | 7 | Facebook Reel | EN | failed | 2026-11-21 13:01 |  |  | no Chrome browser connected; nothing posted |
 | 2026-11-21 | 7 | Instagram Reel | AR | failed | 2026-11-21 13:01 |  |  | no Chrome browser connected; nothing posted |
+| 2026-11-23 | 9 | LinkedIn | EN | failed | 2026-11-23 13:00 |  |  | No Chrome browser connected; nothing attempted |
+| 2026-11-23 | 9 | LinkedIn video | EN | failed | 2026-11-23 13:00 |  |  | No Chrome browser connected; nothing attempted |
+| 2026-11-23 | 9 | Facebook Reel | AR | failed | 2026-11-23 13:00 |  |  | No Chrome browser connected; nothing attempted |
+| 2026-11-23 | 9 | Instagram Reel | EN | failed | 2026-11-23 13:00 |  |  | No Chrome browser connected; nothing attempted |
