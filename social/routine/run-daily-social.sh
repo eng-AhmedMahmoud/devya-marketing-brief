@@ -3,7 +3,9 @@
 # (com.ahmedmahmoud.devya-social-daily). Each run:
 #   1. syncs a routine-owned clone of devya-marketing-brief to origin/main;
 #   2. asks routine/due.mjs which networks are due now (slot passed, not yet
-#      published today) and renders today's cards if they are missing;
+#      published today); when something is due, routine/preflight.mjs checks
+#      the ceo seat's Chrome is connected (if not: one NEEDS-YOU line, nothing
+#      published or recorded, exit 5), then today's cards are rendered if missing;
 #   3. runs a tightly allowlisted Claude session on the ceo seat
 #      (CLAUDE_CONFIG_DIR = brain profile ceo → Chrome "Profile 2", Devya) that
 #      publishes through Claude in Chrome and prints one RESULT_JSON line;
@@ -95,18 +97,29 @@ echo "held (pausedChannels): $(printf '%s' "$DUE_JSON" | node -pe 'JSON.parse(re
 echo "today $TODAY · due now: $(printf '%s' "$DUE_JSON" | node -pe 'JSON.parse(require("fs").readFileSync(0,"utf8")).due.map(d=>d.network).join(", ")||"none"') · calendar days left after today: $REMAINING"
 
 RC=0
+# Browser preflight, before rendering or starting a session: is the seat's
+# Chrome ("Profile 2", Devya) connected through Claude in Chrome? If not, log one
+# NEEDS-YOU line naming the fix and publish nothing: no session, no failed rows
+# in log.md, so the next slot retries whatever is still due. The top-up below
+# still runs. If the check itself cannot run, it fails open with a WARN line.
+DEVICE_ID=""
+if [[ "$COUNT" -gt 0 ]]; then
+  PRE_JSON="$(node social/routine/preflight.mjs browser --seat "$SEAT")"; PRE_RC=$?
+  PRE_LINE="$(printf '%s' "$PRE_JSON" | node -pe 'JSON.parse(require("fs").readFileSync(0,"utf8")).line' 2>/dev/null)"
+  echo "${PRE_LINE:-WARN: browser preflight printed nothing (rc $PRE_RC); going ahead}"
+  if [[ $PRE_RC -eq 3 ]]; then
+    COUNT=0
+    RC=5
+  else
+    DEVICE_ID="$(printf '%s' "$PRE_JSON" | node -pe 'JSON.parse(require("fs").readFileSync(0,"utf8")).deviceId || ""' 2>/dev/null)"
+  fi
+fi
+
 if [[ "$COUNT" -gt 0 ]]; then
   node social/render/render.mjs --date "$TODAY" || echo "WARN: render reported a problem for $TODAY"
   # Reels, stories and the LinkedIn video use the day's vertical video (git-ignored, rendered here).
   if printf '%s' "$DUE_JSON" | grep -q '"kind": "\(reel\|video\|story\)"'; then
     node social/render/render-reel.mjs --date "$TODAY" || echo "WARN: reel render reported a problem for $TODAY"
-  fi
-
-  # Seat preflight: the ceo seat's Chrome profile open, CIC connected and paired as ceo@devya.dev.
-  if command -v brain >/dev/null 2>&1; then
-    brain chrome check "$SEAT" --no-pages || echo "WARN: brain chrome check $SEAT reported a problem"
-  elif [[ -x "$HOME/bin/ensure-chrome.sh" ]]; then
-    "$HOME/bin/ensure-chrome.sh" --headless || { echo "ERROR: Chrome preflight failed"; exit 2; }
   fi
 
   BEFORE_TABS="$(/usr/bin/mktemp -t social-tabs)"
@@ -115,6 +128,9 @@ if [[ "$COUNT" -gt 0 ]]; then
     -e 'end repeat' -e 'end repeat' -e 'end tell' -e 'return out' > "$BEFORE_TABS" 2>/dev/null || true
 
   USER_PROMPT="$(printf 'Today is %s (Cairo). Publish these posts, in this order. Follow the system prompt exactly and end with one RESULT_JSON line.\n\n--- BEGIN due.json ---\n%s\n--- END due.json ---\n' "$TODAY" "$DUE_JSON")"
+  if [[ -n "$DEVICE_ID" ]]; then
+    USER_PROMPT="$(printf '%s\nBrowser: the %s seat'"'"'s Chrome "Profile 2" (Devya) is deviceId %s. If list_connected_browsers lists more than one browser, select_browser this deviceId; never use another.\n' "$USER_PROMPT" "$SEAT" "$DEVICE_ID")"
+  fi
   if [[ "${DEVYA_SOCIAL_DRY_RUN:-0}" == "1" ]]; then
     USER_PROMPT="$(printf 'DRY RUN. Do NOT open any composer and do NOT publish anything. For each network below only: open the account page from the system prompt, confirm it loads signed in and acting as the Devya account (check the identity markers the system prompt lists), and run the duplicate check. Report every network with status "skipped", url null, proof null, and a note saying what you verified or what blocked you.\n\n%s' "$USER_PROMPT")"
   fi
@@ -122,15 +138,32 @@ if [[ "$COUNT" -gt 0 ]]; then
 
   # No Read/Write/Bash: the session can only drive Chrome. The seat's config dir
   # makes it run as ceo@devya.dev, whose CIC device is Chrome "Profile 2".
-  OUT="$(CLAUDE_CONFIG_DIR="$SEAT_DIR" "$CLAUDE" --print --chrome \
+  publish_session() { # extra claude args, e.g. --model sonnet
+    CLAUDE_CONFIG_DIR="$SEAT_DIR" "$CLAUDE" --print --chrome "$@" \
       --allowed-tools "$TOOLS" \
       --append-system-prompt "$(cat social/routine/publish-worker.md)" \
-      "$USER_PROMPT")"
+      "$USER_PROMPT"
+  }
+  limit_field() { printf '%s\n' "$1" | node social/routine/preflight.mjs limit | node -pe "JSON.parse(require('fs').readFileSync(0,'utf8')).$2 || ''"; }
+  OUT="$(publish_session)"
   CL_EXIT=$?
+  # A cap on the seat's model alone (for example "You've hit your Fable limit …
+  # Switch to another model") does not stop another model: retry once with it.
+  # The worker's duplicate check keeps a retry from posting anything twice.
+  if [[ "$(limit_field "$OUT" limit)" == "model" ]] && ! printf '%s\n' "$OUT" | grep -qE '^RESULT_JSON:'; then
+    printf '%s\n' "$OUT"
+    FALLBACK_MODEL="${DEVYA_SOCIAL_FALLBACK_MODEL:-sonnet}"
+    echo "LIMIT: the $SEAT seat's model is capped; retrying once with --model $FALLBACK_MODEL"
+    OUT="$(publish_session --model "$FALLBACK_MODEL")"
+    CL_EXIT=$?
+  fi
 
   "$HOME/bin/close-new-chrome-tabs.sh" "$BEFORE_TABS" 2>/dev/null || true
   /bin/rm -f "$BEFORE_TABS"
   printf '%s\n' "$OUT"
+  if [[ "$(limit_field "$OUT" limit)" == "seat" ]]; then
+    echo "LIMIT: the $SEAT seat hit a usage limit ($(limit_field "$OUT" banner)); the first slot after the reset retries what is still due."
+  fi
 
   RESULT="$(printf '%s\n' "$OUT" | grep -E '^RESULT_JSON:' | tail -n1 | sed 's/^RESULT_JSON: *//')"
   if [[ "${DEVYA_SOCIAL_DRY_RUN:-0}" == "1" ]]; then
