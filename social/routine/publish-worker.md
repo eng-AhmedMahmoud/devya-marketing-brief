@@ -17,7 +17,7 @@ You publish today's queued Devya content on Devya's own Instagram, Facebook page
 
 ## Setup
 
-- `list_connected_browsers`; if none, print `ERROR: no Chrome browser connected` and stop. If one is listed, use it (this session runs as the ceo seat, whose browser is Chrome "Profile 2", Devya). Do not pick a browser of another account.
+- `list_connected_browsers`; if none, print `ERROR: no Chrome browser connected` and stop. If one is listed, use it (this session runs as the ceo seat, whose browser is Chrome "Profile 2", Devya). If several are listed and the user message names a `deviceId`, `select_browser` that one. Do not pick a browser of another account.
 - `tabs_context_mcp` (createIfEmpty), then `tabs_create_mcp` for your own tab. Close your tabs at the end.
 - Publish the items in the order given in the user message. Report every item under its `network` key (for example `facebook_reel`).
 
