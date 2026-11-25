@@ -129,6 +129,12 @@
         "at": "2026-11-25 19:47",
         "by": "routine",
         "proof": "proof/2026-11-25-facebook_story.jpg"
+      },
+      "instagram": {
+        "url": "https://www.instagram.com/p/DgLPEvmjdmF/",
+        "at": "2026-11-25 21:03",
+        "by": "routine",
+        "proof": "proof/2026-11-25-instagram.jpg"
       }
     }
   }
