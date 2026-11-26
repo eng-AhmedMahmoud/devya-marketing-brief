@@ -136,6 +136,14 @@
         "by": "routine",
         "proof": "proof/2026-11-25-instagram.jpg"
       }
+    },
+    "2026-11-26": {
+      "linkedin": {
+        "url": "https://www.linkedin.com/feed/update/urn:li:share:7531628181359984640",
+        "at": "2026-11-26 10:02",
+        "by": "routine",
+        "proof": "proof/2026-11-26-linkedin.jpg"
+      }
     }
   }
 }
