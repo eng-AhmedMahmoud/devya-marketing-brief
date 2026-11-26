@@ -173,6 +173,12 @@
         "at": "2026-11-26 19:54",
         "by": "routine",
         "proof": "proof/2026-11-26-facebook_story.jpg"
+      },
+      "instagram": {
+        "url": "https://www.instagram.com/p/DgNzyZwDYeH/",
+        "at": "2026-11-26 21:02",
+        "by": "routine",
+        "proof": "proof/2026-11-26-instagram.jpg"
       }
     }
   }
