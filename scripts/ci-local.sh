@@ -2,7 +2,9 @@
 # Local CI for devya-marketing-brief: every stage of the GitHub quality job
 # (install, lint, typecheck, build) plus the social pipeline gates:
 #   - unit tests: routine helpers, screenshot guard, links/SEO, music mixing,
-#     logo/theme checks (Playwright's cached Chromium + ffmpeg required);
+#     logo/theme checks (Playwright's cached Chromium + ffmpeg required), and
+#     the dev.to replies routine (mocked HTTP: pagination, state and dedup,
+#     comment trees, drafts, the approval gate);
 #   - calendar quality gate with images (fails on an untagged, off-site or
 #     Vercel link, off-brand accent, hashtag counts, naming, alt text);
 #   - post audit (render/audit.mjs): every scheduled day passes, and the
@@ -31,7 +33,7 @@ stage "typecheck" npx tsc --noEmit
 stage "build" pnpm run build
 stage "social deps" bash -c 'cd social/render && pnpm install --frozen-lockfile'
 stage "tools" bash -c 'command -v ffmpeg && command -v ffprobe && command -v curl'
-stage "social tests" node --test social/routine/*.test.mjs social/render/*.test.mjs
+stage "social tests" node --test social/routine/*.test.mjs social/render/*.test.mjs social/devto/*.test.mjs
 stage "calendar gate" node social/render/validate.mjs --images
 stage "post audit" bash -c 'd="$(mktemp -d)"; node social/render/audit.mjs --out "$d" && rm -rf "$d"'
 if [[ "${CI_OFFLINE:-0}" == "1" ]]; then
