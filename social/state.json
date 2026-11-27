@@ -187,6 +187,24 @@
         "at": "2026-11-27 10:12",
         "by": "routine",
         "proof": "proof/2026-11-27-linkedin.jpg"
+      },
+      "linkedin_video": {
+        "url": "https://www.linkedin.com/feed/update/urn:li:activity:7532036455779508224/",
+        "at": "2026-11-27 13:12",
+        "by": "routine",
+        "proof": "proof/2026-11-27-linkedin_video.jpg"
+      },
+      "facebook_reel": {
+        "url": "https://www.facebook.com/reel/1147551828067214/",
+        "at": "2026-11-27 13:12",
+        "by": "routine",
+        "proof": "proof/2026-11-27-facebook_reel.jpg"
+      },
+      "instagram_reel": {
+        "url": "https://www.instagram.com/devyasoftware/reel/DgPiwWXJ9Xm/",
+        "at": "2026-11-27 13:12",
+        "by": "routine",
+        "proof": "proof/2026-11-27-instagram_reel.jpg"
       }
     }
   }
