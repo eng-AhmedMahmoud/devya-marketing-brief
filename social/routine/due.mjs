@@ -6,11 +6,15 @@
 //
 //   node due.mjs [--now 2026-11-16T19:45] [--only linkedin,facebook]
 //
-// Output: {date, day, remaining, held:[{network,reason}], due:[{network,platform,kind,lang,caption,media,cover?,alt?}]}
+// Output: {date, day, remaining, held:[{network,reason}], due:[{network,platform,kind,lang,caption,media,cover?,captions?,alt?}]}
+// `alt` is the image's alt text (render/seo.mjs altText); `captions` is the
+// video's SRT subtitles (render/captions.mjs, written by render-reel.mjs) for
+// networks whose composer takes a caption file (LinkedIn video).
 
 import { readFileSync, existsSync } from 'node:fs';
 import { dirname, join } from 'node:path';
 import { fileURLToPath } from 'node:url';
+import { altText } from '../render/seo.mjs';
 
 const SOCIAL = join(dirname(fileURLToPath(import.meta.url)), '..');
 const cal = JSON.parse(readFileSync(join(SOCIAL, 'calendar.json'), 'utf8'));
@@ -43,16 +47,11 @@ const due = [];
 const held = [];
 if (day && !day.skip) {
   const vid = (lang) => join(SOCIAL, 'visuals', day.date, `reel-${lang}.mp4`);
-  const altFor = (lang) => {
-    const t = day.card[lang];
-    const detail = t.sub || (t.items || t.right?.items || []).join(', ');
-    return `${lang === 'ar' ? 'بطاقة من ديفيا' : 'Devya card'}: ${t.title.replace(/\*/g, '')}${detail ? ` ${detail.replace(/\*/g, '')}` : ''}`;
-  };
   const channels = [];
-  for (const [net, post] of Object.entries(day.posts)) channels.push({ network: net, platform: net, lang: post.lang, caption: post.caption, media: join(SOCIAL, 'visuals', day.date, `${net}.png`), alt: altFor(post.lang) });
+  for (const [net, post] of Object.entries(day.posts)) channels.push({ network: net, platform: net, lang: post.lang, caption: post.caption, media: join(SOCIAL, 'visuals', day.date, `${net}.png`), alt: altText(day, post.lang) });
   for (const [net, reel] of Object.entries(day.reels || {})) {
     const key = net === 'linkedin' ? 'linkedin_video' : `${net}_reel`;
-    channels.push({ network: key, platform: net, lang: reel.lang, caption: reel.caption, media: vid(reel.lang), cover: vid(reel.lang).replace(/\.mp4$/, '-cover.jpg') });
+    channels.push({ network: key, platform: net, lang: reel.lang, caption: reel.caption, media: vid(reel.lang), cover: vid(reel.lang).replace(/\.mp4$/, '-cover.jpg'), ...(net === 'linkedin' ? { captions: vid(reel.lang).replace(/\.mp4$/, '.srt') } : {}) });
   }
   for (const [net, story] of Object.entries(day.stories || {})) channels.push({ network: `${net}_story`, platform: net, lang: story.lang, caption: null, media: vid(story.lang) });
   for (const ch of channels) {

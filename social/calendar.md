@@ -1137,7 +1137,7 @@ Urania: the constellations and their myths, in English and Arabic.
 
 ## Day 14 · Sat 28 Nov · Stop adding Postgres indexes by guesswork: EXPLAIN ANALYZE
 
-Pillar **engineering** · layout **code** · accent azure · source https://www.devya.dev/blogs/postgres-explain-analyze-query-plans-indexes-field-notes
+Pillar **engineering** · layout **code** · source https://www.devya.dev/blogs/postgres-explain-analyze-query-plans-indexes-field-notes
 
 Basis: Devya blog field notes: reading PostgreSQL EXPLAIN ANALYZE
 
@@ -1167,7 +1167,9 @@ When an app gets slow, the usual fix is to "add an index" and hope.
 
 We do it in order instead: find the database query that costs the most in total, read the plan PostgreSQL actually used, add the one index that plan asks for, then measure again. Every index has a cost on writes, so each one has to earn its place.
 
-Engineering notes: https://www.devya.dev/blogs/postgres-explain-analyze-query-plans-indexes-field-notes?utm_source=facebook&utm_medium=social
+Engineering notes: https://www.devya.dev/blogs/postgres-explain-analyze-query-plans-indexes-field-notes?utm_source=facebook&utm_medium=social&utm_campaign=2026-11-28-stop-adding-postgres-indexes-by-guesswork
+
+#BuildWithDevya #PostgreSQL #Database
 ```
 
 ### Instagram · 21:00 · Arabic
@@ -1179,7 +1181,7 @@ Engineering notes: https://www.devya.dev/blogs/postgres-explain-analyze-query-pl
 ابحث أولًا عن الاستعلام الأعلى تكلفة إجمالًا، ثم اقرأ خطة التنفيذ الفعلية عبر EXPLAIN ANALYZE، وأضف الفهرس الذي تطلبه الخطة فقط، ثم قِس من جديد.
 الرابط في البايو.
 
-#قواعد_البيانات #برمجة #تطوير_البرمجيات #تقنية #مطورين #BuildWithDevya
+#قواعد_البيانات #برمجة #تطوير_البرمجيات #تقنية #BuildWithDevya
 ```
 
 ### Vertical video · 1080×1920, 10 s · `visuals/2026-11-28/reel-<lang>.mp4` (rendered on the day)
@@ -1201,7 +1203,9 @@ Stop adding indexes by guesswork. Read the plan first.
 ```text
 Stop adding indexes by guesswork. Read the plan first.
 
-More: https://www.devya.dev/blogs/postgres-explain-analyze-query-plans-indexes-field-notes?utm_source=facebook&utm_medium=social&utm_content=reel
+More: https://www.devya.dev/blogs/postgres-explain-analyze-query-plans-indexes-field-notes?utm_source=facebook&utm_medium=social&utm_campaign=2026-11-28-stop-adding-postgres-indexes-by-guesswork&utm_content=reel
+
+#BuildWithDevya #PostgreSQL #Database
 ```
 
 **Instagram Reel** · 13:00 · Arabic
@@ -1209,14 +1213,14 @@ More: https://www.devya.dev/blogs/postgres-explain-analyze-query-plans-indexes-f
 ```text
 توقف عن إضافة الفهارس بالتخمين. اقرأ خطة التنفيذ أولًا.
 
-#قواعد_البيانات #برمجة #تطوير_البرمجيات #تقنية #مطورين
+#قواعد_البيانات #برمجة #تطوير_البرمجيات #تقنية #BuildWithDevya
 ```
 
 **Stories** (same video, no caption): Facebook 19:30 English · Instagram 21:00 Arabic
 
 ## Day 15 · Sun 29 Nov · Ask for repo, staging and admin access from sprint one
 
-Pillar **client-value** · layout **checklist** · accent ember · source https://www.devya.dev/services
+Pillar **client-value** · layout **checklist** · source https://www.devya.dev/solutions
 
 Basis: devya-market-intel latest guide.avoid: backend, database and logs kept closed to the client during the build; give read access to repo, staging and admin from the first sprint, even on fixed price
 
@@ -1255,7 +1259,9 @@ A vendor who is confident in the work says yes on the first call.
 
 وهذا يشمل المشاريع ذات السعر الثابت أيضًا؛ فالسعر الثابت يحدد التكلفة، ولا يلغي حقك في رؤية ما تدفع ثمنه.
 
-تخطط لمشروعك القادم؟ تحدث معنا: https://www.devya.dev/contact?utm_source=facebook&utm_medium=social
+تخطط لمشروعك القادم؟ تحدث معنا: https://www.devya.dev/contact?utm_source=facebook&utm_medium=social&utm_campaign=2026-11-29-ask-for-repo-staging-and-admin-access-from
+
+#BuildWithDevya #تطوير_البرمجيات
 ```
 
 ### Instagram · 21:00 · English
@@ -1267,7 +1273,7 @@ Demos show what your vendor picks.
 Ask for three things from sprint one: read access to the code repository, a staging link you can open any day, and your own admin login. A fixed price fixes the cost, not your right to see the work.
 Save this for your next contract. Link in bio.
 
-#BuildWithDevya #Founders #Startups #Outsourcing #TechTips #SoftwareDevelopment
+#BuildWithDevya #Founders #Startups #Outsourcing #SoftwareDevelopment
 ```
 
 ### Vertical video · 1080×1920, 10 s · `visuals/2026-11-29/reel-<lang>.mp4` (rendered on the day)
@@ -1289,7 +1295,9 @@ Only seeing your app in demos? Ask for repo, staging and admin access from sprin
 ```text
 ترى تطبيقك في العروض فقط؟ اطلب الوصول إلى الكود والنسخة التجريبية ولوحة الإدارة من البداية.
 
-التفاصيل: https://www.devya.dev/services?utm_source=facebook&utm_medium=social&utm_content=reel
+التفاصيل: https://www.devya.dev/contact?utm_source=facebook&utm_medium=social&utm_campaign=2026-11-29-ask-for-repo-staging-and-admin-access-from&utm_content=reel
+
+#BuildWithDevya #تطوير_البرمجيات
 ```
 
 **Instagram Reel** · 13:00 · English
@@ -1297,14 +1305,14 @@ Only seeing your app in demos? Ask for repo, staging and admin access from sprin
 ```text
 Only seeing your app in demos? Ask for repo, staging and admin access from sprint one.
 
-#BuildWithDevya #Founders #Startups #Outsourcing #TechTips
+#BuildWithDevya #Founders #Startups #Outsourcing #SoftwareDevelopment
 ```
 
 **Stories** (same video, no caption): Facebook 19:30 Arabic · Instagram 21:00 English
 
 ## Day 16 · Mon 30 Nov · A JWT is encoded, not encrypted: decoding isn't verifying
 
-Pillar **engineering** · layout **compare** · accent azure · source https://www.devya.dev/projects/jwt-inspector
+Pillar **engineering** · layout **compare** · source https://www.devya.dev/projects/jwt-inspector
 
 Basis: devya.dev/projects/jwt-inspector: decodes header and payload in the browser with zero network calls; online decoders send tokens to servers you don't control; signature verification needs a key kept on your server (page copy read from the site source, lib/community-projects.ts)
 
@@ -1323,7 +1331,7 @@ Third, those convenient online decoders send your token to a server you don't co
 
 So we built jwt-inspector. It decodes the header and payload, shows the standard claims with readable dates and a live expiry status, and makes zero network calls. The token never leaves the page.
 
-https://www.devya.dev/projects/jwt-inspector?utm_source=linkedin&utm_medium=social
+https://www.devya.dev/projects/jwt-inspector?utm_source=linkedin&utm_medium=social&utm_campaign=2026-11-30-a-jwt-is-encoded-not-encrypted-decoding-isn-t
 
 #WebSecurity #JWT #Authentication #BuildWithDevya
 ```
@@ -1339,7 +1347,9 @@ https://www.devya.dev/projects/jwt-inspector?utm_source=linkedin&utm_medium=soci
 وقراءة الرمز لا تعني الثقة به؛ فالثقة تأتي بعد التحقق من توقيعه بمفتاح محفوظ على خادمك.
 وانتبه: مواقع فك الترميز السريعة على الإنترنت ترسل رمزك إلى خادم لا تتحكم فيه.
 
-لهذا بنينا أداة تفك الترميز داخل متصفحك فقط، دون أي اتصال بالشبكة، وتعرض تاريخ انتهاء الرمز بوضوح: https://www.devya.dev/projects/jwt-inspector?utm_source=facebook&utm_medium=social
+لهذا بنينا أداة تفك الترميز داخل متصفحك فقط، دون أي اتصال بالشبكة، وتعرض تاريخ انتهاء الرمز بوضوح: https://www.devya.dev/projects/jwt-inspector?utm_source=facebook&utm_medium=social&utm_campaign=2026-11-30-a-jwt-is-encoded-not-encrypted-decoding-isn-t
+
+#BuildWithDevya #أمن_المعلومات
 ```
 
 ### Instagram · 21:00 · English
@@ -1351,7 +1361,7 @@ A JWT is encoded, not encrypted.
 Anyone holding the token can read the payload, so keep secrets out of it. And decoding proves nothing: trust the claims only after your server checks the signature.
 Debugging? Decode in your browser, not on someone else's server. Link in bio.
 
-#BuildWithDevya #WebSecurity #JWT #Authentication #DevTips #CyberSecurity
+#BuildWithDevya #WebSecurity #JWT #Authentication #CyberSecurity
 ```
 
 ### Vertical video · 1080×1920, 10 s · `visuals/2026-11-30/reel-<lang>.mp4` (rendered on the day)
@@ -1373,7 +1383,9 @@ A JWT is encoded, not encrypted. Decoding it proves nothing.
 ```text
 رمز JWT مُرمَّز وليس مشفّرًا، وفك ترميزه لا يثبت شيئًا.
 
-التفاصيل: https://www.devya.dev/projects/jwt-inspector?utm_source=facebook&utm_medium=social&utm_content=reel
+التفاصيل: https://www.devya.dev/projects/jwt-inspector?utm_source=facebook&utm_medium=social&utm_campaign=2026-11-30-a-jwt-is-encoded-not-encrypted-decoding-isn-t&utm_content=reel
+
+#BuildWithDevya #أمن_المعلومات
 ```
 
 **Instagram Reel** · 13:00 · English
@@ -1381,14 +1393,14 @@ A JWT is encoded, not encrypted. Decoding it proves nothing.
 ```text
 A JWT is encoded, not encrypted. Decoding it proves nothing.
 
-#BuildWithDevya #WebSecurity #JWT #Authentication #DevTips
+#BuildWithDevya #WebSecurity #JWT #Authentication #CyberSecurity
 ```
 
 **Stories** (same video, no caption): Facebook 19:30 Arabic · Instagram 21:00 English
 
 ## Day 17 · Tue 1 Dec · Devya Converse: AI chat that answers from your own content
 
-Pillar **product** · layout **product** · accent lime · source https://www.devya.dev/converse
+Pillar **product** · layout **product** · source https://www.devya.dev/converse
 
 Basis: devya.dev/converse: assistant trained on your docs with sources, Arabic-first bilingual replies, website/WhatsApp/Messenger/API, lead capture and booking, human hand-off, no-training or self-hosted option, three-step setup, 20-minute demo (page copy read from the site source, app/(pages)/converse)
 
@@ -1411,7 +1423,7 @@ Setup is three steps: connect your content, shape and test it on real questions,
 
 Bring a few real customer questions to a 20-minute demo and watch it answer them.
 
-https://www.devya.dev/converse?utm_source=linkedin&utm_medium=social
+https://www.devya.dev/converse?utm_source=linkedin&utm_medium=social&utm_campaign=2026-12-01-devya-converse-ai-chat-that-answers-from-your
 
 #ConversationalAI #CustomerSupport #MENA #BuildWithDevya
 ```
@@ -1425,7 +1437,9 @@ Your team answers the same customer questions all day.
 
 Devya Converse is an AI assistant trained on your own content: your site, documents, product catalogue and FAQs. It replies on your website, WhatsApp or Messenger, in Arabic or English, matching each customer's language. Every answer comes from your material, not guesswork. It can collect a customer's details, book the meeting in your calendar, and hand the conversation to a person when it matters.
 
-See it answer your own questions in a short demo: https://www.devya.dev/converse?utm_source=facebook&utm_medium=social
+See it answer your own questions in a short demo: https://www.devya.dev/converse?utm_source=facebook&utm_medium=social&utm_campaign=2026-12-01-devya-converse-ai-chat-that-answers-from-your
+
+#BuildWithDevya #ConversationalAI #CustomerSupport
 ```
 
 ### Instagram · 21:00 · Arabic
@@ -1438,7 +1452,7 @@ See it answer your own questions in a short demo: https://www.devya.dev/converse
 لا ردود مُختلقة: كل إجابة مبنية على موادك.
 الرابط في البايو.
 
-#ذكاء_اصطناعي #خدمة_العملاء #ريادة_الأعمال #التجارة_الإلكترونية #السعودية #BuildWithDevya
+#ذكاء_اصطناعي #خدمة_العملاء #ريادة_الأعمال #التجارة_الإلكترونية #BuildWithDevya
 ```
 
 ### Vertical video · 1080×1920, 10 s · `visuals/2026-12-01/reel-<lang>.mp4` (rendered on the day)
@@ -1460,7 +1474,9 @@ Devya Converse: AI chat that answers from your own content, in Arabic and Englis
 ```text
 Devya Converse: AI chat that answers from your own content, in Arabic and English.
 
-More: https://www.devya.dev/converse?utm_source=facebook&utm_medium=social&utm_content=reel
+More: https://www.devya.dev/converse?utm_source=facebook&utm_medium=social&utm_campaign=2026-12-01-devya-converse-ai-chat-that-answers-from-your&utm_content=reel
+
+#BuildWithDevya #ConversationalAI #CustomerSupport
 ```
 
 **Instagram Reel** · 13:00 · Arabic
@@ -1468,14 +1484,14 @@ More: https://www.devya.dev/converse?utm_source=facebook&utm_medium=social&utm_c
 ```text
 مساعد Devya Converse يجيب عملاءك من محتواك أنت، بالعربية والإنجليزية.
 
-#ذكاء_اصطناعي #خدمة_العملاء #ريادة_الأعمال #التجارة_الإلكترونية #السعودية
+#ذكاء_اصطناعي #خدمة_العملاء #ريادة_الأعمال #التجارة_الإلكترونية #BuildWithDevya
 ```
 
 **Stories** (same video, no caption): Facebook 19:30 English · Instagram 21:00 Arabic
 
 ## Day 18 · Wed 2 Dec · Ask for the real start date and the named team in writing
 
-Pillar **client-value** · layout **statement** · accent ember · source https://www.devya.dev/services
+Pillar **client-value** · layout **statement** · source https://www.devya.dev/solutions
 
 Basis: devya-market-intel latest guide.do: when the team is booked, give the real start date in writing with the named team, and offer a paid discovery phase in the gap
 
@@ -1514,7 +1530,9 @@ An honest wait is easier to plan around than a team that's thin from week one.
 
 وإن أردت أن تستفيد من فترة الانتظار، فاطلب مرحلة استكشاف قصيرة ومدفوعة لتحديد المتطلبات.
 
-تحدث معنا عن مشروعك: https://www.devya.dev/contact?utm_source=facebook&utm_medium=social
+تحدث معنا عن مشروعك: https://www.devya.dev/contact?utm_source=facebook&utm_medium=social&utm_campaign=2026-12-02-ask-for-the-real-start-date-and-the-named-team
+
+#BuildWithDevya #ريادة_الأعمال
 ```
 
 ### Instagram · 21:00 · English
@@ -1526,7 +1544,7 @@ An honest wait is easier to plan around than a team that's thin from week one.
 Ask your vendor for the real start date and the names of the people starting on it, in writing. Want momentum before then? Ask for a short paid discovery phase in the gap.
 An honest date beats an early start with half a team. Link in bio.
 
-#BuildWithDevya #Founders #ProjectManagement #Startups #Egypt #SaudiArabia
+#BuildWithDevya #Founders #ProjectManagement #Egypt #SaudiArabia
 ```
 
 ### Vertical video · 1080×1920, 10 s · `visuals/2026-12-02/reel-<lang>.mp4` (rendered on the day)
@@ -1548,7 +1566,9 @@ One-liner AR: قبل أن توقّع: اطلب موعد البدء الحقيق�
 ```text
 قبل أن توقّع: اطلب موعد البدء الحقيقي وأسماء الفريق مكتوبة.
 
-التفاصيل: https://www.devya.dev/services?utm_source=facebook&utm_medium=social&utm_content=reel
+التفاصيل: https://www.devya.dev/contact?utm_source=facebook&utm_medium=social&utm_campaign=2026-12-02-ask-for-the-real-start-date-and-the-named-team&utm_content=reel
+
+#BuildWithDevya #ريادة_الأعمال
 ```
 
 **Instagram Reel** · 13:00 · English
@@ -1556,14 +1576,14 @@ One-liner AR: قبل أن توقّع: اطلب موعد البدء الحقيق�
 ```text
 "We can start Monday." Ask who, exactly, and get it in writing.
 
-#BuildWithDevya #Founders #ProjectManagement #Startups #Egypt
+#BuildWithDevya #Founders #ProjectManagement #Egypt #SaudiArabia
 ```
 
 **Stories** (same video, no caption): Facebook 19:30 Arabic · Instagram 21:00 English
 
 ## Day 19 · Thu 3 Dec · A wrong cron line still runs: read it back before it ships
 
-Pillar **engineering** · layout **code** · accent azure · source https://www.devya.dev/projects/cron-builder
+Pillar **engineering** · layout **code** · source https://www.devya.dev/projects/cron-builder
 
 Basis: devya.dev/projects/cron-builder: a misread cron field silently runs a job at the wrong time; plain-English description and next run times in the browser (page copy read from the site source, lib/community-projects.ts)
 
@@ -1582,7 +1602,7 @@ The habit that catches most of this: before a schedule ships, read it back in pl
 
 cron-builder does exactly that in the browser. Paste a standard five-field expression and get a plain-English description plus the upcoming run times, or build one from presets. No libraries, no server.
 
-https://www.devya.dev/projects/cron-builder?utm_source=linkedin&utm_medium=social
+https://www.devya.dev/projects/cron-builder?utm_source=linkedin&utm_medium=social&utm_campaign=2026-12-03-a-wrong-cron-line-still-runs-read-it-back-before
 
 #DevOps #Cron #BackendEngineering #BuildWithDevya
 ```
@@ -1600,7 +1620,9 @@ https://www.devya.dev/projects/cron-builder?utm_source=linkedin&utm_medium=socia
 
 نصيحتنا: اقرأ الجدول بكلمات واضحة، وراجع مواعيد التشغيل القادمة قبل اعتماده.
 
-أداتنا تفعل ذلك داخل المتصفح: https://www.devya.dev/projects/cron-builder?utm_source=facebook&utm_medium=social
+أداتنا تفعل ذلك داخل المتصفح: https://www.devya.dev/projects/cron-builder?utm_source=facebook&utm_medium=social&utm_campaign=2026-12-03-a-wrong-cron-line-still-runs-read-it-back-before
+
+#BuildWithDevya #برمجة
 ```
 
 ### Instagram · 21:00 · English
@@ -1612,7 +1634,7 @@ Get a cron line wrong and it still runs. Just at the wrong time.
 0 9 1 * 1 isn't "9am on the 1st if it's a Monday". It runs on the 1st of every month and on every Monday.
 Read a schedule back in plain English and check its next run times before it ships. Link in bio.
 
-#BuildWithDevya #DevOps #Cron #Linux #BackendDevelopment #CodingTips
+#BuildWithDevya #DevOps #Cron #BackendDevelopment #CodingTips
 ```
 
 ### Vertical video · 1080×1920, 10 s · `visuals/2026-12-03/reel-<lang>.mp4` (rendered on the day)
@@ -1634,7 +1656,9 @@ A wrong cron line doesn't fail. It runs at the wrong time.
 ```text
 سطر cron الخاطئ لا يتوقف، بل يعمل في التوقيت الخاطئ.
 
-التفاصيل: https://www.devya.dev/projects/cron-builder?utm_source=facebook&utm_medium=social&utm_content=reel
+التفاصيل: https://www.devya.dev/projects/cron-builder?utm_source=facebook&utm_medium=social&utm_campaign=2026-12-03-a-wrong-cron-line-still-runs-read-it-back-before&utm_content=reel
+
+#BuildWithDevya #برمجة
 ```
 
 **Instagram Reel** · 13:00 · English
@@ -1642,14 +1666,14 @@ A wrong cron line doesn't fail. It runs at the wrong time.
 ```text
 A wrong cron line doesn't fail. It runs at the wrong time.
 
-#BuildWithDevya #DevOps #Cron #Linux #BackendDevelopment
+#BuildWithDevya #DevOps #Cron #BackendDevelopment #CodingTips
 ```
 
 **Stories** (same video, no caption): Facebook 19:30 Arabic · Instagram 21:00 English
 
 ## Day 20 · Fri 4 Dec · Our security practices on one page, before procurement asks
 
-Pillar **bts** · layout **checklist** · accent lime · source https://www.devya.dev/security
+Pillar **bts** · layout **checklist** · source https://www.devya.dev/security
 
 Basis: devya.dev/security 'Our Security Practices': HTTPS/TLS with HSTS, argon2id, RBAC with lockout, audit logging, daily backups with documented restores, no trackers before consent, breach-response runbook (page copy read from the site source, app/security)
 
@@ -1671,7 +1695,7 @@ What it covers:
 
 If you're assessing us, or any vendor, this is the list to ask for in writing.
 
-https://www.devya.dev/security?utm_source=linkedin&utm_medium=social
+https://www.devya.dev/security?utm_source=linkedin&utm_medium=social&utm_campaign=2026-12-04-our-security-practices-on-one-page-before
 
 #CyberSecurity #DataProtection #Procurement #BuildWithDevya
 ```
@@ -1692,7 +1716,9 @@ https://www.devya.dev/security?utm_source=linkedin&utm_medium=social
 
 إن كنت تقيّم أي شركة برمجة، فاطلب منها قائمة كهذه مكتوبة.
 
-التفاصيل: https://www.devya.dev/security?utm_source=facebook&utm_medium=social
+التفاصيل: https://www.devya.dev/security?utm_source=facebook&utm_medium=social&utm_campaign=2026-12-04-our-security-practices-on-one-page-before
+
+#BuildWithDevya #أمن_المعلومات
 ```
 
 ### Instagram · 21:00 · English
@@ -1704,7 +1730,7 @@ Security answers, before you ask.
 HTTPS everywhere with HSTS. Passwords hashed with argon2id. Role-based access. An audit trail for admin actions. Daily backups with documented restores. No trackers before consent.
 All on one page, written for procurement and due-diligence reviews. Link in bio.
 
-#BuildWithDevya #CyberSecurity #DataPrivacy #InfoSec #WebDevelopment #Cairo
+#BuildWithDevya #CyberSecurity #DataPrivacy #InfoSec #WebDevelopment
 ```
 
 ### Vertical video · 1080×1920, 10 s · `visuals/2026-12-04/reel-<lang>.mp4` (rendered on the day)
@@ -1726,7 +1752,9 @@ How we protect client data, on one page: argon2id, HSTS, audit logs, daily backu
 ```text
 كيف نحمي بيانات عملائنا؟ الإجابة في صفحة واحدة: تشفير ونسخ احتياطي يومي وسجل تدقيق.
 
-التفاصيل: https://www.devya.dev/security?utm_source=facebook&utm_medium=social&utm_content=reel
+التفاصيل: https://www.devya.dev/security?utm_source=facebook&utm_medium=social&utm_campaign=2026-12-04-our-security-practices-on-one-page-before&utm_content=reel
+
+#BuildWithDevya #أمن_المعلومات
 ```
 
 **Instagram Reel** · 13:00 · English
@@ -1741,7 +1769,7 @@ How we protect client data, on one page: argon2id, HSTS, audit logs, daily backu
 
 ## Day 21 · Sat 5 Dec · og-preview: see your link card before you share it
 
-Pillar **product** · layout **product** · accent lime · source https://www.devya.dev/projects/og-preview
+Pillar **product** · layout **product** · source https://www.devya.dev/projects/og-preview
 
 Basis: devya.dev/projects/og-preview: Google, Facebook, X and LinkedIn card previews, live character counters, ready-to-paste meta tags, single static page, free and open source (page copy read from the site source, lib/community-projects.ts)
 
@@ -1775,7 +1803,9 @@ Shared your website link and got the wrong image, or a title cut in half?
 
 That preview card is built from a few hidden tags on your page. og-preview, a free tool we built, shows how your page will look as a Google result and as Facebook, X and LinkedIn cards before you publish, then gives you the exact tags to paste in. It runs in your browser, with nothing to install.
 
-Try it before your next launch: https://www.devya.dev/projects/og-preview?utm_source=facebook&utm_medium=social
+Try it before your next launch: https://www.devya.dev/projects/og-preview?utm_source=facebook&utm_medium=social&utm_campaign=2026-12-05-og-preview-see-your-link-card-before-you-share-it
+
+#BuildWithDevya #SEO #OpenGraph
 ```
 
 ### Instagram · 21:00 · Arabic
@@ -1788,19 +1818,19 @@ Try it before your next launch: https://www.devya.dev/projects/og-preview?utm_so
 تعمل داخل متصفحك، ولا تحتاج إلى تثبيت، وهي مفتوحة المصدر.
 الرابط في البايو.
 
-#تسويق_رقمي #تحسين_محركات_البحث #تطوير_المواقع #ريادة_الأعمال #مصر #BuildWithDevya
+#تسويق_رقمي #تحسين_محركات_البحث #تطوير_المواقع #ريادة_الأعمال #BuildWithDevya
 ```
 
 ### Vertical video · 1080×1920, 10 s · `visuals/2026-12-05/reel-<lang>.mp4` (rendered on the day)
 
-One-liner EN: See how your link looks on Google, Facebook, X and LinkedIn before you share it.
+One-liner EN: Link preview check: see how your link looks on Google, Facebook, X and LinkedIn before you share it.
 
 One-liner AR: اعرف كيف يظهر رابطك على Google وFacebook وX وLinkedIn قبل أن تشاركه.
 
 **LinkedIn video** · 13:00 · English
 
 ```text
-See how your link looks on Google, Facebook, X and LinkedIn before you share it.
+Link preview check: see how your link looks on Google, Facebook, X and LinkedIn before you share it.
 
 #SEO #OpenGraph #WebDevelopment
 ```
@@ -1808,9 +1838,11 @@ See how your link looks on Google, Facebook, X and LinkedIn before you share it.
 **Facebook Reel** · 13:00 · English
 
 ```text
-See how your link looks on Google, Facebook, X and LinkedIn before you share it.
+Link preview check: see how your link looks on Google, Facebook, X and LinkedIn before you share it.
 
-More: https://www.devya.dev/projects/og-preview?utm_source=facebook&utm_medium=social&utm_content=reel
+More: https://www.devya.dev/projects/og-preview?utm_source=facebook&utm_medium=social&utm_campaign=2026-12-05-og-preview-see-your-link-card-before-you-share-it&utm_content=reel
+
+#BuildWithDevya #SEO #OpenGraph
 ```
 
 **Instagram Reel** · 13:00 · Arabic
@@ -1818,14 +1850,14 @@ More: https://www.devya.dev/projects/og-preview?utm_source=facebook&utm_medium=s
 ```text
 اعرف كيف يظهر رابطك على Google وFacebook وX وLinkedIn قبل أن تشاركه.
 
-#تسويق_رقمي #تحسين_محركات_البحث #تطوير_المواقع #ريادة_الأعمال #مصر
+#تسويق_رقمي #تحسين_محركات_البحث #تطوير_المواقع #ريادة_الأعمال #BuildWithDevya
 ```
 
 **Stories** (same video, no caption): Facebook 19:30 English · Instagram 21:00 Arabic
 
 ## Day 22 · Sun 6 Dec · Before launch, ask for a written test pass on real content
 
-Pillar **client-value** · layout **checklist** · accent ember · source https://www.devya.dev/services
+Pillar **client-value** · layout **checklist** · source https://www.devya.dev/solutions
 
 Basis: devya-market-intel latest guide.avoid: no launch without a written pre-launch test pass on the client's real content, devices and payment or login paths; don't end the project on launch day (two-week support with visible bug triage)
 
@@ -1866,7 +1898,9 @@ Then don't let the project end on launch day. Agree a two-week support window wi
 
 ولا تجعل المشروع ينتهي يوم الإطلاق: اتفق على أسبوعين من الدعم بعده.
 
-تحدث معنا: https://www.devya.dev/contact?utm_source=facebook&utm_medium=social
+تحدث معنا: https://www.devya.dev/contact?utm_source=facebook&utm_medium=social&utm_campaign=2026-12-06-before-launch-ask-for-a-written-test-pass-on
+
+#BuildWithDevya #ريادة_الأعمال
 ```
 
 ### Instagram · 21:00 · English
@@ -1878,7 +1912,7 @@ Dummy data hides launch-day bugs.
 Before you approve a launch, ask for a written test pass: your real products and prices, your customers' phones, every login path, and a real payment plus a refund. Then agree two weeks of support after launch.
 Save this for launch week. Link in bio.
 
-#BuildWithDevya #ProductLaunch #QA #Startups #Founders #AppDevelopment
+#BuildWithDevya #ProductLaunch #QA #Startups #AppDevelopment
 ```
 
 ### Vertical video · 1080×1920, 10 s · `visuals/2026-12-06/reel-<lang>.mp4` (rendered on the day)
@@ -1900,7 +1934,9 @@ Launch-day bugs are rarely new. Test on your real content first.
 ```text
 أخطاء يوم الإطلاق نادرًا ما تكون جديدة. اختبر على محتواك الحقيقي أولًا.
 
-التفاصيل: https://www.devya.dev/services?utm_source=facebook&utm_medium=social&utm_content=reel
+التفاصيل: https://www.devya.dev/contact?utm_source=facebook&utm_medium=social&utm_campaign=2026-12-06-before-launch-ask-for-a-written-test-pass-on&utm_content=reel
+
+#BuildWithDevya #ريادة_الأعمال
 ```
 
 **Instagram Reel** · 13:00 · English
@@ -1908,14 +1944,14 @@ Launch-day bugs are rarely new. Test on your real content first.
 ```text
 Launch-day bugs are rarely new. Test on your real content first.
 
-#BuildWithDevya #ProductLaunch #QA #Startups #Founders
+#BuildWithDevya #ProductLaunch #QA #Startups #AppDevelopment
 ```
 
 **Stories** (same video, no caption): Facebook 19:30 Arabic · Instagram 21:00 English
 
 ## Day 23 · Mon 7 Dec · Light grey text can fail WCAG contrast: measure it
 
-Pillar **engineering** · layout **code** · accent azure · source https://www.devya.dev/projects/contrast-check
+Pillar **engineering** · layout **code** · source https://www.devya.dev/projects/contrast-check
 
 Basis: devya.dev/projects/contrast-check: WCAG 2.1 ratio, AA/AAA pass-fail, real-text preview, nearest accessible colour; low-contrast text passes a visual review but fails users and audits (page copy read from the site source, lib/community-projects.ts)
 
@@ -1950,7 +1986,9 @@ contrast-check, a tool we built, does this in the browser: it computes the WCAG 
 
 لا تعتمد على العين، بل احسبها.
 
-أداتنا تحسب النسبة داخل متصفحك وتقترح أقرب لون ناجح: https://www.devya.dev/projects/contrast-check?utm_source=facebook&utm_medium=social
+أداتنا تحسب النسبة داخل متصفحك وتقترح أقرب لون ناجح: https://www.devya.dev/projects/contrast-check?utm_source=facebook&utm_medium=social&utm_campaign=2026-12-07-light-grey-text-can-fail-wcag-contrast-measure-it
+
+#BuildWithDevya #تصميم_المواقع
 ```
 
 ### Instagram · 21:00 · English
@@ -1962,7 +2000,7 @@ That pale grey text? Measure it.
 A typical light grey on white scores about 2.5:1. WCAG AA asks for 4.5:1 for body text, so one shade darker can be the difference between pass and fail.
 Don't eyeball contrast. Link in bio.
 
-#BuildWithDevya #Accessibility #WebDesign #UIDesign #UXDesign #A11y
+#BuildWithDevya #Accessibility #WebDesign #UXDesign #A11y
 ```
 
 ### Vertical video · 1080×1920, 10 s · `visuals/2026-12-07/reel-<lang>.mp4` (rendered on the day)
@@ -1984,7 +2022,9 @@ Light grey text looks clean. Measure it: it can fail WCAG contrast.
 ```text
 النص الرمادي الفاتح يبدو أنيقًا، لكنه قد يرسب في اختبار التباين. احسبه.
 
-التفاصيل: https://www.devya.dev/projects/contrast-check?utm_source=facebook&utm_medium=social&utm_content=reel
+التفاصيل: https://www.devya.dev/projects/contrast-check?utm_source=facebook&utm_medium=social&utm_campaign=2026-12-07-light-grey-text-can-fail-wcag-contrast-measure-it&utm_content=reel
+
+#BuildWithDevya #تصميم_المواقع
 ```
 
 **Instagram Reel** · 13:00 · English
@@ -1992,7 +2032,7 @@ Light grey text looks clean. Measure it: it can fail WCAG contrast.
 ```text
 Light grey text looks clean. Measure it: it can fail WCAG contrast.
 
-#BuildWithDevya #Accessibility #WebDesign #UIDesign #UXDesign
+#BuildWithDevya #Accessibility #WebDesign #UXDesign #A11y
 ```
 
 **Stories** (same video, no caption): Facebook 19:30 Arabic · Instagram 21:00 English

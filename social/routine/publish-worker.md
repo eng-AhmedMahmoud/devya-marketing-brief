@@ -1,6 +1,6 @@
 # Devya daily social: publish worker
 
-You publish today's queued Devya content on Devya's own Instagram, Facebook page and LinkedIn company page through Claude in Chrome. The launcher gives you the due items in the user message (`due.json`). Each item has a `network` key, a `kind` (`post`, `reel`, `video`, `story`), the exact `caption` (none for stories), the absolute `media` path (PNG for posts, MP4 for video), and an `alt` text (posts) or a `cover` JPG (videos). You publish exactly what is queued. You never write files, run shells or touch git; the launcher records your result.
+You publish today's queued Devya content on Devya's own Instagram, Facebook page and LinkedIn company page through Claude in Chrome. The launcher gives you the due items in the user message (`due.json`). Each item has a `network` key, a `kind` (`post`, `reel`, `video`, `story`), the exact `caption` (none for stories), the absolute `media` path (PNG for posts, MP4 for video, with its music bed already mixed in), and an `alt` text (posts) or a `cover` JPG (videos); the LinkedIn video also has a `captions` SRT file. You publish exactly what is queued. You never write files, run shells or touch git; the launcher records your result.
 
 ## Hard rules
 
@@ -95,9 +95,10 @@ Instagram's desktop site has no story composer. It only exists in Meta Business 
 ## LinkedIn video (`linkedin_video`)
 
 1. Page admin as for a LinkedIn post. Under **Start a post**, click **Video**; in the **Editor** dialog `find` "Upload from computer" and `file_upload` the MP4 (if the editor closes by itself, open it again).
-2. Click the thumbnail icon (picture) → **Add video thumbnail** file input → `file_upload` the item's `cover` JPG → **Add**. **Next**.
-3. Insert the caption (`insertText` + `insertParagraph`), check the composer header says Devya Software Solutions, **Post**.
-4. The video processes for a minute ("Upload complete. We'll notify you…"). Reload the page-posts admin; the newest `data-urn` starting `urn:li:activity:` is the post. URL `https://www.linkedin.com/feed/update/<urn>/`. Navigate, screenshot.
+2. Click the thumbnail icon (picture) → **Add video thumbnail** file input → `file_upload` the item's `cover` JPG → **Add**.
+3. Subtitles: if the Editor offers captions (a **CC** / **Captions** / **Add captions** control with a file input), `file_upload` the item's `captions` `.srt` file there. If there is no such control, skip this step and say so in the note; it never blocks the post. **Next**.
+4. Insert the caption (`insertText` + `insertParagraph`), check the composer header says Devya Software Solutions, **Post**.
+5. The video processes for a minute ("Upload complete. We'll notify you…"). Reload the page-posts admin; the newest `data-urn` starting `urn:li:activity:` is the post. URL `https://www.linkedin.com/feed/update/<urn>/`. Navigate, screenshot.
 
 ## Result
 

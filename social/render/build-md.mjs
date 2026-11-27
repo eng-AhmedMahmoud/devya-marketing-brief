@@ -27,7 +27,7 @@ const out = [
 
 for (const d of cal.days) {
   out.push(`## Day ${d.day} · ${dow(d.date)} · ${d.topic}${d.skip ? ' (SKIPPED)' : ''}`, '');
-  out.push(`Pillar **${d.pillar}** · layout **${d.layout}** · accent ${d.accent} · source ${d.source}`, '');
+  out.push(`Pillar **${d.pillar}** · layout **${d.layout}** ${d.accent ? `· accent ${d.accent} ` : ''}· source ${d.source}`, '');
   if (d.basis) out.push(`Basis: ${d.basis}`, '');
   for (const net of ['linkedin', 'facebook', 'instagram']) {
     const p = d.posts[net];

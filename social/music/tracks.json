@@ -1,0 +1,35 @@
+{
+  "note": "Background music beds for the daily vertical video. Licences and sources: LICENSES.md. render/audio.mjs picks a track and window by date; every file is checked against its sha256 before use.",
+  "tracks": [
+    {
+      "id": "one-cool-minute",
+      "file": "loyalty-freak-music-one-cool-minute.mp3",
+      "title": "One Cool Minute",
+      "artist": "Loyalty Freak Music",
+      "album": "MINIMAL AMBIENT BOUNCE (2017)",
+      "licence": "CC0-1.0",
+      "sha256": "4b269a25f02c4b7ef9cc4b1cff6a6304ee1c2e2747df8ed06a20004a8171ba26",
+      "windows": [40.5, 118.5]
+    },
+    {
+      "id": "static-shoes",
+      "file": "loyalty-freak-music-static-shoes.mp3",
+      "title": "Static Shoes",
+      "artist": "Loyalty Freak Music",
+      "album": "MINIMAL AMBIENT BOUNCE (2017)",
+      "licence": "CC0-1.0",
+      "sha256": "8b606742fe0785faa54e7b05970b586305d82c078e1669b158c8768ba632a0b4",
+      "windows": [15.0, 102.0]
+    },
+    {
+      "id": "lag",
+      "file": "loyalty-freak-music-lag.mp3",
+      "title": "Lag",
+      "artist": "Loyalty Freak Music",
+      "album": "MINIMAL AMBIENT BOUNCE (2017)",
+      "licence": "CC0-1.0",
+      "sha256": "642a842f3b872b800adfc5047ba0ebc8dadf4a3ff5cbd8f11f89e2f8175fae52",
+      "windows": [42.5, 129.5]
+    }
+  ]
+}

@@ -5,9 +5,13 @@
 #   2. asks routine/due.mjs which networks are due now (slot passed, not yet
 #      published today); when something is due, routine/preflight.mjs checks
 #      the ceo seat's Chrome is connected (if not: one NEEDS-YOU line, nothing
-#      published or recorded, exit 5), then today's cards are rendered if missing;
+#      published or recorded, exit 5); today's day must pass the quality gate
+#      (render/validate.mjs --date: tagged devya.dev links, never Vercel, SEO
+#      rules; if not: everything held, one NEEDS-YOU line, exit 7); then today's
+#      cards and video (with its music bed) are rendered if missing or stale;
 #      a refused product screenshot (render exit 4: vercel.app URL, HTTP error,
-#      paused/error page) holds what would show it, with one NEEDS-YOU line;
+#      paused/error page) or a failed brand/audio check (exit 5) holds what
+#      would show it, with one NEEDS-YOU line (exit 6);
 #   3. runs a tightly allowlisted Claude session on the ceo seat
 #      (CLAUDE_CONFIG_DIR = brain profile ceo → Chrome "Profile 2", Devya) that
 #      publishes through Claude in Chrome and prints one RESULT_JSON line;
@@ -124,22 +128,47 @@ hold_kinds() {
   COUNT="$(printf '%s' "$DUE_JSON" | node -pe 'JSON.parse(require("fs").readFileSync(0,"utf8")).due.length')"
 }
 
+# Pre-publish quality gate: today's captions must pass render/validate.mjs
+# (every link on devya.dev, never Vercel, tagged utm_source/medium/campaign;
+# keyword-led first lines, hashtags, naming, alt text). If not, nothing of
+# today's is published: one NEEDS-YOU line, exit 7, the next slot retries.
+if [[ "$COUNT" -gt 0 ]]; then
+  GATE_OUT="$(node social/render/validate.mjs --date "$TODAY" 2>&1)"; GATE_RC=$?
+  printf '%s\n' "$GATE_OUT" | tail -n 12
+  if [[ $GATE_RC -ne 0 ]]; then
+    echo "NEEDS-YOU: $TODAY fails the quality gate (links/SEO, see above); holding everything due today. Fix the day in calendar.json."
+    COUNT=0
+    [[ $RC -eq 0 ]] && RC=7
+  fi
+fi
+
 if [[ "$COUNT" -gt 0 ]]; then
   # Exit 4 = the product screenshot was refused (render/shot-guard.mjs: a vercel.app
-  # URL, an HTTP error, or a paused/error page). Never publish what would show it.
+  # URL, an HTTP error, or a paused/error page). Exit 5 = a card failed the brand
+  # check (render/brand-check.mjs: official logo, clear space, contrast, black and
+  # silver theme). Never publish what would show either; nothing was written.
   node social/render/render.mjs --date "$TODAY"; REN_RC=$?
   if [[ $REN_RC -eq 4 ]]; then
     echo "NEEDS-YOU: $TODAY's product screenshot was refused (see SHOT REFUSED above); holding today's feed posts. Fix card.shot in calendar.json or the site."
     hold_kinds '^post$'
     [[ $RC -eq 0 ]] && RC=6
+  elif [[ $REN_RC -eq 5 ]]; then
+    echo "NEEDS-YOU: $TODAY's cards failed the brand check (see BRAND CHECK FAILED above); holding today's feed posts. Fix the day's card text or the template."
+    hold_kinds '^post$'
+    [[ $RC -eq 0 ]] && RC=6
   elif [[ $REN_RC -ne 0 ]]; then
     echo "WARN: render reported a problem for $TODAY"
   fi
-  # Reels, stories and the LinkedIn video use the day's vertical video (git-ignored, rendered here).
+  # Reels, stories and the LinkedIn video use the day's vertical video (git-ignored,
+  # rendered here with its music bed; a reel made before the current recipe is re-rendered).
   if printf '%s' "$DUE_JSON" | grep -q '"kind": "\(reel\|video\|story\)"'; then
     node social/render/render-reel.mjs --date "$TODAY"; REEL_RC=$?
     if [[ $REEL_RC -eq 4 ]]; then
       echo "NEEDS-YOU: $TODAY's product screenshot was refused (see SHOT REFUSED above); holding today's videos and stories. Fix card.shot in calendar.json or the site."
+      hold_kinds '^(reel|video|story)$'
+      [[ $RC -eq 0 ]] && RC=6
+    elif [[ $REEL_RC -eq 5 ]]; then
+      echo "NEEDS-YOU: $TODAY's video failed the brand or audio check (see BRAND CHECK FAILED above); holding today's videos and stories."
       hold_kinds '^(reel|video|story)$'
       [[ $RC -eq 0 ]] && RC=6
     elif [[ $REEL_RC -ne 0 ]]; then
