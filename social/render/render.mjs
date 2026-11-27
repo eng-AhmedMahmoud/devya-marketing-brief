@@ -9,15 +9,26 @@
 //   node render.mjs --all --force   re-render every day
 //
 // Output: social/visuals/<date>/{linkedin,facebook,instagram}.png (+ shot.png
-// for the product layout). Exits 1 if any card's text overflows its frame,
+// for the product layout). Exits 3 if any card's text overflows its frame,
 // 4 if the product screenshot is refused (shot-guard.mjs: a vercel.app URL,
 // an HTTP error, or a paused/error page); a refused shot is never saved.
+// Exits 5 if a card fails the brand check (brand-check.mjs: official logo,
+// clear space, contrast, black-and-silver theme); such a card is never written
+// and an older file in its place is removed. Exits 1 on any other error.
+// Existing cards dated RULES_FROM or later are re-rendered if off-theme.
+//
+// Theme: the www.devya.dev tokens only (brand.mjs): ink-900 background, silver
+// accents, the official wordmark from social/brand/. Product screenshots are
+// shown in greyscale so every card stays black and silver.
 
 import { chromium } from 'playwright-core';
-import { readFileSync, existsSync, mkdirSync } from 'node:fs';
+import { readFileSync, existsSync, mkdirSync, writeFileSync, rmSync } from 'node:fs';
 import { dirname, join } from 'node:path';
 import { fileURLToPath, pathToFileURL } from 'node:url';
 import { ShotRefused, SHOT_REFUSED_EXIT, isBannedHost, pageTextProblem, shotUrlProblem } from './shot-guard.mjs';
+import { CSS_VARS, logoImg, offBrandColours } from './brand.mjs';
+import { BrandCheckFailed, BRAND_CHECK_EXIT, brandProblems, themePixelProblems } from './brand-check.mjs';
+import { RULES_FROM } from './seo.mjs';
 
 const HERE = dirname(fileURLToPath(import.meta.url));
 const SOCIAL = join(HERE, '..');
@@ -34,14 +45,22 @@ export const FONTS = `
 @font-face{font-family:Cairo;font-weight:300 900;src:url(data:font/woff2;base64,${font('Cairo-latin.woff2')}) format('woff2');unicode-range:U+0000-00FF,U+2000-206F}
 @font-face{font-family:JBMono;font-weight:400 700;src:url(data:font/woff2;base64,${font('JetBrainsMono-latin.woff2')}) format('woff2')}`;
 
-export const ACCENT = { ember: '#F97316', azure: '#3B82F6', lime: '#10B981' };
-const SIZE = { portrait: [1080, 1350], landscape: [1200, 627] };
+export const SIZE = { portrait: [1080, 1350], landscape: [1200, 627] };
 const CUT_LABEL = { en: 'v1 cut line', ar: 'خط الإصدار الأول' };
-export const GLOW = { statement: '85% 12%', checklist: '100% 100%', code: '0% 100%', terminal: '100% 0%', compare: '50% 110%', product: '0% 0%' };
+// Where the soft silver glow sits per layout (kept off the logo's corner).
+export const GLOW = { statement: '85% 12%', checklist: '100% 100%', code: '0% 100%', terminal: '100% 0%', compare: '50% 110%', product: '100% 0%' };
+// Logo width in px per format (the wordmark is 176:21, so ~24 / ~33 px tall).
+export const LOGO_WIDTH = { landscape: 200, portrait: 280 };
 
 export const esc = (s = '') => String(s).replace(/[&<>"]/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
-// *word* in a title or line renders in the day's accent colour.
+// *word* in a title or line renders in white with a silver marker underneath.
 export const rich = (s = '') => esc(s).replace(/\*(.+?)\*/g, '<em>$1</em>');
+
+// Shared silver styling for emphasis, code and terminal text (cards and reels).
+export const THEME_CSS = `:root{${CSS_VARS}}
+em{font-style:normal;color:var(--silver);text-shadow:0 0 28px rgba(214,220,228,.35);background:linear-gradient(transparent 84%,rgba(214,220,228,.22) 84%)}
+pre .k{color:var(--silver);font-weight:700}pre .s{color:var(--silver-edge)}pre .c{color:var(--muted)}
+.tl .p{color:var(--silver)}.tl .out{color:var(--muted)}.tl .bad{color:var(--silver-dim)}.tl .ok{color:var(--fg);font-weight:600}`;
 
 const KW = /\b(const|let|await|async|for|of|in|return|function|import|from|new|if|else|await|using|select|from|where|join|on|group|by|order|limit|explain|analyze)\b/gi;
 export function highlight(code) {
@@ -92,63 +111,58 @@ function body(day, t, fmt, lang) {
   }
 }
 
-function html(day, fmt, lang) {
+export function html(day, fmt, lang) {
   const t = day.card[lang];
   const [w, h] = SIZE[fmt];
-  const accent = ACCENT[day.accent];
   const rtl = lang === 'ar';
   const isStatement = day.layout === 'statement';
   const p = fmt === 'portrait';
   return `<!doctype html><html lang="${lang}" dir="${rtl ? 'rtl' : 'ltr'}"><head><meta charset="utf-8"><style>
 ${FONTS}
 *{box-sizing:border-box;margin:0;padding:0}
-:root{--a:${accent};--i9:#0F0F0F;--i8:#1A1A1A;--i7:#262626;--i4:#737373;--i3:#A3A3A3;--i1:#F5F5F5}
+${THEME_CSS}
 html,body{width:${w}px;height:${h}px;overflow:hidden}
-body{background:var(--i9);color:var(--i1);font-family:${rtl ? 'Cairo' : 'Sora'},sans-serif;
-  background-image:radial-gradient(circle at ${GLOW[day.layout]},color-mix(in srgb,var(--a) 17%,transparent),transparent 58%),radial-gradient(rgba(255,255,255,.045) 1.4px,transparent 1.7px);
+body{background:var(--bg);color:var(--fg);font-family:${rtl ? 'Cairo' : 'Sora'},sans-serif;
+  background-image:radial-gradient(circle at ${GLOW[day.layout]},var(--glow),transparent 58%),radial-gradient(rgba(255,255,255,.05) 1.4px,transparent 1.7px);
   background-size:100% 100%,28px 28px;display:flex;flex-direction:column;padding:${p ? '84px 88px 64px' : '44px 56px 34px'}}
-em{font-style:normal;color:var(--a)}
-header{display:flex;justify-content:space-between;align-items:center;direction:ltr}
-.mark{font-family:JBMono;font-weight:600;font-size:${p ? 34 : 24}px;letter-spacing:.06em}.mark span{color:var(--i4)}
-.dot{width:${p ? 18 : 13}px;height:${p ? 18 : 13}px;border-radius:50%;background:var(--a);box-shadow:0 0 24px var(--a)}
-.content{flex:1;min-height:0;display:${p || isStatement ? 'flex' : 'grid'};${p || isStatement ? 'flex-direction:column;' : 'grid-template-columns:1fr 1.08fr;gap:44px;align-items:center;'}${isStatement || p ? 'justify-content:center;' : 'padding-top:26px;'}${p ? 'padding:24px 0;' : ''}}
+header{display:flex;align-items:center;direction:ltr;margin-bottom:${p ? 44 : 30}px}
+.content{flex:1;min-height:0;display:${p || isStatement ? 'flex' : 'grid'};${p || isStatement ? 'flex-direction:column;' : 'grid-template-columns:1fr 1.08fr;gap:44px;align-items:center;'}${isStatement || p ? 'justify-content:center;' : 'padding-top:6px;'}${p ? 'padding:0 0 24px;' : ''}}
 .lead{display:flex;flex-direction:column;${p ? '' : 'justify-content:center;'}}
-.pill{align-self:flex-start;color:var(--a);background:color-mix(in srgb,var(--a) 13%,transparent);border:1px solid color-mix(in srgb,var(--a) 30%,transparent);
+.pill{align-self:flex-start;color:var(--silver);background:rgba(214,220,228,.08);border:1px solid rgba(214,220,228,.24);
   border-radius:999px;padding:${p ? '10px 24px' : '6px 16px'};font-weight:700;font-size:${p ? (rtl ? 26 : 22) : (rtl ? 18 : 15)}px;${rtl ? '' : 'letter-spacing:.14em;text-transform:uppercase;'}margin-bottom:${p ? 34 : 18}px}
-h1{font-weight:${rtl ? 800 : 700};letter-spacing:${rtl ? 0 : '-.02em'};line-height:${rtl ? 1.38 : 1.06};
+h1{font-weight:${rtl ? 800 : 700};letter-spacing:${rtl ? 0 : '-.02em'};line-height:${rtl ? 1.38 : 1.06};color:var(--fg);
   font-size:${isStatement ? (p ? (rtl ? 92 : 104) : (rtl ? 54 : 62)) : (p ? (rtl ? 66 : 72) : (rtl ? 40 : 46))}px;${isStatement && !p ? 'max-width:1000px' : ''}}
-.sub{color:var(--i3);font-size:${p ? (rtl ? 36 : 34) : (rtl ? 22 : 21)}px;line-height:${rtl ? 1.7 : 1.45};margin-top:${p ? 30 : 16}px;max-width:${p ? 880 : 1000}px}
+.sub{color:var(--fg2);opacity:.82;font-size:${p ? (rtl ? 36 : 34) : (rtl ? 22 : 21)}px;line-height:${rtl ? 1.7 : 1.45};margin-top:${p ? 30 : 16}px;max-width:${p ? 880 : 1000}px}
 .stage{${p ? 'margin-top:44px;' : ''}display:flex;flex-direction:column;gap:${p ? 22 : 12}px;min-height:0}
 .list{list-style:none;display:flex;flex-direction:column}
-.item{display:flex;gap:${p ? 26 : 16}px;align-items:baseline;padding:${p ? 22 : 9}px 0;border-bottom:1px solid var(--i8);font-size:${p ? (rtl ? 34 : 33) : (rtl ? 20 : 19)}px;line-height:${rtl ? 1.55 : 1.35}}
-.item b{font-family:JBMono;color:var(--a);font-size:.8em;font-weight:600;min-width:1.9em}
+.item{display:flex;gap:${p ? 26 : 16}px;align-items:baseline;padding:${p ? 22 : 9}px 0;border-bottom:1px solid var(--line);font-size:${p ? (rtl ? 34 : 33) : (rtl ? 20 : 19)}px;line-height:${rtl ? 1.55 : 1.35}}
+.item b{font-family:JBMono;color:var(--silver);font-size:.8em;font-weight:600;min-width:1.9em}
 .item.later{opacity:.42}
-.cut{position:relative;height:${p ? 54 : 30}px;border-top:3px dashed var(--a);margin-top:${p ? 10 : 6}px}
-.cut span{position:absolute;top:-.85em;${rtl ? 'left' : 'right'}:0;background:var(--i9);color:var(--a);padding:0 12px;font-family:${rtl ? 'Cairo' : 'JBMono'};font-weight:700;font-size:${p ? 24 : 15}px}
-.win{background:#0A0A0A;border:1px solid var(--i7);border-radius:${p ? 22 : 14}px;padding:${p ? '26px 32px' : '14px 20px'};direction:ltr;text-align:left}
-.wl{font-family:JBMono;color:var(--a);font-size:${p ? 20 : 13}px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;margin-bottom:${p ? 12 : 6}px}
+.cut{position:relative;height:${p ? 54 : 30}px;border-top:3px dashed var(--silver-dim);margin-top:${p ? 10 : 6}px}
+.cut span{position:absolute;top:-.85em;${rtl ? 'left' : 'right'}:0;background:var(--bg);color:var(--silver);padding:0 12px;font-family:${rtl ? 'Cairo' : 'JBMono'};font-weight:700;font-size:${p ? 24 : 15}px}
+.win{background:var(--bg2);border:1px solid var(--line);border-radius:${p ? 22 : 14}px;padding:${p ? '26px 32px' : '14px 20px'};direction:ltr;text-align:left}
+.wl{font-family:JBMono;color:var(--silver);font-size:${p ? 20 : 13}px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;margin-bottom:${p ? 12 : 6}px}
 .wl[dir=rtl]{text-align:right;letter-spacing:0;font-family:Cairo;font-size:${p ? 24 : 15}px}
-pre{font-family:JBMono;font-size:${p ? 25 : 15.5}px;line-height:1.55;color:#E5E5E5;white-space:pre-wrap}
-pre .k{color:#7DB4FF}pre .s{color:#86EFAC}pre .c{color:var(--i4)}
-.bar{display:flex;gap:9px;align-items:center;margin-bottom:${p ? 18 : 10}px}.bar i{width:${p ? 14 : 10}px;height:${p ? 14 : 10}px;border-radius:50%;background:var(--i7)}
-.bar span{font-family:JBMono;color:var(--i4);font-size:${p ? 20 : 13}px;margin-left:10px}
-.tl{font-family:JBMono;font-size:${p ? 25 : 15.5}px;line-height:1.6;color:#E5E5E5}.tl .p{color:var(--a)}.tl .out{color:var(--i3)}.tl .bad{color:#F87171}.tl .ok{color:#34D399}
+pre{font-family:JBMono;font-size:${p ? 25 : 15.5}px;line-height:1.55;color:var(--fg2);white-space:pre-wrap}
+.bar{display:flex;gap:9px;align-items:center;margin-bottom:${p ? 18 : 10}px}.bar i{width:${p ? 14 : 10}px;height:${p ? 14 : 10}px;border-radius:50%;background:var(--line2)}
+.bar span{font-family:JBMono;color:var(--muted);font-size:${p ? 20 : 13}px;margin-left:10px}
+.tl{font-family:JBMono;font-size:${p ? 25 : 15.5}px;line-height:1.6;color:var(--fg2)}
 .cmp{display:grid;grid-template-columns:1fr 1fr;gap:${p ? 22 : 14}px}
-.col{border-radius:${p ? 22 : 14}px;padding:${p ? '28px 28px' : '16px 18px'};border:1px solid var(--i7);background:rgba(255,255,255,.02)}
-.col.yes{border-color:color-mix(in srgb,var(--a) 55%,transparent);background:color-mix(in srgb,var(--a) 7%,transparent)}
-.col h4{font-size:${p ? (rtl ? 26 : 22) : (rtl ? 16 : 14)}px;font-weight:700;${rtl ? '' : 'letter-spacing:.12em;text-transform:uppercase;'}color:var(--i4);margin-bottom:${p ? 16 : 8}px}.col.yes h4{color:var(--a)}
+.col{border-radius:${p ? 22 : 14}px;padding:${p ? '28px 28px' : '16px 18px'};border:1px solid var(--line);background:rgba(255,255,255,.02)}
+.col.yes{border-color:rgba(214,220,228,.45);background:rgba(214,220,228,.05)}
+.col h4{font-size:${p ? (rtl ? 26 : 22) : (rtl ? 16 : 14)}px;font-weight:700;${rtl ? '' : 'letter-spacing:.12em;text-transform:uppercase;'}color:var(--muted);margin-bottom:${p ? 16 : 8}px}.col.yes h4{color:var(--silver)}
 .col ul{list-style:none;display:flex;flex-direction:column;gap:${p ? 16 : 7}px}
 .col li{font-size:${p ? (rtl ? 29 : 27) : (rtl ? 17 : 16)}px;line-height:${rtl ? 1.5 : 1.32};padding-${rtl ? 'right' : 'left'}:1.2em;position:relative}
-.col li::before{position:absolute;${rtl ? 'right' : 'left'}:0;content:'×';color:var(--i4)}.col.yes li::before{content:'✓';color:var(--a)}
-.col.no li{color:var(--i3)}
-.frame{background:#0A0A0A;border:1px solid var(--i7);border-radius:${p ? 22 : 14}px;padding:${p ? 16 : 10}px;overflow:hidden}
+.col li::before{position:absolute;${rtl ? 'right' : 'left'}:0;content:'×';color:var(--muted)}.col.yes li::before{content:'✓';color:var(--silver)}
+.col.no li{color:var(--muted)}
+.frame{background:var(--bg2);border:1px solid var(--line);border-radius:${p ? 22 : 14}px;padding:${p ? 16 : 10}px;overflow:hidden}
 .frame .bar{margin-bottom:${p ? 14 : 8}px;padding:0 6px}
-.frame img{display:block;width:100%;height:${p ? 470 : 250}px;object-fit:cover;object-position:top;border-radius:${p ? 12 : 8}px}
+.frame img{display:block;width:100%;height:${p ? 470 : 250}px;object-fit:cover;object-position:top;border-radius:${p ? 12 : 8}px;filter:grayscale(1) contrast(1.04)}
 .chips{display:flex;flex-wrap:wrap;gap:${p ? 12 : 8}px}
-.chips span{border:1px solid var(--i7);border-radius:999px;padding:${p ? '10px 20px' : '5px 12px'};font-size:${p ? (rtl ? 26 : 23) : (rtl ? 15 : 14)}px;color:var(--i3)}
-footer{display:flex;justify-content:space-between;align-items:center;border-top:1px solid var(--i7);padding-top:${p ? 26 : 14}px;margin-top:${p ? 30 : 16}px;color:var(--i4);font-size:${p ? 26 : 17}px;direction:ltr;font-family:Sora}
+.chips span{border:1px solid var(--line);border-radius:999px;padding:${p ? '10px 20px' : '5px 12px'};font-size:${p ? (rtl ? 26 : 23) : (rtl ? 15 : 14)}px;color:var(--fg2)}
+footer{display:flex;justify-content:space-between;align-items:center;border-top:1px solid var(--line);padding-top:${p ? 26 : 14}px;margin-top:${p ? 30 : 16}px;color:var(--muted);font-size:${p ? 26 : 17}px;direction:ltr;font-family:Sora}
 </style></head><body>
-<header><div class="mark"><span>&lt;/&gt;</span>DEVYA</div><div class="dot"></div></header>
+<header>${logoImg(LOGO_WIDTH[fmt])}</header>
 <main class="content"><div class="lead"><div class="pill">${esc(t.kicker)}</div><h1>${rich(t.title)}</h1>${t.sub ? `<p class="sub">${rich(t.sub)}</p>` : ''}</div>${isStatement ? '' : `<div class="stage">${body(day, t, fmt, lang)}</div>`}</main>
 <footer><span>@devyasoftware</span><span>devya.dev</span></footer>
 </body></html>`;
@@ -182,8 +196,36 @@ export function fail(e) {
     console.error(`SHOT REFUSED: ${e.message}`);
     process.exit(SHOT_REFUSED_EXIT);
   }
+  if (e instanceof BrandCheckFailed) {
+    console.error(`BRAND CHECK FAILED: ${e.message}`);
+    process.exit(BRAND_CHECK_EXIT);
+  }
   console.error(e);
   process.exit(1);
+}
+
+// Renders one card to a PNG buffer and checks it. Returns {png, overflow, problems}.
+export async function renderCard(browser, day, fmt, lang) {
+  const [w, h] = SIZE[fmt];
+  const doc = html(day, fmt, lang);
+  const page = await browser.newPage({ viewport: { width: w, height: h }, deviceScaleFactor: 1 });
+  try {
+    await page.setContent(doc, { waitUntil: 'load' });
+    await page.evaluate(() => document.fonts.ready);
+    const overflow = await page.evaluate(() => {
+      const m = document.querySelector('main');
+      const f = document.querySelector('footer');
+      const deepest = Math.max(...[...m.querySelectorAll('*')].map((e) => e.getBoundingClientRect().bottom));
+      const widest = Math.max(...[...m.querySelectorAll('*')].map((e) => e.scrollWidth - e.clientWidth));
+      return deepest > f.getBoundingClientRect().top - 4 || widest > 2;
+    });
+    const png = await page.screenshot();
+    const colours = offBrandColours(doc);
+    const problems = [...(colours.length ? [`off-brand colours in the template: ${colours.join(', ')}`] : []), ...await brandProblems(page, png)];
+    return { png, overflow, problems };
+  } finally {
+    await page.close();
+  }
 }
 
 async function main() {
@@ -192,11 +234,20 @@ async function main() {
   if (opt('--date')) days = days.filter((d) => d.date === opt('--date'));
   const force = flag('--force') || flag('--all');
   const browser = await chromium.launch();
+  const checkPage = await browser.newPage();
   let overflow = 0;
+  const brandFailures = [];
   for (const day of days) {
     const dir = join(SOCIAL, 'visuals', day.date);
     const targets = Object.entries(day.posts).map(([net, post]) => ({ net, lang: post.lang, fmt: net === 'linkedin' ? 'landscape' : 'portrait', out: join(dir, `${net}.png`) }));
-    if (!force && targets.every((t) => existsSync(t.out))) continue;
+    if (!force && targets.every((t) => existsSync(t.out))) {
+      // Existing cards from RULES_FROM on must still be black and silver; an
+      // old-theme card is rendered again rather than published.
+      let stale = false;
+      if (day.date >= RULES_FROM) for (const t of targets) if ((await themePixelProblems(checkPage, readFileSync(t.out))).length) stale = true;
+      if (!stale) continue;
+      console.log(`stale ${day.date} cards (not on the black and silver theme); re-rendering`);
+    }
     mkdirSync(dir, { recursive: true });
     if (day.layout === 'product') {
       const shot = join(dir, 'shot.png');
@@ -205,24 +256,18 @@ async function main() {
     }
     for (const t of targets) {
       const [w, h] = SIZE[t.fmt];
-      const page = await browser.newPage({ viewport: { width: w, height: h }, deviceScaleFactor: 1 });
-      await page.setContent(html(day, t.fmt, t.lang), { waitUntil: 'load' });
-      await page.evaluate(() => document.fonts.ready);
-      const over = await page.evaluate(() => {
-        const m = document.querySelector('main');
-        const f = document.querySelector('footer');
-        const deepest = Math.max(...[...m.querySelectorAll('*')].map((e) => e.getBoundingClientRect().bottom));
-        const widest = Math.max(...[...m.querySelectorAll('*')].map((e) => e.scrollWidth - e.clientWidth));
-        return deepest > f.getBoundingClientRect().top - 4 || widest > 2;
-      });
+      const { png, overflow: over, problems } = await renderCard(browser, day, t.fmt, t.lang);
+      // A card that fails the check is never written, and an older file in its place is removed.
+      if (problems.length) { brandFailures.push(`${day.date} ${t.net} (${t.lang}): ${problems.join('; ')}`); rmSync(t.out, { force: true }); continue; }
       if (over) { overflow++; console.error(`OVERFLOW ${day.date} ${t.net} (${t.lang})`); }
-      await page.screenshot({ path: t.out });
-      await page.close();
-      console.log(`rendered ${day.date} ${t.net} ${t.lang} ${w}x${h}`);
+      writeFileSync(t.out, png);
+      console.log(`rendered ${day.date} ${t.net} ${t.lang} ${w}x${h} (brand check passed)`);
     }
   }
   await browser.close();
-  if (overflow) process.exit(1);
+  if (brandFailures.length) throw new BrandCheckFailed(`${brandFailures.length} card(s) not written`, brandFailures);
+  // 3 = written, but text overflowed its frame (a warning; merge-days still rejects it).
+  if (overflow) process.exit(3);
 }
 
 if (process.argv[1] && import.meta.url === pathToFileURL(process.argv[1]).href) main().catch(fail);

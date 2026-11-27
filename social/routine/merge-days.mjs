@@ -11,6 +11,7 @@ import { dirname, join } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { spawnSync } from 'node:child_process';
 import { composeReels } from '../render/compose.mjs';
+import { tagDayLinks } from '../render/seo.mjs';
 
 const SOCIAL = join(dirname(fileURLToPath(import.meta.url)), '..');
 const RENDER = join(SOCIAL, 'render');
@@ -30,7 +31,9 @@ const added = [];
 for (const d of days) {
   if (d.date !== expect) { console.error(`merge: expected ${expect}, draft has ${d.date}`); process.exit(1); }
   if (!d.reel?.en || !d.reel?.ar || !d.posts) { console.error(`merge: ${d.date} needs reel.en, reel.ar and posts`); process.exit(1); }
-  added.push({ ...d, day: cal.days.length + added.length + 1, skip: false, ...composeReels(d) });
+  // Links get their UTM tags here (utm_source/medium/campaign); reels are composed from the tagged posts.
+  const tagged = tagDayLinks(d);
+  added.push({ ...tagged, day: cal.days.length + added.length + 1, skip: false, ...composeReels(tagged) });
   expect = next(expect);
 }
 

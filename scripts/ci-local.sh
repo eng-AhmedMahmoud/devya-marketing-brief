@@ -1,0 +1,46 @@
+#!/usr/bin/env bash
+# Local CI for devya-marketing-brief: every stage of the GitHub quality job
+# (install, lint, typecheck, build) plus the social pipeline gates:
+#   - unit tests: routine helpers, screenshot guard, links/SEO, music mixing,
+#     logo/theme checks (Playwright's cached Chromium + ffmpeg required);
+#   - calendar quality gate with images (fails on an untagged, off-site or
+#     Vercel link, off-brand accent, hashtag counts, naming, alt text);
+#   - live link check: every linked devya.dev page answers 200 with no redirect
+#     (skip with CI_OFFLINE=1).
+# Usage: scripts/ci-local.sh   (prints a summary table; exit 1 if any stage fails)
+
+set -uo pipefail
+cd "$(dirname "$0")/.."
+
+declare -a NAMES RESULTS TIMES
+FAILED=0
+stage() { # name, command...
+  local name="$1"; shift
+  local t0=$SECONDS
+  echo
+  echo "=== $name: $*"
+  if "$@"; then RESULTS+=("pass"); else RESULTS+=("FAIL"); FAILED=1; fi
+  NAMES+=("$name"); TIMES+=("$((SECONDS - t0))s")
+}
+
+stage "install" pnpm install --frozen-lockfile
+stage "lint" pnpm run lint
+stage "typecheck" npx tsc --noEmit
+stage "build" pnpm run build
+stage "social deps" bash -c 'cd social/render && pnpm install --frozen-lockfile'
+stage "tools" bash -c 'command -v ffmpeg && command -v ffprobe && command -v curl'
+stage "social tests" node --test social/routine/*.test.mjs social/render/*.test.mjs
+stage "calendar gate" node social/render/validate.mjs --images
+if [[ "${CI_OFFLINE:-0}" == "1" ]]; then
+  NAMES+=("live links"); RESULTS+=("skipped"); TIMES+=("0s")
+else
+  stage "live links" node social/render/validate.mjs --live
+fi
+
+echo
+echo "| Stage | Result | Time |"
+echo "|---|---|---|"
+for i in "${!NAMES[@]}"; do echo "| ${NAMES[$i]} | ${RESULTS[$i]} | ${TIMES[$i]} |"; done
+echo
+echo "commit $(git rev-parse --short HEAD) · node $(node -v) · ffmpeg $(ffmpeg -version 2>/dev/null | head -1 | awk '{print $3}')"
+exit "$FAILED"

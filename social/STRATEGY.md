@@ -60,7 +60,7 @@ The canon decides: **bilingual delivery, separate captions, never one caption wi
 
 ## Visuals
 
-Every post ships with a branded graphic rendered from HTML/CSS by Playwright (`social/render/`), in the canon: ink background, Sora (Latin) and Cairo (Arabic) type, JetBrains Mono for code, one accent per pillar (ember: client value and culture; azure: engineering; lime: product, case studies and BTS), `</>DEVYA` mark, `devya.dev` footer.
+Every post ships with a branded graphic rendered from HTML/CSS by Playwright (`social/render/`), in the www.devya.dev brand (revised 2026-11-27 at the developer's request): black background (`#08090a`) with silver/grey accents taken from the site's tokens, the official Devya wordmark from the site (`social/brand/`, never redrawn) with clear space around it, Sora (Latin) and Cairo (Arabic) type, JetBrains Mono for code, `devya.dev` footer. No other colours: the old per-pillar accents (ember, azure, lime) are retired, and product screenshots are shown in greyscale. `render/brand-check.mjs` checks every card and video frame for this.
 
 Six layouts rotate so the grid never reads as one template: **statement** (one big line), **checklist** (numbered steps, optional "cut line"), **code** (real code in JetBrains Mono), **terminal** (command output), **compare** (two columns, before/after), **product** (a live Playwright screenshot of the product's page on devya.dev in a frame). No layout more than twice a week.
 
@@ -74,7 +74,7 @@ No stock photos, no AI-generated imagery, no client logos or screenshots of clie
 
 ## Reels, Stories and LinkedIn video
 
-- **One vertical video a day**, 1080×1920, 10 s, 30 fps, H.264 with a silent track (no licensed music). It is the day's card, animated: the mark and kicker fade in, the title rises word by word, the checklist / code / terminal / comparison / product screenshot builds line by line, then a two-second end card (`</>DEVYA`, `devya.dev`, `@devyasoftware`). Rendered by `render/render-reel.mjs` in English and Arabic; all text sits inside the Reels/Stories safe area.
+- **One vertical video a day**, 1080×1920, 10 s, 30 fps, H.264 + AAC with a calm electronic music bed (CC0 tracks in `social/music/`, licences in `LICENSES.md`; faded in and out, mixed to −14 LUFS, ducked to about −20 LUFS under any narration). It is the day's card, animated: the logo and kicker fade in, the title rises word by word, the checklist / code / terminal / comparison / product screenshot builds line by line, then a two-second end card (Devya wordmark, `devya.dev`, `@devyasoftware`). Rendered by `render/render-reel.mjs` in English and Arabic; all text sits inside the Reels/Stories safe area. An `.srt` subtitle file (music cue plus the on-screen text) goes with it and is uploaded on LinkedIn.
 - **Language follows the day's feed**: the Facebook Reel and Story use Facebook's language that day, the Instagram Reel and Story use Instagram's, the LinkedIn video is English.
 - **Captions**: one authored hook per day (`reel.en` / `reel.ar` in the calendar). Reel captions are that hook plus 3–5 hashtags on Instagram, plus a tracked link (`utm_content=reel`) on Facebook, plus 3 hashtags on LinkedIn. Stories carry no caption.
 - **Why the same video everywhere**: Stories exist to push followers to the day's Reel and post; reusing the video keeps the daily cost at one render, and every network still sees it once.
@@ -82,9 +82,9 @@ No stock photos, no AI-generated imagery, no client logos or screenshots of clie
 
 ## Hashtags
 
-- **LinkedIn**: 3–4 per post, one brand tag plus topic tags. Brand: `#BuildWithDevya`. Topic examples: `#SoftwareEngineering #NextJS #NodeJS #PostgreSQL #ProductDevelopment #MENA #Egypt #SaudiArabia`.
-- **Instagram**: 5–8 at the end of the caption, rotated so no set repeats two days running. EN: `#BuildWithDevya #SoftwareDevelopment #WebDevelopment #Cairo #Egypt #MENA #Startups #TechTips`. AR: `#برمجة #تطوير_البرمجيات #تطوير_المواقع #ريادة_الأعمال #مصر #السعودية #تقنية`.
-- **Facebook**: none. Hashtags do little there.
+- **LinkedIn**: 3–5 per post, one brand tag plus topic tags. Brand: `#BuildWithDevya`. Topic examples: `#SoftwareEngineering #NextJS #NodeJS #PostgreSQL #ProductDevelopment #MENA #Egypt #SaudiArabia`.
+- **Instagram**: 3–5 at the end of the caption (Instagram caps posts and Reels at 5 since December 2025), always including `#BuildWithDevya`, rotated so no set repeats two days running. EN: `#BuildWithDevya #SoftwareDevelopment #WebDevelopment #Cairo #Egypt #MENA #Startups #TechTips`. AR: `#برمجة #تطوير_البرمجيات #تطوير_المواقع #ريادة_الأعمال #مصر #السعودية #تقنية`.
+- **Facebook**: 1–3, `#BuildWithDevya` plus one or two topic tags, after the link (revised 2026-11-27: every caption carries relevant hashtags).
 
 ## Posting times (Cairo, EET, UTC+2; Saudi is +1h)
 
@@ -101,7 +101,8 @@ The daily routine runs at **10:00, 13:00, 19:30 and 21:00**. Each run publishes 
 
 ## Links and tracking
 
-- Every link points at `https://www.devya.dev/...` and carries `?utm_source=<network>&utm_medium=social` (`linkedin`, `facebook`, `instagram`). GA4 reads UTM natively; the roadmap's older `?ref=social-<platform>` tag would need a custom dimension, so UTM replaces it.
+- Every link points at the day's page on `https://www.devya.dev/...`, `/contact`, or the product it shows (`*.devya.dev`), never a Vercel host and never a URL that redirects, and carries `?utm_source=<network>&utm_medium=social&utm_campaign=<post slug>` (`linkedin`, `facebook`, `instagram`; the slug is `<date>-<topic words>`; the Facebook Reel adds `utm_content=reel`). GA4 reads UTM natively; the roadmap's older `?ref=social-<platform>` tag would need a custom dimension, so UTM replaces it.
+- **SEO**: each day lists `keywords` in English and Arabic; the first line of every caption and both reel hooks lead with one. The company is always "Devya" (Latin script in Arabic too), products as devya.dev names them. Every image carries alt text.
 - Instagram captions say "link in bio". The bio links `www.devya.dev` without UTM; changing it is a profile edit, so it is left to the developer.
 - LinkedIn puts the link at the end of the post, never in the first line. Roughly half the LinkedIn posts carry no link at all, to test the reach cost of external links.
 
@@ -114,7 +115,7 @@ The canon bans auto-generated filler. What keeps this from being that:
 3. **No repeats.** No topic or hook repeats within 14 days; no two of the last five posts open the same way. The three networks' posts on one day share a topic but are written separately, never one caption reworded.
 4. **Claims checked.** Nothing is called launched or available unless devya.dev shows it. No prices or timelines that differ from the site. Buyer advice says "ask your vendor for…", never "agencies do…", never names or hints at a competitor, never turns intel into a statistic.
 5. **Human window.** The calendar sits in git at least six days ahead of publishing. The developer can edit any day or mark it `"skip": true`; a skipped slot is a valid, logged outcome, never back-filled with filler.
-6. **Validator.** `social/render/validate.mjs` rejects a calendar with banned strings (`devya.solutions`, `devya.com`, Driftcode), missing UTM on devya.dev links, hashtag counts out of range, captions over network limits, or a layout used more than twice in seven days.
+6. **Validator.** `social/render/validate.mjs` rejects a calendar with banned strings (`devya.solutions`, `devya.com`, Driftcode), untagged, off-site or Vercel links, links to the wrong page, hashtag counts out of range, first lines without a keyword, inconsistent naming, missing alt text, off-brand accents, captions over network limits, or a layout used more than twice in seven days. CI runs it (with `--live`, which also refuses redirecting or broken pages), the top-up merge runs it, and the routine runs it for today before publishing anything.
 
 ## Hard rules (the routine enforces these)
 
