@@ -9,23 +9,26 @@
 //   node render.mjs --all --force   re-render every day
 //
 // Output: social/visuals/<date>/{linkedin,facebook,instagram}.png (+ shot.png
-// for the product layout). Exits 1 if any card's text overflows its frame,
+// for the product layout). Exits 3 if any card's text overflows its frame,
 // 4 if the product screenshot is refused (shot-guard.mjs: a vercel.app URL,
 // an HTTP error, or a paused/error page); a refused shot is never saved.
 // Exits 5 if a card fails the brand check (brand-check.mjs: official logo,
-// clear space, contrast, black-and-silver theme); such a card is never written.
+// clear space, contrast, black-and-silver theme); such a card is never written
+// and an older file in its place is removed. Exits 1 on any other error.
+// Existing cards dated RULES_FROM or later are re-rendered if off-theme.
 //
 // Theme: the www.devya.dev tokens only (brand.mjs): ink-900 background, silver
 // accents, the official wordmark from social/brand/. Product screenshots are
 // shown in greyscale so every card stays black and silver.
 
 import { chromium } from 'playwright-core';
-import { readFileSync, existsSync, mkdirSync, writeFileSync } from 'node:fs';
+import { readFileSync, existsSync, mkdirSync, writeFileSync, rmSync } from 'node:fs';
 import { dirname, join } from 'node:path';
 import { fileURLToPath, pathToFileURL } from 'node:url';
 import { ShotRefused, SHOT_REFUSED_EXIT, isBannedHost, pageTextProblem, shotUrlProblem } from './shot-guard.mjs';
 import { CSS_VARS, logoImg, offBrandColours } from './brand.mjs';
-import { BrandCheckFailed, BRAND_CHECK_EXIT, brandProblems } from './brand-check.mjs';
+import { BrandCheckFailed, BRAND_CHECK_EXIT, brandProblems, themePixelProblems } from './brand-check.mjs';
+import { RULES_FROM } from './seo.mjs';
 
 const HERE = dirname(fileURLToPath(import.meta.url));
 const SOCIAL = join(HERE, '..');
@@ -231,12 +234,20 @@ async function main() {
   if (opt('--date')) days = days.filter((d) => d.date === opt('--date'));
   const force = flag('--force') || flag('--all');
   const browser = await chromium.launch();
+  const checkPage = await browser.newPage();
   let overflow = 0;
   const brandFailures = [];
   for (const day of days) {
     const dir = join(SOCIAL, 'visuals', day.date);
     const targets = Object.entries(day.posts).map(([net, post]) => ({ net, lang: post.lang, fmt: net === 'linkedin' ? 'landscape' : 'portrait', out: join(dir, `${net}.png`) }));
-    if (!force && targets.every((t) => existsSync(t.out))) continue;
+    if (!force && targets.every((t) => existsSync(t.out))) {
+      // Existing cards from RULES_FROM on must still be black and silver; an
+      // old-theme card is rendered again rather than published.
+      let stale = false;
+      if (day.date >= RULES_FROM) for (const t of targets) if ((await themePixelProblems(checkPage, readFileSync(t.out))).length) stale = true;
+      if (!stale) continue;
+      console.log(`stale ${day.date} cards (not on the black and silver theme); re-rendering`);
+    }
     mkdirSync(dir, { recursive: true });
     if (day.layout === 'product') {
       const shot = join(dir, 'shot.png');
@@ -246,7 +257,8 @@ async function main() {
     for (const t of targets) {
       const [w, h] = SIZE[t.fmt];
       const { png, overflow: over, problems } = await renderCard(browser, day, t.fmt, t.lang);
-      if (problems.length) { brandFailures.push(`${day.date} ${t.net} (${t.lang}): ${problems.join('; ')}`); continue; }
+      // A card that fails the check is never written, and an older file in its place is removed.
+      if (problems.length) { brandFailures.push(`${day.date} ${t.net} (${t.lang}): ${problems.join('; ')}`); rmSync(t.out, { force: true }); continue; }
       if (over) { overflow++; console.error(`OVERFLOW ${day.date} ${t.net} (${t.lang})`); }
       writeFileSync(t.out, png);
       console.log(`rendered ${day.date} ${t.net} ${t.lang} ${w}x${h} (brand check passed)`);
@@ -254,7 +266,8 @@ async function main() {
   }
   await browser.close();
   if (brandFailures.length) throw new BrandCheckFailed(`${brandFailures.length} card(s) not written`, brandFailures);
-  if (overflow) process.exit(1);
+  // 3 = written, but text overflowed its frame (a warning; merge-days still rejects it).
+  if (overflow) process.exit(3);
 }
 
 if (process.argv[1] && import.meta.url === pathToFileURL(process.argv[1]).href) main().catch(fail);

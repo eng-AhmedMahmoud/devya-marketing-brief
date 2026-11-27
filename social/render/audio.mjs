@@ -113,6 +113,12 @@ export function mixReelAudio({ date, duration, out, narration = null, bed = pick
     let chain;
     const inputs = ['-i', music];
     if (narration) {
+      // Never cut a sentence off: the speech must end before the video does
+      // (trailing silence in the file is fine).
+      const vDur = probe(narration).duration;
+      const spoken = speechSegments(narration, vDur);
+      const lastWord = spoken.length ? spoken.at(-1)[1] : 0;
+      if (!(lastWord <= duration - 0.2)) throw new Error(`narration ${narration} speaks until ${lastWord.toFixed(2)} s; it must end before ${(duration - 0.2).toFixed(1)} s`);
       const voice = join(tmp, 'voice.wav');
       ff(['-y', '-i', narration, '-ac', '2', '-ar', String(RATE), '-af', `apad=whole_dur=${duration},atrim=0:${duration}`, voice]);
       const vI = measure(voice).I;

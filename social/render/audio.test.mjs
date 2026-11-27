@@ -84,6 +84,15 @@ test('with narration the bed is ducked to -18..-22 LUFS under speech and the mix
   } finally { rmSync(dir, { recursive: true, force: true }); }
 });
 
+test('narration longer than the video is refused, never cut off', () => {
+  const dir = tmp();
+  try {
+    const voice = join(dir, 'long.wav');
+    ff(['-f', 'lavfi', '-i', 'anoisesrc=color=pink:r=48000:d=12:a=0.3', voice]);
+    assert.throws(() => mixReelAudio({ date: '2026-11-28', duration: 10, out: join(dir, 'mix.wav'), narration: voice }), /must end before 9\.8 s/);
+  } finally { rmSync(dir, { recursive: true, force: true }); }
+});
+
 test('duckExpression ramps the bed down inside speech only', () => {
   assert.equal(duckExpression([], 0.5), '1');
   const e = duckExpression([[2, 8]], 0.5);

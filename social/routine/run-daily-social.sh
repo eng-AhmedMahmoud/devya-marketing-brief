@@ -156,8 +156,12 @@ if [[ "$COUNT" -gt 0 ]]; then
     echo "NEEDS-YOU: $TODAY's cards failed the brand check (see BRAND CHECK FAILED above); holding today's feed posts. Fix the day's card text or the template."
     hold_kinds '^post$'
     [[ $RC -eq 0 ]] && RC=6
+  elif [[ $REN_RC -eq 3 ]]; then
+    echo "WARN: a card's text overflows its frame for $TODAY (see OVERFLOW above)"
   elif [[ $REN_RC -ne 0 ]]; then
-    echo "WARN: render reported a problem for $TODAY"
+    echo "NEEDS-YOU: the card render failed for $TODAY (rc $REN_RC, see above); holding today's feed posts so no unchecked card is published."
+    hold_kinds '^post$'
+    [[ $RC -eq 0 ]] && RC=6
   fi
   # Reels, stories and the LinkedIn video use the day's vertical video (git-ignored,
   # rendered here with its music bed; a reel made before the current recipe is re-rendered).
@@ -171,8 +175,12 @@ if [[ "$COUNT" -gt 0 ]]; then
       echo "NEEDS-YOU: $TODAY's video failed the brand or audio check (see BRAND CHECK FAILED above); holding today's videos and stories."
       hold_kinds '^(reel|video|story)$'
       [[ $RC -eq 0 ]] && RC=6
+    elif [[ $REEL_RC -eq 3 ]]; then
+      echo "WARN: the video's text overflows the safe area for $TODAY (see OVERFLOW above)"
     elif [[ $REEL_RC -ne 0 ]]; then
-      echo "WARN: reel render reported a problem for $TODAY"
+      echo "NEEDS-YOU: the video render failed for $TODAY (rc $REEL_RC, see above); holding today's videos and stories (the old file was removed, so nothing stale or silent is published)."
+      hold_kinds '^(reel|video|story)$'
+      [[ $RC -eq 0 ]] && RC=6
     fi
   fi
   [[ "$COUNT" -eq 0 ]] && echo "nothing left to publish this run"

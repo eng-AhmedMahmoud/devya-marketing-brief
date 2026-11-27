@@ -54,8 +54,16 @@ test('linkProblems: a tagged devya.dev link passes; untagged, Vercel, off-site, 
   assert.match(linkProblems(good, { ...opts, content: 'reel' }).join(), /utm_content should be reel/);
 });
 
-test('captionLinks drops trailing punctuation', () => {
+test('captionLinks drops trailing punctuation, Latin and Arabic', () => {
   assert.deepEqual(captionLinks('See https://www.devya.dev/contact?utm_source=x. Or (https://og.devya.dev/), thanks'), ['https://www.devya.dev/contact?utm_source=x', 'https://og.devya.dev/']);
+  assert.deepEqual(captionLinks('التفاصيل: https://www.devya.dev/x؟ و«https://www.devya.dev/y»، ثم “https://www.devya.dev/z”'), ['https://www.devya.dev/x', 'https://www.devya.dev/y', 'https://www.devya.dev/z']);
+});
+
+test('tagDayLinks tags a link that appears twice, and keeps trailing punctuation outside it', () => {
+  const day = { date: '2026-12-09', topic: 'Twice', posts: { facebook: { lang: 'ar', caption: 'أ https://www.devya.dev/contact؟ ب https://www.devya.dev/contact' } } };
+  const cap = tagDayLinks(day).posts.facebook.caption;
+  const tagged = 'https://www.devya.dev/contact?utm_source=facebook&utm_medium=social&utm_campaign=2026-12-09-twice';
+  assert.equal(cap, `أ ${tagged}؟ ب ${tagged}`);
 });
 
 test('tagDayLinks tags devya.dev links per network and leaves others for the validator', () => {
@@ -82,6 +90,10 @@ test('keyword-led first line, case- and diacritic-insensitive', () => {
   assert.equal(keywordLed('توقف عن إضافة الفهارس بالتخمين.', ['الفهارس']), true);
   assert.equal(keywordLed('رمز الدخول JWT مُرمَّز', ['مرمز']), true);
   assert.equal(keywordLed('anything', []), false);
+  assert.equal(keywordLed('Check your email settings', ['ai']), false, 'Latin keywords start a word');
+  assert.equal(keywordLed('Rapid answers', ['api']), false);
+  assert.equal(keywordLed('Stop adding indexes', ['index']), true, 'plural still counts');
+  assert.equal(keywordLed('AI chat that answers', ['ai chat']), true);
 });
 
 test('naming: Devya in Latin script, one spelling, products as devya.dev names them', () => {

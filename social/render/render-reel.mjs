@@ -19,7 +19,9 @@
 //
 // Exits 4 if the product screenshot is refused (see shot-guard.mjs), 5 if the
 // video fails the brand check (logo, theme) or the audio check (duration,
-// -14 LUFS, true peak, music audible). Nothing is written in either case.
+// -14 LUFS, true peak, music audible), 1 on any other error. In all three the
+// old video is already deleted and nothing new is written. Exits 3 when the
+// video was written but text overflowed the safe area (a warning).
 
 import { chromium } from 'playwright-core';
 import { readFileSync, existsSync, mkdirSync, rmSync, mkdtempSync, writeFileSync } from 'node:fs';
@@ -182,10 +184,15 @@ export function narrationFor(dir, lang) {
   return null;
 }
 
-// Everything that shapes the finished video; a changed hash means re-render.
+// Everything that shapes the finished video (template, card text, logo, the
+// mixer and caption code, the music file and window, narration and its
+// script); a changed hash means re-render.
+const CODE = ['audio.mjs', 'captions.mjs', 'brand.mjs'].map((f) => readFileSync(join(HERE, f), 'utf8')).join('\n');
 export function recipeHash(day, lang, narration) {
   const bed = pickBed(day.date);
-  return sha([RECIPE_VERSION, LOGO_SHA256, html(day, lang), bed.track.sha256, bed.start, narration ? sha(readFileSync(narration)) : 'no-voice'].join('\n'));
+  const script = narration ? narration.replace(/\.\w+$/, '.srt') : null;
+  return sha([RECIPE_VERSION, LOGO_SHA256, CODE, html(day, lang), bed.track.sha256, bed.start,
+    narration ? sha(readFileSync(narration)) : 'no-voice', script && existsSync(script) ? sha(readFileSync(script)) : 'no-script'].join('\n'));
 }
 
 const seek = (page, s) => page.evaluate((ms) => document.getAnimations().forEach((a) => { a.pause(); a.currentTime = ms; }), s * 1000);
@@ -238,7 +245,8 @@ export async function renderReel(browser, day, lang, out, { narration = null } =
     if (audioProblems.length) throw new BrandCheckFailed(`reel ${day.date} ${lang} audio`, audioProblems);
     // Cover frame (the full card, before the end card) for Reel covers and the LinkedIn video thumbnail.
     const cover = join(work, 'cover.jpg');
-    spawnSync('ffmpeg', ['-y', '-loglevel', 'error', '-ss', '7.0', '-i', tmpOut, '-frames:v', '1', '-q:v', '2', cover], { stdio: 'inherit' });
+    const cv = spawnSync('ffmpeg', ['-y', '-loglevel', 'error', '-ss', '7.0', '-i', tmpOut, '-frames:v', '1', '-q:v', '2', cover], { stdio: 'inherit' });
+    if (cv.status !== 0 || !existsSync(cover)) throw new Error(`cover frame failed for ${out}`);
     const script = narration && existsSync(narration.replace(/\.\w+$/, '.srt')) ? readFileSync(narration.replace(/\.\w+$/, '.srt'), 'utf8') : toSrt(reelCues(day, lang, SECONDS));
     writeFileSync(out, readFileSync(tmpOut));
     writeFileSync(out.replace(/\.mp4$/, '-cover.jpg'), readFileSync(cover));
@@ -286,13 +294,16 @@ async function main() {
         if (stamp.recipe === recipeHash(day, lang, narration)) continue;
         console.log(`stale ${day.date} reel-${lang}.mp4 (card, music or template changed); re-rendering`);
       }
+      // Remove the old video first: if this render fails, no stale or silent file is left to publish.
+      for (const f of [out, stampPath, out.replace(/\.mp4$/, '-cover.jpg'), out.replace(/\.mp4$/, '.srt')]) rmSync(f, { force: true });
       const r = await renderReel(browser, day, lang, out, { narration });
       if (!r.ok) bad++;
       console.log(`rendered ${day.date} reel-${lang}.mp4 · music "${r.mix.title}" by ${r.mix.artist} (${r.mix.licence}) from ${r.mix.start}s · ${r.loudness.I} LUFS, ${r.loudness.TP} dBTP${r.mix.bedUnderSpeech != null ? ` · bed under speech ${r.mix.bedUnderSpeech} LUFS` : ''} · brand + audio checks passed`);
     }
   }
   await browser.close();
-  if (bad) process.exit(1);
+  // 3 = written, but text overflowed the safe area (a warning; the routine still publishes).
+  if (bad) process.exit(3);
 }
 
 if (process.argv[1] && import.meta.url === pathToFileURL(process.argv[1]).href) main().catch(fail);

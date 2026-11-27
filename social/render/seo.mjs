@@ -43,8 +43,16 @@ export function tagUrl(url, { platform, campaign, content }) {
   return u.toString();
 }
 
-// URLs in a caption, without trailing punctuation.
-export const captionLinks = (text = '') => (String(text).match(/https?:\/\/[^\s)>\]]+/g) || []).map((u) => u.replace(/[.,;:!?'"]+$/, ''));
+// URLs in a caption, without trailing punctuation (Latin, Arabic, curly quotes).
+const URL_RE = /https?:\/\/[^\s)>\]»”’]+/g;
+const TRAIL = /[.,;:!?'"،؛؟۔…]+$/u;
+export const captionLinks = (text = '') => (String(text).match(URL_RE) || []).map((u) => u.replace(TRAIL, ''));
+
+// Rewrites every URL in `text` in place with fn(url), leaving trailing punctuation.
+export const mapLinks = (text, fn) => String(text).replace(URL_RE, (m) => {
+  const url = m.replace(TRAIL, '');
+  return fn(url) + m.slice(url.length);
+});
 
 export const isDevyaHost = (host) => host === 'www.devya.dev' || host === 'devya.dev' || /^[a-z0-9-]+\.devya\.dev$/.test(host);
 
@@ -78,12 +86,11 @@ export function tagDayLinks(day) {
   const campaign = campaignSlug(day);
   const posts = {};
   for (const [net, p] of Object.entries(day.posts || {})) {
-    let caption = p.caption || '';
-    for (const url of captionLinks(caption)) {
+    const caption = mapLinks(p.caption || '', (url) => {
       let host;
-      try { host = new URL(url).hostname; } catch { continue; }
-      if (isDevyaHost(host) && !isBannedHost(host)) caption = caption.replace(url, tagUrl(url, { platform: net, campaign }));
-    }
+      try { host = new URL(url).hostname; } catch { return url; }
+      return isDevyaHost(host) && !isBannedHost(host) ? tagUrl(url, { platform: net, campaign }) : url;
+    });
     posts[net] = { ...p, caption };
   }
   return { ...day, posts };
@@ -105,9 +112,16 @@ export const firstLine = (text = '') => String(text).split('\n').find((l) => l.t
 const norm = (s) => String(s).toLowerCase().replace(/[ً-ْ]/g, '');
 
 // The first line names at least one of the day's keywords for that language.
+// Latin keywords must start a word ("ai" does not match "email"; "index"
+// matches "indexes"); Arabic ones may carry a prefix (ال، و، ب) or suffix.
 export function keywordLed(text, keywords = []) {
   const line = norm(firstLine(text));
-  return keywords.some((k) => k && line.includes(norm(k)));
+  return keywords.some((k) => {
+    if (!k) return false;
+    const kw = norm(k);
+    if (/[؀-ۿ]/.test(kw)) return line.includes(kw);
+    return new RegExp(`(?<![\\p{L}\\p{N}])${kw.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')}`, 'u').test(line);
+  });
 }
 
 // "Devya" (never DEVYA, devya, ديفيا, Devya Solutions/Software in captions)
