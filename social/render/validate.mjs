@@ -8,6 +8,7 @@
 import { readFileSync, existsSync } from 'node:fs';
 import { dirname, join } from 'node:path';
 import { fileURLToPath } from 'node:url';
+import { shotUrlProblem } from './shot-guard.mjs';
 
 const SOCIAL = join(dirname(fileURLToPath(import.meta.url)), '..');
 const cal = JSON.parse(readFileSync(join(SOCIAL, 'calendar.json'), 'utf8'));
@@ -63,6 +64,10 @@ cal.days.forEach((d, i) => {
   if (d.layout === 'code' && !c.code?.length) err(d, 'code layout needs card.code');
   if (d.layout === 'terminal' && !c.terminal?.length) err(d, 'terminal layout needs card.terminal');
   if (d.layout === 'product' && !/^https:\/\//.test(c.shot || '')) err(d, 'product layout needs card.shot URL');
+  if (d.layout === 'product' && c.shot && shotUrlProblem(c.shot)) err(d, `card.shot: ${shotUrlProblem(c.shot)}`);
+  // Vercel is banned (2026-11-27): no vercel.app / now.sh URL or label anywhere in a day.
+  const vercel = JSON.stringify(d).match(/[\w.-]*\b(vercel\.app|now\.sh)\b[^"\s]*/i);
+  if (vercel) err(d, `Vercel URL ${vercel[0]} (Vercel is banned; use the app's own devya.dev host)`);
 
   // Posts.
   const p = d.posts || {};

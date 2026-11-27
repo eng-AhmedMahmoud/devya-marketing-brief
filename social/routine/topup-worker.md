@@ -43,7 +43,7 @@ Card fields by layout (look at existing days for real examples):
 - `code`: top-level `code: [{label:{en,ar}, code}]`, at most ~12 code lines in total
 - `terminal`: top-level `terminal: ["$ command", "output", "✓ ok line", "✗ error line"]`, 4–7 lines
 - `compare`: `left:{label,items}`, `right:{label,items}`, 4 short items each
-- `product`: top-level `shot` (the live product URL from its devya.dev page) and `shotLabel` (host), plus `items` (3 short chips)
+- `product`: top-level `shot` (the live product URL from its devya.dev page) and `shotLabel` (host), plus `items` (3 short chips). Never a `vercel.app` (or `now.sh`) URL: Vercel is banned. Use the app's own devya.dev host; if a product is only reachable on Vercel, pick another topic
 
 ## Rules (the validator enforces most of these)
 

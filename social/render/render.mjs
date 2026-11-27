@@ -9,12 +9,15 @@
 //   node render.mjs --all --force   re-render every day
 //
 // Output: social/visuals/<date>/{linkedin,facebook,instagram}.png (+ shot.png
-// for the product layout). Exits 1 if any card's text overflows its frame.
+// for the product layout). Exits 1 if any card's text overflows its frame,
+// 4 if the product screenshot is refused (shot-guard.mjs: a vercel.app URL,
+// an HTTP error, or a paused/error page); a refused shot is never saved.
 
 import { chromium } from 'playwright-core';
 import { readFileSync, existsSync, mkdirSync } from 'node:fs';
 import { dirname, join } from 'node:path';
 import { fileURLToPath, pathToFileURL } from 'node:url';
+import { ShotRefused, SHOT_REFUSED_EXIT, isBannedHost, pageTextProblem, shotUrlProblem } from './shot-guard.mjs';
 
 const HERE = dirname(fileURLToPath(import.meta.url));
 const SOCIAL = join(HERE, '..');
@@ -152,15 +155,35 @@ footer{display:flex;justify-content:space-between;align-items:center;border-top:
 }
 
 export async function shoot(browser, url, out) {
+  const bad = shotUrlProblem(url);
+  if (bad) throw new ShotRefused(url, bad);
   const ctx = await browser.newContext({ viewport: { width: 1280, height: 760 }, deviceScaleFactor: 1, colorScheme: 'dark' });
-  const page = await ctx.newPage();
-  await page.goto(url, { waitUntil: 'networkidle', timeout: 60000 });
-  // Decline the consent banner (privacy-preserving default) so it isn't in the shot.
-  const reject = page.getByRole('button', { name: /reject all/i });
-  if (await reject.count()) await reject.first().click().catch(() => {});
-  await page.waitForTimeout(2500);
-  await page.screenshot({ path: out });
-  await ctx.close();
+  try {
+    const page = await ctx.newPage();
+    const res = await page.goto(url, { waitUntil: 'networkidle', timeout: 60000 });
+    if (!res || res.status() >= 400) throw new ShotRefused(url, `HTTP ${res ? res.status() : 'no response'}`);
+    const landed = new URL(page.url()).hostname;
+    if (isBannedHost(landed)) throw new ShotRefused(url, `redirected to ${landed}, a Vercel host (Vercel is banned)`);
+    // Decline the consent banner (privacy-preserving default) so it isn't in the shot.
+    const reject = page.getByRole('button', { name: /reject all/i });
+    if (await reject.count()) await reject.first().click().catch(() => {});
+    await page.waitForTimeout(2500);
+    const why = pageTextProblem(await page.evaluate(() => document.body?.innerText || ''));
+    if (why) throw new ShotRefused(url, why);
+    await page.screenshot({ path: out });
+  } finally {
+    await ctx.close();
+  }
+}
+
+// Top-level failure handler shared with render-reel.mjs.
+export function fail(e) {
+  if (e instanceof ShotRefused) {
+    console.error(`SHOT REFUSED: ${e.message}`);
+    process.exit(SHOT_REFUSED_EXIT);
+  }
+  console.error(e);
+  process.exit(1);
 }
 
 async function main() {
@@ -202,4 +225,4 @@ async function main() {
   if (overflow) process.exit(1);
 }
 
-if (process.argv[1] && import.meta.url === pathToFileURL(process.argv[1]).href) main().catch((e) => { console.error(e); process.exit(1); });
+if (process.argv[1] && import.meta.url === pathToFileURL(process.argv[1]).href) main().catch(fail);
