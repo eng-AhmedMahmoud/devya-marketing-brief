@@ -180,6 +180,14 @@
         "by": "routine",
         "proof": "proof/2026-11-26-instagram.jpg"
       }
+    },
+    "2026-11-27": {
+      "linkedin": {
+        "url": "https://www.linkedin.com/feed/update/urn:li:share:7531993282877333504",
+        "at": "2026-11-27 10:12",
+        "by": "routine",
+        "proof": "proof/2026-11-27-linkedin.jpg"
+      }
     }
   }
 }
