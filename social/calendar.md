@@ -28,6 +28,14 @@ Slots: LinkedIn 10:00, LinkedIn video + Reels 13:00, Facebook + Story 19:30, Ins
 | 21 | Sat 5 Dec | product | product | og-preview: see your link card before you share it | EN / AR |
 | 22 | Sun 6 Dec | client-value | checklist | Before launch, ask for a written test pass on real content | AR / EN |
 | 23 | Mon 7 Dec | engineering | code | Light grey text can fail WCAG contrast: measure it | AR / EN |
+| 24 | Tue 8 Dec | product | product | Moving POS: a restaurant POS with an AI companion that reads your own sales | EN / AR |
+| 25 | Wed 9 Dec | engineering | terminal | Random 502s behind a load balancer: the Node.js keep-alive timeout | AR / EN |
+| 26 | Thu 10 Dec | product | compare | Moving Loyalty: loyalty cards in Apple Wallet and Google Wallet, no app | AR / EN |
+| 27 | Fri 11 Dec | bts | statement | Rules an AI coding agent must never skip live in hooks, not the prompt | AR / EN |
+| 28 | Sat 12 Dec | client-value | checklist | Ask your vendor: can a retried payment charge twice? | EN / AR |
+| 29 | Sun 13 Dec | product | product | Moving Stores: an online store whose menu comes from the till | AR / EN |
+| 30 | Mon 14 Dec | engineering | code | OFFSET pagination slows down on every page: keyset cursors | AR / EN |
+| 31 | Tue 15 Dec | product | checklist | Moving Accounting: double-entry books with ZATCA and ETA e-invoicing built in | EN / AR |
 
 ## Day 1 · Sun 15 Nov · Three open-source guardrails on every repo: leakhook, envcheck, i18n-check
 
@@ -2036,3 +2044,720 @@ Light grey text looks clean. Measure it: it can fail WCAG contrast.
 ```
 
 **Stories** (same video, no caption): Facebook 19:30 Arabic · Instagram 21:00 English
+
+## Day 24 · Tue 8 Dec · Moving POS: a restaurant POS with an AI companion that reads your own sales
+
+Pillar **product** · layout **product** · source https://www.devya.dev/projects/moving-pos-film
+
+Basis: Moving POS AI – Founders Live pitch (Devya YouTube channel, description and chapters) and the Moving POS page on devya.dev
+
+### LinkedIn · 10:00 · English
+
+<img src="visuals/2026-12-08/linkedin.png" alt="LinkedIn card, 2026-12-08" width="480"> `1200×627`
+
+```text
+Moving POS is our restaurant POS for Egypt and Saudi Arabia, and it now has an AI companion that answers from the restaurant's own numbers.
+
+Most owners are not short of data. They are short of time to dig through reports and find where the week's profit went.
+
+Moving POS already runs the whole restaurant from one system: the register, a live kitchen display, online ordering, loyalty and recipe-costed inventory, in Arabic and English. 25 branches run on it every day.
+
+The AI companion sits in the back office. It reads the restaurant's own sales and stock and answers the owner's questions about them in plain words. Insight cards add a demand forecast and menu costing notes.
+
+We entered it in the Founders Live pitch challenge. The pitch walks through a week of questions in under 90 seconds:
+https://www.youtube.com/watch?v=GsNGR6vv_eU&utm_source=linkedin&utm_medium=social&utm_campaign=2026-12-08-moving-pos-a-restaurant-pos-with-an-ai-companion
+
+#MovingPOS #RestaurantTech #AI #BuildWithDevya
+```
+
+### Facebook · 19:30 · English
+
+<img src="visuals/2026-12-08/facebook.png" alt="Facebook card, 2026-12-08" width="320"> `1080×1350`
+
+```text
+Moving POS: the restaurant POS with an AI companion that answers from your own sales.
+
+Ask it about your week, and it reads your restaurant's sales and stock to answer in plain words. Insight cards add a demand forecast and menu costing notes. Around it, Moving POS runs the register, the kitchen display, online ordering, loyalty and recipe-costed inventory, in Arabic and English, in Egypt and Saudi Arabia.
+
+Watch the pitch video:
+https://www.youtube.com/watch?v=GsNGR6vv_eU&utm_source=facebook&utm_medium=social&utm_campaign=2026-12-08-moving-pos-a-restaurant-pos-with-an-ai-companion
+
+#BuildWithDevya #MovingPOS #RestaurantTech
+```
+
+### Instagram · 21:00 · Arabic
+
+<img src="visuals/2026-12-08/instagram.png" alt="Instagram card, 2026-12-08" width="320"> `1080×1350`
+
+```text
+نظام نقاط البيع Moving POS يدير مطعمك كله، ومعه مساعد ذكي يجيب من مبيعاتك أنت.
+اسأله عن أسبوعك، فيقرأ مبيعات المطعم ومخزونه ويجيبك بكلمات واضحة، مع توقع للطلب وملاحظات عن تكلفة الأصناف.
+يعمل في مصر والسعودية، بالعربية والإنجليزية.
+شاهد فيديو العرض على قناة Devya في يوتيوب.
+
+#BuildWithDevya #MovingPOS #مطاعم #ذكاء_اصطناعي
+```
+
+### Vertical video · 1080×1920, 10 s · `visuals/2026-12-08/reel-<lang>.mp4` (rendered on the day)
+
+One-liner EN: Moving POS: a restaurant POS with an AI companion that answers from your own sales.
+
+One-liner AR: نظام نقاط البيع Moving POS: مساعد ذكي يجيب من مبيعات مطعمك أنت.
+
+**LinkedIn video** · 13:00 · English
+
+```text
+Moving POS: a restaurant POS with an AI companion that answers from your own sales.
+
+#MovingPOS #RestaurantTech #AI
+```
+
+**Facebook Reel** · 13:00 · English
+
+```text
+Moving POS: a restaurant POS with an AI companion that answers from your own sales.
+
+More: https://www.youtube.com/watch?v=GsNGR6vv_eU&utm_source=facebook&utm_medium=social&utm_campaign=2026-12-08-moving-pos-a-restaurant-pos-with-an-ai-companion&utm_content=reel
+
+#BuildWithDevya #MovingPOS #RestaurantTech
+```
+
+**Instagram Reel** · 13:00 · Arabic
+
+```text
+نظام نقاط البيع Moving POS: مساعد ذكي يجيب من مبيعات مطعمك أنت.
+
+#BuildWithDevya #MovingPOS #مطاعم #ذكاء_اصطناعي
+```
+
+**Stories** (same video, no caption): Facebook 19:30 English · Instagram 21:00 Arabic
+
+## Day 25 · Wed 9 Dec · Random 502s behind a load balancer: the Node.js keep-alive timeout
+
+Pillar **engineering** · layout **terminal** · source https://www.devya.dev/blogs/nodejs-keep-alive-timeout-load-balancer-502-nestjs-field-notes
+
+Basis: Devya blog field notes: Node.js keep-alive timeouts behind a load balancer (keepAliveTimeout 5 s vs ALB/Nginx 60 s idle timeout, the one-line NestJS fix, how to confirm the cause)
+
+### LinkedIn · 10:00 · English
+
+<img src="visuals/2026-12-09/linkedin.png" alt="LinkedIn card, 2026-12-09" width="480"> `1200×627`
+
+```text
+Random 502s from the load balancer, no pattern by endpoint, nothing in the application logs. That bug report always reads the same way, and it usually comes down to one default.
+
+Node.js closes a keep-alive connection after 5 seconds of idle time: server.keepAliveTimeout defaults to 5000 ms. An AWS Application Load Balancer keeps idle connections for 60 seconds, and so does an Nginx upstream keep-alive pool. When the load balancer reuses a connection at the moment Node.js closes it, Node.js answers with a TCP reset and the client gets a 502. The handler never ran, so the logs stay clean. Quiet services hit this more often than busy ones.
+
+The rule for every hop: the side that sends requests must give up on an idle connection before the side that receives them does.
+
+In NestJS on the Express adapter, that's one line in main.ts: app.getHttpServer().keepAliveTimeout = 65_000, above the ALB's 60-second default. Fastify already defaults to 72 seconds.
+
+We keep the number in one environment variable next to the load balancer config, because the two values are only correct relative to each other.
+
+The field notes, including the outbound fetch version of the same race:
+https://www.devya.dev/blogs/nodejs-keep-alive-timeout-load-balancer-502-nestjs-field-notes?utm_source=linkedin&utm_medium=social&utm_campaign=2026-12-09-random-502s-behind-a-load-balancer-the-node-js
+
+#NodeJS #NestJS #DevOps #AWS #BuildWithDevya
+```
+
+### Facebook · 19:30 · Arabic
+
+<img src="visuals/2026-12-09/facebook.png" alt="Facebook card, 2026-12-09" width="320"> `1080×1350`
+
+```text
+أخطاء 502 تظهر لبعض زوار موقعك بلا نمط واضح، وسجلات التطبيق فارغة؟
+
+قد يكون السبب إعدادًا افتراضيًا واحدًا. خادم Node.js يغلق الاتصال الخامل بعد 5 ثوانٍ، بينما يبقيه موازن الأحمال مفتوحًا 60 ثانية. فإذا أرسل الموازن طلبًا على اتصال يُغلق في اللحظة نفسها، يصل الخطأ إلى الزائر دون أن يصل الطلب إلى التطبيق أصلًا، ولهذا تبقى السجلات فارغة.
+
+القاعدة التي نطبقها: الطرف الذي يرسل الطلبات يتخلى عن الاتصال الخامل قبل الطرف الذي يستقبلها. لذلك نضبط مهلة Node.js على 65 ثانية خلف موازن مهلته 60 ثانية.
+
+التفاصيل التقنية لفريقك:
+https://www.devya.dev/blogs/nodejs-keep-alive-timeout-load-balancer-502-nestjs-field-notes?utm_source=facebook&utm_medium=social&utm_campaign=2026-12-09-random-502s-behind-a-load-balancer-the-node-js
+
+#تطوير_البرمجيات #BuildWithDevya
+```
+
+### Instagram · 21:00 · English
+
+<img src="visuals/2026-12-09/instagram.png" alt="Instagram card, 2026-12-09" width="320"> `1080×1350`
+
+```text
+Random 502s and nothing in the logs?
+Node.js closes idle connections after 5 seconds. An AWS load balancer keeps them for 60. When both act at once, the request never reaches your code.
+The fix: set keepAliveTimeout above the proxy's idle timeout. We use 65 seconds behind a default ALB.
+Link in bio.
+
+#BuildWithDevya #NodeJS #NestJS #BackendDevelopment #WebDevelopment
+```
+
+### Vertical video · 1080×1920, 10 s · `visuals/2026-12-09/reel-<lang>.mp4` (rendered on the day)
+
+One-liner EN: Random 502s behind a load balancer and nothing in the logs? Check the Node.js keep-alive timeout.
+
+One-liner AR: أخطاء 502 عشوائية خلف موازن الأحمال والسجلات فارغة؟ راجع مهلة keep-alive في Node.js.
+
+**LinkedIn video** · 13:00 · English
+
+```text
+Random 502s behind a load balancer and nothing in the logs? Check the Node.js keep-alive timeout.
+
+#NodeJS #NestJS #DevOps
+```
+
+**Facebook Reel** · 13:00 · Arabic
+
+```text
+أخطاء 502 عشوائية خلف موازن الأحمال والسجلات فارغة؟ راجع مهلة keep-alive في Node.js.
+
+التفاصيل: https://www.devya.dev/blogs/nodejs-keep-alive-timeout-load-balancer-502-nestjs-field-notes?utm_source=facebook&utm_medium=social&utm_campaign=2026-12-09-random-502s-behind-a-load-balancer-the-node-js&utm_content=reel
+
+#تطوير_البرمجيات #BuildWithDevya
+```
+
+**Instagram Reel** · 13:00 · English
+
+```text
+Random 502s behind a load balancer and nothing in the logs? Check the Node.js keep-alive timeout.
+
+#BuildWithDevya #NodeJS #NestJS #BackendDevelopment #WebDevelopment
+```
+
+**Stories** (same video, no caption): Facebook 19:30 Arabic · Instagram 21:00 English
+
+## Day 26 · Thu 10 Dec · Moving Loyalty: loyalty cards in Apple Wallet and Google Wallet, no app
+
+Pillar **product** · layout **compare** · source https://www.devya.dev/projects/moving-loyalty
+
+Basis: Moving Loyalty – Founders Live pitch (Devya YouTube channel, description and chapters) and the Moving Loyalty page on devya.dev
+
+### LinkedIn · 10:00 · English
+
+<img src="visuals/2026-12-10/linkedin.png" alt="LinkedIn card, 2026-12-10" width="480"> `1200×627`
+
+```text
+Loyalty cards work best where customers already look: the wallet on their phone. That is the idea behind Moving Loyalty.
+
+Moving Loyalty puts a café's, restaurant's or shop's loyalty card in Apple Wallet and Google Wallet, in Arabic and English, for businesses in Egypt and Saudi Arabia.
+
+The customer scans once and enters a mobile number. No app to install, no password, no e-mail.
+The staff add a stamp in three taps at the counter, and the card in the customer's wallet updates itself.
+The owner picks one of eight card templates, adds the brand and previews the card in the wallet before launch.
+
+The pitch walks through the join, the stamp and the templates:
+https://www.youtube.com/watch?v=lvcq-RFultk&utm_source=linkedin&utm_medium=social&utm_campaign=2026-12-10-moving-loyalty-loyalty-cards-in-apple-wallet-and
+
+#MovingLoyalty #LoyaltyProgram #Retail #BuildWithDevya
+```
+
+### Facebook · 19:30 · Arabic
+
+<img src="visuals/2026-12-10/facebook.png" alt="Facebook card, 2026-12-10" width="320"> `1080×1350`
+
+```text
+بطاقة الولاء من Moving Loyalty تعيش في محفظة هاتف العميل: Apple Wallet وGoogle Wallet.
+يكفي أن يمسح العميل الرمز مرة واحدة ويكتب رقم هاتفه، بلا تطبيق ولا كلمة مرور ولا بريد إلكتروني. ويضيف الموظف الختم في ثلاث نقرات، فتتحدث البطاقة في المحفظة تلقائيًا.
+للمقاهي والمطاعم والمتاجر في مصر والسعودية، بالعربية والإنجليزية.
+شاهد فيديو العرض:
+https://www.youtube.com/watch?v=lvcq-RFultk&utm_source=facebook&utm_medium=social&utm_campaign=2026-12-10-moving-loyalty-loyalty-cards-in-apple-wallet-and
+
+#BuildWithDevya #برنامج_ولاء
+```
+
+### Instagram · 21:00 · English
+
+<img src="visuals/2026-12-10/instagram.png" alt="Instagram card, 2026-12-10" width="320"> `1080×1350`
+
+```text
+Loyalty cards in Apple Wallet and Google Wallet, with no app to install.
+With Moving Loyalty, customers join with one scan and a mobile number. Staff add a stamp in three taps, and the card updates itself in the wallet.
+For cafés, restaurants and shops in Egypt and Saudi Arabia.
+Watch the pitch on Devya's YouTube channel.
+
+#BuildWithDevya #MovingLoyalty #LoyaltyProgram #SmallBusiness
+```
+
+### Vertical video · 1080×1920, 10 s · `visuals/2026-12-10/reel-<lang>.mp4` (rendered on the day)
+
+One-liner EN: Loyalty cards in Apple Wallet and Google Wallet: one scan to join, three taps to stamp. Moving Loyalty.
+
+One-liner AR: بطاقة الولاء في محفظة الهاتف: مسحة واحدة للانضمام وثلاث نقرات للختم. Moving Loyalty.
+
+**LinkedIn video** · 13:00 · English
+
+```text
+Loyalty cards in Apple Wallet and Google Wallet: one scan to join, three taps to stamp. Moving Loyalty.
+
+#MovingLoyalty #LoyaltyProgram #Retail
+```
+
+**Facebook Reel** · 13:00 · Arabic
+
+```text
+بطاقة الولاء في محفظة الهاتف: مسحة واحدة للانضمام وثلاث نقرات للختم. Moving Loyalty.
+
+التفاصيل: https://www.youtube.com/watch?v=lvcq-RFultk&utm_source=facebook&utm_medium=social&utm_campaign=2026-12-10-moving-loyalty-loyalty-cards-in-apple-wallet-and&utm_content=reel
+
+#BuildWithDevya #برنامج_ولاء
+```
+
+**Instagram Reel** · 13:00 · English
+
+```text
+Loyalty cards in Apple Wallet and Google Wallet: one scan to join, three taps to stamp. Moving Loyalty.
+
+#BuildWithDevya #MovingLoyalty #LoyaltyProgram #SmallBusiness
+```
+
+**Stories** (same video, no caption): Facebook 19:30 Arabic · Instagram 21:00 English
+
+## Day 27 · Fri 11 Dec · Rules an AI coding agent must never skip live in hooks, not the prompt
+
+Pillar **bts** · layout **statement** · source https://www.devya.dev/blogs/claude-code-hooks-deterministic-guardrails-field-notes
+
+Basis: Devya blog field notes: Claude Code hooks as deterministic guardrails (why Devya moved must-never-skip rules out of CLAUDE.md into hooks: secret-file guard, per-edit formatter, type-check gate on Stop)
+
+### LinkedIn · 10:00 · English
+
+<img src="visuals/2026-12-11/linkedin.png" alt="LinkedIn card, 2026-12-11" width="480"> `1200×627`
+
+```text
+Our AI coding agent followed the rules in CLAUDE.md most of the time. "Never touch .env files." "Run the formatter after editing." Most of the time is fine for style advice. It isn't good enough for a guardrail.
+
+A rule in CLAUDE.md is text in the model's context, weighed on each turn. A Claude Code hook is a handler the harness itself runs every time an event fires.
+
+So we sort every rule into one of three layers:
+→ CLAUDE.md for conventions, architecture notes and "prefer X over Y" advice.
+→ Permission rules for a hard allow or deny on tools and commands.
+→ Hooks for anything that must never be skipped: blocking secret files before a read or edit, formatting each file after Claude edits it, and refusing to finish while the type-check fails.
+
+One lesson from setting it up: only exit code 2 blocks a tool call. Our first secrets guard exited 1, which Claude Code treats as a non-blocking error, so the call still ran.
+
+The fix was never a louder instruction. It was moving the rule out of the prompt.
+
+#AI #ClaudeCode #DeveloperTools #SoftwareEngineering #BuildWithDevya
+```
+
+### Facebook · 19:30 · Arabic
+
+<img src="visuals/2026-12-11/facebook.png" alt="Facebook card, 2026-12-11" width="320"> `1080×1350`
+
+```text
+هل يتبع وكيل البرمجة بالذكاء الاصطناعي تعليماتك في كل مرة؟ في أغلب المرات فقط.
+
+هذا يكفي لنصائح الأسلوب، لكنه لا يكفي لقاعدة مثل «لا تلمس ملفات الإعدادات السرية».
+
+لذلك نقلنا في Devya كل قاعدة لا يجوز تخطيها من ملف التعليمات إلى hooks في Claude Code، وهي برامج صغيرة تشغّلها الأداة نفسها في كل مرة: تمنع قراءة ملفات الأسرار أو تعديلها، وتنسّق كل ملف بعد تعديله، وترفض إنهاء العمل قبل نجاح فحص الأنواع.
+
+ويبقى ملف التعليمات للإرشادات والسياق.
+
+القصة كاملة:
+https://www.devya.dev/blogs/claude-code-hooks-deterministic-guardrails-field-notes?utm_source=facebook&utm_medium=social&utm_campaign=2026-12-11-rules-an-ai-coding-agent-must-never-skip-live-in
+
+#الذكاء_الاصطناعي #BuildWithDevya
+```
+
+### Instagram · 21:00 · English
+
+<img src="visuals/2026-12-11/instagram.png" alt="Instagram card, 2026-12-11" width="320"> `1080×1350`
+
+```text
+Does your AI coding agent follow its rules every time? Ours did most of the time.
+That's fine for style advice, not for a guardrail. So anything that must never be skipped (blocking secret files, formatting every edit, no finishing on a failing type-check) runs as a Claude Code hook, every time.
+Link in bio.
+
+#BuildWithDevya #AI #ClaudeCode #DeveloperTools #BehindTheScenes
+```
+
+### Vertical video · 1080×1920, 10 s · `visuals/2026-12-11/reel-<lang>.mp4` (rendered on the day)
+
+One-liner EN: Our AI coding agent followed CLAUDE.md most of the time. Rules that must hold every time now run as hooks.
+
+One-liner AR: وكيل البرمجة بالذكاء الاصطناعي يتبع التعليمات أغلب الوقت، لذلك ننقل القواعد التي لا تُتخطى إلى hooks.
+
+**LinkedIn video** · 13:00 · English
+
+```text
+Our AI coding agent followed CLAUDE.md most of the time. Rules that must hold every time now run as hooks.
+
+#AI #ClaudeCode #DeveloperTools
+```
+
+**Facebook Reel** · 13:00 · Arabic
+
+```text
+وكيل البرمجة بالذكاء الاصطناعي يتبع التعليمات أغلب الوقت، لذلك ننقل القواعد التي لا تُتخطى إلى hooks.
+
+التفاصيل: https://www.devya.dev/blogs/claude-code-hooks-deterministic-guardrails-field-notes?utm_source=facebook&utm_medium=social&utm_campaign=2026-12-11-rules-an-ai-coding-agent-must-never-skip-live-in&utm_content=reel
+
+#الذكاء_الاصطناعي #BuildWithDevya
+```
+
+**Instagram Reel** · 13:00 · English
+
+```text
+Our AI coding agent followed CLAUDE.md most of the time. Rules that must hold every time now run as hooks.
+
+#BuildWithDevya #AI #ClaudeCode #DeveloperTools #BehindTheScenes
+```
+
+**Stories** (same video, no caption): Facebook 19:30 Arabic · Instagram 21:00 English
+
+## Day 28 · Sat 12 Dec · Ask your vendor: can a retried payment charge twice?
+
+Pillar **client-value** · layout **checklist** · source https://www.devya.dev/blogs/idempotency-keys-retries-circuit-breakers-field-notes
+
+Basis: Devya blog field notes: when retries make an outage worse (idempotency keys, safe-to-retry failures, backoff with jitter, per-attempt timeouts, circuit breakers), phrased as buyer advice for any vendor
+
+### LinkedIn · 10:00 · English
+
+<img src="visuals/2026-12-12/linkedin.png" alt="LinkedIn card, 2026-12-12" width="480"> `1200×627`
+
+```text
+A payment request times out. Did the charge go through? Your app doesn't know, and the code about to retry it doesn't either.
+
+That's the hard case in every retry policy. A timeout or an HTTP 500 is ambiguous: the write may have committed before the response was lost. Retry it blindly and you risk a duplicate charge. Don't retry and you risk losing a legitimate payment.
+
+If you're hiring a team to build anything that takes money, ask your vendor how they handle it:
+1. An idempotency key on every payment write, generated once per operation and reused on every retry, so a repeat returns the original result instead of charging again.
+2. A timeout on every call to an outside service, so one hung request can't hold a worker indefinitely.
+3. Retries only for failures that are safe to repeat, two or three at most, with random jitter so clients don't all come back at the same instant.
+4. A circuit breaker on a dependency that is fully down: fail fast instead of piling on.
+
+Careless retries make outages worse. With three retries per request, a service at its breaking point can receive up to four times its normal load.
+
+#Payments #Fintech #SoftwareArchitecture #BuildWithDevya
+```
+
+### Facebook · 19:30 · English
+
+<img src="visuals/2026-12-12/facebook.png" alt="Facebook card, 2026-12-12" width="320"> `1080×1350`
+
+```text
+Building an app or online store that takes payments? Ask one question before launch: what happens when a payment request is retried?
+
+Connections drop. When a request times out, the charge may already have gone through, and a careless retry can charge your customer twice.
+
+Ask your vendor for three things:
+• An idempotency key on every payment, so a retry returns the first result instead of charging again.
+• A time limit on every call to an outside service.
+• Retries only for errors that are safe to repeat, two or three at most.
+
+Planning something that takes payments? Talk to us:
+https://www.devya.dev/contact?utm_source=facebook&utm_medium=social&utm_campaign=2026-12-12-ask-your-vendor-can-a-retried-payment-charge
+
+#BuildWithDevya #Payments #Ecommerce
+```
+
+### Instagram · 21:00 · Arabic
+
+<img src="visuals/2026-12-12/instagram.png" alt="Instagram card, 2026-12-12" width="320"> `1080×1350`
+
+```text
+إعادة المحاولة قد تجعل عميلك يدفع مرتين.
+عندما تنقطع الاستجابة أثناء الدفع، قد تكون العملية قد تمت فعلًا، وإعادة المحاولة دون حماية قد تكررها.
+اطلب من شركة البرمجة مفتاح منع تكرار لكل عملية دفع، ومهلة زمنية لكل اتصال خارجي، وإعادة محاولة محدودة للأخطاء الآمنة فقط.
+احفظ المنشور لمشروعك القادم. الرابط في البايو.
+
+#الدفع_الإلكتروني #ريادة_الأعمال #تطوير_البرمجيات #السعودية #BuildWithDevya
+```
+
+### Vertical video · 1080×1920, 10 s · `visuals/2026-12-12/reel-<lang>.mp4` (rendered on the day)
+
+One-liner EN: Payment timed out? Ask your vendor whether the retry can charge your customer twice.
+
+One-liner AR: انقطع الاتصال أثناء الدفع؟ اسأل شركة البرمجة: هل يمكن أن تخصم إعادة المحاولة المبلغ مرتين؟
+
+**LinkedIn video** · 13:00 · English
+
+```text
+Payment timed out? Ask your vendor whether the retry can charge your customer twice.
+
+#Payments #Fintech #SoftwareArchitecture
+```
+
+**Facebook Reel** · 13:00 · English
+
+```text
+Payment timed out? Ask your vendor whether the retry can charge your customer twice.
+
+More: https://www.devya.dev/contact?utm_source=facebook&utm_medium=social&utm_campaign=2026-12-12-ask-your-vendor-can-a-retried-payment-charge&utm_content=reel
+
+#BuildWithDevya #Payments #Ecommerce
+```
+
+**Instagram Reel** · 13:00 · Arabic
+
+```text
+انقطع الاتصال أثناء الدفع؟ اسأل شركة البرمجة: هل يمكن أن تخصم إعادة المحاولة المبلغ مرتين؟
+
+#الدفع_الإلكتروني #ريادة_الأعمال #تطوير_البرمجيات #السعودية #BuildWithDevya
+```
+
+**Stories** (same video, no caption): Facebook 19:30 English · Instagram 21:00 Arabic
+
+## Day 29 · Sun 13 Dec · Moving Stores: an online store whose menu comes from the till
+
+Pillar **product** · layout **product** · source https://www.devya.dev/projects/moving-stores
+
+Basis: Moving Stores – Founders Live pitch (Devya YouTube channel, description and chapters) and the Moving Stores page on devya.dev
+
+### LinkedIn · 10:00 · English
+
+<img src="visuals/2026-12-13/linkedin.png" alt="LinkedIn card, 2026-12-13" width="480"> `1200×627`
+
+```text
+An online store and a POS that don't talk to each other mean two menus and two price lists to keep in step. Moving Stores is built the other way round.
+
+Moving Stores builds an online store in Arabic and English for shops and restaurants in Egypt and the Gulf. Linked to Moving POS, the store takes its menu, prices and branches from the till.
+
+An online order then behaves exactly like a counter sale: it lands on the kitchen screen, prints on the kitchen printer and takes the stock off. The till re-checks every price before it accepts the order, and the customer follows its progress live.
+
+There's a free plan; the Moving POS link comes with the Growth and Enterprise plans.
+
+The pitch follows an order from the store to the kitchen:
+https://www.youtube.com/watch?v=SbZVZ12EyBo&utm_source=linkedin&utm_medium=social&utm_campaign=2026-12-13-moving-stores-an-online-store-whose-menu-comes
+
+#MovingStores #Ecommerce #RestaurantTech #BuildWithDevya
+```
+
+### Facebook · 19:30 · Arabic
+
+<img src="visuals/2026-12-13/facebook.png" alt="Facebook card, 2026-12-13" width="320"> `1080×1350`
+
+```text
+متجر إلكتروني يأخذ قائمته وأسعاره وفروعه من الكاشير مباشرة: هذا هو Moving Stores.
+عند ربطه بنظام Moving POS، يصل الطلب الإلكتروني إلى شاشة المطبخ، ويُطبع على طابعة المطبخ، ويُخصم من المخزون، تمامًا مثل البيع عند الكاشير. ويتحقق الكاشير من كل سعر قبل قبول الطلب، ويتابع العميل حالة طلبه مباشرة.
+للمتاجر والمطاعم في مصر والخليج، بالعربية والإنجليزية، مع خطة مجانية.
+شاهد فيديو العرض:
+https://www.youtube.com/watch?v=SbZVZ12EyBo&utm_source=facebook&utm_medium=social&utm_campaign=2026-12-13-moving-stores-an-online-store-whose-menu-comes
+
+#BuildWithDevya #تجارة_إلكترونية
+```
+
+### Instagram · 21:00 · English
+
+<img src="visuals/2026-12-13/instagram.png" alt="Instagram card, 2026-12-13" width="320"> `1080×1350`
+
+```text
+An online store whose menu comes straight from the till.
+Moving Stores builds your store in Arabic and English. Linked to Moving POS, every online order lands on the kitchen screen and takes the stock off, just like a counter sale.
+For shops and restaurants in Egypt and the Gulf, with a free plan.
+Watch the pitch on Devya's YouTube channel.
+
+#BuildWithDevya #MovingStores #Ecommerce #OnlineOrdering
+```
+
+### Vertical video · 1080×1920, 10 s · `visuals/2026-12-13/reel-<lang>.mp4` (rendered on the day)
+
+One-liner EN: An online store whose menu, prices and branches come from the till: Moving Stores.
+
+One-liner AR: متجر إلكتروني تأتي قائمته وأسعاره من الكاشير: Moving Stores.
+
+**LinkedIn video** · 13:00 · English
+
+```text
+An online store whose menu, prices and branches come from the till: Moving Stores.
+
+#MovingStores #Ecommerce #RestaurantTech
+```
+
+**Facebook Reel** · 13:00 · Arabic
+
+```text
+متجر إلكتروني تأتي قائمته وأسعاره من الكاشير: Moving Stores.
+
+التفاصيل: https://www.youtube.com/watch?v=SbZVZ12EyBo&utm_source=facebook&utm_medium=social&utm_campaign=2026-12-13-moving-stores-an-online-store-whose-menu-comes&utm_content=reel
+
+#BuildWithDevya #تجارة_إلكترونية
+```
+
+**Instagram Reel** · 13:00 · English
+
+```text
+An online store whose menu, prices and branches come from the till: Moving Stores.
+
+#BuildWithDevya #MovingStores #Ecommerce #OnlineOrdering
+```
+
+**Stories** (same video, no caption): Facebook 19:30 Arabic · Instagram 21:00 English
+
+## Day 30 · Mon 14 Dec · OFFSET pagination slows down on every page: keyset cursors
+
+Pillar **engineering** · layout **code** · source https://www.devya.dev/blogs/cursor-pagination-keyset-postgres-field-notes
+
+Basis: Devya blog field notes: why OFFSET pagination gets slower every page, keyset cursors with a unique tie-breaker, and the composite index that makes them work
+
+### LinkedIn · 10:00 · English
+
+<img src="visuals/2026-12-14/linkedin.png" alt="LinkedIn card, 2026-12-14" width="480"> `1200×627`
+
+```text
+OFFSET pagination gets slower on every page. Here's why, and what we use instead.
+
+LIMIT 20 OFFSET 10000 doesn't jump to row 10,000. PostgreSQL produces 10,020 rows in sort order and discards the first 10,000. EXPLAIN ANALYZE shows it: the Limit node returns 20 rows while the index scan under it reads 10,020.
+
+OFFSET also drifts under concurrent writes. A row inserted above the window pushes everything down, and the user sees a duplicate.
+
+Keyset pagination remembers the sort-key values of the last row on the page and asks for the rows after them: WHERE (created_at, id) < ($1, $2). The index scan starts right there, so page 500 costs about what page 1 costs.
+
+What makes it work:
+→ End every ORDER BY with a unique tie-breaker, normally the primary key, or rows that share a timestamp get skipped or repeated.
+→ Give each sort option a composite index that matches the ORDER BY, direction included.
+→ Fetch one row more than the page size. If it comes back, there's a next page.
+
+OFFSET is still fine for a small admin table with page numbers. Feeds, activity logs and export endpoints should be keyset from the start.
+
+https://www.devya.dev/blogs/cursor-pagination-keyset-postgres-field-notes?utm_source=linkedin&utm_medium=social&utm_campaign=2026-12-14-offset-pagination-slows-down-on-every-page
+
+#PostgreSQL #BackendEngineering #SQL #BuildWithDevya
+```
+
+### Facebook · 19:30 · Arabic
+
+<img src="visuals/2026-12-14/facebook.png" alt="Facebook card, 2026-12-14" width="320"> `1080×1350`
+
+```text
+قائمة المنتجات أو الطلبات في تطبيقك تبطؤ كلما تقدمت في الصفحات؟
+
+أحد الأسباب طريقة ترقيم الصفحات. مع OFFSET لا تقفز قاعدة البيانات إلى الصفحة المطلوبة، بل تقرأ كل الصفوف التي قبلها ثم تتجاهلها. فلعرض 20 صفًا بعد أول 10,000 صف، تقرأ 10,020 صفًا.
+
+البديل الذي نعتمده للقوائم الطويلة وسجلات النشاط وعمليات التصدير هو ترقيم keyset: يتذكر آخر صف ظهر لك ويبدأ منه مباشرة، فتكلّف الصفحة 500 تقريبًا ما تكلّفه الصفحة الأولى.
+
+التفاصيل التقنية لفريقك:
+https://www.devya.dev/blogs/cursor-pagination-keyset-postgres-field-notes?utm_source=facebook&utm_medium=social&utm_campaign=2026-12-14-offset-pagination-slows-down-on-every-page
+
+#قواعد_البيانات #BuildWithDevya
+```
+
+### Instagram · 21:00 · English
+
+<img src="visuals/2026-12-14/instagram.png" alt="Instagram card, 2026-12-14" width="320"> `1080×1350`
+
+```text
+Why does page 500 load slower than page 1?
+With OFFSET pagination, LIMIT 20 OFFSET 10000 makes PostgreSQL produce 10,020 rows and throw away 10,000. Keyset pagination starts from the last row you saw, so page 500 costs about what page 1 costs.
+End the sort with a unique key, and index it in the same order.
+Link in bio.
+
+#BuildWithDevya #PostgreSQL #SQL #WebDevelopment #TechTips
+```
+
+### Vertical video · 1080×1920, 10 s · `visuals/2026-12-14/reel-<lang>.mp4` (rendered on the day)
+
+One-liner EN: OFFSET pagination gets slower on every page. Keyset cursors make page 500 cost about what page 1 costs.
+
+One-liner AR: ترقيم الصفحات بـ OFFSET يبطؤ مع كل صفحة، ومع keyset تكلّف الصفحة 500 تقريبًا ما تكلّفه الأولى.
+
+**LinkedIn video** · 13:00 · English
+
+```text
+OFFSET pagination gets slower on every page. Keyset cursors make page 500 cost about what page 1 costs.
+
+#PostgreSQL #BackendEngineering #SQL
+```
+
+**Facebook Reel** · 13:00 · Arabic
+
+```text
+ترقيم الصفحات بـ OFFSET يبطؤ مع كل صفحة، ومع keyset تكلّف الصفحة 500 تقريبًا ما تكلّفه الأولى.
+
+التفاصيل: https://www.devya.dev/blogs/cursor-pagination-keyset-postgres-field-notes?utm_source=facebook&utm_medium=social&utm_campaign=2026-12-14-offset-pagination-slows-down-on-every-page&utm_content=reel
+
+#قواعد_البيانات #BuildWithDevya
+```
+
+**Instagram Reel** · 13:00 · English
+
+```text
+OFFSET pagination gets slower on every page. Keyset cursors make page 500 cost about what page 1 costs.
+
+#BuildWithDevya #PostgreSQL #SQL #WebDevelopment #TechTips
+```
+
+**Stories** (same video, no caption): Facebook 19:30 Arabic · Instagram 21:00 English
+
+## Day 31 · Tue 15 Dec · Moving Accounting: double-entry books with ZATCA and ETA e-invoicing built in
+
+Pillar **product** · layout **checklist** · source https://www.devya.dev/projects/moving-accounting
+
+Basis: Moving Accounting – Founders Live pitch (Devya YouTube channel, description and chapters) and the Moving Accounting page on devya.dev
+
+### LinkedIn · 10:00 · English
+
+<img src="visuals/2026-12-15/linkedin.png" alt="LinkedIn card, 2026-12-15" width="480"> `1200×627`
+
+```text
+Accounting that is rebuilt once a month from exports is always a month behind. Moving Accounting keeps the books current instead.
+
+Moving Accounting is double-entry accounting in Arabic and English for Saudi Arabia and Egypt. Follow an invoice line into the books and every entry balances; the database itself enforces it.
+
+Tax invoices go to ZATCA or to Egypt's ETA from inside the system, and the VAT return builds itself from your own documents.
+
+Once linked, Moving POS branches and a Moving Stores shop post their sales on their own: each day's close becomes one balanced entry per branch.
+
+There's a free plan. The pitch follows one invoice line into the books:
+https://www.youtube.com/watch?v=dOvsiOFMj_E&utm_source=linkedin&utm_medium=social&utm_campaign=2026-12-15-moving-accounting-double-entry-books-with-zatca
+
+#MovingAccounting #EInvoicing #ZATCA #BuildWithDevya
+```
+
+### Facebook · 19:30 · English
+
+<img src="visuals/2026-12-15/facebook.png" alt="Facebook card, 2026-12-15" width="320"> `1080×1350`
+
+```text
+Moving Accounting: double-entry accounting in Arabic and English, with e-invoicing built in.
+
+Tax invoices go to ZATCA in Saudi Arabia or the ETA in Egypt from inside the system, and the VAT return builds itself from your own documents. Linked to Moving POS and Moving Stores, each day's sales close into one balanced entry per branch.
+
+There's a free plan. Watch the pitch video:
+https://www.youtube.com/watch?v=dOvsiOFMj_E&utm_source=facebook&utm_medium=social&utm_campaign=2026-12-15-moving-accounting-double-entry-books-with-zatca
+
+#BuildWithDevya #MovingAccounting #EInvoicing
+```
+
+### Instagram · 21:00 · Arabic
+
+<img src="visuals/2026-12-15/instagram.png" alt="Instagram card, 2026-12-15" width="320"> `1080×1350`
+
+```text
+المحاسبة بالقيد المزدوج بالعربية والإنجليزية، مع الفواتير الإلكترونية من داخل النظام: هذا هو Moving Accounting.
+تُرسل الفواتير الضريبية إلى ZATCA في السعودية أو منظومة ETA في مصر، ويُبنى الإقرار الضريبي من مستنداتك أنت.
+ومع ربطه بنظامي Moving POS وMoving Stores تُرحَّل مبيعات كل يوم في قيد واحد متوازن لكل فرع.
+شاهد فيديو العرض على قناة Devya في يوتيوب.
+
+#BuildWithDevya #MovingAccounting #محاسبة #فاتورة_إلكترونية
+```
+
+### Vertical video · 1080×1920, 10 s · `visuals/2026-12-15/reel-<lang>.mp4` (rendered on the day)
+
+One-liner EN: Moving Accounting: every entry balances, and e-invoices reach ZATCA or Egypt's ETA from inside the system.
+
+One-liner AR: المحاسبة بالقيد المزدوج مع الفواتير الإلكترونية إلى ZATCA وETA: Moving Accounting.
+
+**LinkedIn video** · 13:00 · English
+
+```text
+Moving Accounting: every entry balances, and e-invoices reach ZATCA or Egypt's ETA from inside the system.
+
+#MovingAccounting #EInvoicing #ZATCA
+```
+
+**Facebook Reel** · 13:00 · English
+
+```text
+Moving Accounting: every entry balances, and e-invoices reach ZATCA or Egypt's ETA from inside the system.
+
+More: https://www.youtube.com/watch?v=dOvsiOFMj_E&utm_source=facebook&utm_medium=social&utm_campaign=2026-12-15-moving-accounting-double-entry-books-with-zatca&utm_content=reel
+
+#BuildWithDevya #MovingAccounting #EInvoicing
+```
+
+**Instagram Reel** · 13:00 · Arabic
+
+```text
+المحاسبة بالقيد المزدوج مع الفواتير الإلكترونية إلى ZATCA وETA: Moving Accounting.
+
+#BuildWithDevya #MovingAccounting #محاسبة #فاتورة_إلكترونية
+```
+
+**Stories** (same video, no caption): Facebook 19:30 English · Instagram 21:00 Arabic

@@ -20,7 +20,7 @@ import { dirname, join } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { spawnSync } from 'node:child_process';
 import { shotUrlProblem } from './shot-guard.mjs';
-import { RULES_FROM, POST_TAGS, REEL_TAGS, BRAND_TAG, campaignSlug, captionLinks, linkProblems, linkBase, allowedPages, hashtags, keywordLed, namingProblems, altText, altProblems } from './seo.mjs';
+import { RULES_FROM, POST_TAGS, REEL_TAGS, BRAND_TAG, CHANNEL, DEVYA_VIDEOS, campaignSlug, captionLinks, linkProblems, linkBase, allowedPages, hashtags, keywordLed, namingProblems, altText, altProblems, youtubeId, videoUrl, isYouTubeHost } from './seo.mjs';
 
 const SOCIAL = join(dirname(fileURLToPath(import.meta.url)), '..');
 const args = process.argv.slice(2);
@@ -95,6 +95,11 @@ cal.days.forEach((d, i) => {
   const kw = d.keywords || {};
   if (modern && !(kw.en?.length && kw.ar?.length)) err(d, 'keywords needs en and ar lists (the search terms each caption leads with)');
   const campaign = campaignSlug(d);
+  // A day about a video (day.video) links that video, and only a Devya-channel one.
+  if (d.video !== undefined) {
+    const id = youtubeId(d.video);
+    if (!DEVYA_VIDEOS.has(id) || d.video !== videoUrl(id)) err(d, `video ${d.video} must be ${id ? videoUrl(id) : 'a canonical watch URL'} of a video on Devya's channel (social/videos.json)`);
+  }
   const okPages = allowedPages(d);
 
   // Posts.
@@ -135,6 +140,7 @@ cal.days.forEach((d, i) => {
     }
     if (net === 'linkedin' && d.linkedinLink !== (urls.length > 0)) err(d, `linkedin: linkedinLink=${d.linkedinLink} but ${urls.length} link(s)`);
     if (net === 'facebook' && modern && urls.length !== 1) err(d, `facebook: needs exactly one link at the end, has ${urls.length}`);
+    if (modern && d.video && (net === 'facebook' || net === 'linkedin') && urls.some((u) => linkBase(u) !== linkBase(d.video))) err(d, `${net}: a video day links its video (${d.video})`);
     if (net === 'instagram' && urls.length) err(d, 'instagram: links are not clickable, say "link in bio"');
     const body = s.replace(/#[\p{L}\p{N}_]+/gu, '').replace(/https?:\/\/\S+/g, '');
     const ar = (body.match(ARABIC) || []).length;
@@ -180,6 +186,20 @@ cal.days.forEach((d, i) => {
 if (live) {
   for (const [page, date] of pages) {
     if (only && date !== only) continue;
+    // A YouTube watch page answers 200 even for a removed video: ask oEmbed,
+    // which answers 200 only for a playable public/unlisted video, and check
+    // that the video belongs to Devya's channel.
+    if (isYouTubeHost(new URL(page).hostname)) {
+      const r = spawnSync('curl', ['-sS', '-m', '25', '--retry', '2', '-w', '\n%{http_code}', `https://www.youtube.com/oembed?format=json&url=${encodeURIComponent(page)}`], { encoding: 'utf8' });
+      const lines = (r.stdout || '').trim().split('\n');
+      const code = lines.pop();
+      let meta = {};
+      try { meta = JSON.parse(lines.join('\n')); } catch { /* not JSON: reported below */ }
+      if (r.status !== 0) err({ date }, `${page} could not be checked: ${(r.stderr || '').trim()}`);
+      else if (code !== '200') err({ date }, `${page} is not available on YouTube (oEmbed HTTP ${code})`);
+      else if (!String(meta.author_url || '').endsWith(`/${CHANNEL.handle}`)) err({ date }, `${page} belongs to ${meta.author_url}, not ${CHANNEL.url}`);
+      continue;
+    }
     const r = spawnSync('curl', ['-sS', '-o', '/dev/null', '-m', '25', '--retry', '2', '-A', 'devya-social-validate', '-w', '%{http_code} %{redirect_url}', page], { encoding: 'utf8' });
     const [code, location] = (r.stdout || '').trim().split(' ');
     if (r.status !== 0) err({ date }, `${page} could not be fetched: ${(r.stderr || '').trim()}`);

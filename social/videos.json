@@ -1,0 +1,18 @@
+{
+  "note": "Videos on Devya's YouTube channel that social posts may link to. A caption link to YouTube must be one of these, as https://www.youtube.com/watch?v=<id> plus UTM tags (render/seo.mjs). validate.mjs --live checks each one through YouTube's oEmbed endpoint: it must answer 200 and belong to this channel. Verified 2026-11-28 from the channel feed (https://www.youtube.com/feeds/videos.xml?channel_id=UCr3NVqdbc_31pUVYSJSVUmQ), oEmbed and the watch page (Public, playable).",
+  "channel": {
+    "id": "UCr3NVqdbc_31pUVYSJSVUmQ",
+    "handle": "@DevyaSolutions",
+    "title": "Devya Solutions",
+    "url": "https://www.youtube.com/@DevyaSolutions"
+  },
+  "videos": [
+    { "id": "GsNGR6vv_eU", "title": "Moving POS AI – Founders Live pitch", "product": "Moving POS", "published": "2026-11-24", "seconds": 89 },
+    { "id": "lvcq-RFultk", "title": "Moving Loyalty – Founders Live pitch", "product": "Moving Loyalty", "published": "2026-11-24", "seconds": 86 },
+    { "id": "FMGheHVlQaU", "title": "Moving POS AI Assistant – Founders Live pitch", "product": "Moving POS", "published": "2026-11-25", "seconds": 85 },
+    { "id": "SbZVZ12EyBo", "title": "Moving Stores – Founders Live pitch", "product": "Moving Stores", "published": "2026-11-25", "seconds": 85 },
+    { "id": "dOvsiOFMj_E", "title": "Moving Accounting – Founders Live pitch", "product": "Moving Accounting", "published": "2026-11-25", "seconds": 89 },
+    { "id": "np44Et6fpUw", "title": "Moving POS Calls – Founders Live pitch", "product": "Moving POS", "published": "2026-11-25", "seconds": 83 },
+    { "id": "OPKty5IFgss", "title": "Moving: four products, one brand – Founders Live pitch", "product": "Moving", "published": "2026-11-25", "seconds": 89 }
+  ]
+}
