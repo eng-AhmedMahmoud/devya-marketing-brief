@@ -101,7 +101,7 @@ The daily routine runs at **10:00, 13:00, 19:30 and 21:00**. Each run publishes 
 
 ## Links and tracking
 
-- Every link points at the day's page on `https://www.devya.dev/...`, `/contact`, or the product it shows (`*.devya.dev`), never a Vercel host and never a URL that redirects, and carries `?utm_source=<network>&utm_medium=social&utm_campaign=<post slug>` (`linkedin`, `facebook`, `instagram`; the slug is `<date>-<topic words>`; the Facebook Reel adds `utm_content=reel`). GA4 reads UTM natively; the roadmap's older `?ref=social-<platform>` tag would need a custom dimension, so UTM replaces it.
+- Every link points at the day's page on `https://www.devya.dev/...`, `/contact`, the product it shows (`*.devya.dev`), or a video on Devya's YouTube channel (`social/videos.json`, e.g. the Moving pitch videos), never a Vercel host and never a URL that redirects, and carries `?utm_source=<network>&utm_medium=social&utm_campaign=<post slug>` (`linkedin`, `facebook`, `instagram`; the slug is `<date>-<topic words>`; the Facebook Reel adds `utm_content=reel`). GA4 reads UTM natively; the roadmap's older `?ref=social-<platform>` tag would need a custom dimension, so UTM replaces it.
 - **SEO**: each day lists `keywords` in English and Arabic; the first line of every caption and both reel hooks lead with one. The company is always "Devya" (Latin script in Arabic too), products as devya.dev names them. Every image carries alt text.
 - Instagram captions say "link in bio". The bio links `www.devya.dev` without UTM; changing it is a profile edit, so it is left to the developer.
 - LinkedIn puts the link at the end of the post, never in the first line. Roughly half the LinkedIn posts carry no link at all, to test the reach cost of external links.

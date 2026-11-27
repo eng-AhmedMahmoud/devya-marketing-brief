@@ -1,7 +1,8 @@
 // Links and SEO rules for every caption the routine publishes.
 //
-// Links: https only, on www.devya.dev or a Devya product host (*.devya.dev),
-// never Vercel, and tagged utm_source=<platform>&utm_medium=social&
+// Links: https only, on www.devya.dev, a Devya product host (*.devya.dev) or
+// a video on Devya's YouTube channel (social/videos.json, canonical
+// https://www.youtube.com/watch?v=<id>), never Vercel, and tagged utm_source=<platform>&utm_medium=social&
 // utm_campaign=<post slug> (+ utm_content=reel on video captions).
 // Captions: keyword-led first line, platform-appropriate hashtags including
 // #BuildWithDevya, "Devya" and product names spelled one way, alt text on images.
@@ -9,7 +10,15 @@
 // validate.mjs applies these to every day from RULES_FROM on; days before it
 // were published under the older rules and are left as the record.
 
+import { readFileSync } from 'node:fs';
+import { dirname, join } from 'node:path';
+import { fileURLToPath } from 'node:url';
 import { isBannedHost } from './shot-guard.mjs';
+
+const REGISTRY = JSON.parse(readFileSync(join(dirname(fileURLToPath(import.meta.url)), '..', 'videos.json'), 'utf8'));
+// Devya's YouTube channel and the videos posts may link to.
+export const CHANNEL = REGISTRY.channel;
+export const DEVYA_VIDEOS = new Map(REGISTRY.videos.map((v) => [v.id, v]));
 
 export const RULES_FROM = '2026-11-28';
 export const PLATFORMS = ['linkedin', 'facebook', 'instagram'];
@@ -21,7 +30,8 @@ export const POST_TAGS = { linkedin: [3, 5], facebook: [1, 3], instagram: [3, 5]
 export const REEL_TAGS = { linkedin: [1, 3], facebook: [1, 3], instagram: [3, 5] };
 export const ALT_MAX = 250;
 // One spelling for Devya and each product (as on devya.dev).
-export const PRODUCTS = ['Devya Converse', 'X-Ray', 'CopyForge', 'ShotCraft', 'PlaceHarvest', 'AdGap', 'Urania', 'og-preview', 'jwt-inspector', 'cron-builder', 'contrast-check'];
+export const PRODUCTS = ['Devya Converse', 'X-Ray', 'CopyForge', 'ShotCraft', 'PlaceHarvest', 'AdGap', 'Urania', 'og-preview', 'jwt-inspector', 'cron-builder', 'contrast-check',
+  'Moving POS', 'Moving Stores', 'Moving Loyalty', 'Moving Accounting', 'Moving Academy', 'Moving Systems'];
 
 const kebab = (s) => String(s).toLowerCase().normalize('NFKD').replace(/[^\w\s-]/g, ' ').replace(/[\s_-]+/g, '-').replace(/^-|-$/g, '');
 
@@ -55,9 +65,26 @@ export const mapLinks = (text, fn) => String(text).replace(URL_RE, (m) => {
 });
 
 export const isDevyaHost = (host) => host === 'www.devya.dev' || host === 'devya.dev' || /^[a-z0-9-]+\.devya\.dev$/.test(host);
+export const isYouTubeHost = (host) => /^((www|m)\.)?youtube\.com$|^youtu\.be$/.test(host);
 
-// The link without its query string, for "is this the right page".
-export const linkBase = (url) => { const u = new URL(url); return `${u.origin}${u.pathname.replace(/\/$/, '') || ''}`; };
+// The video id of a YouTube watch, shorts, embed or youtu.be link, else null.
+export function youtubeId(url) {
+  let u;
+  try { u = new URL(url); } catch { return null; }
+  if (u.hostname === 'youtu.be') return u.pathname.slice(1, 12) || null;
+  if (!isYouTubeHost(u.hostname)) return null;
+  if (u.pathname === '/watch') return u.searchParams.get('v');
+  return (u.pathname.match(/^\/(shorts|embed|live)\/([\w-]{11})/) || [])[2] || null;
+}
+export const videoUrl = (id) => `https://www.youtube.com/watch?v=${id}`;
+
+// The link without its query string, for "is this the right page" (a YouTube
+// link keeps its video id).
+export const linkBase = (url) => {
+  const u = new URL(url);
+  if (isYouTubeHost(u.hostname)) return videoUrl(youtubeId(url));
+  return `${u.origin}${u.pathname.replace(/\/$/, '') || ''}`;
+};
 
 // Why a caption link is unfit, or [] when it is fine.
 export function linkProblems(url, { platform, campaign, content } = {}) {
@@ -66,7 +93,11 @@ export function linkProblems(url, { platform, campaign, content } = {}) {
   const out = [];
   if (u.protocol !== 'https:') out.push(`not https: ${url}`);
   if (isBannedHost(u.hostname)) out.push(`Vercel link ${url} (Vercel is banned)`);
-  else if (!isDevyaHost(u.hostname)) out.push(`link outside devya.dev: ${url}`);
+  else if (isYouTubeHost(u.hostname)) {
+    const id = youtubeId(url);
+    if (!DEVYA_VIDEOS.has(id)) out.push(`YouTube link ${url} is not a video on Devya's channel (social/videos.json)`);
+    else if (!(u.hostname === 'www.youtube.com' && u.pathname === '/watch')) out.push(`use the canonical ${videoUrl(id)} form: ${url}`);
+  } else if (!isDevyaHost(u.hostname)) out.push(`link outside devya.dev: ${url}`);
   const q = u.searchParams;
   if (!q.get('utm_source') && !q.get('utm_medium') && !q.get('utm_campaign')) out.push(`untagged link ${url}`);
   else {
@@ -78,9 +109,10 @@ export function linkProblems(url, { platform, campaign, content } = {}) {
   return out;
 }
 
-// The day with every devya.dev link in its feed captions tagged for its
-// network and the day's campaign (used by merge-days.mjs, so drafts can carry
-// plain links). Off-site and Vercel links are left as they are for the
+// The day with every devya.dev link and Devya-channel video link in its feed
+// captions tagged for its network and the day's campaign (used by
+// merge-days.mjs, so drafts can carry plain links; a youtu.be link becomes the
+// canonical watch URL). Off-site and Vercel links are left as they are for the
 // validator to reject.
 export function tagDayLinks(day) {
   const campaign = campaignSlug(day);
@@ -89,6 +121,7 @@ export function tagDayLinks(day) {
     const caption = mapLinks(p.caption || '', (url) => {
       let host;
       try { host = new URL(url).hostname; } catch { return url; }
+      if (isYouTubeHost(host)) { const id = youtubeId(url); return DEVYA_VIDEOS.has(id) ? tagUrl(videoUrl(id), { platform: net, campaign }) : url; }
       return isDevyaHost(host) && !isBannedHost(host) ? tagUrl(url, { platform: net, campaign }) : url;
     });
     posts[net] = { ...p, caption };
@@ -96,10 +129,12 @@ export function tagDayLinks(day) {
   return { ...day, posts };
 }
 
-// Pages a day may link to: its source page, the contact page, the product it
-// shows (card.shot) and any extra page listed in day.links.
+// Pages a day may link to: its source page, the contact page, its video
+// (day.video, a Devya-channel video), the product it shows (card.shot) and
+// any extra page listed in day.links.
 export function allowedPages(day) {
   const pages = new Set([linkBase(day.source), `${SITE}/contact`]);
+  if (day.video) pages.add(linkBase(day.video));
   if (day.card?.shot) pages.add(linkBase(day.card.shot));
   for (const l of day.links || []) pages.add(linkBase(l));
   return pages;

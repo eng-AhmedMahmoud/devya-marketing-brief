@@ -5,6 +5,8 @@
 #     logo/theme checks (Playwright's cached Chromium + ffmpeg required);
 #   - calendar quality gate with images (fails on an untagged, off-site or
 #     Vercel link, off-brand accent, hashtag counts, naming, alt text);
+#   - post audit (render/audit.mjs): every scheduled day passes, and the
+#     caption fixes for published posts pass the same checks;
 #   - live link check: every linked devya.dev page answers 200 with no redirect
 #     (skip with CI_OFFLINE=1).
 # Usage: scripts/ci-local.sh   (prints a summary table; exit 1 if any stage fails)
@@ -31,6 +33,7 @@ stage "social deps" bash -c 'cd social/render && pnpm install --frozen-lockfile'
 stage "tools" bash -c 'command -v ffmpeg && command -v ffprobe && command -v curl'
 stage "social tests" node --test social/routine/*.test.mjs social/render/*.test.mjs
 stage "calendar gate" node social/render/validate.mjs --images
+stage "post audit" bash -c 'd="$(mktemp -d)"; node social/render/audit.mjs --out "$d" && rm -rf "$d"'
 if [[ "${CI_OFFLINE:-0}" == "1" ]]; then
   NAMES+=("live links"); RESULTS+=("skipped"); TIMES+=("0s")
 else

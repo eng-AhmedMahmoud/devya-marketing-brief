@@ -1,0 +1,955 @@
+{
+  "today": "2026-11-28",
+  "standard": "social/README.md#brand-music-and-links",
+  "published": [
+    {
+      "date": "2026-11-15",
+      "network": "linkedin",
+      "label": "LinkedIn post",
+      "lang": "en",
+      "url": "https://www.linkedin.com/feed/update/urn:li:share:7527741612009889792/",
+      "published": "2026-11-15 16:45",
+      "issues": [
+        "card made with the old template: \"</>DEVYA\" text mark instead of the official wordmark, per-pillar colour accent instead of black and silver",
+        "caption: utm_campaign should be 2026-11-15-three-open-source-guardrails-on-every-repo: https://www.devya.dev/projects/leakhook?utm_source=linkedin&utm_medium=social"
+      ],
+      "actions": [
+        {
+          "type": "edit-caption",
+          "inPlace": true,
+          "caption": "Three checks run on every Devya repo before code reaches a reviewer. We open-sourced all three.\n\n1. leakhook: a pre-commit hook that scans the staged diff for AWS, GitHub, Stripe, Slack and Google keys, private-key blocks, JWTs and database URLs with credentials. The commit stops before anything leaks.\n2. envcheck: treats .env.example as the schema and checks the real .env against it, flagging missing keys, empty required values and wrong types. It exits non-zero, so CI catches it before a deploy does.\n3. i18n-check: compares every locale file against the base and reports missing, extra and empty keys. On bilingual EN/AR products, this is the check that stops a half-translated screen from shipping.\n\nEach one is zero-dependency and small enough to read in one sitting. None of them is clever. That's the point: guardrails that are boring to install actually get installed.\n\nCode and docs: https://www.devya.dev/projects/leakhook?utm_source=linkedin&utm_medium=social&utm_campaign=2026-11-15-three-open-source-guardrails-on-every-repo\n\n#BuildWithDevya #OpenSource #DevSecOps #NodeJS",
+          "remaining": []
+        },
+        {
+          "type": "repost-needed",
+          "inPlace": false,
+          "media": "social/audit/media/2026-11-15/linkedin.png",
+          "reason": "LinkedIn cannot replace the image of a published post",
+          "recommendation": "keep it: do not delete; future posts carry the new standard, and the caption fix (if any) is applied in place"
+        }
+      ]
+    },
+    {
+      "date": "2026-11-15",
+      "network": "facebook",
+      "label": "Facebook post",
+      "lang": "ar",
+      "url": "https://www.facebook.com/devyasoftware/posts/pfbid02JuatYyAuusSum6qp8Ku3Z6zPh5LH1ZJuwNMEWGu63nMzEdVLdYW3H6VVq3MfSctsl",
+      "published": "2026-11-15 16:45",
+      "issues": [
+        "card made with the old template: \"</>DEVYA\" text mark instead of the official wordmark, per-pillar colour accent instead of black and silver",
+        "caption: utm_campaign should be 2026-11-15-three-open-source-guardrails-on-every-repo: https://www.devya.dev/projects/leakhook?utm_source=facebook&utm_medium=social",
+        "caption: 0 hashtags, want 1-3",
+        "caption: no #BuildWithDevya"
+      ],
+      "actions": [
+        {
+          "type": "edit-caption",
+          "inPlace": true,
+          "caption": "قبل أن يصل أي سطر برمجي إلى المراجعة، تمر مشاريعنا بثلاثة فحوص بسيطة، وقد أتحناها مجانًا للجميع:\n\n• أداة leakhook تمنع رفع المفاتيح السرية وكلمات المرور إلى المستودع.\n• أداة envcheck تتأكد من اكتمال إعدادات التشغيل قبل أن يعمل التطبيق.\n• أداة i18n-check تكشف النصوص الناقصة بين النسختين العربية والإنجليزية.\n\nلماذا يهمك هذا كصاحب مشروع؟ لأن كثيرًا من الأعطال المحرجة لا يأتي من أكواد معقدة، بل من خطأ صغير لم يُفحص.\n\nالتفاصيل: https://www.devya.dev/projects/leakhook?utm_source=facebook&utm_medium=social&utm_campaign=2026-11-15-three-open-source-guardrails-on-every-repo\n\n#BuildWithDevya #OpenSource #DevSecOps",
+          "remaining": []
+        },
+        {
+          "type": "repost-needed",
+          "inPlace": false,
+          "media": "social/audit/media/2026-11-15/facebook.png",
+          "reason": "Facebook cannot replace the image of a published post",
+          "recommendation": "keep it: do not delete; future posts carry the new standard, and the caption fix (if any) is applied in place"
+        }
+      ]
+    },
+    {
+      "date": "2026-11-15",
+      "network": "instagram",
+      "label": "Instagram post",
+      "lang": "en",
+      "url": "https://www.instagram.com/p/DfxBbYTjWS1/",
+      "published": "2026-11-15 16:45",
+      "issues": [
+        "card made with the old template: \"</>DEVYA\" text mark instead of the official wordmark, per-pillar colour accent instead of black and silver",
+        "caption: 6 hashtags, want 3-5"
+      ],
+      "actions": [
+        {
+          "type": "edit-caption",
+          "inPlace": true,
+          "caption": "Three boring checks on every repo we touch:\n🔒 leakhook blocks secrets at commit time\n🧾 envcheck checks .env against .env.example\n🌐 i18n-check catches missing Arabic or English keys\nAll three are free and open source. Link in bio.\n\n#BuildWithDevya #OpenSource #WebDevelopment #NodeJS #DevSecOps",
+          "remaining": []
+        },
+        {
+          "type": "repost-needed",
+          "inPlace": false,
+          "media": "social/audit/media/2026-11-15/instagram.png",
+          "reason": "Instagram cannot replace the image of a published post",
+          "recommendation": "keep it: do not delete; future posts carry the new standard, and the caption fix (if any) is applied in place"
+        }
+      ]
+    },
+    {
+      "date": "2026-11-15",
+      "network": "linkedin_video",
+      "label": "LinkedIn video",
+      "lang": "en",
+      "url": "https://www.linkedin.com/feed/update/urn:li:activity:7527748748077076481/",
+      "published": "2026-11-15 17:07",
+      "issues": [
+        "video rendered before the music bed: silent track; old template (text mark, colour accent)"
+      ],
+      "actions": [
+        {
+          "type": "repost-needed",
+          "inPlace": false,
+          "media": "social/visuals/2026-11-15/reel-en.mp4",
+          "reason": "LinkedIn cannot replace the video of a published post",
+          "recommendation": "keep it: do not delete; future posts carry the new standard, and the caption fix (if any) is applied in place"
+        }
+      ]
+    },
+    {
+      "date": "2026-11-15",
+      "network": "facebook_reel",
+      "label": "Facebook Reel",
+      "lang": "ar",
+      "url": "https://www.facebook.com/reel/2814274242307029/",
+      "published": "2026-11-15 17:07",
+      "issues": [
+        "video rendered before the music bed: silent track; old template (text mark, colour accent)",
+        "caption: utm_campaign should be 2026-11-15-three-open-source-guardrails-on-every-repo: https://www.devya.dev/projects/leakhook?utm_source=facebook&utm_medium=social&utm_content=reel",
+        "caption: 0 hashtags, want 1-3"
+      ],
+      "actions": [
+        {
+          "type": "edit-caption",
+          "inPlace": true,
+          "caption": "ثلاثة فحوص على كل مستودع لدينا، وكلها مفتوحة المصدر: leakhook و envcheck و i18n-check.\n\nالتفاصيل: https://www.devya.dev/projects/leakhook?utm_source=facebook&utm_medium=social&utm_campaign=2026-11-15-three-open-source-guardrails-on-every-repo&utm_content=reel\n\n#BuildWithDevya #OpenSource #DevSecOps",
+          "remaining": []
+        },
+        {
+          "type": "replace-video",
+          "inPlace": true,
+          "media": "social/visuals/2026-11-15/reel-ar.mp4",
+          "note": "Facebook replaces a Reel's video in place; the Reel gets a new ID, so record the new URL in state.json"
+        }
+      ]
+    },
+    {
+      "date": "2026-11-15",
+      "network": "instagram_reel",
+      "label": "Instagram Reel",
+      "lang": "en",
+      "url": "https://www.instagram.com/reel/DfxDFXaJ76d/",
+      "published": "2026-11-15 17:07",
+      "issues": [
+        "video rendered before the music bed: silent track; old template (text mark, colour accent)"
+      ],
+      "actions": [
+        {
+          "type": "repost-needed",
+          "inPlace": false,
+          "media": "social/visuals/2026-11-15/reel-en.mp4",
+          "reason": "Instagram cannot replace the video of a published post",
+          "recommendation": "keep it: do not delete; future posts carry the new standard, and the caption fix (if any) is applied in place"
+        }
+      ]
+    },
+    {
+      "date": "2026-11-15",
+      "network": "facebook_story",
+      "label": "Facebook Story",
+      "lang": "ar",
+      "url": "posted",
+      "published": "2026-11-15 17:07",
+      "issues": [
+        "video rendered before the music bed: silent track; old template (text mark, colour accent)"
+      ],
+      "actions": [
+        {
+          "type": "none",
+          "inPlace": false,
+          "reason": "Stories disappear after 24 hours and cannot be edited; it has expired or will expire on its own"
+        }
+      ]
+    },
+    {
+      "date": "2026-11-16",
+      "network": "linkedin",
+      "label": "LinkedIn post",
+      "lang": "en",
+      "url": "https://www.linkedin.com/feed/update/urn:li:share:7528004344412110848",
+      "published": "2026-11-16 10:02",
+      "issues": [
+        "card made with the old template: \"</>DEVYA\" text mark instead of the official wordmark, per-pillar colour accent instead of black and silver"
+      ],
+      "actions": [
+        {
+          "type": "repost-needed",
+          "inPlace": false,
+          "media": "social/audit/media/2026-11-16/linkedin.png",
+          "reason": "LinkedIn cannot replace the image of a published post",
+          "recommendation": "keep it: do not delete; future posts carry the new standard, and the caption fix (if any) is applied in place"
+        }
+      ]
+    },
+    {
+      "date": "2026-11-16",
+      "network": "linkedin_video",
+      "label": "LinkedIn video",
+      "lang": "en",
+      "url": "https://www.linkedin.com/feed/update/urn:li:activity:7528050827597500416/",
+      "published": "2026-11-16 13:11",
+      "issues": [
+        "video rendered before the music bed: silent track; old template (text mark, colour accent)"
+      ],
+      "actions": [
+        {
+          "type": "repost-needed",
+          "inPlace": false,
+          "media": "social/visuals/2026-11-16/reel-en.mp4",
+          "reason": "LinkedIn cannot replace the video of a published post",
+          "recommendation": "keep it: do not delete; future posts carry the new standard, and the caption fix (if any) is applied in place"
+        }
+      ]
+    },
+    {
+      "date": "2026-11-16",
+      "network": "facebook_reel",
+      "label": "Facebook Reel",
+      "lang": "ar",
+      "url": "https://www.facebook.com/reel/1605532314231914/",
+      "published": "2026-11-16 13:11",
+      "issues": [
+        "video rendered before the music bed: silent track; old template (text mark, colour accent)",
+        "caption: utm_campaign should be 2026-11-16-ask-for-a-v1-cut-line-before-you-ask-for-a-quote: https://www.devya.dev/services?utm_source=facebook&utm_medium=social&utm_content=reel",
+        "caption: https://www.devya.dev/services redirects to https://www.devya.dev/solutions",
+        "caption: 0 hashtags, want 1-3"
+      ],
+      "actions": [
+        {
+          "type": "edit-caption",
+          "inPlace": true,
+          "caption": "قبل عرض السعر، اطلب خط الإصدار الأول: ما الذي يُبنى الآن، وما الذي ينتظر.\n\nالتفاصيل: https://www.devya.dev/solutions?utm_source=facebook&utm_medium=social&utm_campaign=2026-11-16-ask-for-a-v1-cut-line-before-you-ask-for-a-quote&utm_content=reel\n\n#BuildWithDevya #ProductDevelopment #Startups",
+          "remaining": []
+        },
+        {
+          "type": "replace-video",
+          "inPlace": true,
+          "media": "social/visuals/2026-11-16/reel-ar.mp4",
+          "note": "Facebook replaces a Reel's video in place; the Reel gets a new ID, so record the new URL in state.json"
+        }
+      ]
+    },
+    {
+      "date": "2026-11-16",
+      "network": "instagram_reel",
+      "label": "Instagram Reel",
+      "lang": "en",
+      "url": "https://www.instagram.com/devyasoftware/reel/DfzN5GBp_2a/",
+      "published": "2026-11-16 13:11",
+      "issues": [
+        "video rendered before the music bed: silent track; old template (text mark, colour accent)"
+      ],
+      "actions": [
+        {
+          "type": "repost-needed",
+          "inPlace": false,
+          "media": "social/visuals/2026-11-16/reel-en.mp4",
+          "reason": "Instagram cannot replace the video of a published post",
+          "recommendation": "keep it: do not delete; future posts carry the new standard, and the caption fix (if any) is applied in place"
+        }
+      ]
+    },
+    {
+      "date": "2026-11-16",
+      "network": "facebook",
+      "label": "Facebook post",
+      "lang": "ar",
+      "url": "https://www.facebook.com/devyasoftware/posts/pfbid0ahy8a1h58aXkycFAzgT4t9kavAhZ3FdqUm4fDiq5KuHKLeRq6GSBdUXZe4JcWCwcl",
+      "published": "2026-11-16 19:35",
+      "issues": [
+        "card made with the old template: \"</>DEVYA\" text mark instead of the official wordmark, per-pillar colour accent instead of black and silver",
+        "caption: utm_campaign should be 2026-11-16-ask-for-a-v1-cut-line-before-you-ask-for-a-quote: https://www.devya.dev/contact?utm_source=facebook&utm_medium=social",
+        "caption: 0 hashtags, want 1-3",
+        "caption: no #BuildWithDevya"
+      ],
+      "actions": [
+        {
+          "type": "edit-caption",
+          "inPlace": true,
+          "caption": "قبل أن تطلب عرض سعر لتطبيقك، اطلب شيئًا أهم: «خط الإصدار الأول».\n\nالفكرة بسيطة:\n1. قائمة بكل الميزات، مرتبة حسب قيمتها لعملائك.\n2. تكلفة واضحة أمام كل ميزة.\n3. خط عند حدود ميزانيتك.\n\nما فوق الخط يُبنى في الإصدار الأول، وما تحته ينتظر حتى يطلبه المستخدمون فعلًا. بهذا تتحكم في النطاق والتكلفة، بدل رقم إجمالي واحد لا تعرف ما وراءه.\n\nتخطط لتطبيق جديد؟ ابدأ من هنا: https://www.devya.dev/contact?utm_source=facebook&utm_medium=social&utm_campaign=2026-11-16-ask-for-a-v1-cut-line-before-you-ask-for-a-quote\n\n#BuildWithDevya #ProductDevelopment #Startups",
+          "remaining": []
+        },
+        {
+          "type": "repost-needed",
+          "inPlace": false,
+          "media": "social/audit/media/2026-11-16/facebook.png",
+          "reason": "Facebook cannot replace the image of a published post",
+          "recommendation": "keep it: do not delete; future posts carry the new standard, and the caption fix (if any) is applied in place"
+        }
+      ]
+    },
+    {
+      "date": "2026-11-16",
+      "network": "facebook_story",
+      "label": "Facebook Story",
+      "lang": "ar",
+      "url": "posted",
+      "published": "2026-11-16 19:35",
+      "issues": [
+        "video rendered before the music bed: silent track; old template (text mark, colour accent)"
+      ],
+      "actions": [
+        {
+          "type": "none",
+          "inPlace": false,
+          "reason": "Stories disappear after 24 hours and cannot be edited; it has expired or will expire on its own"
+        }
+      ]
+    },
+    {
+      "date": "2026-11-16",
+      "network": "instagram",
+      "label": "Instagram post",
+      "lang": "en",
+      "url": "https://www.instagram.com/p/Df0D7N0DQ_T/",
+      "published": "2026-11-16 21:05",
+      "issues": [
+        "card made with the old template: \"</>DEVYA\" text mark instead of the official wordmark, per-pillar colour accent instead of black and silver",
+        "caption: 6 hashtags, want 3-5"
+      ],
+      "actions": [
+        {
+          "type": "edit-caption",
+          "inPlace": true,
+          "caption": "Don't ask \"how much for the app?\"\nAsk for a cut line: every feature ranked, a cost on each, and a line where your budget ends. Above the line ships in v1. Below it waits for real users.\nSave this for your next quote.\n\n#BuildWithDevya #Startups #ProductDevelopment #AppDevelopment #Founders",
+          "remaining": []
+        },
+        {
+          "type": "repost-needed",
+          "inPlace": false,
+          "media": "social/audit/media/2026-11-16/instagram.png",
+          "reason": "Instagram cannot replace the image of a published post",
+          "recommendation": "keep it: do not delete; future posts carry the new standard, and the caption fix (if any) is applied in place"
+        }
+      ]
+    },
+    {
+      "date": "2026-11-25",
+      "network": "linkedin",
+      "label": "LinkedIn post",
+      "lang": "en",
+      "url": "https://www.linkedin.com/feed/update/urn:li:share:7531409693731229697",
+      "published": "2026-11-25 19:47",
+      "issues": [
+        "card made with the old template: \"</>DEVYA\" text mark instead of the official wordmark, per-pillar colour accent instead of black and silver"
+      ],
+      "actions": [
+        {
+          "type": "repost-needed",
+          "inPlace": false,
+          "media": "social/audit/media/2026-11-25/linkedin.png",
+          "reason": "LinkedIn cannot replace the image of a published post",
+          "recommendation": "keep it: do not delete; future posts carry the new standard, and the caption fix (if any) is applied in place"
+        }
+      ]
+    },
+    {
+      "date": "2026-11-25",
+      "network": "facebook",
+      "label": "Facebook post",
+      "lang": "ar",
+      "url": "https://www.facebook.com/devyasoftware/posts/pfbid02dzSBwPaq44UVFFszt24YSEjqHsGoTKWyjTeQBTJv91eeNMG46T9KasM7Da9VTNkPl",
+      "published": "2026-11-25 19:47",
+      "issues": [
+        "card made with the old template: \"</>DEVYA\" text mark instead of the official wordmark, per-pillar colour accent instead of black and silver",
+        "caption: utm_campaign should be 2026-11-25-engineer-swaps-the-handover-clauses-to-ask-for: https://www.devya.dev/contact?utm_source=facebook&utm_medium=social",
+        "caption: 0 hashtags, want 1-3",
+        "caption: no #BuildWithDevya"
+      ],
+      "actions": [
+        {
+          "type": "edit-caption",
+          "inPlace": true,
+          "caption": "تغيير المهندس المسؤول عن مشروعك أمر وارد، لكن التسليم السيئ هو ما يعطّل المشروع.\n\nإن كنت تتعامل مع شركة برمجة، فاطلب في العقد:\n1. إشعارًا مكتوبًا قبل أسبوعين من أي تغيير.\n2. فترة يعمل فيها المهندس القديم والجديد معًا.\n3. مذكرة تسليم مكتوبة بالأعمال المفتوحة والمخاطر المعروفة.\n4. عرضًا عمليًا من المهندس الجديد قبل اعتماد التسليم.\n5. موافقتك قبل أن يصبح التغيير نهائيًا.\n\nبنود بسيطة تحمي وقتك ومالك.\n\nhttps://www.devya.dev/contact?utm_source=facebook&utm_medium=social&utm_campaign=2026-11-25-engineer-swaps-the-handover-clauses-to-ask-for\n\n#BuildWithDevya #ProjectManagement #Outsourcing",
+          "remaining": []
+        },
+        {
+          "type": "repost-needed",
+          "inPlace": false,
+          "media": "social/audit/media/2026-11-25/facebook.png",
+          "reason": "Facebook cannot replace the image of a published post",
+          "recommendation": "keep it: do not delete; future posts carry the new standard, and the caption fix (if any) is applied in place"
+        }
+      ]
+    },
+    {
+      "date": "2026-11-25",
+      "network": "linkedin_video",
+      "label": "LinkedIn video",
+      "lang": "en",
+      "url": "https://www.linkedin.com/feed/update/urn:li:activity:7531411300745293824/",
+      "published": "2026-11-25 19:47",
+      "issues": [
+        "video rendered before the music bed: silent track; old template (text mark, colour accent)"
+      ],
+      "actions": [
+        {
+          "type": "repost-needed",
+          "inPlace": false,
+          "media": "social/visuals/2026-11-25/reel-en.mp4",
+          "reason": "LinkedIn cannot replace the video of a published post",
+          "recommendation": "keep it: do not delete; future posts carry the new standard, and the caption fix (if any) is applied in place"
+        }
+      ]
+    },
+    {
+      "date": "2026-11-25",
+      "network": "facebook_reel",
+      "label": "Facebook Reel",
+      "lang": "ar",
+      "url": "https://www.facebook.com/reel/1723777966043232/",
+      "published": "2026-11-25 19:47",
+      "issues": [
+        "video rendered before the music bed: silent track; old template (text mark, colour accent)",
+        "caption: utm_campaign should be 2026-11-25-engineer-swaps-the-handover-clauses-to-ask-for: https://www.devya.dev/services?utm_source=facebook&utm_medium=social&utm_content=reel",
+        "caption: https://www.devya.dev/services redirects to https://www.devya.dev/solutions",
+        "caption: 0 hashtags, want 1-3"
+      ],
+      "actions": [
+        {
+          "type": "edit-caption",
+          "inPlace": true,
+          "caption": "شركة البرمجة ستغيّر مهندس مشروعك؟ اطلب هذه البنود الخمسة.\n\nالتفاصيل: https://www.devya.dev/solutions?utm_source=facebook&utm_medium=social&utm_campaign=2026-11-25-engineer-swaps-the-handover-clauses-to-ask-for&utm_content=reel\n\n#BuildWithDevya #ProjectManagement #Outsourcing",
+          "remaining": []
+        },
+        {
+          "type": "replace-video",
+          "inPlace": true,
+          "media": "social/visuals/2026-11-25/reel-ar.mp4",
+          "note": "Facebook replaces a Reel's video in place; the Reel gets a new ID, so record the new URL in state.json"
+        }
+      ]
+    },
+    {
+      "date": "2026-11-25",
+      "network": "instagram_reel",
+      "label": "Instagram Reel",
+      "lang": "en",
+      "url": "https://www.instagram.com/devyasoftware/reel/DgLGF8ApSWu/",
+      "published": "2026-11-25 19:47",
+      "issues": [
+        "video rendered before the music bed: silent track; old template (text mark, colour accent)"
+      ],
+      "actions": [
+        {
+          "type": "repost-needed",
+          "inPlace": false,
+          "media": "social/visuals/2026-11-25/reel-en.mp4",
+          "reason": "Instagram cannot replace the video of a published post",
+          "recommendation": "keep it: do not delete; future posts carry the new standard, and the caption fix (if any) is applied in place"
+        }
+      ]
+    },
+    {
+      "date": "2026-11-25",
+      "network": "facebook_story",
+      "label": "Facebook Story",
+      "lang": "ar",
+      "url": "posted",
+      "published": "2026-11-25 19:47",
+      "issues": [
+        "video rendered before the music bed: silent track; old template (text mark, colour accent)"
+      ],
+      "actions": [
+        {
+          "type": "none",
+          "inPlace": false,
+          "reason": "Stories disappear after 24 hours and cannot be edited; it has expired or will expire on its own"
+        }
+      ]
+    },
+    {
+      "date": "2026-11-25",
+      "network": "instagram",
+      "label": "Instagram post",
+      "lang": "en",
+      "url": "https://www.instagram.com/p/DgLPEvmjdmF/",
+      "published": "2026-11-25 21:03",
+      "issues": [
+        "card made with the old template: \"</>DEVYA\" text mark instead of the official wordmark, per-pillar colour accent instead of black and silver",
+        "caption: 6 hashtags, want 3-5"
+      ],
+      "actions": [
+        {
+          "type": "edit-caption",
+          "inPlace": true,
+          "caption": "Your vendor is swapping your engineer. Ask for:\n1 Two weeks' written notice\n2 An overlap period\n3 A written handover note\n4 A demo from the new engineer\n5 Your sign-off before it's final\nSave it for your next contract.\n\n#BuildWithDevya #Founders #Outsourcing #ProjectManagement #TechTips",
+          "remaining": []
+        },
+        {
+          "type": "repost-needed",
+          "inPlace": false,
+          "media": "social/audit/media/2026-11-25/instagram.png",
+          "reason": "Instagram cannot replace the image of a published post",
+          "recommendation": "keep it: do not delete; future posts carry the new standard, and the caption fix (if any) is applied in place"
+        }
+      ]
+    },
+    {
+      "date": "2026-11-26",
+      "network": "linkedin",
+      "label": "LinkedIn post",
+      "lang": "en",
+      "url": "https://www.linkedin.com/feed/update/urn:li:share:7531628181359984640",
+      "published": "2026-11-26 10:02",
+      "issues": [
+        "card made with the old template: \"</>DEVYA\" text mark instead of the official wordmark, per-pillar colour accent instead of black and silver",
+        "caption: utm_campaign should be 2026-11-26-parallel-ai-coding-agents-with-git-worktrees: https://www.devya.dev/blogs/git-worktrees-parallel-ai-coding-agents-field-notes?utm_source=linkedin&utm_medium=social"
+      ],
+      "actions": [
+        {
+          "type": "edit-caption",
+          "inPlace": true,
+          "caption": "We run several AI coding agents against the same repository at once. The first thing that breaks isn't the code. It's the shared folder: two agents editing one checkout overwrite each other's work.\n\nGit worktrees fix the file problem with one command. Each agent gets its own working directory on its own branch, all backed by one repository.\n\nWhat worktrees don't isolate, and you have to split yourself:\n→ Ports. Two dev servers both want 3000, so give each tree its own.\n→ Localhost cookies. Sessions on localhost leak between apps; use a separate hostname per tree.\n→ The database. A seed script in one tree can wipe data another tree depends on.\n\nTreat each worktree as a separate machine and parallel agents stop stepping on each other.\n\nField notes: https://www.devya.dev/blogs/git-worktrees-parallel-ai-coding-agents-field-notes?utm_source=linkedin&utm_medium=social&utm_campaign=2026-11-26-parallel-ai-coding-agents-with-git-worktrees\n\n#AIEngineering #Git #DeveloperProductivity #BuildWithDevya",
+          "remaining": []
+        },
+        {
+          "type": "repost-needed",
+          "inPlace": false,
+          "media": "social/audit/media/2026-11-26/linkedin.png",
+          "reason": "LinkedIn cannot replace the image of a published post",
+          "recommendation": "keep it: do not delete; future posts carry the new standard, and the caption fix (if any) is applied in place"
+        }
+      ]
+    },
+    {
+      "date": "2026-11-26",
+      "network": "linkedin_video",
+      "label": "LinkedIn video",
+      "lang": "en",
+      "url": "https://www.linkedin.com/feed/update/urn:li:activity:7531673914553597952/",
+      "published": "2026-11-26 13:08",
+      "issues": [
+        "video rendered before the music bed: silent track; old template (text mark, colour accent)"
+      ],
+      "actions": [
+        {
+          "type": "repost-needed",
+          "inPlace": false,
+          "media": "social/visuals/2026-11-26/reel-en.mp4",
+          "reason": "LinkedIn cannot replace the video of a published post",
+          "recommendation": "keep it: do not delete; future posts carry the new standard, and the caption fix (if any) is applied in place"
+        }
+      ]
+    },
+    {
+      "date": "2026-11-26",
+      "network": "facebook_reel",
+      "label": "Facebook Reel",
+      "lang": "ar",
+      "url": "https://www.facebook.com/reel/1098181659847682/",
+      "published": "2026-11-26 13:08",
+      "issues": [
+        "video rendered before the music bed: silent track; old template (text mark, colour accent)",
+        "caption: utm_campaign should be 2026-11-26-parallel-ai-coding-agents-with-git-worktrees: https://www.devya.dev/blogs/git-worktrees-parallel-ai-coding-agents-field-notes?utm_source=facebook&utm_medium=social&utm_content=reel",
+        "caption: 0 hashtags, want 1-3"
+      ],
+      "actions": [
+        {
+          "type": "edit-caption",
+          "inPlace": true,
+          "caption": "تشغّل عدة وكلاء برمجة معًا؟ امنح كلًّا منهم worktree خاصًا.\n\nالتفاصيل: https://www.devya.dev/blogs/git-worktrees-parallel-ai-coding-agents-field-notes?utm_source=facebook&utm_medium=social&utm_campaign=2026-11-26-parallel-ai-coding-agents-with-git-worktrees&utm_content=reel\n\n#BuildWithDevya #AIEngineering #Git",
+          "remaining": []
+        },
+        {
+          "type": "replace-video",
+          "inPlace": true,
+          "media": "social/visuals/2026-11-26/reel-ar.mp4",
+          "note": "Facebook replaces a Reel's video in place; the Reel gets a new ID, so record the new URL in state.json"
+        }
+      ]
+    },
+    {
+      "date": "2026-11-26",
+      "network": "instagram_reel",
+      "label": "Instagram Reel",
+      "lang": "en",
+      "url": "https://www.instagram.com/devyasoftware/reel/DgM9eXRpZu0/",
+      "published": "2026-11-26 13:08",
+      "issues": [
+        "video rendered before the music bed: silent track; old template (text mark, colour accent)"
+      ],
+      "actions": [
+        {
+          "type": "repost-needed",
+          "inPlace": false,
+          "media": "social/visuals/2026-11-26/reel-en.mp4",
+          "reason": "Instagram cannot replace the video of a published post",
+          "recommendation": "keep it: do not delete; future posts carry the new standard, and the caption fix (if any) is applied in place"
+        }
+      ]
+    },
+    {
+      "date": "2026-11-26",
+      "network": "facebook",
+      "label": "Facebook post",
+      "lang": "ar",
+      "url": "https://www.facebook.com/devyasoftware/posts/pfbid0349iBaHsGeKvrV4utzWH3azvmoewdgtBBZWhLpYeVF1dk5PcQE5acNUikkfdxEsYel",
+      "published": "2026-11-26 19:54",
+      "issues": [
+        "card made with the old template: \"</>DEVYA\" text mark instead of the official wordmark, per-pillar colour accent instead of black and silver",
+        "caption: utm_campaign should be 2026-11-26-parallel-ai-coding-agents-with-git-worktrees: https://www.devya.dev/blogs/git-worktrees-parallel-ai-coding-agents-field-notes?utm_source=facebook&utm_medium=social",
+        "caption: 0 hashtags, want 1-3",
+        "caption: no #BuildWithDevya"
+      ],
+      "actions": [
+        {
+          "type": "edit-caption",
+          "inPlace": true,
+          "caption": "نستخدم عدة وكلاء برمجة بالذكاء الاصطناعي على المشروع نفسه في الوقت ذاته. أول مشكلة واجهتنا لم تكن في الكود، بل في المجلد المشترك: وكيلان يعدّلان الملفات نفسها فيمحو أحدهما عمل الآخر.\n\nالحل في Git اسمه worktree: لكل وكيل مجلد عمل وفرع خاص به، وكلها مرتبطة بمستودع واحد.\n\nلكن انتبه: المنافذ وملفات تعريف الارتباط وقاعدة البيانات تبقى مشتركة ما لم تفصلها بنفسك.\n\nالملاحظات الكاملة: https://www.devya.dev/blogs/git-worktrees-parallel-ai-coding-agents-field-notes?utm_source=facebook&utm_medium=social&utm_campaign=2026-11-26-parallel-ai-coding-agents-with-git-worktrees\n\n#BuildWithDevya #AIEngineering #Git",
+          "remaining": []
+        },
+        {
+          "type": "repost-needed",
+          "inPlace": false,
+          "media": "social/audit/media/2026-11-26/facebook.png",
+          "reason": "Facebook cannot replace the image of a published post",
+          "recommendation": "keep it: do not delete; future posts carry the new standard, and the caption fix (if any) is applied in place"
+        }
+      ]
+    },
+    {
+      "date": "2026-11-26",
+      "network": "facebook_story",
+      "label": "Facebook Story",
+      "lang": "ar",
+      "url": "posted",
+      "published": "2026-11-26 19:54",
+      "issues": [
+        "video rendered before the music bed: silent track; old template (text mark, colour accent)"
+      ],
+      "actions": [
+        {
+          "type": "none",
+          "inPlace": false,
+          "reason": "Stories disappear after 24 hours and cannot be edited; it has expired or will expire on its own"
+        }
+      ]
+    },
+    {
+      "date": "2026-11-26",
+      "network": "instagram",
+      "label": "Instagram post",
+      "lang": "en",
+      "url": "https://www.instagram.com/p/DgNzyZwDYeH/",
+      "published": "2026-11-26 21:02",
+      "issues": [
+        "card made with the old template: \"</>DEVYA\" text mark instead of the official wordmark, per-pillar colour accent instead of black and silver",
+        "caption: 6 hashtags, want 3-5"
+      ],
+      "actions": [
+        {
+          "type": "edit-caption",
+          "inPlace": true,
+          "caption": "Running several AI coding agents on one repo?\nGive each its own git worktree: own folder, own branch, same repository. Then split what worktrees don't: ports, localhost cookies and the database.\nLink in bio.\n\n#BuildWithDevya #AI #Git #DeveloperTools #SoftwareEngineering",
+          "remaining": []
+        },
+        {
+          "type": "repost-needed",
+          "inPlace": false,
+          "media": "social/audit/media/2026-11-26/instagram.png",
+          "reason": "Instagram cannot replace the image of a published post",
+          "recommendation": "keep it: do not delete; future posts carry the new standard, and the caption fix (if any) is applied in place"
+        }
+      ]
+    },
+    {
+      "date": "2026-11-27",
+      "network": "linkedin",
+      "label": "LinkedIn post",
+      "lang": "en",
+      "url": "https://www.linkedin.com/feed/update/urn:li:share:7531993282877333504",
+      "published": "2026-11-27 10:12",
+      "issues": [
+        "card made with the old template: \"</>DEVYA\" text mark instead of the official wordmark, per-pillar colour accent instead of black and silver"
+      ],
+      "actions": [
+        {
+          "type": "repost-needed",
+          "inPlace": false,
+          "media": "social/audit/media/2026-11-27/linkedin.png",
+          "reason": "LinkedIn cannot replace the image of a published post",
+          "recommendation": "keep it: do not delete; future posts carry the new standard, and the caption fix (if any) is applied in place"
+        }
+      ]
+    },
+    {
+      "date": "2026-11-27",
+      "network": "linkedin_video",
+      "label": "LinkedIn video",
+      "lang": "en",
+      "url": "https://www.linkedin.com/feed/update/urn:li:activity:7532164812106235904/",
+      "published": "2026-11-27 21:37",
+      "issues": [
+        "video rendered before the music bed: silent track; old template (text mark, colour accent)"
+      ],
+      "actions": [
+        {
+          "type": "repost-needed",
+          "inPlace": false,
+          "media": "social/visuals/2026-11-27/reel-en.mp4",
+          "reason": "LinkedIn cannot replace the video of a published post",
+          "recommendation": "keep it: do not delete; future posts carry the new standard, and the caption fix (if any) is applied in place"
+        }
+      ]
+    },
+    {
+      "date": "2026-11-27",
+      "network": "facebook_reel",
+      "label": "Facebook Reel",
+      "lang": "ar",
+      "url": "https://www.facebook.com/reel/3616150021881621/",
+      "published": "2026-11-27 21:37",
+      "issues": [
+        "video rendered before the music bed: silent track; old template (text mark, colour accent)",
+        "caption: utm_campaign should be 2026-11-27-urania-a-bilingual-guide-to-the-constellations: https://www.devya.dev/projects/urania?utm_source=facebook&utm_medium=social&utm_content=reel",
+        "caption: 0 hashtags, want 1-3"
+      ],
+      "actions": [
+        {
+          "type": "edit-caption",
+          "inPlace": true,
+          "caption": "دليل Urania يشرح الكوكبات النجمية وأساطيرها، بالعربية والإنجليزية.\n\nالتفاصيل: https://www.devya.dev/projects/urania?utm_source=facebook&utm_medium=social&utm_campaign=2026-11-27-urania-a-bilingual-guide-to-the-constellations&utm_content=reel\n\n#BuildWithDevya #Arabic #Bilingual",
+          "remaining": []
+        },
+        {
+          "type": "replace-video",
+          "inPlace": true,
+          "media": "social/visuals/2026-11-27/reel-ar.mp4",
+          "note": "Facebook replaces a Reel's video in place; the Reel gets a new ID, so record the new URL in state.json"
+        }
+      ]
+    },
+    {
+      "date": "2026-11-27",
+      "network": "instagram_reel",
+      "label": "Instagram Reel",
+      "lang": "en",
+      "url": "https://www.instagram.com/devyasoftware/reel/DgQbmPkpJop/",
+      "published": "2026-11-27 21:37",
+      "issues": [
+        "video rendered before the music bed: silent track; old template (text mark, colour accent)"
+      ],
+      "actions": [
+        {
+          "type": "repost-needed",
+          "inPlace": false,
+          "media": "social/visuals/2026-11-27/reel-en.mp4",
+          "reason": "Instagram cannot replace the video of a published post",
+          "recommendation": "keep it: do not delete; future posts carry the new standard, and the caption fix (if any) is applied in place"
+        }
+      ]
+    },
+    {
+      "date": "2026-11-27",
+      "network": "facebook",
+      "label": "Facebook post",
+      "lang": "ar",
+      "url": "https://www.facebook.com/devyasoftware/posts/pfbid0koLiVvtF9ZPMZy8GmJTeuVS9j3vnDgUZzSv14PAxsNZCZ4qnZEbZZRtUn8NgHVJvl",
+      "published": "2026-11-27 19:34",
+      "issues": [
+        "card made with the old template: \"</>DEVYA\" text mark instead of the official wordmark, per-pillar colour accent instead of black and silver",
+        "caption: utm_campaign should be 2026-11-27-urania-a-bilingual-guide-to-the-constellations: https://www.devya.dev/projects/urania?utm_source=facebook&utm_medium=social",
+        "caption: 0 hashtags, want 1-3",
+        "caption: no #BuildWithDevya"
+      ],
+      "actions": [
+        {
+          "type": "edit-caption",
+          "inPlace": true,
+          "caption": "ليس كل ما نبنيه لعملاء. «Urania» دليل مصوّر ومجاني للكوكبات النجمية والأساطير الإغريقية المرتبطة بها، بالعربية والإنجليزية.\n\nفي مشاريع كهذه نتدرّب على التفاصيل التي يحتاجها عملاؤنا: خط عربي واضح بجوار الإنجليزي، وتصميم من اليمين إلى اليسار مدروس لا مقلوب، ونصوص تُقرأ بطبيعية في اللغتين.\n\nجرّبه الليلة: https://www.devya.dev/projects/urania?utm_source=facebook&utm_medium=social&utm_campaign=2026-11-27-urania-a-bilingual-guide-to-the-constellations\n\n#BuildWithDevya #Arabic #Bilingual",
+          "remaining": []
+        },
+        {
+          "type": "repost-needed",
+          "inPlace": false,
+          "media": "social/audit/media/2026-11-27/facebook.png",
+          "reason": "Facebook cannot replace the image of a published post",
+          "recommendation": "keep it: do not delete; future posts carry the new standard, and the caption fix (if any) is applied in place"
+        }
+      ]
+    },
+    {
+      "date": "2026-11-27",
+      "network": "facebook_story",
+      "label": "Facebook Story",
+      "lang": "ar",
+      "url": "posted",
+      "published": "2026-11-27 21:37",
+      "issues": [
+        "video rendered before the music bed: silent track; old template (text mark, colour accent)"
+      ],
+      "actions": [
+        {
+          "type": "none",
+          "inPlace": false,
+          "reason": "Stories disappear after 24 hours and cannot be edited; it has expired or will expire on its own"
+        }
+      ]
+    },
+    {
+      "date": "2026-11-27",
+      "network": "instagram",
+      "label": "Instagram post",
+      "lang": "en",
+      "url": "https://www.instagram.com/devyasoftware/p/DgQYmuMjYWa/",
+      "published": "2026-11-27 21:03",
+      "issues": [
+        "card made with the old template: \"</>DEVYA\" text mark instead of the official wordmark, per-pillar colour accent instead of black and silver",
+        "caption: 6 hashtags, want 3-5"
+      ],
+      "actions": [
+        {
+          "type": "edit-caption",
+          "inPlace": true,
+          "caption": "Not everything we build is for a client.\nUrania is a free, illustrated guide to the constellations and their Greek myths, in English and Arabic. It's where we practise Arabic typography and RTL layouts that are designed, not flipped.\nLink in bio.\n\n#BuildWithDevya #Astronomy #Constellations #Arabic #WebDesign",
+          "remaining": []
+        },
+        {
+          "type": "repost-needed",
+          "inPlace": false,
+          "media": "social/audit/media/2026-11-27/instagram.png",
+          "reason": "Instagram cannot replace the image of a published post",
+          "recommendation": "keep it: do not delete; future posts carry the new standard, and the caption fix (if any) is applied in place"
+        }
+      ]
+    }
+  ],
+  "scheduled": [
+    {
+      "date": "2026-11-28",
+      "topic": "Stop adding Postgres indexes by guesswork: EXPLAIN ANALYZE",
+      "video": null,
+      "issues": [],
+      "music": "mixed in when the routine renders the video (CC0 bed, -14 LUFS, recipe stamp)"
+    },
+    {
+      "date": "2026-11-29",
+      "topic": "Ask for repo, staging and admin access from sprint one",
+      "video": null,
+      "issues": [],
+      "music": "mixed in when the routine renders the video (CC0 bed, -14 LUFS, recipe stamp)"
+    },
+    {
+      "date": "2026-11-30",
+      "topic": "A JWT is encoded, not encrypted: decoding isn't verifying",
+      "video": null,
+      "issues": [],
+      "music": "mixed in when the routine renders the video (CC0 bed, -14 LUFS, recipe stamp)"
+    },
+    {
+      "date": "2026-12-01",
+      "topic": "Devya Converse: AI chat that answers from your own content",
+      "video": null,
+      "issues": [],
+      "music": "mixed in when the routine renders the video (CC0 bed, -14 LUFS, recipe stamp)"
+    },
+    {
+      "date": "2026-12-02",
+      "topic": "Ask for the real start date and the named team in writing",
+      "video": null,
+      "issues": [],
+      "music": "mixed in when the routine renders the video (CC0 bed, -14 LUFS, recipe stamp)"
+    },
+    {
+      "date": "2026-12-03",
+      "topic": "A wrong cron line still runs: read it back before it ships",
+      "video": null,
+      "issues": [],
+      "music": "mixed in when the routine renders the video (CC0 bed, -14 LUFS, recipe stamp)"
+    },
+    {
+      "date": "2026-12-04",
+      "topic": "Our security practices on one page, before procurement asks",
+      "video": null,
+      "issues": [],
+      "music": "mixed in when the routine renders the video (CC0 bed, -14 LUFS, recipe stamp)"
+    },
+    {
+      "date": "2026-12-05",
+      "topic": "og-preview: see your link card before you share it",
+      "video": null,
+      "issues": [],
+      "music": "mixed in when the routine renders the video (CC0 bed, -14 LUFS, recipe stamp)"
+    },
+    {
+      "date": "2026-12-06",
+      "topic": "Before launch, ask for a written test pass on real content",
+      "video": null,
+      "issues": [],
+      "music": "mixed in when the routine renders the video (CC0 bed, -14 LUFS, recipe stamp)"
+    },
+    {
+      "date": "2026-12-07",
+      "topic": "Light grey text can fail WCAG contrast: measure it",
+      "video": null,
+      "issues": [],
+      "music": "mixed in when the routine renders the video (CC0 bed, -14 LUFS, recipe stamp)"
+    },
+    {
+      "date": "2026-12-08",
+      "topic": "Moving POS: a restaurant POS with an AI companion that reads your own sales",
+      "video": "https://www.youtube.com/watch?v=GsNGR6vv_eU",
+      "issues": [],
+      "music": "mixed in when the routine renders the video (CC0 bed, -14 LUFS, recipe stamp)"
+    },
+    {
+      "date": "2026-12-09",
+      "topic": "Random 502s behind a load balancer: the Node.js keep-alive timeout",
+      "video": null,
+      "issues": [],
+      "music": "mixed in when the routine renders the video (CC0 bed, -14 LUFS, recipe stamp)"
+    },
+    {
+      "date": "2026-12-10",
+      "topic": "Moving Loyalty: loyalty cards in Apple Wallet and Google Wallet, no app",
+      "video": "https://www.youtube.com/watch?v=lvcq-RFultk",
+      "issues": [],
+      "music": "mixed in when the routine renders the video (CC0 bed, -14 LUFS, recipe stamp)"
+    },
+    {
+      "date": "2026-12-11",
+      "topic": "Rules an AI coding agent must never skip live in hooks, not the prompt",
+      "video": null,
+      "issues": [],
+      "music": "mixed in when the routine renders the video (CC0 bed, -14 LUFS, recipe stamp)"
+    },
+    {
+      "date": "2026-12-12",
+      "topic": "Ask your vendor: can a retried payment charge twice?",
+      "video": null,
+      "issues": [],
+      "music": "mixed in when the routine renders the video (CC0 bed, -14 LUFS, recipe stamp)"
+    },
+    {
+      "date": "2026-12-13",
+      "topic": "Moving Stores: an online store whose menu comes from the till",
+      "video": "https://www.youtube.com/watch?v=SbZVZ12EyBo",
+      "issues": [],
+      "music": "mixed in when the routine renders the video (CC0 bed, -14 LUFS, recipe stamp)"
+    },
+    {
+      "date": "2026-12-14",
+      "topic": "OFFSET pagination slows down on every page: keyset cursors",
+      "video": null,
+      "issues": [],
+      "music": "mixed in when the routine renders the video (CC0 bed, -14 LUFS, recipe stamp)"
+    },
+    {
+      "date": "2026-12-15",
+      "topic": "Moving Accounting: double-entry books with ZATCA and ETA e-invoicing built in",
+      "video": "https://www.youtube.com/watch?v=dOvsiOFMj_E",
+      "issues": [],
+      "music": "mixed in when the routine renders the video (CC0 bed, -14 LUFS, recipe stamp)"
+    }
+  ]
+}

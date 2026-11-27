@@ -187,3 +187,51 @@ test('validate.mjs --date only reports that day', () => {
   assert.equal(runValidate(cal, ['--date', days[1].date]).status, 0);
   assert.equal(runValidate(cal, ['--date', days[0].date]).status, 1);
 });
+
+// Devya YouTube channel videos (social/videos.json).
+import { DEVYA_VIDEOS, CHANNEL, youtubeId, videoUrl } from './seo.mjs';
+
+test('video registry: Devya channel videos with 11-character ids', () => {
+  assert.equal(CHANNEL.id, 'UCr3NVqdbc_31pUVYSJSVUmQ');
+  assert.equal(CHANNEL.handle, '@DevyaSolutions');
+  assert.ok(DEVYA_VIDEOS.size >= 4);
+  for (const [id, v] of DEVYA_VIDEOS) { assert.match(id, /^[\w-]{11}$/); assert.ok(v.title && v.product, id); }
+});
+
+test('youtubeId and linkBase understand watch, youtu.be, shorts and embed links', () => {
+  for (const u of ['https://www.youtube.com/watch?v=lvcq-RFultk&t=4', 'https://youtu.be/lvcq-RFultk', 'https://youtube.com/shorts/lvcq-RFultk', 'https://www.youtube.com/embed/lvcq-RFultk']) assert.equal(youtubeId(u), 'lvcq-RFultk', u);
+  assert.equal(youtubeId('https://www.devya.dev/watch?v=lvcq-RFultk'), null);
+  assert.equal(linkBase('https://www.youtube.com/watch?v=lvcq-RFultk&utm_source=x'), 'https://www.youtube.com/watch?v=lvcq-RFultk');
+  assert.equal(videoUrl('lvcq-RFultk'), 'https://www.youtube.com/watch?v=lvcq-RFultk');
+});
+
+test('linkProblems: only tagged, canonical links to Devya-channel videos pass', () => {
+  const opts = { platform: 'facebook', campaign: 'c' };
+  const tagged = (u) => tagUrl(u, opts);
+  assert.deepEqual(linkProblems(tagged('https://www.youtube.com/watch?v=lvcq-RFultk'), opts), []);
+  assert.match(linkProblems('https://www.youtube.com/watch?v=lvcq-RFultk', opts).join(), /untagged link/);
+  assert.match(linkProblems(tagged('https://www.youtube.com/watch?v=dQw4w9WgXcQ'), opts).join(), /not a video on Devya's channel/);
+  assert.match(linkProblems(tagged('https://youtu.be/lvcq-RFultk'), opts).join(), /canonical https:\/\/www\.youtube\.com\/watch\?v=lvcq-RFultk/);
+  assert.match(linkProblems(tagged('https://www.youtube.com/@DevyaSolutions'), opts).join(), /not a video on Devya's channel/);
+});
+
+test('tagDayLinks turns a Devya youtu.be link into the tagged canonical watch URL and leaves other videos alone', () => {
+  const day = { date: '2026-12-20', topic: 'Video', posts: { facebook: { lang: 'en', caption: 'Watch https://youtu.be/lvcq-RFultk and https://youtu.be/dQw4w9WgXcQ' } } };
+  const cap = tagDayLinks(day).posts.facebook.caption;
+  assert.ok(cap.includes('https://www.youtube.com/watch?v=lvcq-RFultk&utm_source=facebook&utm_medium=social&utm_campaign=2026-12-20-video'), cap);
+  assert.ok(cap.includes('https://youtu.be/dQw4w9WgXcQ'), cap);
+});
+
+test('video days: the video must be a Devya-channel video, and Facebook/LinkedIn must link it', () => {
+  const cal = structuredClone(CAL);
+  const day = cal.days.find((d) => d.video);
+  assert.ok(day, 'calendar has at least one video day');
+  assert.equal(runValidate(cal, ['--date', day.date]).status, 0);
+  const other = structuredClone(cal);
+  other.days.find((d) => d.date === day.date).video = 'https://www.youtube.com/watch?v=dQw4w9WgXcQ';
+  assert.match(runValidate(other, ['--date', day.date]).stderr, /video .* of a video on Devya's channel/);
+  const wrong = structuredClone(cal);
+  const w = wrong.days.find((d) => d.date === day.date);
+  w.posts.facebook.caption = w.posts.facebook.caption.replace(/https:\/\/www\.youtube\.com\/watch\?v=[\w-]{11}/, 'https://www.youtube.com/watch?v=OPKty5IFgss');
+  assert.match(runValidate(wrong, ['--date', day.date]).stderr, /facebook: a video day links its video/);
+});
