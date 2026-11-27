@@ -22,6 +22,7 @@ Daily content on Devya's own LinkedIn page, Facebook page and Instagram, publish
 2. `routine/due.mjs` lists the channels whose slot has passed today and that `state.json` has not recorded: LinkedIn post 10:00; LinkedIn video and Facebook/Instagram Reels 13:00; Facebook post and Story 19:30; Instagram post and Story 21:00. Channels listed under `pausedChannels` in `calendar.json` are held. A missed day is not posted late.
    - **Browser preflight** (`routine/preflight.mjs browser`): when something is due, it asks brain whether the ceo seat's Chrome is connected through Claude in Chrome (one retry 30 s later). If not, the run logs a single `NEEDS-YOU:` line naming the fix (for example, the extension in "Profile 2" is signed in to another account), starts no session, records nothing in `log.md`, and exits 5; the next slot retries what is still due. If brain cannot answer, the run goes ahead with a `WARN:` line.
    - The day's cards and video are rendered if missing.
+   - **Screenshot guard** (`render/shot-guard.mjs`): a `product` card's live screenshot (`card.shot`) is refused, never recorded, when its URL or redirect is on Vercel (`vercel.app`, `now.sh`: Vercel is banned since 2026-11-27), the page answers an HTTP error, or it shows a paused, suspended or error page or next to no text. The renderers then exit 4 with a `SHOT REFUSED:` line, and the run holds whatever would show that screenshot (feed posts if the cards could not be rendered, otherwise the videos and stories), logs one `NEEDS-YOU:` line and exits 6; the next slot retries. `validate.mjs` also rejects any `vercel.app` URL in a day, so a top-up draft carrying one is never merged.
 3. A Claude session on the **ceo seat** (`CLAUDE_CONFIG_DIR=~/.claude-brain/profiles/ceo`, so Claude in Chrome drives Chrome "Profile 2", Devya) publishes them, following `routine/publish-worker.md`. It may only use the Chrome tools; no files, no shell, no git.
 4. `routine/record.mjs` writes the result to `state.json`, `log.md` and `proof/`, and the launcher commits and pushes only those files to `main`.
 5. Once a day, if fewer than 7 days are left after today, a top-up session drafts the next days (`routine/topup-worker.md`) into `inbox/new-days.json`; `routine/merge-days.mjs` validates, renders and merges them, or rejects the whole draft. New days land a week before they publish.
@@ -32,7 +33,7 @@ If a network shows a login, 2FA or verification screen, the routine stops that n
 
 If the publish session stops on a usage-limit banner, the transcript gets a `LIMIT:` line. A cap on the seat's model alone ("Switch to another model") is retried once at once with `--model sonnet` (`DEVYA_SOCIAL_FALLBACK_MODEL` overrides); a cap on the seat itself waits for the first slot after the reset.
 
-Tests for the routine's helpers: `node --test social/routine/*.test.mjs`.
+Tests for the routine's helpers and the screenshot guard: `node --test social/routine/*.test.mjs social/render/*.test.mjs`.
 
 ## Controls
 

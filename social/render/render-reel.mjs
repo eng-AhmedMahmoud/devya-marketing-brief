@@ -10,6 +10,7 @@
 //
 // Output: social/visuals/<date>/reel-<lang>.mp4 + reel-<lang>-cover.jpg (git-ignored; the routine
 // renders the day's reels before publishing, so they never need committing).
+// Exits 4 if the product screenshot is refused (see shot-guard.mjs): no reel is made from it.
 
 import { chromium } from 'playwright-core';
 import { readFileSync, existsSync, mkdirSync, rmSync, mkdtempSync } from 'node:fs';
@@ -17,7 +18,7 @@ import { dirname, join } from 'node:path';
 import { tmpdir } from 'node:os';
 import { fileURLToPath } from 'node:url';
 import { spawnSync } from 'node:child_process';
-import { FONTS, ACCENT, esc, rich, highlight, shoot } from './render.mjs';
+import { FONTS, ACCENT, esc, rich, highlight, shoot, fail } from './render.mjs';
 
 const HERE = dirname(fileURLToPath(import.meta.url));
 const SOCIAL = join(HERE, '..');
@@ -205,4 +206,4 @@ async function main() {
   if (bad) process.exit(1);
 }
 
-main().catch((e) => { console.error(e); process.exit(1); });
+main().catch(fail);

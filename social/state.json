@@ -189,22 +189,22 @@
         "proof": "proof/2026-11-27-linkedin.jpg"
       },
       "linkedin_video": {
-        "url": "https://www.linkedin.com/feed/update/urn:li:activity:7532036455779508224/",
-        "at": "2026-11-27 13:12",
-        "by": "routine",
-        "proof": "proof/2026-11-27-linkedin_video.jpg"
+        "url": "https://www.linkedin.com/feed/update/urn:li:activity:7532164812106235904/",
+        "at": "2026-11-27 21:37",
+        "by": "manual",
+        "proof": "proof/2026-11-27-linkedin_video.png"
       },
       "facebook_reel": {
-        "url": "https://www.facebook.com/reel/1147551828067214/",
-        "at": "2026-11-27 13:12",
-        "by": "routine",
-        "proof": "proof/2026-11-27-facebook_reel.jpg"
+        "url": "https://www.facebook.com/reel/3616150021881621/",
+        "at": "2026-11-27 21:37",
+        "by": "manual",
+        "proof": "proof/2026-11-27-facebook_reel.png"
       },
       "instagram_reel": {
-        "url": "https://www.instagram.com/devyasoftware/reel/DgPiwWXJ9Xm/",
-        "at": "2026-11-27 13:12",
-        "by": "routine",
-        "proof": "proof/2026-11-27-instagram_reel.jpg"
+        "url": "https://www.instagram.com/devyasoftware/reel/DgQbmPkpJop/",
+        "at": "2026-11-27 21:37",
+        "by": "manual",
+        "proof": "proof/2026-11-27-instagram_reel.png"
       },
       "facebook": {
         "url": "https://www.facebook.com/devyasoftware/posts/pfbid0koLiVvtF9ZPMZy8GmJTeuVS9j3vnDgUZzSv14PAxsNZCZ4qnZEbZZRtUn8NgHVJvl",
@@ -214,9 +214,9 @@
       },
       "facebook_story": {
         "url": "posted",
-        "at": "2026-11-27 19:34",
-        "by": "routine",
-        "proof": "proof/2026-11-27-facebook_story.jpg"
+        "at": "2026-11-27 21:37",
+        "by": "manual",
+        "proof": "proof/2026-11-27-facebook_story.png"
       },
       "instagram": {
         "url": "https://www.instagram.com/devyasoftware/p/DgQYmuMjYWa/",

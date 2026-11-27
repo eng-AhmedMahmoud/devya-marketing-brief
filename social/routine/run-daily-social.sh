@@ -6,6 +6,8 @@
 #      published today); when something is due, routine/preflight.mjs checks
 #      the ceo seat's Chrome is connected (if not: one NEEDS-YOU line, nothing
 #      published or recorded, exit 5), then today's cards are rendered if missing;
+#      a refused product screenshot (render exit 4: vercel.app URL, HTTP error,
+#      paused/error page) holds what would show it, with one NEEDS-YOU line;
 #   3. runs a tightly allowlisted Claude session on the ceo seat
 #      (CLAUDE_CONFIG_DIR = brain profile ceo → Chrome "Profile 2", Devya) that
 #      publishes through Claude in Chrome and prints one RESULT_JSON line;
@@ -115,13 +117,39 @@ if [[ "$COUNT" -gt 0 ]]; then
   fi
 fi
 
+# Drops due items whose kind matches $1 (a regex) from DUE_JSON and recounts.
+# They stay unrecorded, so the next slot retries them.
+hold_kinds() {
+  DUE_JSON="$(printf '%s' "$DUE_JSON" | node -e 'const j=JSON.parse(require("fs").readFileSync(0,"utf8")); const re=new RegExp(process.argv[1]); j.due=j.due.filter((d)=>!re.test(d.kind)); process.stdout.write(JSON.stringify(j,null,2))' "$1")"
+  COUNT="$(printf '%s' "$DUE_JSON" | node -pe 'JSON.parse(require("fs").readFileSync(0,"utf8")).due.length')"
+}
+
 if [[ "$COUNT" -gt 0 ]]; then
-  node social/render/render.mjs --date "$TODAY" || echo "WARN: render reported a problem for $TODAY"
+  # Exit 4 = the product screenshot was refused (render/shot-guard.mjs: a vercel.app
+  # URL, an HTTP error, or a paused/error page). Never publish what would show it.
+  node social/render/render.mjs --date "$TODAY"; REN_RC=$?
+  if [[ $REN_RC -eq 4 ]]; then
+    echo "NEEDS-YOU: $TODAY's product screenshot was refused (see SHOT REFUSED above); holding today's feed posts. Fix card.shot in calendar.json or the site."
+    hold_kinds '^post$'
+    [[ $RC -eq 0 ]] && RC=6
+  elif [[ $REN_RC -ne 0 ]]; then
+    echo "WARN: render reported a problem for $TODAY"
+  fi
   # Reels, stories and the LinkedIn video use the day's vertical video (git-ignored, rendered here).
   if printf '%s' "$DUE_JSON" | grep -q '"kind": "\(reel\|video\|story\)"'; then
-    node social/render/render-reel.mjs --date "$TODAY" || echo "WARN: reel render reported a problem for $TODAY"
+    node social/render/render-reel.mjs --date "$TODAY"; REEL_RC=$?
+    if [[ $REEL_RC -eq 4 ]]; then
+      echo "NEEDS-YOU: $TODAY's product screenshot was refused (see SHOT REFUSED above); holding today's videos and stories. Fix card.shot in calendar.json or the site."
+      hold_kinds '^(reel|video|story)$'
+      [[ $RC -eq 0 ]] && RC=6
+    elif [[ $REEL_RC -ne 0 ]]; then
+      echo "WARN: reel render reported a problem for $TODAY"
+    fi
   fi
+  [[ "$COUNT" -eq 0 ]] && echo "nothing left to publish this run"
+fi
 
+if [[ "$COUNT" -gt 0 ]]; then
   BEFORE_TABS="$(/usr/bin/mktemp -t social-tabs)"
   /usr/bin/osascript -e 'set out to ""' -e 'tell application id "com.google.Chrome"' \
     -e 'repeat with w in windows' -e 'repeat with t in tabs of w' -e 'set out to out & (URL of t) & linefeed' \
