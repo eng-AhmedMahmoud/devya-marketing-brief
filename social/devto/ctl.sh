@@ -7,6 +7,8 @@
 #   devto reject <id> [<id>...]   reject drafts / dismiss flagged comments
 #   devto edit <id> [--text "…"]  rewrite a draft ($EDITOR without --text); it goes back to pending
 #   devto post                    post the approved drafts (Chrome on the DEVTO_POST_SEAT seat, default ceo)
+#   devto feedback                what the feedback loop has collected and not yet distilled
+#   devto lessons [<v>]           the lessons file the drafter reads; `devto lessons rollback <v>` restores a version
 #   devto status                  loaded?, paused?, queue counts, last run, Keychain check
 #   devto run                     fire one draft run now (never posts)
 #   devto pause [why] | resume    keep the schedule, make draft runs exit at once
@@ -61,18 +63,18 @@ cmd_status() {
   if launchctl print "gui/$UIDN/$LABEL" >/dev/null 2>&1; then echo "launchd: loaded ($PLIST)"; else echo "launchd: NOT loaded"; fi
   if [[ -f "$DEVTO_HOME/paused" ]]; then echo "paused: yes ($(cat "$DEVTO_HOME/paused"))"; else echo "paused: no"; fi
   node "$DEVTO_JS" status || true
-  [[ -f "$LOG" ]] && { echo "--- last log lines"; tail -n 6 "$LOG"; }
+  if [[ -f "$LOG" ]]; then echo "--- last log lines"; tail -n 6 "$LOG"; fi
 }
 
 case "${1:-status}" in
   install) cmd_install ;;
   status) cmd_status ;;
-  review|approve|reject|edit) node "$DEVTO_JS" "$@" ;;
+  review|approve|reject|edit|feedback|lessons) node "$DEVTO_JS" "$@" ;;
   post) exec "$BIN/run-devto-replies.sh" post ;;
   run) launchctl kickstart "gui/$UIDN/$LABEL" && echo "started a draft run; follow: tail -f $LOG" ;;
   pause) shift; mkdir -p "$DEVTO_HOME"; echo "${*:-paused $(date '+%Y-%m-%d %H:%M')}" > "$DEVTO_HOME/paused"; echo "paused (draft runs exit at once). Resume: devto resume" ;;
   resume) rm -f "$DEVTO_HOME/paused"; echo "resumed" ;;
   log) tail -n "${2:-40}" "$LOG" ;;
   uninstall) launchctl bootout "gui/$UIDN/$LABEL" 2>/dev/null || true; rm -f "$PLIST"; echo "uninstalled (queue, state and logs kept in $DEVTO_HOME)" ;;
-  *) echo "usage: devto review [--all] | approve <ids> | reject <ids> | edit <id> | post | status | run | pause [why] | resume | log | install | uninstall"; exit 1 ;;
+  *) echo "usage: devto review [--all] | approve <ids> | reject <ids> | edit <id> | post | status | feedback | lessons [<v>|rollback <v>] | run | pause [why] | resume | log | install | uninstall"; exit 1 ;;
 esac

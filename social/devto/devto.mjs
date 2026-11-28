@@ -7,11 +7,15 @@
 //       drafts replies to new comments and queues them. Never posts.
 //       --dry-run: drafts to $DEVTO_HOME/dry/, queue and state untouched.
 //       --no-draft: list new comments only (no model, nothing written).
+//       --no-distill: skip the feedback loop's lessons update this run.
 //   node devto.mjs review [--all]           print the queue (and rewrite queue.md)
 //   node devto.mjs approve <id> [<id> ...]  approve these exact drafts
 //   node devto.mjs reject <id> [<id> ...]   reject drafts / dismiss flags
 //   node devto.mjs edit <id> [--text "…"]   replace a draft ($EDITOR without --text); needs approval again
 //   node devto.mjs status                   counts, last run, Keychain check
+//   node devto.mjs feedback                 decisions not yet distilled + tracked posted replies
+//   node devto.mjs lessons [<v>]            the lessons file the drafter reads (current or version v) and its history
+//   node devto.mjs lessons rollback <v>     make version v current again (saved as a new version)
 //   node devto.mjs post-plan                approved drafts that may be posted now, re-checked on dev.to (JSON)
 //   node devto.mjs post-record < result     record the browser session's RESULT_JSON (verified on dev.to)
 //
@@ -22,7 +26,8 @@ import { spawnSync } from 'node:child_process';
 import { readFileSync } from 'node:fs';
 import { hostname, userInfo } from 'node:os';
 import { ForemError, KEYCHAIN, createClient, keychainCommand, readKeychainKey } from './forem.mjs';
-import { claudeDrafter } from './drafts.mjs';
+import { claudeDrafter, systemPrompt } from './drafts.mjs';
+import { decisionEvents, distillSystemPrompt, lessonsLog, lessonsVersion, loadLessons, saveLessons } from './feedback.mjs';
 import { approve, edit, postPlan, recheck, recordPosted, reject } from './gate.mjs';
 import { runScan, summaryLine } from './scan.mjs';
 import { defaultHome, openStore } from './store.mjs';
@@ -73,7 +78,9 @@ async function main() {
       const seat = process.env.DEVTO_SEAT || 'ceo';
       const { summary, listed } = await runScan({
         client: c, store, username: USERNAME,
-        runModel: flag('--no-draft') ? null : claudeDrafter({ seat }),
+        runModel: flag('--no-draft') ? null : claudeDrafter({ seat, system: () => systemPrompt({ lessons: loadLessons(store) }) }),
+        distiller: flag('--no-draft') || flag('--no-distill') ? null : claudeDrafter({ seat, system: distillSystemPrompt(), done: /^--- END LESSONS ---$/m }),
+        minEvents: Number(process.env.DEVTO_MIN_FEEDBACK || 3),
         drafter: `claude (${seat} seat)`,
         maxDrafts: Number(opt('--max', process.env.DEVTO_MAX_DRAFTS || 30)),
         dryRun: flag('--dry-run'), noDraft: flag('--no-draft'), allArticles: flag('--all-articles'),
@@ -139,6 +146,34 @@ async function main() {
       console.log(`seen comments: ${Object.keys(store.loadState().seen).length}`);
       return;
     }
+    case 'feedback': {
+      const q = store.loadQueue();
+      const since = store.loadState().feedback?.decisionsSince || '';
+      const ev = decisionEvents(q, store.decisions(), { since });
+      const tracked = Object.values(store.loadOutcomes());
+      console.log(`${ev.length} decision(s) not yet distilled (since ${since || 'the start'}) · ${tracked.length} posted repl(y/ies) tracked · lessons v${loadLessons(store).version}`);
+      for (const e of ev) console.log(`- ${e.type} ${e.id} (${e.at.slice(0, 10)})${e.diff ? `\n    ${e.diff}` : ''}`);
+      for (const o of tracked) console.log(`- reply ${o.replyId} on ${o.commentId}: ${o.followUps} follow-up(s)${o.commenterAnswered ? ', commenter answered' : ''}`);
+      return;
+    }
+    case 'lessons': {
+      if (argv[1] === 'rollback') {
+        const v = Number(argv[2]);
+        const text = Number.isInteger(v) ? lessonsVersion(store, v) : null;
+        if (!text) { console.error(`usage: devto lessons rollback <version>  (no version ${argv[2]})`); process.exit(2); }
+        const nv = saveLessons(store, text, { note: `rollback to v${v}` });
+        console.log(`lessons v${nv} = v${v} (rolled back); the next draft uses it`);
+        return;
+      }
+      const cur = loadLessons(store);
+      const v = argv[1] ? Number(argv[1]) : cur.version;
+      const text = v === cur.version ? cur.text : lessonsVersion(store, v);
+      if (!cur.version) { console.log('no lessons yet: they appear once enough feedback (approvals, edits, rejections, replies posted) has come in'); return; }
+      if (text === null) { console.error(`no lessons version ${v}`); process.exit(1); }
+      console.log(`# lessons v${v}${v === cur.version ? ' (current)' : ''}\n\n${text}\n\n## history`);
+      for (const l of lessonsLog(store)) console.log(`v${l.version} · ${l.at.slice(0, 16)} · ${l.events} event(s) · ${l.note || ''}`);
+      return;
+    }
     case 'post-plan': {
       const q = store.loadQueue();
       const plan = postPlan(q, store.decisions(), store.posted());
@@ -171,7 +206,7 @@ async function main() {
       process.exit(r.failed.length || r.unverified.length ? 3 : 0);
     }
     default:
-      console.error('usage: devto.mjs scan [--dry-run|--no-draft] | review [--all] | approve <ids> | reject <ids> | edit <id> [--text …] | status | post-plan | post-record < result');
+      console.error('usage: devto.mjs scan [--dry-run|--no-draft|--no-distill] | review [--all] | approve <ids> | reject <ids> | edit <id> [--text …] | status | feedback | lessons [<v>|rollback <v>] | post-plan | post-record < result');
       process.exit(2);
   }
 }

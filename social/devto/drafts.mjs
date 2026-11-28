@@ -104,10 +104,12 @@ export function styleNotes(path = process.env.DEVTO_STYLE_GUIDE || join(homedir(
   }
 }
 
-export function systemPrompt({ style = styleNotes() } = {}) {
-  const base = readFileSync(join(HERE, 'draft-worker.md'), 'utf8');
-  if (!style) return base;
-  return `${base}\n\n## Ahmed's voice notes\n\nFrom his own LinkedIn messages. Adapt them to a public dev.to reply: one message in full sentences (no "bubbles"), no greeting formula, same plainness and warmth.\n\n${style}\n`;
+// lessons: {version, text} from the feedback loop (feedback.mjs loadLessons).
+export function systemPrompt({ style = styleNotes(), lessons = null } = {}) {
+  let out = readFileSync(join(HERE, 'draft-worker.md'), 'utf8');
+  if (style) out += `\n\n## Ahmed's voice notes\n\nFrom his own LinkedIn messages. Adapt them to a public dev.to reply: one message in full sentences (no "bubbles"), no greeting formula, same plainness and warmth.\n\n${style}\n`;
+  if (lessons?.text) out += `\n\n## Lessons from earlier drafts (v${lessons.version})\n\nDistilled from what Ahmed approved, edited and rejected, and from how posted replies did. Follow them unless they conflict with the rules above; the rules win.\n\n${lessons.text}\n`;
+  return out;
 }
 
 // The user message for one article and its new comments. Everything people
@@ -238,22 +240,24 @@ export function claudeDrafter({
   fallbackModel = process.env.DEVTO_FALLBACK_MODEL || 'sonnet',
   timeoutMs = 10 * 60_000,
   run = spawnSync,
+  done = /^DRAFTS_JSON:/m, // the line that marks a finished answer
 } = {}) {
   mkdirSync(workDir, { recursive: true });
   const env = { ...process.env, CLAUDE_CONFIG_DIR: join(homedir(), '.claude-brain', 'profiles', seat) };
   for (const k of ['ANTHROPIC_API_KEY', 'ANTHROPIC_AUTH_TOKEN', 'CLAUDECODE', 'CLAUDE_CODE_ENTRYPOINT']) delete env[k];
   const call = (prompt, extra = []) => {
-    const args = ['--print', '--tools', '', '--strict-mcp-config', '--no-session-persistence', '--setting-sources', 'project', '--append-system-prompt', system, ...extra];
+    const sys = typeof system === 'function' ? system() : system; // a function is read on every call (fresh lessons)
+    const args = ['--print', '--tools', '', '--strict-mcp-config', '--no-session-persistence', '--setting-sources', 'project', '--append-system-prompt', sys, ...extra];
     const r = run(bin, args, { input: prompt, encoding: 'utf8', env, cwd: workDir, timeout: timeoutMs, maxBuffer: 16 * 1024 * 1024 });
     return `${r.stdout || ''}${r.stderr ? `\n${r.stderr}` : ''}`;
   };
   return async (prompt) => {
     let out = call(prompt);
     let lim = limitBanner(out);
-    if (lim.limit === 'model' && !/^DRAFTS_JSON:/m.test(out)) {
+    if (lim.limit === 'model' && !done.test(out)) {
       out = call(prompt, ['--model', fallbackModel]);
       lim = limitBanner(out);
     }
-    return { out, limit: /^DRAFTS_JSON:/m.test(out) ? null : lim.limit, banner: lim.banner || null };
+    return { out, limit: done.test(out) ? null : lim.limit, banner: lim.banner || null };
   };
 }
