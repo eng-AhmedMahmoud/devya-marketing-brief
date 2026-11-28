@@ -2,7 +2,7 @@
 // and comment builders. Not used at run time.
 
 export const ME = 'ahmed_mahmoud360';
-export const KEY = 'test-key-0123456789abcdef';
+export const KEY = 'fake-devto-key';
 
 let n = 0;
 export function comment(user, html, children = [], extra = {}) {
