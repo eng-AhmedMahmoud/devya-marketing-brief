@@ -1163,6 +1163,8 @@ Our process now has three steps:
 
 Every index slows down writes and costs disk. Each one should come with the plan that justified it.
 
+Details: https://www.devya.dev/blogs/postgres-explain-analyze-query-plans-indexes-field-notes?utm_source=linkedin&utm_medium=social&utm_campaign=2026-11-28-stop-adding-postgres-indexes-by-guesswork
+
 #PostgreSQL #Database #BackendEngineering #BuildWithDevya
 ```
 
@@ -1187,7 +1189,8 @@ Engineering notes: https://www.devya.dev/blogs/postgres-explain-analyze-query-pl
 ```text
 توقف عن إضافة الفهارس إلى قاعدة البيانات بالتخمين.
 ابحث أولًا عن الاستعلام الأعلى تكلفة إجمالًا، ثم اقرأ خطة التنفيذ الفعلية عبر EXPLAIN ANALYZE، وأضف الفهرس الذي تطلبه الخطة فقط، ثم قِس من جديد.
-الرابط في البايو.
+
+التفاصيل: https://www.devya.dev/blogs/postgres-explain-analyze-query-plans-indexes-field-notes?utm_source=instagram&utm_medium=social&utm_campaign=2026-11-28-stop-adding-postgres-indexes-by-guesswork
 
 #قواعد_البيانات #برمجة #تطوير_البرمجيات #تقنية #BuildWithDevya
 ```
@@ -1202,6 +1205,8 @@ One-liner AR: توقف عن إضافة الفهارس بالتخمين. اقرأ
 
 ```text
 Stop adding indexes by guesswork. Read the plan first.
+
+Details: https://www.devya.dev/blogs/postgres-explain-analyze-query-plans-indexes-field-notes?utm_source=linkedin&utm_medium=social&utm_campaign=2026-11-28-stop-adding-postgres-indexes-by-guesswork&utm_content=reel
 
 #PostgreSQL #Database #BackendEngineering
 ```
@@ -1220,6 +1225,8 @@ More: https://www.devya.dev/blogs/postgres-explain-analyze-query-plans-indexes-f
 
 ```text
 توقف عن إضافة الفهارس بالتخمين. اقرأ خطة التنفيذ أولًا.
+
+التفاصيل: https://www.devya.dev/blogs/postgres-explain-analyze-query-plans-indexes-field-notes?utm_source=instagram&utm_medium=social&utm_campaign=2026-11-28-stop-adding-postgres-indexes-by-guesswork&utm_content=reel
 
 #قواعد_البيانات #برمجة #تطوير_البرمجيات #تقنية #BuildWithDevya
 ```
@@ -1250,6 +1257,8 @@ Access is cheap to give. If the answer is "after launch", you'll find the proble
 
 A vendor who is confident in the work says yes on the first call.
 
+Details: https://www.devya.dev/solutions?utm_source=linkedin&utm_medium=social&utm_campaign=2026-11-29-ask-for-repo-staging-and-admin-access-from
+
 #Outsourcing #Founders #ProductDevelopment #BuildWithDevya
 ```
 
@@ -1279,7 +1288,9 @@ A vendor who is confident in the work says yes on the first call.
 ```text
 Demos show what your vendor picks.
 Ask for three things from sprint one: read access to the code repository, a staging link you can open any day, and your own admin login. A fixed price fixes the cost, not your right to see the work.
-Save this for your next contract. Link in bio.
+Save this for your next contract.
+
+Details: https://www.devya.dev/solutions?utm_source=instagram&utm_medium=social&utm_campaign=2026-11-29-ask-for-repo-staging-and-admin-access-from
 
 #BuildWithDevya #Founders #Startups #Outsourcing #SoftwareDevelopment
 ```
@@ -1294,6 +1305,8 @@ One-liner AR: ترى تطبيقك في العروض فقط؟ اطلب الوصو
 
 ```text
 Only seeing your app in demos? Ask for repo, staging and admin access from sprint one.
+
+Details: https://www.devya.dev/solutions?utm_source=linkedin&utm_medium=social&utm_campaign=2026-11-29-ask-for-repo-staging-and-admin-access-from&utm_content=reel
 
 #Outsourcing #Founders #ProductDevelopment
 ```
@@ -1312,6 +1325,8 @@ Only seeing your app in demos? Ask for repo, staging and admin access from sprin
 
 ```text
 Only seeing your app in demos? Ask for repo, staging and admin access from sprint one.
+
+Details: https://www.devya.dev/solutions?utm_source=instagram&utm_medium=social&utm_campaign=2026-11-29-ask-for-repo-staging-and-admin-access-from&utm_content=reel
 
 #BuildWithDevya #Founders #Startups #Outsourcing #SoftwareDevelopment
 ```
@@ -1341,6 +1356,8 @@ So we built jwt-inspector. It decodes the header and payload, shows the standard
 
 https://www.devya.dev/projects/jwt-inspector?utm_source=linkedin&utm_medium=social&utm_campaign=2026-11-30-a-jwt-is-encoded-not-encrypted-decoding-isn-t
 
+Project: https://jwt.devya.dev/?utm_source=linkedin&utm_medium=social&utm_campaign=2026-11-30-a-jwt-is-encoded-not-encrypted-decoding-isn-t
+
 #WebSecurity #JWT #Authentication #BuildWithDevya
 ```
 
@@ -1357,6 +1374,8 @@ https://www.devya.dev/projects/jwt-inspector?utm_source=linkedin&utm_medium=soci
 
 لهذا بنينا أداة تفك الترميز داخل متصفحك فقط، دون أي اتصال بالشبكة، وتعرض تاريخ انتهاء الرمز بوضوح: https://www.devya.dev/projects/jwt-inspector?utm_source=facebook&utm_medium=social&utm_campaign=2026-11-30-a-jwt-is-encoded-not-encrypted-decoding-isn-t
 
+رابط المشروع: https://jwt.devya.dev/?utm_source=facebook&utm_medium=social&utm_campaign=2026-11-30-a-jwt-is-encoded-not-encrypted-decoding-isn-t
+
 #BuildWithDevya #أمن_المعلومات
 ```
 
@@ -1367,7 +1386,10 @@ https://www.devya.dev/projects/jwt-inspector?utm_source=linkedin&utm_medium=soci
 ```text
 A JWT is encoded, not encrypted.
 Anyone holding the token can read the payload, so keep secrets out of it. And decoding proves nothing: trust the claims only after your server checks the signature.
-Debugging? Decode in your browser, not on someone else's server. Link in bio.
+Debugging? Decode in your browser, not on someone else's server.
+
+Project: https://jwt.devya.dev/?utm_source=instagram&utm_medium=social&utm_campaign=2026-11-30-a-jwt-is-encoded-not-encrypted-decoding-isn-t
+Details: https://www.devya.dev/projects/jwt-inspector?utm_source=instagram&utm_medium=social&utm_campaign=2026-11-30-a-jwt-is-encoded-not-encrypted-decoding-isn-t
 
 #BuildWithDevya #WebSecurity #JWT #Authentication #CyberSecurity
 ```
@@ -1383,6 +1405,9 @@ One-liner AR: رمز JWT مُرمَّز وليس مشفّرًا، وفك ترم�
 ```text
 A JWT is encoded, not encrypted. Decoding it proves nothing.
 
+Project: https://jwt.devya.dev/?utm_source=linkedin&utm_medium=social&utm_campaign=2026-11-30-a-jwt-is-encoded-not-encrypted-decoding-isn-t&utm_content=reel
+Details: https://www.devya.dev/projects/jwt-inspector?utm_source=linkedin&utm_medium=social&utm_campaign=2026-11-30-a-jwt-is-encoded-not-encrypted-decoding-isn-t&utm_content=reel
+
 #WebSecurity #JWT #Authentication
 ```
 
@@ -1393,6 +1418,8 @@ A JWT is encoded, not encrypted. Decoding it proves nothing.
 
 التفاصيل: https://www.devya.dev/projects/jwt-inspector?utm_source=facebook&utm_medium=social&utm_campaign=2026-11-30-a-jwt-is-encoded-not-encrypted-decoding-isn-t&utm_content=reel
 
+رابط المشروع: https://jwt.devya.dev/?utm_source=facebook&utm_medium=social&utm_campaign=2026-11-30-a-jwt-is-encoded-not-encrypted-decoding-isn-t&utm_content=reel
+
 #BuildWithDevya #أمن_المعلومات
 ```
 
@@ -1400,6 +1427,9 @@ A JWT is encoded, not encrypted. Decoding it proves nothing.
 
 ```text
 A JWT is encoded, not encrypted. Decoding it proves nothing.
+
+Project: https://jwt.devya.dev/?utm_source=instagram&utm_medium=social&utm_campaign=2026-11-30-a-jwt-is-encoded-not-encrypted-decoding-isn-t&utm_content=reel
+Details: https://www.devya.dev/projects/jwt-inspector?utm_source=instagram&utm_medium=social&utm_campaign=2026-11-30-a-jwt-is-encoded-not-encrypted-decoding-isn-t&utm_content=reel
 
 #BuildWithDevya #WebSecurity #JWT #Authentication #CyberSecurity
 ```
@@ -1458,7 +1488,8 @@ See it answer your own questions in a short demo: https://www.devya.dev/converse
 مساعد محادثة يجيب عملاءك من محتواك أنت.
 خدمة Devya Converse تقرأ مستنداتك وأسئلتك الشائعة، ثم تردّ على عملائك بالعربية أو الإنجليزية عبر موقعك وواتساب وماسنجر، وتحجز المواعيد، وتسلّم المحادثة لموظف عند الحاجة.
 لا ردود مُختلقة: كل إجابة مبنية على موادك.
-الرابط في البايو.
+
+التفاصيل: https://www.devya.dev/converse?utm_source=instagram&utm_medium=social&utm_campaign=2026-12-01-devya-converse-ai-chat-that-answers-from-your
 
 #ذكاء_اصطناعي #خدمة_العملاء #ريادة_الأعمال #التجارة_الإلكترونية #BuildWithDevya
 ```
@@ -1473,6 +1504,8 @@ One-liner AR: مساعد Devya Converse يجيب عملاءك من محتواك 
 
 ```text
 Devya Converse: AI chat that answers from your own content, in Arabic and English.
+
+Details: https://www.devya.dev/converse?utm_source=linkedin&utm_medium=social&utm_campaign=2026-12-01-devya-converse-ai-chat-that-answers-from-your&utm_content=reel
 
 #ConversationalAI #CustomerSupport #MENA
 ```
@@ -1491,6 +1524,8 @@ More: https://www.devya.dev/converse?utm_source=facebook&utm_medium=social&utm_c
 
 ```text
 مساعد Devya Converse يجيب عملاءك من محتواك أنت، بالعربية والإنجليزية.
+
+التفاصيل: https://www.devya.dev/converse?utm_source=instagram&utm_medium=social&utm_campaign=2026-12-01-devya-converse-ai-chat-that-answers-from-your&utm_content=reel
 
 #ذكاء_اصطناعي #خدمة_العملاء #ريادة_الأعمال #التجارة_الإلكترونية #BuildWithDevya
 ```
@@ -1518,6 +1553,8 @@ A fully booked vendor has two options. Start you early with whoever is free and 
 If you want momentum before then, ask for a short, paid discovery phase in the gap: user roles, existing systems, the flows that matter. It moves the project forward without pretending the build has started.
 
 An honest wait is easier to plan around than a team that's thin from week one.
+
+Details: https://www.devya.dev/solutions?utm_source=linkedin&utm_medium=social&utm_campaign=2026-12-02-ask-for-the-real-start-date-and-the-named-team
 
 #Outsourcing #Founders #ProjectManagement #BuildWithDevya
 ```
@@ -1550,7 +1587,9 @@ An honest wait is easier to plan around than a team that's thin from week one.
 ```text
 "We can start Monday." Who, exactly?
 Ask your vendor for the real start date and the names of the people starting on it, in writing. Want momentum before then? Ask for a short paid discovery phase in the gap.
-An honest date beats an early start with half a team. Link in bio.
+An honest date beats an early start with half a team.
+
+Details: https://www.devya.dev/solutions?utm_source=instagram&utm_medium=social&utm_campaign=2026-12-02-ask-for-the-real-start-date-and-the-named-team
 
 #BuildWithDevya #Founders #ProjectManagement #Egypt #SaudiArabia
 ```
@@ -1565,6 +1604,8 @@ One-liner AR: قبل أن توقّع: اطلب موعد البدء الحقيق�
 
 ```text
 "We can start Monday." Ask who, exactly, and get it in writing.
+
+Details: https://www.devya.dev/solutions?utm_source=linkedin&utm_medium=social&utm_campaign=2026-12-02-ask-for-the-real-start-date-and-the-named-team&utm_content=reel
 
 #Outsourcing #Founders #ProjectManagement
 ```
@@ -1583,6 +1624,8 @@ One-liner AR: قبل أن توقّع: اطلب موعد البدء الحقيق�
 
 ```text
 "We can start Monday." Ask who, exactly, and get it in writing.
+
+Details: https://www.devya.dev/solutions?utm_source=instagram&utm_medium=social&utm_campaign=2026-12-02-ask-for-the-real-start-date-and-the-named-team&utm_content=reel
 
 #BuildWithDevya #Founders #ProjectManagement #Egypt #SaudiArabia
 ```
@@ -1612,6 +1655,8 @@ cron-builder does exactly that in the browser. Paste a standard five-field expre
 
 https://www.devya.dev/projects/cron-builder?utm_source=linkedin&utm_medium=social&utm_campaign=2026-12-03-a-wrong-cron-line-still-runs-read-it-back-before
 
+Project: https://cron.devya.dev/?utm_source=linkedin&utm_medium=social&utm_campaign=2026-12-03-a-wrong-cron-line-still-runs-read-it-back-before
+
 #DevOps #Cron #BackendEngineering #BuildWithDevya
 ```
 
@@ -1630,6 +1675,8 @@ https://www.devya.dev/projects/cron-builder?utm_source=linkedin&utm_medium=socia
 
 أداتنا تفعل ذلك داخل المتصفح: https://www.devya.dev/projects/cron-builder?utm_source=facebook&utm_medium=social&utm_campaign=2026-12-03-a-wrong-cron-line-still-runs-read-it-back-before
 
+رابط المشروع: https://cron.devya.dev/?utm_source=facebook&utm_medium=social&utm_campaign=2026-12-03-a-wrong-cron-line-still-runs-read-it-back-before
+
 #BuildWithDevya #برمجة
 ```
 
@@ -1640,7 +1687,10 @@ https://www.devya.dev/projects/cron-builder?utm_source=linkedin&utm_medium=socia
 ```text
 Get a cron line wrong and it still runs. Just at the wrong time.
 0 9 1 * 1 isn't "9am on the 1st if it's a Monday". It runs on the 1st of every month and on every Monday.
-Read a schedule back in plain English and check its next run times before it ships. Link in bio.
+Read a schedule back in plain English and check its next run times before it ships.
+
+Project: https://cron.devya.dev/?utm_source=instagram&utm_medium=social&utm_campaign=2026-12-03-a-wrong-cron-line-still-runs-read-it-back-before
+Details: https://www.devya.dev/projects/cron-builder?utm_source=instagram&utm_medium=social&utm_campaign=2026-12-03-a-wrong-cron-line-still-runs-read-it-back-before
 
 #BuildWithDevya #DevOps #Cron #BackendDevelopment #CodingTips
 ```
@@ -1656,6 +1706,9 @@ One-liner AR: سطر cron الخاطئ لا يتوقف، بل يعمل في ال
 ```text
 A wrong cron line doesn't fail. It runs at the wrong time.
 
+Project: https://cron.devya.dev/?utm_source=linkedin&utm_medium=social&utm_campaign=2026-12-03-a-wrong-cron-line-still-runs-read-it-back-before&utm_content=reel
+Details: https://www.devya.dev/projects/cron-builder?utm_source=linkedin&utm_medium=social&utm_campaign=2026-12-03-a-wrong-cron-line-still-runs-read-it-back-before&utm_content=reel
+
 #DevOps #Cron #BackendEngineering
 ```
 
@@ -1666,6 +1719,8 @@ A wrong cron line doesn't fail. It runs at the wrong time.
 
 التفاصيل: https://www.devya.dev/projects/cron-builder?utm_source=facebook&utm_medium=social&utm_campaign=2026-12-03-a-wrong-cron-line-still-runs-read-it-back-before&utm_content=reel
 
+رابط المشروع: https://cron.devya.dev/?utm_source=facebook&utm_medium=social&utm_campaign=2026-12-03-a-wrong-cron-line-still-runs-read-it-back-before&utm_content=reel
+
 #BuildWithDevya #برمجة
 ```
 
@@ -1673,6 +1728,9 @@ A wrong cron line doesn't fail. It runs at the wrong time.
 
 ```text
 A wrong cron line doesn't fail. It runs at the wrong time.
+
+Project: https://cron.devya.dev/?utm_source=instagram&utm_medium=social&utm_campaign=2026-12-03-a-wrong-cron-line-still-runs-read-it-back-before&utm_content=reel
+Details: https://www.devya.dev/projects/cron-builder?utm_source=instagram&utm_medium=social&utm_campaign=2026-12-03-a-wrong-cron-line-still-runs-read-it-back-before&utm_content=reel
 
 #BuildWithDevya #DevOps #Cron #BackendDevelopment #CodingTips
 ```
@@ -1736,7 +1794,9 @@ https://www.devya.dev/security?utm_source=linkedin&utm_medium=social&utm_campaig
 ```text
 Security answers, before you ask.
 HTTPS everywhere with HSTS. Passwords hashed with argon2id. Role-based access. An audit trail for admin actions. Daily backups with documented restores. No trackers before consent.
-All on one page, written for procurement and due-diligence reviews. Link in bio.
+All on one page, written for procurement and due-diligence reviews.
+
+Details: https://www.devya.dev/security?utm_source=instagram&utm_medium=social&utm_campaign=2026-12-04-our-security-practices-on-one-page-before
 
 #BuildWithDevya #CyberSecurity #DataPrivacy #InfoSec #WebDevelopment
 ```
@@ -1751,6 +1811,8 @@ One-liner AR: كيف نحمي بيانات عملائنا؟ الإجابة في 
 
 ```text
 How we protect client data, on one page: argon2id, HSTS, audit logs, daily backups.
+
+Details: https://www.devya.dev/security?utm_source=linkedin&utm_medium=social&utm_campaign=2026-12-04-our-security-practices-on-one-page-before&utm_content=reel
 
 #CyberSecurity #DataProtection #Procurement
 ```
@@ -1769,6 +1831,8 @@ How we protect client data, on one page: argon2id, HSTS, audit logs, daily backu
 
 ```text
 How we protect client data, on one page: argon2id, HSTS, audit logs, daily backups.
+
+Details: https://www.devya.dev/security?utm_source=instagram&utm_medium=social&utm_campaign=2026-12-04-our-security-practices-on-one-page-before&utm_content=reel
 
 #BuildWithDevya #CyberSecurity #DataPrivacy #InfoSec #WebDevelopment
 ```
@@ -1799,6 +1863,9 @@ It's a single static page with zero dependencies. Nothing to install, it runs en
 
 Worth a minute before your next launch page goes live.
 
+Project: https://og.devya.dev/?utm_source=linkedin&utm_medium=social&utm_campaign=2026-12-05-og-preview-see-your-link-card-before-you-share-it
+Details: https://www.devya.dev/projects/og-preview?utm_source=linkedin&utm_medium=social&utm_campaign=2026-12-05-og-preview-see-your-link-card-before-you-share-it
+
 #SEO #OpenGraph #WebDevelopment #BuildWithDevya
 ```
 
@@ -1813,6 +1880,8 @@ That preview card is built from a few hidden tags on your page. og-preview, a fr
 
 Try it before your next launch: https://www.devya.dev/projects/og-preview?utm_source=facebook&utm_medium=social&utm_campaign=2026-12-05-og-preview-see-your-link-card-before-you-share-it
 
+Project: https://og.devya.dev/?utm_source=facebook&utm_medium=social&utm_campaign=2026-12-05-og-preview-see-your-link-card-before-you-share-it
+
 #BuildWithDevya #SEO #OpenGraph
 ```
 
@@ -1824,7 +1893,9 @@ Try it before your next launch: https://www.devya.dev/projects/og-preview?utm_so
 هل شاركت رابط موقعك فظهرت صورة خاطئة أو عنوان مقطوع؟
 أداة og-preview المجانية تريك كيف ستبدو صفحتك على Google وFacebook وX وLinkedIn قبل النشر، وتعطيك الوسوم الجاهزة للصق.
 تعمل داخل متصفحك، ولا تحتاج إلى تثبيت، وهي مفتوحة المصدر.
-الرابط في البايو.
+
+رابط المشروع: https://og.devya.dev/?utm_source=instagram&utm_medium=social&utm_campaign=2026-12-05-og-preview-see-your-link-card-before-you-share-it
+التفاصيل: https://www.devya.dev/projects/og-preview?utm_source=instagram&utm_medium=social&utm_campaign=2026-12-05-og-preview-see-your-link-card-before-you-share-it
 
 #تسويق_رقمي #تحسين_محركات_البحث #تطوير_المواقع #ريادة_الأعمال #BuildWithDevya
 ```
@@ -1840,6 +1911,9 @@ One-liner AR: اعرف كيف يظهر رابطك على Google وFacebook وX �
 ```text
 Link preview check: see how your link looks on Google, Facebook, X and LinkedIn before you share it.
 
+Project: https://og.devya.dev/?utm_source=linkedin&utm_medium=social&utm_campaign=2026-12-05-og-preview-see-your-link-card-before-you-share-it&utm_content=reel
+Details: https://www.devya.dev/projects/og-preview?utm_source=linkedin&utm_medium=social&utm_campaign=2026-12-05-og-preview-see-your-link-card-before-you-share-it&utm_content=reel
+
 #SEO #OpenGraph #WebDevelopment
 ```
 
@@ -1850,6 +1924,8 @@ Link preview check: see how your link looks on Google, Facebook, X and LinkedIn 
 
 More: https://www.devya.dev/projects/og-preview?utm_source=facebook&utm_medium=social&utm_campaign=2026-12-05-og-preview-see-your-link-card-before-you-share-it&utm_content=reel
 
+Project: https://og.devya.dev/?utm_source=facebook&utm_medium=social&utm_campaign=2026-12-05-og-preview-see-your-link-card-before-you-share-it&utm_content=reel
+
 #BuildWithDevya #SEO #OpenGraph
 ```
 
@@ -1857,6 +1933,9 @@ More: https://www.devya.dev/projects/og-preview?utm_source=facebook&utm_medium=s
 
 ```text
 اعرف كيف يظهر رابطك على Google وFacebook وX وLinkedIn قبل أن تشاركه.
+
+رابط المشروع: https://og.devya.dev/?utm_source=instagram&utm_medium=social&utm_campaign=2026-12-05-og-preview-see-your-link-card-before-you-share-it&utm_content=reel
+التفاصيل: https://www.devya.dev/projects/og-preview?utm_source=instagram&utm_medium=social&utm_campaign=2026-12-05-og-preview-see-your-link-card-before-you-share-it&utm_content=reel
 
 #تسويق_رقمي #تحسين_محركات_البحث #تطوير_المواقع #ريادة_الأعمال #BuildWithDevya
 ```
@@ -1888,6 +1967,8 @@ Ask for the results in writing, and sign them off.
 
 Then don't let the project end on launch day. Agree a two-week support window with a daily bug review you can see. Real users will find what testing missed.
 
+Details: https://www.devya.dev/solutions?utm_source=linkedin&utm_medium=social&utm_campaign=2026-12-06-before-launch-ask-for-a-written-test-pass-on
+
 #ProductLaunch #QA #Founders #BuildWithDevya
 ```
 
@@ -1918,7 +1999,9 @@ Then don't let the project end on launch day. Agree a two-week support window wi
 ```text
 Dummy data hides launch-day bugs.
 Before you approve a launch, ask for a written test pass: your real products and prices, your customers' phones, every login path, and a real payment plus a refund. Then agree two weeks of support after launch.
-Save this for launch week. Link in bio.
+Save this for launch week.
+
+Details: https://www.devya.dev/solutions?utm_source=instagram&utm_medium=social&utm_campaign=2026-12-06-before-launch-ask-for-a-written-test-pass-on
 
 #BuildWithDevya #ProductLaunch #QA #Startups #AppDevelopment
 ```
@@ -1933,6 +2016,8 @@ One-liner AR: أخطاء يوم الإطلاق نادرًا ما تكون جدي
 
 ```text
 Launch-day bugs are rarely new. Test on your real content first.
+
+Details: https://www.devya.dev/solutions?utm_source=linkedin&utm_medium=social&utm_campaign=2026-12-06-before-launch-ask-for-a-written-test-pass-on&utm_content=reel
 
 #ProductLaunch #QA #Founders
 ```
@@ -1951,6 +2036,8 @@ Launch-day bugs are rarely new. Test on your real content first.
 
 ```text
 Launch-day bugs are rarely new. Test on your real content first.
+
+Details: https://www.devya.dev/solutions?utm_source=instagram&utm_medium=social&utm_campaign=2026-12-06-before-launch-ask-for-a-written-test-pass-on&utm_content=reel
 
 #BuildWithDevya #ProductLaunch #QA #Startups #AppDevelopment
 ```
@@ -1978,6 +2065,9 @@ Low-contrast text gets through a quick visual review, then fails real users and 
 
 contrast-check, a tool we built, does this in the browser: it computes the WCAG 2.1 ratio for any two colours, shows pass or fail at every level, previews real sample text, and suggests the nearest accessible colour when a pair fails. Nothing to install.
 
+Project: https://contrast.devya.dev/?utm_source=linkedin&utm_medium=social&utm_campaign=2026-12-07-light-grey-text-can-fail-wcag-contrast-measure-it
+Details: https://www.devya.dev/projects/contrast-check?utm_source=linkedin&utm_medium=social&utm_campaign=2026-12-07-light-grey-text-can-fail-wcag-contrast-measure-it
+
 #Accessibility #WebDesign #UXDesign #BuildWithDevya
 ```
 
@@ -1996,6 +2086,8 @@ contrast-check, a tool we built, does this in the browser: it computes the WCAG 
 
 أداتنا تحسب النسبة داخل متصفحك وتقترح أقرب لون ناجح: https://www.devya.dev/projects/contrast-check?utm_source=facebook&utm_medium=social&utm_campaign=2026-12-07-light-grey-text-can-fail-wcag-contrast-measure-it
 
+رابط المشروع: https://contrast.devya.dev/?utm_source=facebook&utm_medium=social&utm_campaign=2026-12-07-light-grey-text-can-fail-wcag-contrast-measure-it
+
 #BuildWithDevya #تصميم_المواقع
 ```
 
@@ -2006,7 +2098,10 @@ contrast-check, a tool we built, does this in the browser: it computes the WCAG 
 ```text
 That pale grey text? Measure it.
 A typical light grey on white scores about 2.5:1. WCAG AA asks for 4.5:1 for body text, so one shade darker can be the difference between pass and fail.
-Don't eyeball contrast. Link in bio.
+Don't eyeball contrast.
+
+Project: https://contrast.devya.dev/?utm_source=instagram&utm_medium=social&utm_campaign=2026-12-07-light-grey-text-can-fail-wcag-contrast-measure-it
+Details: https://www.devya.dev/projects/contrast-check?utm_source=instagram&utm_medium=social&utm_campaign=2026-12-07-light-grey-text-can-fail-wcag-contrast-measure-it
 
 #BuildWithDevya #Accessibility #WebDesign #UXDesign #A11y
 ```
@@ -2022,6 +2117,9 @@ One-liner AR: النص الرمادي الفاتح يبدو أنيقًا، لك�
 ```text
 Light grey text looks clean. Measure it: it can fail WCAG contrast.
 
+Project: https://contrast.devya.dev/?utm_source=linkedin&utm_medium=social&utm_campaign=2026-12-07-light-grey-text-can-fail-wcag-contrast-measure-it&utm_content=reel
+Details: https://www.devya.dev/projects/contrast-check?utm_source=linkedin&utm_medium=social&utm_campaign=2026-12-07-light-grey-text-can-fail-wcag-contrast-measure-it&utm_content=reel
+
 #Accessibility #WebDesign #UXDesign
 ```
 
@@ -2032,6 +2130,8 @@ Light grey text looks clean. Measure it: it can fail WCAG contrast.
 
 التفاصيل: https://www.devya.dev/projects/contrast-check?utm_source=facebook&utm_medium=social&utm_campaign=2026-12-07-light-grey-text-can-fail-wcag-contrast-measure-it&utm_content=reel
 
+رابط المشروع: https://contrast.devya.dev/?utm_source=facebook&utm_medium=social&utm_campaign=2026-12-07-light-grey-text-can-fail-wcag-contrast-measure-it&utm_content=reel
+
 #BuildWithDevya #تصميم_المواقع
 ```
 
@@ -2039,6 +2139,9 @@ Light grey text looks clean. Measure it: it can fail WCAG contrast.
 
 ```text
 Light grey text looks clean. Measure it: it can fail WCAG contrast.
+
+Project: https://contrast.devya.dev/?utm_source=instagram&utm_medium=social&utm_campaign=2026-12-07-light-grey-text-can-fail-wcag-contrast-measure-it&utm_content=reel
+Details: https://www.devya.dev/projects/contrast-check?utm_source=instagram&utm_medium=social&utm_campaign=2026-12-07-light-grey-text-can-fail-wcag-contrast-measure-it&utm_content=reel
 
 #BuildWithDevya #Accessibility #WebDesign #UXDesign #A11y
 ```
@@ -2067,6 +2170,8 @@ The AI companion sits in the back office. It reads the restaurant's own sales an
 We entered it in the Founders Live pitch challenge. The pitch walks through a week of questions in under 90 seconds:
 https://www.youtube.com/watch?v=GsNGR6vv_eU&utm_source=linkedin&utm_medium=social&utm_campaign=2026-12-08-moving-pos-a-restaurant-pos-with-an-ai-companion
 
+Details: https://www.devya.dev/projects/moving-pos-film?utm_source=linkedin&utm_medium=social&utm_campaign=2026-12-08-moving-pos-a-restaurant-pos-with-an-ai-companion
+
 #MovingPOS #RestaurantTech #AI #BuildWithDevya
 ```
 
@@ -2082,6 +2187,8 @@ Ask it about your week, and it reads your restaurant's sales and stock to answer
 Watch the pitch video:
 https://www.youtube.com/watch?v=GsNGR6vv_eU&utm_source=facebook&utm_medium=social&utm_campaign=2026-12-08-moving-pos-a-restaurant-pos-with-an-ai-companion
 
+Details: https://www.devya.dev/projects/moving-pos-film?utm_source=facebook&utm_medium=social&utm_campaign=2026-12-08-moving-pos-a-restaurant-pos-with-an-ai-companion
+
 #BuildWithDevya #MovingPOS #RestaurantTech
 ```
 
@@ -2094,6 +2201,9 @@ https://www.youtube.com/watch?v=GsNGR6vv_eU&utm_source=facebook&utm_medium=socia
 اسأله عن أسبوعك، فيقرأ مبيعات المطعم ومخزونه ويجيبك بكلمات واضحة، مع توقع للطلب وملاحظات عن تكلفة الأصناف.
 يعمل في مصر والسعودية، بالعربية والإنجليزية.
 شاهد فيديو العرض على قناة Devya في يوتيوب.
+
+رابط المشروع: https://www.youtube.com/watch?v=GsNGR6vv_eU&utm_source=instagram&utm_medium=social&utm_campaign=2026-12-08-moving-pos-a-restaurant-pos-with-an-ai-companion
+التفاصيل: https://www.devya.dev/projects/moving-pos-film?utm_source=instagram&utm_medium=social&utm_campaign=2026-12-08-moving-pos-a-restaurant-pos-with-an-ai-companion
 
 #BuildWithDevya #MovingPOS #مطاعم #ذكاء_اصطناعي
 ```
@@ -2109,6 +2219,9 @@ One-liner AR: نظام نقاط البيع Moving POS: مساعد ذكي يجي�
 ```text
 Moving POS: a restaurant POS with an AI companion that answers from your own sales.
 
+Project: https://www.youtube.com/watch?v=GsNGR6vv_eU&utm_source=linkedin&utm_medium=social&utm_campaign=2026-12-08-moving-pos-a-restaurant-pos-with-an-ai-companion&utm_content=reel
+Details: https://www.devya.dev/projects/moving-pos-film?utm_source=linkedin&utm_medium=social&utm_campaign=2026-12-08-moving-pos-a-restaurant-pos-with-an-ai-companion&utm_content=reel
+
 #MovingPOS #RestaurantTech #AI
 ```
 
@@ -2119,6 +2232,8 @@ Moving POS: a restaurant POS with an AI companion that answers from your own sal
 
 More: https://www.youtube.com/watch?v=GsNGR6vv_eU&utm_source=facebook&utm_medium=social&utm_campaign=2026-12-08-moving-pos-a-restaurant-pos-with-an-ai-companion&utm_content=reel
 
+Details: https://www.devya.dev/projects/moving-pos-film?utm_source=facebook&utm_medium=social&utm_campaign=2026-12-08-moving-pos-a-restaurant-pos-with-an-ai-companion&utm_content=reel
+
 #BuildWithDevya #MovingPOS #RestaurantTech
 ```
 
@@ -2126,6 +2241,9 @@ More: https://www.youtube.com/watch?v=GsNGR6vv_eU&utm_source=facebook&utm_medium
 
 ```text
 نظام نقاط البيع Moving POS: مساعد ذكي يجيب من مبيعات مطعمك أنت.
+
+رابط المشروع: https://www.youtube.com/watch?v=GsNGR6vv_eU&utm_source=instagram&utm_medium=social&utm_campaign=2026-12-08-moving-pos-a-restaurant-pos-with-an-ai-companion&utm_content=reel
+التفاصيل: https://www.devya.dev/projects/moving-pos-film?utm_source=instagram&utm_medium=social&utm_campaign=2026-12-08-moving-pos-a-restaurant-pos-with-an-ai-companion&utm_content=reel
 
 #BuildWithDevya #MovingPOS #مطاعم #ذكاء_اصطناعي
 ```
@@ -2184,7 +2302,8 @@ https://www.devya.dev/blogs/nodejs-keep-alive-timeout-load-balancer-502-nestjs-f
 Random 502s and nothing in the logs?
 Node.js closes idle connections after 5 seconds. An AWS load balancer keeps them for 60. When both act at once, the request never reaches your code.
 The fix: set keepAliveTimeout above the proxy's idle timeout. We use 65 seconds behind a default ALB.
-Link in bio.
+
+Details: https://www.devya.dev/blogs/nodejs-keep-alive-timeout-load-balancer-502-nestjs-field-notes?utm_source=instagram&utm_medium=social&utm_campaign=2026-12-09-random-502s-behind-a-load-balancer-the-node-js
 
 #BuildWithDevya #NodeJS #NestJS #BackendDevelopment #WebDevelopment
 ```
@@ -2199,6 +2318,8 @@ One-liner AR: أخطاء 502 عشوائية خلف موازن الأحمال و�
 
 ```text
 Random 502s behind a load balancer and nothing in the logs? Check the Node.js keep-alive timeout.
+
+Details: https://www.devya.dev/blogs/nodejs-keep-alive-timeout-load-balancer-502-nestjs-field-notes?utm_source=linkedin&utm_medium=social&utm_campaign=2026-12-09-random-502s-behind-a-load-balancer-the-node-js&utm_content=reel
 
 #NodeJS #NestJS #DevOps
 ```
@@ -2217,6 +2338,8 @@ Random 502s behind a load balancer and nothing in the logs? Check the Node.js ke
 
 ```text
 Random 502s behind a load balancer and nothing in the logs? Check the Node.js keep-alive timeout.
+
+Details: https://www.devya.dev/blogs/nodejs-keep-alive-timeout-load-balancer-502-nestjs-field-notes?utm_source=instagram&utm_medium=social&utm_campaign=2026-12-09-random-502s-behind-a-load-balancer-the-node-js&utm_content=reel
 
 #BuildWithDevya #NodeJS #NestJS #BackendDevelopment #WebDevelopment
 ```
@@ -2245,6 +2368,9 @@ The owner picks one of eight card templates, adds the brand and previews the car
 The pitch walks through the join, the stamp and the templates:
 https://www.youtube.com/watch?v=lvcq-RFultk&utm_source=linkedin&utm_medium=social&utm_campaign=2026-12-10-moving-loyalty-loyalty-cards-in-apple-wallet-and
 
+Project: https://loyalty.movingsystems.tech/?utm_source=linkedin&utm_medium=social&utm_campaign=2026-12-10-moving-loyalty-loyalty-cards-in-apple-wallet-and
+Details: https://www.devya.dev/projects/moving-loyalty?utm_source=linkedin&utm_medium=social&utm_campaign=2026-12-10-moving-loyalty-loyalty-cards-in-apple-wallet-and
+
 #MovingLoyalty #LoyaltyProgram #Retail #BuildWithDevya
 ```
 
@@ -2259,6 +2385,9 @@ https://www.youtube.com/watch?v=lvcq-RFultk&utm_source=linkedin&utm_medium=socia
 شاهد فيديو العرض:
 https://www.youtube.com/watch?v=lvcq-RFultk&utm_source=facebook&utm_medium=social&utm_campaign=2026-12-10-moving-loyalty-loyalty-cards-in-apple-wallet-and
 
+رابط المشروع: https://loyalty.movingsystems.tech/?utm_source=facebook&utm_medium=social&utm_campaign=2026-12-10-moving-loyalty-loyalty-cards-in-apple-wallet-and
+التفاصيل: https://www.devya.dev/projects/moving-loyalty?utm_source=facebook&utm_medium=social&utm_campaign=2026-12-10-moving-loyalty-loyalty-cards-in-apple-wallet-and
+
 #BuildWithDevya #برنامج_ولاء
 ```
 
@@ -2271,6 +2400,9 @@ Loyalty cards in Apple Wallet and Google Wallet, with no app to install.
 With Moving Loyalty, customers join with one scan and a mobile number. Staff add a stamp in three taps, and the card updates itself in the wallet.
 For cafés, restaurants and shops in Egypt and Saudi Arabia.
 Watch the pitch on Devya's YouTube channel.
+
+Project: https://loyalty.movingsystems.tech/?utm_source=instagram&utm_medium=social&utm_campaign=2026-12-10-moving-loyalty-loyalty-cards-in-apple-wallet-and
+Details: https://www.devya.dev/projects/moving-loyalty?utm_source=instagram&utm_medium=social&utm_campaign=2026-12-10-moving-loyalty-loyalty-cards-in-apple-wallet-and
 
 #BuildWithDevya #MovingLoyalty #LoyaltyProgram #SmallBusiness
 ```
@@ -2286,6 +2418,9 @@ One-liner AR: بطاقة الولاء في محفظة الهاتف: مسحة و�
 ```text
 Loyalty cards in Apple Wallet and Google Wallet: one scan to join, three taps to stamp. Moving Loyalty.
 
+Project: https://loyalty.movingsystems.tech/?utm_source=linkedin&utm_medium=social&utm_campaign=2026-12-10-moving-loyalty-loyalty-cards-in-apple-wallet-and&utm_content=reel
+Details: https://www.devya.dev/projects/moving-loyalty?utm_source=linkedin&utm_medium=social&utm_campaign=2026-12-10-moving-loyalty-loyalty-cards-in-apple-wallet-and&utm_content=reel
+
 #MovingLoyalty #LoyaltyProgram #Retail
 ```
 
@@ -2296,6 +2431,9 @@ Loyalty cards in Apple Wallet and Google Wallet: one scan to join, three taps to
 
 التفاصيل: https://www.youtube.com/watch?v=lvcq-RFultk&utm_source=facebook&utm_medium=social&utm_campaign=2026-12-10-moving-loyalty-loyalty-cards-in-apple-wallet-and&utm_content=reel
 
+رابط المشروع: https://loyalty.movingsystems.tech/?utm_source=facebook&utm_medium=social&utm_campaign=2026-12-10-moving-loyalty-loyalty-cards-in-apple-wallet-and&utm_content=reel
+التفاصيل: https://www.devya.dev/projects/moving-loyalty?utm_source=facebook&utm_medium=social&utm_campaign=2026-12-10-moving-loyalty-loyalty-cards-in-apple-wallet-and&utm_content=reel
+
 #BuildWithDevya #برنامج_ولاء
 ```
 
@@ -2303,6 +2441,9 @@ Loyalty cards in Apple Wallet and Google Wallet: one scan to join, three taps to
 
 ```text
 Loyalty cards in Apple Wallet and Google Wallet: one scan to join, three taps to stamp. Moving Loyalty.
+
+Project: https://loyalty.movingsystems.tech/?utm_source=instagram&utm_medium=social&utm_campaign=2026-12-10-moving-loyalty-loyalty-cards-in-apple-wallet-and&utm_content=reel
+Details: https://www.devya.dev/projects/moving-loyalty?utm_source=instagram&utm_medium=social&utm_campaign=2026-12-10-moving-loyalty-loyalty-cards-in-apple-wallet-and&utm_content=reel
 
 #BuildWithDevya #MovingLoyalty #LoyaltyProgram #SmallBusiness
 ```
@@ -2333,6 +2474,8 @@ One lesson from setting it up: only exit code 2 blocks a tool call. Our first se
 
 The fix was never a louder instruction. It was moving the rule out of the prompt.
 
+Details: https://www.devya.dev/blogs/claude-code-hooks-deterministic-guardrails-field-notes?utm_source=linkedin&utm_medium=social&utm_campaign=2026-12-11-rules-an-ai-coding-agent-must-never-skip-live-in
+
 #AI #ClaudeCode #DeveloperTools #SoftwareEngineering #BuildWithDevya
 ```
 
@@ -2362,7 +2505,8 @@ https://www.devya.dev/blogs/claude-code-hooks-deterministic-guardrails-field-not
 ```text
 Does your AI coding agent follow its rules every time? Ours did most of the time.
 That's fine for style advice, not for a guardrail. So anything that must never be skipped (blocking secret files, formatting every edit, no finishing on a failing type-check) runs as a Claude Code hook, every time.
-Link in bio.
+
+Details: https://www.devya.dev/blogs/claude-code-hooks-deterministic-guardrails-field-notes?utm_source=instagram&utm_medium=social&utm_campaign=2026-12-11-rules-an-ai-coding-agent-must-never-skip-live-in
 
 #BuildWithDevya #AI #ClaudeCode #DeveloperTools #BehindTheScenes
 ```
@@ -2377,6 +2521,8 @@ One-liner AR: وكيل البرمجة بالذكاء الاصطناعي يتبع
 
 ```text
 Our AI coding agent followed CLAUDE.md most of the time. Rules that must hold every time now run as hooks.
+
+Details: https://www.devya.dev/blogs/claude-code-hooks-deterministic-guardrails-field-notes?utm_source=linkedin&utm_medium=social&utm_campaign=2026-12-11-rules-an-ai-coding-agent-must-never-skip-live-in&utm_content=reel
 
 #AI #ClaudeCode #DeveloperTools
 ```
@@ -2395,6 +2541,8 @@ Our AI coding agent followed CLAUDE.md most of the time. Rules that must hold ev
 
 ```text
 Our AI coding agent followed CLAUDE.md most of the time. Rules that must hold every time now run as hooks.
+
+Details: https://www.devya.dev/blogs/claude-code-hooks-deterministic-guardrails-field-notes?utm_source=instagram&utm_medium=social&utm_campaign=2026-12-11-rules-an-ai-coding-agent-must-never-skip-live-in&utm_content=reel
 
 #BuildWithDevya #AI #ClaudeCode #DeveloperTools #BehindTheScenes
 ```
@@ -2423,6 +2571,8 @@ If you're hiring a team to build anything that takes money, ask your vendor how 
 4. A circuit breaker on a dependency that is fully down: fail fast instead of piling on.
 
 Careless retries make outages worse. With three retries per request, a service at its breaking point can receive up to four times its normal load.
+
+Details: https://www.devya.dev/blogs/idempotency-keys-retries-circuit-breakers-field-notes?utm_source=linkedin&utm_medium=social&utm_campaign=2026-12-12-ask-your-vendor-can-a-retried-payment-charge
 
 #Payments #Fintech #SoftwareArchitecture #BuildWithDevya
 ```
@@ -2455,7 +2605,9 @@ https://www.devya.dev/contact?utm_source=facebook&utm_medium=social&utm_campaign
 إعادة المحاولة قد تجعل عميلك يدفع مرتين.
 عندما تنقطع الاستجابة أثناء الدفع، قد تكون العملية قد تمت فعلًا، وإعادة المحاولة دون حماية قد تكررها.
 اطلب من شركة البرمجة مفتاح منع تكرار لكل عملية دفع، ومهلة زمنية لكل اتصال خارجي، وإعادة محاولة محدودة للأخطاء الآمنة فقط.
-احفظ المنشور لمشروعك القادم. الرابط في البايو.
+احفظ المنشور لمشروعك القادم.
+
+التفاصيل: https://www.devya.dev/blogs/idempotency-keys-retries-circuit-breakers-field-notes?utm_source=instagram&utm_medium=social&utm_campaign=2026-12-12-ask-your-vendor-can-a-retried-payment-charge
 
 #الدفع_الإلكتروني #ريادة_الأعمال #تطوير_البرمجيات #السعودية #BuildWithDevya
 ```
@@ -2470,6 +2622,8 @@ One-liner AR: انقطع الاتصال أثناء الدفع؟ اسأل شرك�
 
 ```text
 Payment timed out? Ask your vendor whether the retry can charge your customer twice.
+
+Details: https://www.devya.dev/blogs/idempotency-keys-retries-circuit-breakers-field-notes?utm_source=linkedin&utm_medium=social&utm_campaign=2026-12-12-ask-your-vendor-can-a-retried-payment-charge&utm_content=reel
 
 #Payments #Fintech #SoftwareArchitecture
 ```
@@ -2488,6 +2642,8 @@ More: https://www.devya.dev/contact?utm_source=facebook&utm_medium=social&utm_ca
 
 ```text
 انقطع الاتصال أثناء الدفع؟ اسأل شركة البرمجة: هل يمكن أن تخصم إعادة المحاولة المبلغ مرتين؟
+
+التفاصيل: https://www.devya.dev/blogs/idempotency-keys-retries-circuit-breakers-field-notes?utm_source=instagram&utm_medium=social&utm_campaign=2026-12-12-ask-your-vendor-can-a-retried-payment-charge&utm_content=reel
 
 #الدفع_الإلكتروني #ريادة_الأعمال #تطوير_البرمجيات #السعودية #BuildWithDevya
 ```
@@ -2516,6 +2672,9 @@ There's a free plan; the Moving POS link comes with the Growth and Enterprise pl
 The pitch follows an order from the store to the kitchen:
 https://www.youtube.com/watch?v=SbZVZ12EyBo&utm_source=linkedin&utm_medium=social&utm_campaign=2026-12-13-moving-stores-an-online-store-whose-menu-comes
 
+Project: https://stores.movingsystems.tech/?utm_source=linkedin&utm_medium=social&utm_campaign=2026-12-13-moving-stores-an-online-store-whose-menu-comes
+Details: https://www.devya.dev/projects/moving-stores?utm_source=linkedin&utm_medium=social&utm_campaign=2026-12-13-moving-stores-an-online-store-whose-menu-comes
+
 #MovingStores #Ecommerce #RestaurantTech #BuildWithDevya
 ```
 
@@ -2530,6 +2689,9 @@ https://www.youtube.com/watch?v=SbZVZ12EyBo&utm_source=linkedin&utm_medium=socia
 شاهد فيديو العرض:
 https://www.youtube.com/watch?v=SbZVZ12EyBo&utm_source=facebook&utm_medium=social&utm_campaign=2026-12-13-moving-stores-an-online-store-whose-menu-comes
 
+رابط المشروع: https://stores.movingsystems.tech/?utm_source=facebook&utm_medium=social&utm_campaign=2026-12-13-moving-stores-an-online-store-whose-menu-comes
+التفاصيل: https://www.devya.dev/projects/moving-stores?utm_source=facebook&utm_medium=social&utm_campaign=2026-12-13-moving-stores-an-online-store-whose-menu-comes
+
 #BuildWithDevya #تجارة_إلكترونية
 ```
 
@@ -2542,6 +2704,9 @@ An online store whose menu comes straight from the till.
 Moving Stores builds your store in Arabic and English. Linked to Moving POS, every online order lands on the kitchen screen and takes the stock off, just like a counter sale.
 For shops and restaurants in Egypt and the Gulf, with a free plan.
 Watch the pitch on Devya's YouTube channel.
+
+Project: https://stores.movingsystems.tech/?utm_source=instagram&utm_medium=social&utm_campaign=2026-12-13-moving-stores-an-online-store-whose-menu-comes
+Details: https://www.devya.dev/projects/moving-stores?utm_source=instagram&utm_medium=social&utm_campaign=2026-12-13-moving-stores-an-online-store-whose-menu-comes
 
 #BuildWithDevya #MovingStores #Ecommerce #OnlineOrdering
 ```
@@ -2557,6 +2722,9 @@ One-liner AR: متجر إلكتروني تأتي قائمته وأسعاره م�
 ```text
 An online store whose menu, prices and branches come from the till: Moving Stores.
 
+Project: https://stores.movingsystems.tech/?utm_source=linkedin&utm_medium=social&utm_campaign=2026-12-13-moving-stores-an-online-store-whose-menu-comes&utm_content=reel
+Details: https://www.devya.dev/projects/moving-stores?utm_source=linkedin&utm_medium=social&utm_campaign=2026-12-13-moving-stores-an-online-store-whose-menu-comes&utm_content=reel
+
 #MovingStores #Ecommerce #RestaurantTech
 ```
 
@@ -2567,6 +2735,9 @@ An online store whose menu, prices and branches come from the till: Moving Store
 
 التفاصيل: https://www.youtube.com/watch?v=SbZVZ12EyBo&utm_source=facebook&utm_medium=social&utm_campaign=2026-12-13-moving-stores-an-online-store-whose-menu-comes&utm_content=reel
 
+رابط المشروع: https://stores.movingsystems.tech/?utm_source=facebook&utm_medium=social&utm_campaign=2026-12-13-moving-stores-an-online-store-whose-menu-comes&utm_content=reel
+التفاصيل: https://www.devya.dev/projects/moving-stores?utm_source=facebook&utm_medium=social&utm_campaign=2026-12-13-moving-stores-an-online-store-whose-menu-comes&utm_content=reel
+
 #BuildWithDevya #تجارة_إلكترونية
 ```
 
@@ -2574,6 +2745,9 @@ An online store whose menu, prices and branches come from the till: Moving Store
 
 ```text
 An online store whose menu, prices and branches come from the till: Moving Stores.
+
+Project: https://stores.movingsystems.tech/?utm_source=instagram&utm_medium=social&utm_campaign=2026-12-13-moving-stores-an-online-store-whose-menu-comes&utm_content=reel
+Details: https://www.devya.dev/projects/moving-stores?utm_source=instagram&utm_medium=social&utm_campaign=2026-12-13-moving-stores-an-online-store-whose-menu-comes&utm_content=reel
 
 #BuildWithDevya #MovingStores #Ecommerce #OnlineOrdering
 ```
@@ -2636,7 +2810,8 @@ https://www.devya.dev/blogs/cursor-pagination-keyset-postgres-field-notes?utm_so
 Why does page 500 load slower than page 1?
 With OFFSET pagination, LIMIT 20 OFFSET 10000 makes PostgreSQL produce 10,020 rows and throw away 10,000. Keyset pagination starts from the last row you saw, so page 500 costs about what page 1 costs.
 End the sort with a unique key, and index it in the same order.
-Link in bio.
+
+Details: https://www.devya.dev/blogs/cursor-pagination-keyset-postgres-field-notes?utm_source=instagram&utm_medium=social&utm_campaign=2026-12-14-offset-pagination-slows-down-on-every-page
 
 #BuildWithDevya #PostgreSQL #SQL #WebDevelopment #TechTips
 ```
@@ -2651,6 +2826,8 @@ One-liner AR: ترقيم الصفحات بـ OFFSET يبطؤ مع كل صفحة�
 
 ```text
 OFFSET pagination gets slower on every page. Keyset cursors make page 500 cost about what page 1 costs.
+
+Details: https://www.devya.dev/blogs/cursor-pagination-keyset-postgres-field-notes?utm_source=linkedin&utm_medium=social&utm_campaign=2026-12-14-offset-pagination-slows-down-on-every-page&utm_content=reel
 
 #PostgreSQL #BackendEngineering #SQL
 ```
@@ -2669,6 +2846,8 @@ OFFSET pagination gets slower on every page. Keyset cursors make page 500 cost a
 
 ```text
 OFFSET pagination gets slower on every page. Keyset cursors make page 500 cost about what page 1 costs.
+
+Details: https://www.devya.dev/blogs/cursor-pagination-keyset-postgres-field-notes?utm_source=instagram&utm_medium=social&utm_campaign=2026-12-14-offset-pagination-slows-down-on-every-page&utm_content=reel
 
 #BuildWithDevya #PostgreSQL #SQL #WebDevelopment #TechTips
 ```
@@ -2697,6 +2876,9 @@ Once linked, Moving POS branches and a Moving Stores shop post their sales on th
 There's a free plan. The pitch follows one invoice line into the books:
 https://www.youtube.com/watch?v=dOvsiOFMj_E&utm_source=linkedin&utm_medium=social&utm_campaign=2026-12-15-moving-accounting-double-entry-books-with-zatca
 
+Project: https://accounting.movingsystems.tech/?utm_source=linkedin&utm_medium=social&utm_campaign=2026-12-15-moving-accounting-double-entry-books-with-zatca
+Details: https://www.devya.dev/projects/moving-accounting?utm_source=linkedin&utm_medium=social&utm_campaign=2026-12-15-moving-accounting-double-entry-books-with-zatca
+
 #MovingAccounting #EInvoicing #ZATCA #BuildWithDevya
 ```
 
@@ -2712,6 +2894,9 @@ Tax invoices go to ZATCA in Saudi Arabia or the ETA in Egypt from inside the sys
 There's a free plan. Watch the pitch video:
 https://www.youtube.com/watch?v=dOvsiOFMj_E&utm_source=facebook&utm_medium=social&utm_campaign=2026-12-15-moving-accounting-double-entry-books-with-zatca
 
+Project: https://accounting.movingsystems.tech/?utm_source=facebook&utm_medium=social&utm_campaign=2026-12-15-moving-accounting-double-entry-books-with-zatca
+Details: https://www.devya.dev/projects/moving-accounting?utm_source=facebook&utm_medium=social&utm_campaign=2026-12-15-moving-accounting-double-entry-books-with-zatca
+
 #BuildWithDevya #MovingAccounting #EInvoicing
 ```
 
@@ -2724,6 +2909,9 @@ https://www.youtube.com/watch?v=dOvsiOFMj_E&utm_source=facebook&utm_medium=socia
 تُرسل الفواتير الضريبية إلى ZATCA في السعودية أو منظومة ETA في مصر، ويُبنى الإقرار الضريبي من مستنداتك أنت.
 ومع ربطه بنظامي Moving POS وMoving Stores تُرحَّل مبيعات كل يوم في قيد واحد متوازن لكل فرع.
 شاهد فيديو العرض على قناة Devya في يوتيوب.
+
+رابط المشروع: https://accounting.movingsystems.tech/?utm_source=instagram&utm_medium=social&utm_campaign=2026-12-15-moving-accounting-double-entry-books-with-zatca
+التفاصيل: https://www.devya.dev/projects/moving-accounting?utm_source=instagram&utm_medium=social&utm_campaign=2026-12-15-moving-accounting-double-entry-books-with-zatca
 
 #BuildWithDevya #MovingAccounting #محاسبة #فاتورة_إلكترونية
 ```
@@ -2739,6 +2927,9 @@ One-liner AR: المحاسبة بالقيد المزدوج مع الفواتير
 ```text
 Moving Accounting: every entry balances, and e-invoices reach ZATCA or Egypt's ETA from inside the system.
 
+Project: https://accounting.movingsystems.tech/?utm_source=linkedin&utm_medium=social&utm_campaign=2026-12-15-moving-accounting-double-entry-books-with-zatca&utm_content=reel
+Details: https://www.devya.dev/projects/moving-accounting?utm_source=linkedin&utm_medium=social&utm_campaign=2026-12-15-moving-accounting-double-entry-books-with-zatca&utm_content=reel
+
 #MovingAccounting #EInvoicing #ZATCA
 ```
 
@@ -2749,6 +2940,9 @@ Moving Accounting: every entry balances, and e-invoices reach ZATCA or Egypt's E
 
 More: https://www.youtube.com/watch?v=dOvsiOFMj_E&utm_source=facebook&utm_medium=social&utm_campaign=2026-12-15-moving-accounting-double-entry-books-with-zatca&utm_content=reel
 
+Project: https://accounting.movingsystems.tech/?utm_source=facebook&utm_medium=social&utm_campaign=2026-12-15-moving-accounting-double-entry-books-with-zatca&utm_content=reel
+Details: https://www.devya.dev/projects/moving-accounting?utm_source=facebook&utm_medium=social&utm_campaign=2026-12-15-moving-accounting-double-entry-books-with-zatca&utm_content=reel
+
 #BuildWithDevya #MovingAccounting #EInvoicing
 ```
 
@@ -2756,6 +2950,9 @@ More: https://www.youtube.com/watch?v=dOvsiOFMj_E&utm_source=facebook&utm_medium
 
 ```text
 المحاسبة بالقيد المزدوج مع الفواتير الإلكترونية إلى ZATCA وETA: Moving Accounting.
+
+رابط المشروع: https://accounting.movingsystems.tech/?utm_source=instagram&utm_medium=social&utm_campaign=2026-12-15-moving-accounting-double-entry-books-with-zatca&utm_content=reel
+التفاصيل: https://www.devya.dev/projects/moving-accounting?utm_source=instagram&utm_medium=social&utm_campaign=2026-12-15-moving-accounting-double-entry-books-with-zatca&utm_content=reel
 
 #BuildWithDevya #MovingAccounting #محاسبة #فاتورة_إلكترونية
 ```

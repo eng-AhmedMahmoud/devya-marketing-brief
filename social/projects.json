@@ -1,0 +1,18 @@
+{
+  "about": "The link each devya.dev project page lists for the project itself (its live app or repository), keyed by the page's slug (https://www.devya.dev/projects/<slug>). Every post about a project carries this link plus a devya.dev link, both UTM-tagged (render/seo.mjs requiredLinkProblems). validate.mjs --live checks that each page still lists its link. A project page that lists no link of its own (moving-pos-film, a film) uses the day's video instead.",
+  "checked": "2026-11-28",
+  "projects": {
+    "leakhook": "https://github.com/eng-AhmedMahmoud/leakhook",
+    "devya-xray": "https://xray.devya.dev/en",
+    "arabic-business-resources": "https://arabic-business-resources.pages.dev",
+    "copyforge": "https://copyforge.devya-solutions.com",
+    "urania": "https://urania.devya.dev",
+    "jwt-inspector": "https://jwt.devya.dev",
+    "cron-builder": "https://cron.devya.dev",
+    "og-preview": "https://og.devya.dev",
+    "contrast-check": "https://contrast.devya.dev",
+    "moving-loyalty": "https://loyalty.movingsystems.tech",
+    "moving-stores": "https://stores.movingsystems.tech",
+    "moving-accounting": "https://accounting.movingsystems.tech"
+  }
+}

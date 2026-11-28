@@ -44,7 +44,7 @@ Two-week rhythm: client value early in the work week, engineering mid-week, at m
 | Network | Voice | Length | Shape |
 |---|---|---|---|
 | **LinkedIn** | Professional, insight-led, founder-to-founder. One clear opinion per post, backed by how we do it. | 120–220 words | Hook line, 3–5 short paragraphs or a short list, one takeaway, link at the end. |
-| **Instagram** | Visual and short. The image carries the idea; the caption adds one useful line. | 40–90 words | Hook, 2–3 lines, "link in bio", hashtags at the end. |
+| **Instagram** | Visual and short. The image carries the idea; the caption adds one useful line. | 40–90 words | Hook, 2–3 lines, the links as plain text, hashtags at the end. |
 | **Facebook** | Community, plain language. Talk to business owners, not engineers. | 60–140 words | Plain explanation, a practical tip, link. |
 
 Voice rules from the canon apply everywhere: specific over generic, no "passionate / innovative / best-in-class", no hedging, show the work.
@@ -101,10 +101,10 @@ The daily routine runs at **10:00, 13:00, 19:30 and 21:00**. Each run publishes 
 
 ## Links and tracking
 
-- Every link points at the day's page on `https://www.devya.dev/...`, `/contact`, the product it shows (`*.devya.dev`), or a video on Devya's YouTube channel (`social/videos.json`, e.g. the Moving pitch videos), never a Vercel host and never a URL that redirects, and carries `?utm_source=<network>&utm_medium=social&utm_campaign=<post slug>` (`linkedin`, `facebook`, `instagram`; the slug is `<date>-<topic words>`; the Facebook Reel adds `utm_content=reel`). GA4 reads UTM natively; the roadmap's older `?ref=social-<platform>` tag would need a custom dimension, so UTM replaces it.
+- Every link points at the day's page on `https://www.devya.dev/...`, `/contact`, the product it shows (`*.devya.dev`), a project's own link as listed on its devya.dev page (`social/projects.json`), or a video on Devya's YouTube channel (`social/videos.json`, e.g. the Moving pitch videos), never a Vercel host and never a URL that redirects, and carries `?utm_source=<network>&utm_medium=social&utm_campaign=<post slug>` (`linkedin`, `facebook`, `instagram`; the slug is `<date>-<topic words>`; video captions add `utm_content=reel`). GA4 reads UTM natively; the roadmap's older `?ref=social-<platform>` tag would need a custom dimension, so UTM replaces it.
 - **SEO**: each day lists `keywords` in English and Arabic; the first line of every caption and both reel hooks lead with one. The company is always "Devya" (Latin script in Arabic too), products as devya.dev names them. Every image carries alt text.
-- Instagram captions say "link in bio". The bio links `www.devya.dev` without UTM; changing it is a profile edit, so it is left to the developer.
-- LinkedIn puts the link at the end of the post, never in the first line. Roughly half the LinkedIn posts carry no link at all, to test the reach cost of external links.
+- **Two links on every post (2026-11-28)**: every caption on every network, feed posts and videos alike, carries a devya.dev link, and a post about a project also carries the project's own link as listed on its devya.dev page (`social/projects.json`). Instagram gets them as plain text (they are not clickable there, but people copy them). `validate.mjs` blocks publishing when either is missing, and `--live` checks that each project page still lists its link.
+- Links go at the end of the post, before the hashtags, never in the first line. (The earlier test of LinkedIn posts without links ended with the two-link rule.)
 
 ## Quality gate (every post, including routine top-ups)
 

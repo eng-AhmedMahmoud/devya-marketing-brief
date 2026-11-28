@@ -9,7 +9,7 @@ import { fileURLToPath } from 'node:url';
 import { spawnSync } from 'node:child_process';
 import {
   RULES_FROM, campaignSlug, tagUrl, linkProblems, captionLinks, keywordLed, namingProblems,
-  altText, altProblems, tagDayLinks, allowedPages, hashtags, linkBase,
+  altText, altProblems, tagDayLinks, allowedPages, hashtags, linkBase, requiredLinkProblems,
 } from './seo.mjs';
 import { composeReels } from './compose.mjs';
 
@@ -121,13 +121,14 @@ test('alt text: names Devya, the card title and detail, never over 250 chars', (
   assert.match(altProblems('A card with a title but no brand name').join(), /name Devya/);
 });
 
-test('composeReels: Facebook Reel link tagged with campaign + utm_content=reel; hashtag counts in range', () => {
+test('composeReels: every reel carries the required links, tagged for its network with utm_content=reel; hashtag counts in range', () => {
   const day = modernDay();
   const { reels } = composeReels(day);
-  const [link] = captionLinks(reels.facebook.caption);
-  assert.deepEqual(linkProblems(link, { platform: 'facebook', campaign: campaignSlug(day), content: 'reel' }), []);
-  assert.equal(captionLinks(reels.instagram.caption).length, 0);
-  assert.equal(captionLinks(reels.linkedin.caption).length, 0);
+  for (const net of ['linkedin', 'facebook', 'instagram']) {
+    const cap = reels[net].caption;
+    assert.deepEqual(requiredLinkProblems(day, cap), [], `reels.${net}`);
+    for (const link of captionLinks(cap)) assert.deepEqual(linkProblems(link, { platform: net, campaign: campaignSlug(day), content: 'reel' }), [], `reels.${net} ${link}`);
+  }
   const n = (s) => hashtags(s).length;
   assert.ok(n(reels.instagram.caption) >= 3 && n(reels.instagram.caption) <= 5);
   assert.ok(n(reels.facebook.caption) >= 1 && n(reels.facebook.caption) <= 3);
