@@ -1,0 +1,97 @@
+{
+  "slug": "claude-code-workflow",
+  "kind": "long",
+  "title": "شرح Claude Code بالعربي: workflow حقيقي من issue لـ Pull Request",
+  "description": "شرح Claude Code بالعربي: الـ workflow اللي بنشتغل بيه في Devya كل يوم، من issue لـ Pull Request.\nplan mode، و CLAUDE.md، والـ test قبل الكود، والـ review، وتلاتة حواجز أمان، وأربعة أخطاء بنشوفها كتير.\n\nDevya X-Ray (review لكود فريقك): https://xray.devya.dev/en?utm_source=youtube&utm_medium=video&utm_campaign=yt-claude-code-workflow&utm_content=long\nDevya: https://www.devya.dev/projects/devya-xray?utm_source=youtube&utm_medium=video&utm_campaign=yt-claude-code-workflow&utm_content=long\nتواصل معانا: https://www.devya.dev/contact?utm_source=youtube&utm_medium=video&utm_campaign=yt-claude-code-workflow&utm_content=long\n\nClaude Code in Egyptian Arabic: the issue-to-Pull-Request workflow we use at Devya every day (plan mode, CLAUDE.md, tests first, diff review, guardrails).\n\nالفصول:\n0:00 المقدمة\n0:29 Claude Code ده إيه؟\n1:28 التسطيب و /init\n1:52 CLAUDE.md: ذاكرة المشروع\n3:01 الـ workflow في ستة خطوات\n3:25 Plan mode\n4:19 الـ test الأول\n4:45 من أحمر لأخضر\n5:09 الـ review\n5:51 الـ Pull Request\n6:15 تلاتة حواجز أمان\n6:49 أربعة أخطاء\n7:24 الخلاصة\n\nMusic: \"Static Shoes\" by Loyalty Freak Music (CC0-1.0)\n\n#ClaudeCode #BuildWithDevya #برمجة",
+  "tags": [
+    "Claude Code",
+    "شرح Claude Code",
+    "Claude Code بالعربي",
+    "كلود كود",
+    "Claude Code tutorial",
+    "Claude Code arabic",
+    "AI coding agent",
+    "Pull Request",
+    "plan mode",
+    "CLAUDE.md",
+    "Anthropic",
+    "برمجة بالذكاء الاصطناعي",
+    "Devya"
+  ],
+  "playlist": {
+    "key": "claude-code",
+    "title": "Claude Code بالعربي"
+  },
+  "publishAt": "2026-11-28T19:00",
+  "timezone": "Africa/Cairo",
+  "category": "Education",
+  "language": "ar",
+  "madeForKids": false,
+  "duration": 484.24,
+  "chapters": [
+    {
+      "t": 0,
+      "title": "المقدمة"
+    },
+    {
+      "t": 29,
+      "title": "Claude Code ده إيه؟"
+    },
+    {
+      "t": 88,
+      "title": "التسطيب و /init"
+    },
+    {
+      "t": 112,
+      "title": "CLAUDE.md: ذاكرة المشروع"
+    },
+    {
+      "t": 181,
+      "title": "الـ workflow في ستة خطوات"
+    },
+    {
+      "t": 205,
+      "title": "Plan mode"
+    },
+    {
+      "t": 259,
+      "title": "الـ test الأول"
+    },
+    {
+      "t": 285,
+      "title": "من أحمر لأخضر"
+    },
+    {
+      "t": 309,
+      "title": "الـ review"
+    },
+    {
+      "t": 351,
+      "title": "الـ Pull Request"
+    },
+    {
+      "t": 375,
+      "title": "تلاتة حواجز أمان"
+    },
+    {
+      "t": 409,
+      "title": "أربعة أخطاء"
+    },
+    {
+      "t": 444,
+      "title": "الخلاصة"
+    }
+  ],
+  "captions": "captions.ar.srt",
+  "thumbnail": "thumbnail.png",
+  "video": "social/youtube/build/claude-code-workflow/video.mp4",
+  "music": {
+    "title": "Static Shoes",
+    "artist": "Loyalty Freak Music",
+    "licence": "CC0-1.0"
+  },
+  "voiceCredits": {
+    "chars": 6629,
+    "takes": 44
+  }
+}

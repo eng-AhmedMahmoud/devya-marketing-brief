@@ -1,0 +1,38 @@
+{
+  "slug": "pos-internet-down",
+  "kind": "short",
+  "title": "برنامج كاشير: اسأل السؤال ده قبل ما تشتري",
+  "description": "برنامج كاشير: أول سؤال لأي شركة، لما النت يقطع إيه اللي بيحصل؟ واطلب منهم يفصلوا النت قدامك في الـ demo.\n\nالفيديو الكامل: https://www.youtube.com/watch?v=1lotTQKz5O4\nالمشروع: https://pos.movingsystems.tech/?utm_source=youtube&utm_medium=video&utm_campaign=yt-pos-buyers-guide&utm_content=short\nDevya: https://www.devya.dev/projects/devyapos?utm_source=youtube&utm_medium=video&utm_campaign=yt-pos-buyers-guide&utm_content=short\n\nMusic: \"One Cool Minute\" by Loyalty Freak Music (CC0-1.0)\n\n#برنامج_كاشير #BuildWithDevya #Shorts",
+  "tags": [
+    "برنامج كاشير",
+    "نظام كاشير",
+    "برنامج كاشير مطعم",
+    "POS",
+    "restaurant POS",
+    "Shorts",
+    "Devya"
+  ],
+  "playlist": {
+    "key": "retail-tech",
+    "title": "Retail tech بالعربي: كاشير، مخزون، ولاء"
+  },
+  "publishAt": "2026-12-01T19:00",
+  "timezone": "Africa/Cairo",
+  "category": "Education",
+  "language": "ar",
+  "madeForKids": false,
+  "duration": 40.33,
+  "chapters": null,
+  "captions": "captions.ar.srt",
+  "thumbnail": null,
+  "video": "social/youtube/build/pos-internet-down/video.mp4",
+  "music": {
+    "title": "One Cool Minute",
+    "artist": "Loyalty Freak Music",
+    "licence": "CC0-1.0"
+  },
+  "voiceCredits": {
+    "chars": 6121,
+    "takes": 42
+  }
+}

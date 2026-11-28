@@ -1,0 +1,715 @@
+{
+ "about": "Every video on Devya's YouTube channel (@DevyaSolutions): one upload a day at the slot, Cairo time. Long-form episodes have a script (scripts/<slug>.json); a Short is a range of its long-form's beats [first, last], so it needs no new narration. youtube.mjs composes each description and validate.mjs checks every episode (link rule: devya.dev + the project's own link, UTM-tagged). youtube.id/status are filled in once the video is uploaded to Studio. Uploads stay Private until the developer approves going live (2026-11-28); publishAt is the proposed go-live slot, not a schedule set in Studio. Plan: docs/youtube/plan.md.",
+ "channel": "UCr3NVqdbc_31pUVYSJSVUmQ",
+ "timezone": "Africa/Cairo",
+ "slot": "19:00",
+ "playlists": {
+  "claude-code": {
+   "title": "Claude Code بالعربي",
+   "description": "إزاي تشتغل مع Claude Code صح: workflows حقيقية من شغلنا في Devya."
+  },
+  "retail-tech": {
+   "title": "Retail tech بالعربي: كاشير، مخزون، ولاء",
+   "description": "لأصحاب المطاعم والكافيهات والمحلات: إزاي تختار وتشغّل أنظمة البيع صح."
+  },
+  "ship-it": {
+   "title": "Ship it yourself: ارفع مشروعك بنفسك",
+   "description": "VPS و Docker و HTTPS و CI، من غير Vercel."
+  }
+ },
+ "episodes": [
+  {
+   "slug": "claude-code-workflow",
+   "kind": "long",
+   "lang": "ar",
+   "playlist": "claude-code",
+   "publishAt": "2026-11-28T19:00",
+   "script": "scripts/claude-code-workflow.json",
+   "project": "devya-xray",
+   "site": "https://www.devya.dev/projects/devya-xray",
+   "title": "شرح Claude Code بالعربي: workflow حقيقي من issue لـ Pull Request",
+   "keywords": {
+    "ar": [
+     "شرح Claude Code",
+     "Claude Code بالعربي",
+     "كلود كود"
+    ],
+    "en": [
+     "Claude Code",
+     "Claude Code tutorial",
+     "AI coding agent"
+    ]
+   },
+   "tags": [
+    "Claude Code",
+    "شرح Claude Code",
+    "Claude Code بالعربي",
+    "كلود كود",
+    "Claude Code tutorial",
+    "Claude Code arabic",
+    "AI coding agent",
+    "Pull Request",
+    "plan mode",
+    "CLAUDE.md",
+    "Anthropic",
+    "برمجة بالذكاء الاصطناعي",
+    "Devya"
+   ],
+   "hashtags": [
+    "#ClaudeCode",
+    "#BuildWithDevya",
+    "#برمجة"
+   ],
+   "description": {
+    "lead": [
+     "شرح Claude Code بالعربي: الـ workflow اللي بنشتغل بيه في Devya كل يوم، من issue لـ Pull Request.",
+     "plan mode، و CLAUDE.md، والـ test قبل الكود، والـ review، وتلاتة حواجز أمان، وأربعة أخطاء بنشوفها كتير."
+    ],
+    "projectLabel": "Devya X-Ray (review لكود فريقك)",
+    "en": "Claude Code in Egyptian Arabic: the issue-to-Pull-Request workflow we use at Devya every day (plan mode, CLAUDE.md, tests first, diff review, guardrails)."
+   },
+   "thumbnail": {
+    "kicker": "Claude Code بالعربي",
+    "title": "من *issue* لـ *PR*\nفي workflow واحد",
+    "glyph": "terminal",
+    "lines": [
+     "$ claude",
+     "> /init",
+     "✓ Created CLAUDE.md",
+     "⏸ plan mode on",
+     "✓ 42 passed",
+     "$ gh pr create --fill"
+    ],
+    "size": 84
+   },
+   "youtube": {
+    "id": "5p_u9F1PXLw",
+    "status": "private",
+    "studio": "https://studio.youtube.com/video/5p_u9F1PXLw/edit"
+   }
+  },
+  {
+   "slug": "claude-code-plan-mode",
+   "kind": "short",
+   "parent": "claude-code-workflow",
+   "beats": [
+    "B15",
+    "B17"
+   ],
+   "lang": "ar",
+   "playlist": "claude-code",
+   "publishAt": "2026-11-29T19:00",
+   "project": "devya-xray",
+   "site": "https://www.devya.dev/projects/devya-xray",
+   "title": "Claude Code بالعربي: اعمل plan قبل أول سطر كود",
+   "screenTitle": "*Plan mode* قبل أول سطر كود",
+   "keywords": {
+    "ar": [
+     "Claude Code بالعربي",
+     "كلود كود"
+    ],
+    "en": [
+     "Claude Code",
+     "plan mode"
+    ]
+   },
+   "tags": [
+    "Claude Code",
+    "Claude Code بالعربي",
+    "plan mode",
+    "كلود كود",
+    "AI coding agent",
+    "Shorts",
+    "Devya"
+   ],
+   "hashtags": [
+    "#ClaudeCode",
+    "#BuildWithDevya",
+    "#Shorts"
+   ],
+   "description": {
+    "lead": [
+     "Claude Code بالعربي: plan mode بيخلّي الـ agent يقرا ويفكر قبل ما يعدّل أي ملف. غلطة في الخطة بدقيقة، وبعد الكود بساعة."
+    ]
+   },
+   "youtube": {
+    "id": "YTYIelupu6g",
+    "status": "private",
+    "studio": "https://studio.youtube.com/video/YTYIelupu6g/edit"
+   }
+  },
+  {
+   "slug": "pos-buyers-guide",
+   "kind": "long",
+   "lang": "ar",
+   "playlist": "retail-tech",
+   "publishAt": "2026-11-30T19:00",
+   "script": "scripts/pos-buyers-guide.json",
+   "project": "devyapos",
+   "site": "https://www.devya.dev/projects/devyapos",
+   "title": "برنامج كاشير للمطاعم والكافيهات: 7 أسئلة قبل ما تشتري",
+   "keywords": {
+    "ar": [
+     "برنامج كاشير",
+     "نظام كاشير مطاعم",
+     "نظام نقاط البيع"
+    ],
+    "en": [
+     "POS system",
+     "restaurant POS",
+     "Moving POS"
+    ]
+   },
+   "tags": [
+    "برنامج كاشير",
+    "برنامج كاشير مطعم",
+    "برنامج كاشير كافيه",
+    "نظام كاشير",
+    "نظام كاشير مطاعم",
+    "نظام نقاط البيع",
+    "نظام نقاط البيع POS",
+    "POS",
+    "restaurant POS",
+    "Moving POS",
+    "إدارة مطاعم",
+    "تكلفة الأكل",
+    "Devya"
+   ],
+   "hashtags": [
+    "#برنامج_كاشير",
+    "#BuildWithDevya",
+    "#مطاعم"
+   ],
+   "description": {
+    "lead": [
+     "برنامج كاشير للمطاعم والكافيهات: سبعة أسئلة لازم تسألها لأي شركة قبل ما تمضي معاها.",
+     "النت لما يقطع، شاشة المطبخ، المخزون بالـ recipe، الفروع، الطلبات الأونلاين، الولاء، والتسعير الكامل. ومثال حقيقي: Moving POS في سلسلة فيها 25 فرع."
+    ],
+    "projectLabel": "Moving POS (اطلب demo)",
+    "en": "Buying a restaurant POS in Egypt or the Gulf: seven questions to ask any vendor, with a real 25-branch Moving POS deployment as the example.",
+    "body": [
+     "الأسئلة السبعة قبل ما تشتري برنامج كاشير:",
+     "1. لما النت يقطع، الكاشير بيكمل والطلبات بتتحفظ؟",
+     "2. الطلب بيوصل شاشة المطبخ في قد إيه؟",
+     "3. المخزون بيتخصم بالـ recipe ولا بالصنف؟",
+     "4. المنيو والأسعار والتقارير لكل الفروع من مكان واحد؟",
+     "5. فيه موقع طلبات خاص بيك من غير عمولة؟",
+     "6. الولاء جُوّا الكاشير، بكارت في الـ wallet؟",
+     "7. السعر الكامل مكتوب (كل الأجهزة والـ modules والـ setup والتدريب)؟ والداتا بتخرج معاك لو مشيت؟"
+    ]
+   },
+   "thumbnail": {
+    "kicker": "برنامج كاشير",
+    "title": "اسأل *السبعة*\nقبل ما تشتري",
+    "glyph": "receipt",
+    "lines": [
+     "ORDER #1042 · branch 7",
+     "1× Mango juice L",
+     "   mango 250g · sugar 20g",
+     "→ kitchen  0.8s",
+     "→ stock    −250g",
+     "food cost  31%"
+    ],
+    "size": 96
+   },
+   "youtube": {
+    "id": "1lotTQKz5O4",
+    "status": "private",
+    "studio": "https://studio.youtube.com/video/1lotTQKz5O4/edit"
+   }
+  },
+  {
+   "slug": "pos-internet-down",
+   "kind": "short",
+   "parent": "pos-buyers-guide",
+   "beats": [
+    "B07",
+    "B09"
+   ],
+   "lang": "ar",
+   "playlist": "retail-tech",
+   "publishAt": "2026-12-01T19:00",
+   "project": "devyapos",
+   "site": "https://www.devya.dev/projects/devyapos",
+   "title": "برنامج كاشير: اسأل السؤال ده قبل ما تشتري",
+   "screenTitle": "لما النت يقطع، *الكاشير* بيكمل؟",
+   "keywords": {
+    "ar": [
+     "برنامج كاشير",
+     "نظام كاشير"
+    ],
+    "en": [
+     "POS system",
+     "restaurant POS"
+    ]
+   },
+   "tags": [
+    "برنامج كاشير",
+    "نظام كاشير",
+    "برنامج كاشير مطعم",
+    "POS",
+    "restaurant POS",
+    "Shorts",
+    "Devya"
+   ],
+   "hashtags": [
+    "#برنامج_كاشير",
+    "#BuildWithDevya",
+    "#Shorts"
+   ],
+   "description": {
+    "lead": [
+     "برنامج كاشير: أول سؤال لأي شركة، لما النت يقطع إيه اللي بيحصل؟ واطلب منهم يفصلوا النت قدامك في الـ demo."
+    ]
+   },
+   "youtube": {
+    "id": "JEqd3478tOM",
+    "status": "private",
+    "studio": "https://studio.youtube.com/video/JEqd3478tOM/edit"
+   }
+  },
+  {
+   "slug": "claude-md-memory",
+   "kind": "short",
+   "parent": "claude-code-workflow",
+   "beats": [
+    "B09",
+    "B12"
+   ],
+   "lang": "ar",
+   "playlist": "claude-code",
+   "publishAt": "2026-12-02T19:00",
+   "project": "devya-xray",
+   "site": "https://www.devya.dev/projects/devya-xray",
+   "title": "ملف CLAUDE.md: ذاكرة مشروعك مع Claude Code",
+   "screenTitle": "*CLAUDE.md*: ذاكرة المشروع",
+   "keywords": {
+    "ar": [
+     "Claude Code بالعربي",
+     "كلود كود"
+    ],
+    "en": [
+     "CLAUDE.md",
+     "Claude Code"
+    ]
+   },
+   "tags": [
+    "CLAUDE.md",
+    "Claude Code",
+    "Claude Code بالعربي",
+    "كلود كود",
+    "AI coding agent",
+    "Shorts",
+    "Devya"
+   ],
+   "hashtags": [
+    "#ClaudeCode",
+    "#BuildWithDevya",
+    "#Shorts"
+   ],
+   "description": {
+    "lead": [
+     "CLAUDE.md هو ذاكرة مشروعك مع Claude Code: الـ commands والقواعد، وكل غلطة تتكرر تبقى قاعدة."
+    ]
+   },
+   "youtube": {
+    "id": "8FNClPYm4r0",
+    "status": "private",
+    "studio": "https://studio.youtube.com/video/8FNClPYm4r0/edit"
+   }
+  },
+  {
+   "slug": "nextjs-vps-without-vercel",
+   "kind": "long",
+   "lang": "ar",
+   "playlist": "ship-it",
+   "publishAt": "2026-12-03T19:00",
+   "script": "scripts/nextjs-vps-without-vercel.json",
+   "project": null,
+   "site": "https://www.devya.dev/solutions",
+   "title": "رفع مشروع Next.js على VPS بنفسك: Docker و HTTPS من غير Vercel",
+   "keywords": {
+    "ar": [
+     "رفع مشروع Next.js",
+     "رفع موقع على VPS",
+     "Docker بالعربي"
+    ],
+    "en": [
+     "Next.js VPS",
+     "deploy Next.js",
+     "self host Next.js"
+    ]
+   },
+   "tags": [
+    "Next.js",
+    "رفع مشروع Next.js",
+    "رفع موقع على VPS",
+    "deploy Next.js VPS",
+    "self host Next.js",
+    "Docker",
+    "Docker بالعربي",
+    "Caddy",
+    "HTTPS",
+    "Cloudflare",
+    "VPS",
+    "Vercel alternative",
+    "Devya"
+   ],
+   "hashtags": [
+    "#NextJS",
+    "#BuildWithDevya",
+    "#Docker"
+   ],
+   "description": {
+    "lead": [
+     "رفع مشروع Next.js على VPS بنفسك، خطوة خطوة: output standalone، و Dockerfile على تلاتة مراحل، و compose فيه healthcheck، و HTTPS مع Caddy، و DNS على Cloudflare.",
+     "وفي الآخر: إزاي ترجع لو حاجة باظت، وأول خمس حاجات تأمّن بيها السيرفر."
+    ],
+    "en": "Deploy a Next.js app to your own VPS without Vercel: standalone output, a three-stage Dockerfile, compose with a healthcheck, automatic HTTPS with Caddy, Cloudflare DNS, rollbacks and day-one hardening.",
+    "body": [
+     "next.config.ts:",
+     "output: 'standalone'",
+     "",
+     "Dockerfile:",
+     "FROM node:22-alpine AS deps",
+     "WORKDIR /app",
+     "COPY package.json pnpm-lock.yaml ./",
+     "RUN corepack enable && pnpm install --frozen-lockfile",
+     "FROM node:22-alpine AS build",
+     "WORKDIR /app",
+     "COPY --from=deps /app/node_modules ./node_modules",
+     "COPY . .",
+     "RUN corepack enable && pnpm build",
+     "FROM node:22-alpine AS run",
+     "WORKDIR /app",
+     "ENV NODE_ENV=production HOSTNAME=0.0.0.0 PORT=3000",
+     "COPY --from=build /app/.next/standalone ./",
+     "COPY --from=build /app/.next/static ./.next/static",
+     "COPY --from=build /app/public ./public",
+     "USER node",
+     "EXPOSE 3000",
+     "CMD [\"node\", \"server.js\"]",
+     "",
+     "Caddyfile:",
+     "shop.example.com {",
+     "  reverse_proxy web:3000",
+     "}"
+    ]
+   },
+   "thumbnail": {
+    "kicker": "Next.js على VPS",
+    "title": "اطلع من *Vercel*\nارفع على سيرفرك",
+    "glyph": "stack",
+    "lines": [
+     "Cloudflare DNS",
+     "Caddy · HTTPS :443",
+     "Next.js :3000",
+     "Docker · VPS"
+    ],
+    "size": 92
+   },
+   "youtube": {
+    "id": "CrUNtzWcOvA",
+    "status": "private",
+    "studio": "https://studio.youtube.com/video/CrUNtzWcOvA/edit"
+   }
+  },
+  {
+   "slug": "nextjs-dockerfile",
+   "kind": "short",
+   "parent": "nextjs-vps-without-vercel",
+   "beats": [
+    "B11",
+    "B14"
+   ],
+   "lang": "ar",
+   "playlist": "ship-it",
+   "publishAt": "2026-12-04T19:00",
+   "project": null,
+   "site": "https://www.devya.dev/solutions",
+   "title": "Dockerfile لمشروع Next.js في دقيقة: تلاتة مراحل",
+   "screenTitle": "*Dockerfile* لـ Next.js",
+   "keywords": {
+    "ar": [
+     "رفع مشروع Next.js",
+     "Docker بالعربي"
+    ],
+    "en": [
+     "Next.js Dockerfile",
+     "Dockerfile"
+    ]
+   },
+   "tags": [
+    "Next.js",
+    "Dockerfile",
+    "Next.js Dockerfile",
+    "Docker بالعربي",
+    "standalone",
+    "Shorts",
+    "Devya"
+   ],
+   "hashtags": [
+    "#NextJS",
+    "#BuildWithDevya",
+    "#Shorts"
+   ],
+   "description": {
+    "lead": [
+     "Dockerfile لمشروع Next.js على تلاتة مراحل: dependencies، و build، و run صغيرة من غير source code، و HOSTNAME و USER node."
+    ]
+   },
+   "youtube": {
+    "id": "uHACl_beegY",
+    "status": "private",
+    "studio": "https://studio.youtube.com/video/uHACl_beegY/edit"
+   }
+  },
+  {
+   "slug": "pos-real-food-cost",
+   "kind": "short",
+   "parent": "pos-buyers-guide",
+   "beats": [
+    "B12",
+    "B14"
+   ],
+   "lang": "ar",
+   "playlist": "retail-tech",
+   "publishAt": "2026-12-05T19:00",
+   "project": "devyapos",
+   "site": "https://www.devya.dev/projects/devyapos",
+   "title": "برنامج كاشير المطاعم: تكلفة الأكل الحقيقية في الـ recipe",
+   "screenTitle": "المخزون بيتخصم *بالـ recipe*؟",
+   "keywords": {
+    "ar": [
+     "برنامج كاشير",
+     "تكلفة الأكل"
+    ],
+    "en": [
+     "restaurant POS",
+     "food cost"
+    ]
+   },
+   "tags": [
+    "برنامج كاشير",
+    "تكلفة الأكل",
+    "food cost",
+    "recipe costing",
+    "نظام كاشير مطاعم",
+    "Shorts",
+    "Devya"
+   ],
+   "hashtags": [
+    "#برنامج_كاشير",
+    "#BuildWithDevya",
+    "#Shorts"
+   ],
+   "description": {
+    "lead": [
+     "برنامج كاشير المطاعم لازم يخصم المخزون بالـ recipe، مش بالصنف. ساعتها تعرف أنهي صنف بيكسّبك وأنهي بتبيعه بخسارة."
+    ]
+   },
+   "youtube": {
+    "id": "aGPRK9lW0EI",
+    "status": "private",
+    "studio": "https://studio.youtube.com/video/aGPRK9lW0EI/edit"
+   }
+  },
+  {
+   "slug": "claude-code-mistakes",
+   "kind": "short",
+   "parent": "claude-code-workflow",
+   "beats": [
+    "B30",
+    "B32"
+   ],
+   "lang": "ar",
+   "playlist": "claude-code",
+   "publishAt": "2026-12-06T19:00",
+   "project": "devya-xray",
+   "site": "https://www.devya.dev/projects/devya-xray",
+   "title": "أربعة أخطاء مع Claude Code لازم تبطّلها",
+   "screenTitle": "أربعة أخطاء مع *Claude Code*",
+   "keywords": {
+    "ar": [
+     "Claude Code بالعربي",
+     "كلود كود"
+    ],
+    "en": [
+     "Claude Code",
+     "Claude Code mistakes"
+    ]
+   },
+   "tags": [
+    "Claude Code",
+    "Claude Code بالعربي",
+    "Claude Code mistakes",
+    "كلود كود",
+    "AI coding agent",
+    "Shorts",
+    "Devya"
+   ],
+   "hashtags": [
+    "#ClaudeCode",
+    "#BuildWithDevya",
+    "#Shorts"
+   ],
+   "description": {
+    "lead": [
+     "Claude Code: أربعة أخطاء بنشوفها كتير، prompt مبهم، من غير tests، merge من غير review، والـ keys في الـ chat."
+    ]
+   },
+   "youtube": {
+    "id": "7SCWJ1goZqs",
+    "status": "private",
+    "studio": "https://studio.youtube.com/video/7SCWJ1goZqs/edit"
+   }
+  },
+  {
+   "slug": "caddy-https",
+   "kind": "short",
+   "parent": "nextjs-vps-without-vercel",
+   "beats": [
+    "B18",
+    "B20"
+   ],
+   "lang": "ar",
+   "playlist": "ship-it",
+   "publishAt": "2026-12-07T19:00",
+   "project": null,
+   "site": "https://www.devya.dev/solutions",
+   "title": "HTTPS لموقعك بتلاتة سطور مع Caddy (رفع موقع على VPS)",
+   "screenTitle": "*HTTPS* بتلاتة سطور",
+   "keywords": {
+    "ar": [
+     "رفع موقع على VPS"
+    ],
+    "en": [
+     "HTTPS",
+     "Caddy"
+    ]
+   },
+   "tags": [
+    "Caddy",
+    "HTTPS",
+    "Let's Encrypt",
+    "رفع موقع على VPS",
+    "reverse proxy",
+    "Shorts",
+    "Devya"
+   ],
+   "hashtags": [
+    "#HTTPS",
+    "#BuildWithDevya",
+    "#Shorts"
+   ],
+   "description": {
+    "lead": [
+     "HTTPS لموقعك بتلاتة سطور مع Caddy: الشهادة من Let's Encrypt وتجديدها أوتوماتيك، من غير certbot."
+    ]
+   },
+   "youtube": {
+    "id": "m60T6aMsjvs",
+    "status": "private",
+    "studio": "https://studio.youtube.com/video/m60T6aMsjvs/edit"
+   }
+  },
+  {
+   "slug": "pos-pricing",
+   "kind": "short",
+   "parent": "pos-buyers-guide",
+   "beats": [
+    "B21",
+    "B22"
+   ],
+   "lang": "ar",
+   "playlist": "retail-tech",
+   "publishAt": "2026-12-08T19:00",
+   "project": "devyapos",
+   "site": "https://www.devya.dev/projects/devyapos",
+   "title": "برنامج كاشير: اطلب السعر الكامل مكتوب قبل ما تمضي",
+   "screenTitle": "السعر *الكامل* مكتوب",
+   "keywords": {
+    "ar": [
+     "برنامج كاشير",
+     "نظام كاشير"
+    ],
+    "en": [
+     "POS pricing",
+     "restaurant POS"
+    ]
+   },
+   "tags": [
+    "برنامج كاشير",
+    "نظام كاشير",
+    "سعر برنامج كاشير",
+    "POS pricing",
+    "restaurant POS",
+    "Shorts",
+    "Devya"
+   ],
+   "hashtags": [
+    "#برنامج_كاشير",
+    "#BuildWithDevya",
+    "#Shorts"
+   ],
+   "description": {
+    "lead": [
+     "برنامج كاشير: فيه أنظمة بتحاسبك على كل جهاز وكل module. اطلب السعر الكامل مكتوب، لفرع واحد ولكل الفروع."
+    ]
+   },
+   "youtube": {
+    "id": null,
+    "status": "not uploaded: YouTube's daily upload limit (2026-11-28); upload after the reset or the channel's one-time verification"
+   }
+  },
+  {
+   "slug": "vps-day-one",
+   "kind": "short",
+   "parent": "nextjs-vps-without-vercel",
+   "beats": [
+    "B26",
+    "B28"
+   ],
+   "lang": "ar",
+   "playlist": "ship-it",
+   "publishAt": "2026-12-09T19:00",
+   "project": null,
+   "site": "https://www.devya.dev/solutions",
+   "title": "سيرفر VPS جديد: أول خمس حاجات تعملها",
+   "screenTitle": "سيرفر جديد؟ *خمس حاجات* الأول",
+   "keywords": {
+    "ar": [
+     "سيرفر VPS",
+     "رفع موقع على VPS"
+    ],
+    "en": [
+     "VPS security",
+     "server hardening"
+    ]
+   },
+   "tags": [
+    "VPS",
+    "VPS security",
+    "server hardening",
+    "SSH keys",
+    "firewall",
+    "Shorts",
+    "Devya"
+   ],
+   "hashtags": [
+    "#VPS",
+    "#BuildWithDevya",
+    "#Shorts"
+   ],
+   "description": {
+    "lead": [
+     "سيرفر VPS جديد: SSH keys بس، من غير root، و firewall على تلاتة ports، وتحديثات أمان أوتوماتيك، و backup برّه السيرفر."
+    ]
+   },
+   "youtube": {
+    "id": null,
+    "status": "not uploaded: YouTube's daily upload limit (2026-11-28); upload after the reset or the channel's one-time verification"
+   }
+  }
+ ]
+}

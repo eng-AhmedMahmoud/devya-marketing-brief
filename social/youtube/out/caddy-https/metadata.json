@@ -1,0 +1,38 @@
+{
+  "slug": "caddy-https",
+  "kind": "short",
+  "title": "HTTPS لموقعك بتلاتة سطور مع Caddy (رفع موقع على VPS)",
+  "description": "HTTPS لموقعك بتلاتة سطور مع Caddy: الشهادة من Let's Encrypt وتجديدها أوتوماتيك، من غير certbot.\n\nالفيديو الكامل: https://www.youtube.com/watch?v=CrUNtzWcOvA\nDevya: https://www.devya.dev/solutions?utm_source=youtube&utm_medium=video&utm_campaign=yt-nextjs-vps-without-vercel&utm_content=short\n\nMusic: \"One Cool Minute\" by Loyalty Freak Music (CC0-1.0)\n\n#HTTPS #BuildWithDevya #Shorts",
+  "tags": [
+    "Caddy",
+    "HTTPS",
+    "Let's Encrypt",
+    "رفع موقع على VPS",
+    "reverse proxy",
+    "Shorts",
+    "Devya"
+  ],
+  "playlist": {
+    "key": "ship-it",
+    "title": "Ship it yourself: ارفع مشروعك بنفسك"
+  },
+  "publishAt": "2026-12-07T19:00",
+  "timezone": "Africa/Cairo",
+  "category": "Education",
+  "language": "ar",
+  "madeForKids": false,
+  "duration": 38.73,
+  "chapters": null,
+  "captions": "captions.ar.srt",
+  "thumbnail": null,
+  "video": "social/youtube/build/caddy-https/video.mp4",
+  "music": {
+    "title": "One Cool Minute",
+    "artist": "Loyalty Freak Music",
+    "licence": "CC0-1.0"
+  },
+  "voiceCredits": {
+    "chars": 5918,
+    "takes": 41
+  }
+}

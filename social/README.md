@@ -20,6 +20,7 @@ Every post is built to four permanent rules, enforced by code and tests (see **B
 | `proof/` | Screenshot of each live post |
 | `render/` | Card renderer (HTML/CSS → PNG via Playwright), reel renderer (animated card + music → H.264/AAC via ffmpeg), brand checks, audio mixer, link/SEO rules, validator, `calendar.md` builder |
 | `routine/` | The daily routine: launcher, worker prompts, helpers, launchd plist, `ctl.sh` |
+| [`youtube/`](youtube/README.md) | The YouTube track: educational long-form videos and Shorts narrated in the developer's cloned voice, planned as one upload a day at 19:00 Cairo, staged in YouTube Studio as Private drafts until the developer approves going live. Registry `youtube/episodes.json`, scripts, the voice/word/tone checks, slides, mix, captions, chapters, thumbnails and the review gate. Plan: [`docs/youtube/plan.md`](../docs/youtube/plan.md) |
 | [`devto/`](devto/README.md) | A separate daily routine (08:30): it drafts replies to new comments on the developer's dev.to articles into a review queue. It is draft-only; approved replies are posted by hand (`devto review` / `devto approve <ids>` / `devto post`) |
 
 ## How the routine works
@@ -42,7 +43,7 @@ If a network shows a login, 2FA or verification screen, the routine stops that n
 
 If the publish session stops on a usage-limit banner, the transcript gets a `LIMIT:` line. A cap on the seat's model alone ("Switch to another model") is retried once at once with `--model sonnet` (`DEVYA_SOCIAL_FALLBACK_MODEL` overrides); a cap on the seat itself waits for the first slot after the reset.
 
-Tests for the routine's helpers, the screenshot guard, links/SEO, the music mix, the logo/theme checks and the dev.to replies routine: `node --test social/routine/*.test.mjs social/render/*.test.mjs social/devto/*.test.mjs` (needs ffmpeg and Playwright's cached Chromium). The repo's full local CI: `scripts/ci-local.sh`.
+Tests for the routine's helpers, the screenshot guard, links/SEO, the music mix, the logo/theme checks, the dev.to replies routine and the YouTube track: `node --test social/routine/*.test.mjs social/render/*.test.mjs social/devto/*.test.mjs social/youtube/*.test.mjs` (needs ffmpeg and Playwright's cached Chromium). The repo's full local CI: `scripts/ci-local.sh`.
 
 ## Controls
 

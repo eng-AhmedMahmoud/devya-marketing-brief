@@ -1,0 +1,31 @@
+{
+  "about": "How a script word is spelled for the cloned voice (voice.mjs applyLexicon), on top of the Catalyst kit's shared lexicon. The script and the captions keep the word as written; the timings come back onto it. Dotted names are said with 'dot' (the voice says نقطة otherwise), numbers the way a developer says them.",
+  "words": {
+    "// file and command names": "",
+    "CLAUDE.md": "Claude dot md",
+    "/init": "slash init",
+    "env": "dot env",
+    "next.config.ts": "next dot config dot ts",
+    "server.js": "server dot js",
+    "package.json": "package dot json",
+    "node_modules": "node modules",
+    "reverse_proxy": "reverse proxy",
+    "Next.js": "Next JS",
+    "pnpm": "p n p m",
+    "ssh": "S S H",
+    "vCPU": "v CPU",
+    "CLI": "C L I",
+    "API": "A P I",
+    "POS": "P O S",
+    "A record": "A-record",
+    "// numbers said the way developers say them": "",
+    "0.0.0.0": "zero dot zero dot zero dot zero",
+    "443": "four forty-three",
+    "80": "eighty",
+    "22": "twenty-two",
+    "3000": "three thousand",
+    "200": "مِيتِين",
+    "devya.dev": "Devya dot dev",
+    "node:22-alpine": "node twenty-two alpine"
+  }
+}

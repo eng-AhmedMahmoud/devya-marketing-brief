@@ -1,0 +1,101 @@
+{
+  "slug": "nextjs-vps-without-vercel",
+  "kind": "long",
+  "title": "رفع مشروع Next.js على VPS بنفسك: Docker و HTTPS من غير Vercel",
+  "description": "رفع مشروع Next.js على VPS بنفسك، خطوة خطوة: output standalone، و Dockerfile على تلاتة مراحل، و compose فيه healthcheck، و HTTPS مع Caddy، و DNS على Cloudflare.\nوفي الآخر: إزاي ترجع لو حاجة باظت، وأول خمس حاجات تأمّن بيها السيرفر.\n\nDevya: https://www.devya.dev/solutions?utm_source=youtube&utm_medium=video&utm_campaign=yt-nextjs-vps-without-vercel&utm_content=long\nتواصل معانا: https://www.devya.dev/contact?utm_source=youtube&utm_medium=video&utm_campaign=yt-nextjs-vps-without-vercel&utm_content=long\n\nnext.config.ts:\noutput: 'standalone'\n\nDockerfile:\nFROM node:22-alpine AS deps\nWORKDIR /app\nCOPY package.json pnpm-lock.yaml ./\nRUN corepack enable && pnpm install --frozen-lockfile\nFROM node:22-alpine AS build\nWORKDIR /app\nCOPY --from=deps /app/node_modules ./node_modules\nCOPY . .\nRUN corepack enable && pnpm build\nFROM node:22-alpine AS run\nWORKDIR /app\nENV NODE_ENV=production HOSTNAME=0.0.0.0 PORT=3000\nCOPY --from=build /app/.next/standalone ./\nCOPY --from=build /app/.next/static ./.next/static\nCOPY --from=build /app/public ./public\nUSER node\nEXPOSE 3000\nCMD [\"node\", \"server.js\"]\n\nCaddyfile:\nshop.example.com {\n  reverse_proxy web:3000\n}\n\nDeploy a Next.js app to your own VPS without Vercel: standalone output, a three-stage Dockerfile, compose with a healthcheck, automatic HTTPS with Caddy, Cloudflare DNS, rollbacks and day-one hardening.\n\nالفصول:\n0:00 المقدمة\n0:27 ليه بطّلنا Vercel\n0:49 ليه VPS؟\n1:24 محتاجين إيه\n1:59 output: standalone\n2:24 الـ Dockerfile: build\n2:48 الـ Dockerfile: run\n3:34 compose و healthcheck\n4:17 HTTPS مع Caddy\n4:42 الـ DNS\n5:21 الـ deploy\n5:54 التحديثات والرجوع\n6:32 تأمين السيرفر\n7:15 الخلاصة\n\nMusic: \"One Cool Minute\" by Loyalty Freak Music (CC0-1.0)\n\n#NextJS #BuildWithDevya #Docker",
+  "tags": [
+    "Next.js",
+    "رفع مشروع Next.js",
+    "رفع موقع على VPS",
+    "deploy Next.js VPS",
+    "self host Next.js",
+    "Docker",
+    "Docker بالعربي",
+    "Caddy",
+    "HTTPS",
+    "Cloudflare",
+    "VPS",
+    "Vercel alternative",
+    "Devya"
+  ],
+  "playlist": {
+    "key": "ship-it",
+    "title": "Ship it yourself: ارفع مشروعك بنفسك"
+  },
+  "publishAt": "2026-12-03T19:00",
+  "timezone": "Africa/Cairo",
+  "category": "Education",
+  "language": "ar",
+  "madeForKids": false,
+  "duration": 482.02,
+  "chapters": [
+    {
+      "t": 0,
+      "title": "المقدمة"
+    },
+    {
+      "t": 27,
+      "title": "ليه بطّلنا Vercel"
+    },
+    {
+      "t": 49,
+      "title": "ليه VPS؟"
+    },
+    {
+      "t": 84,
+      "title": "محتاجين إيه"
+    },
+    {
+      "t": 119,
+      "title": "output: standalone"
+    },
+    {
+      "t": 144,
+      "title": "الـ Dockerfile: build"
+    },
+    {
+      "t": 168,
+      "title": "الـ Dockerfile: run"
+    },
+    {
+      "t": 214,
+      "title": "compose و healthcheck"
+    },
+    {
+      "t": 257,
+      "title": "HTTPS مع Caddy"
+    },
+    {
+      "t": 282,
+      "title": "الـ DNS"
+    },
+    {
+      "t": 321,
+      "title": "الـ deploy"
+    },
+    {
+      "t": 354,
+      "title": "التحديثات والرجوع"
+    },
+    {
+      "t": 392,
+      "title": "تأمين السيرفر"
+    },
+    {
+      "t": 435,
+      "title": "الخلاصة"
+    }
+  ],
+  "captions": "captions.ar.srt",
+  "thumbnail": "thumbnail.png",
+  "video": "social/youtube/build/nextjs-vps-without-vercel/video.mp4",
+  "music": {
+    "title": "One Cool Minute",
+    "artist": "Loyalty Freak Music",
+    "licence": "CC0-1.0"
+  },
+  "voiceCredits": {
+    "chars": 5918,
+    "takes": 41
+  }
+}

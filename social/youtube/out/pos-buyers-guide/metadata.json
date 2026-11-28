@@ -1,0 +1,93 @@
+{
+  "slug": "pos-buyers-guide",
+  "kind": "long",
+  "title": "برنامج كاشير للمطاعم والكافيهات: 7 أسئلة قبل ما تشتري",
+  "description": "برنامج كاشير للمطاعم والكافيهات: سبعة أسئلة لازم تسألها لأي شركة قبل ما تمضي معاها.\nالنت لما يقطع، شاشة المطبخ، المخزون بالـ recipe، الفروع، الطلبات الأونلاين، الولاء، والتسعير الكامل. ومثال حقيقي: Moving POS في سلسلة فيها 25 فرع.\n\nMoving POS (اطلب demo): https://pos.movingsystems.tech/?utm_source=youtube&utm_medium=video&utm_campaign=yt-pos-buyers-guide&utm_content=long\nDevya: https://www.devya.dev/projects/devyapos?utm_source=youtube&utm_medium=video&utm_campaign=yt-pos-buyers-guide&utm_content=long\nتواصل معانا: https://www.devya.dev/contact?utm_source=youtube&utm_medium=video&utm_campaign=yt-pos-buyers-guide&utm_content=long\n\nالأسئلة السبعة قبل ما تشتري برنامج كاشير:\n1. لما النت يقطع، الكاشير بيكمل والطلبات بتتحفظ؟\n2. الطلب بيوصل شاشة المطبخ في قد إيه؟\n3. المخزون بيتخصم بالـ recipe ولا بالصنف؟\n4. المنيو والأسعار والتقارير لكل الفروع من مكان واحد؟\n5. فيه موقع طلبات خاص بيك من غير عمولة؟\n6. الولاء جُوّا الكاشير، بكارت في الـ wallet؟\n7. السعر الكامل مكتوب (كل الأجهزة والـ modules والـ setup والتدريب)؟ والداتا بتخرج معاك لو مشيت؟\n\nBuying a restaurant POS in Egypt or the Gulf: seven questions to ask any vendor, with a real 25-branch Moving POS deployment as the example.\n\nالفصول:\n0:00 المقدمة\n0:33 المشكلة: تلاتة أنظمة\n1:21 الأسئلة السبعة\n1:31 ١. لما النت يقطع\n2:23 ٢. الطلب والمطبخ\n3:00 ٣. المخزون والـ recipe\n3:47 ٤. الفروع\n4:20 ٥. الطلبات الأونلاين\n4:58 ٦. الولاء\n5:30 ٧. التسعير\n6:08 مثال حقيقي: Moving POS\n7:10 الخلاصة\n\nMusic: \"Static Shoes\" by Loyalty Freak Music (CC0-1.0)\n\n#برنامج_كاشير #BuildWithDevya #مطاعم",
+  "tags": [
+    "برنامج كاشير",
+    "برنامج كاشير مطعم",
+    "برنامج كاشير كافيه",
+    "نظام كاشير",
+    "نظام كاشير مطاعم",
+    "نظام نقاط البيع",
+    "نظام نقاط البيع POS",
+    "POS",
+    "restaurant POS",
+    "Moving POS",
+    "إدارة مطاعم",
+    "تكلفة الأكل",
+    "Devya"
+  ],
+  "playlist": {
+    "key": "retail-tech",
+    "title": "Retail tech بالعربي: كاشير، مخزون، ولاء"
+  },
+  "publishAt": "2026-11-30T19:00",
+  "timezone": "Africa/Cairo",
+  "category": "Education",
+  "language": "ar",
+  "madeForKids": false,
+  "duration": 487.38,
+  "chapters": [
+    {
+      "t": 0,
+      "title": "المقدمة"
+    },
+    {
+      "t": 33,
+      "title": "المشكلة: تلاتة أنظمة"
+    },
+    {
+      "t": 81,
+      "title": "الأسئلة السبعة"
+    },
+    {
+      "t": 91,
+      "title": "١. لما النت يقطع"
+    },
+    {
+      "t": 143,
+      "title": "٢. الطلب والمطبخ"
+    },
+    {
+      "t": 180,
+      "title": "٣. المخزون والـ recipe"
+    },
+    {
+      "t": 227,
+      "title": "٤. الفروع"
+    },
+    {
+      "t": 260,
+      "title": "٥. الطلبات الأونلاين"
+    },
+    {
+      "t": 298,
+      "title": "٦. الولاء"
+    },
+    {
+      "t": 330,
+      "title": "٧. التسعير"
+    },
+    {
+      "t": 368,
+      "title": "مثال حقيقي: Moving POS"
+    },
+    {
+      "t": 430,
+      "title": "الخلاصة"
+    }
+  ],
+  "captions": "captions.ar.srt",
+  "thumbnail": "thumbnail.png",
+  "video": "social/youtube/build/pos-buyers-guide/video.mp4",
+  "music": {
+    "title": "Static Shoes",
+    "artist": "Loyalty Freak Music",
+    "licence": "CC0-1.0"
+  },
+  "voiceCredits": {
+    "chars": 6121,
+    "takes": 42
+  }
+}

@@ -1,0 +1,38 @@
+{
+  "slug": "claude-code-mistakes",
+  "kind": "short",
+  "title": "أربعة أخطاء مع Claude Code لازم تبطّلها",
+  "description": "Claude Code: أربعة أخطاء بنشوفها كتير، prompt مبهم، من غير tests، merge من غير review، والـ keys في الـ chat.\n\nالفيديو الكامل: https://www.youtube.com/watch?v=5p_u9F1PXLw\nالمشروع: https://xray.devya.dev/en?utm_source=youtube&utm_medium=video&utm_campaign=yt-claude-code-workflow&utm_content=short\nDevya: https://www.devya.dev/projects/devya-xray?utm_source=youtube&utm_medium=video&utm_campaign=yt-claude-code-workflow&utm_content=short\n\nMusic: \"Static Shoes\" by Loyalty Freak Music (CC0-1.0)\n\n#ClaudeCode #BuildWithDevya #Shorts",
+  "tags": [
+    "Claude Code",
+    "Claude Code بالعربي",
+    "Claude Code mistakes",
+    "كلود كود",
+    "AI coding agent",
+    "Shorts",
+    "Devya"
+  ],
+  "playlist": {
+    "key": "claude-code",
+    "title": "Claude Code بالعربي"
+  },
+  "publishAt": "2026-12-06T19:00",
+  "timezone": "Africa/Cairo",
+  "category": "Education",
+  "language": "ar",
+  "madeForKids": false,
+  "duration": 35.53,
+  "chapters": null,
+  "captions": "captions.ar.srt",
+  "thumbnail": null,
+  "video": "social/youtube/build/claude-code-mistakes/video.mp4",
+  "music": {
+    "title": "Static Shoes",
+    "artist": "Loyalty Freak Music",
+    "licence": "CC0-1.0"
+  },
+  "voiceCredits": {
+    "chars": 6629,
+    "takes": 44
+  }
+}

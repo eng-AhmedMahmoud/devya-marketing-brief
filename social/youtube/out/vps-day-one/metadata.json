@@ -1,0 +1,38 @@
+{
+  "slug": "vps-day-one",
+  "kind": "short",
+  "title": "سيرفر VPS جديد: أول خمس حاجات تعملها",
+  "description": "سيرفر VPS جديد: SSH keys بس، من غير root، و firewall على تلاتة ports، وتحديثات أمان أوتوماتيك، و backup برّه السيرفر.\n\nالفيديو الكامل: https://www.youtube.com/watch?v=CrUNtzWcOvA\nDevya: https://www.devya.dev/solutions?utm_source=youtube&utm_medium=video&utm_campaign=yt-nextjs-vps-without-vercel&utm_content=short\n\nMusic: \"Lag\" by Loyalty Freak Music (CC0-1.0)\n\n#VPS #BuildWithDevya #Shorts",
+  "tags": [
+    "VPS",
+    "VPS security",
+    "server hardening",
+    "SSH keys",
+    "firewall",
+    "Shorts",
+    "Devya"
+  ],
+  "playlist": {
+    "key": "ship-it",
+    "title": "Ship it yourself: ارفع مشروعك بنفسك"
+  },
+  "publishAt": "2026-12-09T19:00",
+  "timezone": "Africa/Cairo",
+  "category": "Education",
+  "language": "ar",
+  "madeForKids": false,
+  "duration": 34.57,
+  "chapters": null,
+  "captions": "captions.ar.srt",
+  "thumbnail": null,
+  "video": "social/youtube/build/vps-day-one/video.mp4",
+  "music": {
+    "title": "Lag",
+    "artist": "Loyalty Freak Music",
+    "licence": "CC0-1.0"
+  },
+  "voiceCredits": {
+    "chars": 5918,
+    "takes": 41
+  }
+}
