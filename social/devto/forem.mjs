@@ -5,8 +5,10 @@
 //
 // The Forem API v1 can list articles and comment trees but has no endpoint to
 // create a comment (only GET /comments, GET /comments/{id}, POST
-// /comments/preview), so posting an approved reply is a browser step
-// (post-worker.md), never this client.
+// /comments/preview), so posting an approved reply or comment is a browser
+// step (post-worker.md), never this client. The one write the API offers that
+// the routine uses is POST /api/reactions, in createWriter() below, which only
+// devto.mjs post-reactions calls, and only with items the approval gate passed.
 
 import { spawnSync } from 'node:child_process';
 
@@ -109,5 +111,29 @@ export function createClient({
     listArticles: async (username) => dedupe(await paginate('/articles', { username }), (a) => a?.id),
     listComments: async (articleId) => dedupe(await paginate('/comments', { a_id: articleId }), (c) => c?.id_code),
     getArticle: (id) => getJson(`/articles/${encodeURIComponent(id)}`),
+    // Discovery: one page each (most popular in the last `top` days).
+    articlesByTag: (tag, top, perPage = 30) => getJson('/articles', { tag, top, per_page: perPage }),
+    searchArticles: (q, top, perPage = 30) => getJson('/articles/search', { q, top, per_page: perPage }),
+  };
+}
+
+export const REACTIONS = ['like', 'unicorn', 'exploding_head', 'raised_hands', 'fire'];
+
+// The only writer: one reaction on one article. POST /api/reactions is
+// idempotent (the same reaction twice returns the existing one).
+export function createWriter({ apiKey, fetch = globalThis.fetch, base = API } = {}) {
+  if (!apiKey) throw new ForemError('no dev.to API key');
+  return {
+    async react({ category, articleId }) {
+      if (!REACTIONS.includes(category)) throw new ForemError(`unknown reaction "${category}"`);
+      if (!Number.isInteger(articleId) || articleId <= 0) throw new ForemError(`bad article id ${articleId}`);
+      const url = new URL(`${base}/reactions`);
+      url.searchParams.set('category', category);
+      url.searchParams.set('reactable_id', String(articleId));
+      url.searchParams.set('reactable_type', 'Article');
+      const res = await fetch(url, { method: 'POST', headers: { accept: ACCEPT, 'api-key': apiKey, 'user-agent': UA, 'content-type': 'application/json' }, body: JSON.stringify({ category, reactable_id: articleId, reactable_type: 'Article' }) });
+      if (!res.ok) throw new ForemError(`POST /api/reactions (${category} on article ${articleId}): HTTP ${res.status}`, res.status);
+      return res.json().catch(() => ({}));
+    },
   };
 }

@@ -11,13 +11,16 @@
 #   devto lessons [<v>]           the lessons file the drafter reads; `devto lessons rollback <v>` restores a version
 #   devto status                  loaded?, paused?, queue counts, last run, Keychain check
 #   devto run                     fire one draft run now (never posts)
+#   devto discover-run            fire one discovery run now (drafts comments/reactions/follows; never posts)
 #   devto pause [why] | resume    keep the schedule, make draft runs exit at once
 #   devto log                     last lines of the routine log
-#   social/devto/ctl.sh install   (re)install launcher + this script, write the plist (daily 08:30), load it, register it in brain
-#   devto uninstall               unload and remove the plist (queue, state and logs stay)
+#   social/devto/ctl.sh install   (re)install launcher + this script, write both plists (replies 08:30, discovery 12:30), load them, register them in brain
+#   devto uninstall               unload and remove both plists (queue, state and logs stay)
 
 set -euo pipefail
 LABEL="com.ahmedmahmoud.devya-devto-replies"
+DLABEL="com.ahmedmahmoud.devya-devto-discovery"
+DPLIST="$HOME/Library/LaunchAgents/$DLABEL.plist"
 STATE_DIR="$HOME/.config/devya-social"
 DEVTO_HOME="${DEVTO_HOME:-$STATE_DIR/devto}"
 BIN="$STATE_DIR/bin"
@@ -38,9 +41,13 @@ cmd_install() {
   # `devto` on PATH (~/bin), unless something else already owns that name.
   if [[ -d "$HOME/bin" ]] && { [[ ! -e "$HOME/bin/devto" ]] || [[ "$(readlink "$HOME/bin/devto")" == "$BIN/devto" ]]; }; then ln -sf "$BIN/devto" "$HOME/bin/devto"; fi
   sed -e "s#__LAUNCHER__#$BIN/run-devto-replies.sh#" -e "s#__HOME__#$HOME#g" "$HERE/$LABEL.plist" > "$PLIST"
+  sed -e "s#__LAUNCHER__#$BIN/run-devto-replies.sh#" -e "s#__HOME__#$HOME#g" "$HERE/$DLABEL.plist" > "$DPLIST"
   plutil -lint "$PLIST" >/dev/null
+  plutil -lint "$DPLIST" >/dev/null
   launchctl bootout "gui/$UIDN/$LABEL" 2>/dev/null || true
   launchctl bootstrap "gui/$UIDN" "$PLIST"
+  launchctl bootout "gui/$UIDN/$DLABEL" 2>/dev/null || true
+  launchctl bootstrap "gui/$UIDN" "$DPLIST"
   local RJ="$HOME/.claude-brain/routines.json"
   if [[ -f "$RJ" ]]; then
     node -e '
@@ -52,15 +59,24 @@ cmd_install() {
         logs: "~/Library/Logs/devya-devto-replies.log",
         output: "~/.config/devya-social/devto/queue.md"
       };
+      j.routines[process.argv[3]] = {
+        name: "dev.to Discovery",
+        description: "Every day (12:30 Cairo) finds recent dev.to posts by others that match Ahmed'"'"'s tags and searches (social/devto/discovery.json), keeps only those where a real comment adds value, and drafts a comment (plus, at most, a reaction or a follow) into the same review queue, within daily caps, never twice in one thread, with no links or self-promotion. Draft-only: approve with `devto approve <ids>`, post with `devto post`.",
+        group: "routine",
+        logs: "~/Library/Logs/devya-devto-replies.log",
+        output: "~/.config/devya-social/devto/queue.md"
+      };
       fs.writeFileSync(f, JSON.stringify(j, null, 1) + "\n");
-    ' "$RJ" "$LABEL"
+    ' "$RJ" "$LABEL" "$DLABEL"
   fi
-  echo "installed $LABEL → $BIN/run-devto-replies.sh (daily 08:30); control: $BIN/devto"
+  echo "installed $LABEL (daily 08:30) and $DLABEL (daily 12:30) → $BIN/run-devto-replies.sh; control: $BIN/devto"
   cmd_status
 }
 
 cmd_status() {
-  if launchctl print "gui/$UIDN/$LABEL" >/dev/null 2>&1; then echo "launchd: loaded ($PLIST)"; else echo "launchd: NOT loaded"; fi
+  for L in "$LABEL" "$DLABEL"; do
+    if launchctl print "gui/$UIDN/$L" >/dev/null 2>&1; then echo "launchd: $L loaded"; else echo "launchd: $L NOT loaded"; fi
+  done
   if [[ -f "$DEVTO_HOME/paused" ]]; then echo "paused: yes ($(cat "$DEVTO_HOME/paused"))"; else echo "paused: no"; fi
   node "$DEVTO_JS" status || true
   if [[ -f "$LOG" ]]; then echo "--- last log lines"; tail -n 6 "$LOG"; fi
@@ -72,9 +88,10 @@ case "${1:-status}" in
   review|approve|reject|edit|feedback|lessons) node "$DEVTO_JS" "$@" ;;
   post) exec "$BIN/run-devto-replies.sh" post ;;
   run) launchctl kickstart "gui/$UIDN/$LABEL" && echo "started a draft run; follow: tail -f $LOG" ;;
+  discover-run) launchctl kickstart "gui/$UIDN/$DLABEL" && echo "started a discovery run; follow: tail -f $LOG" ;;
   pause) shift; mkdir -p "$DEVTO_HOME"; echo "${*:-paused $(date '+%Y-%m-%d %H:%M')}" > "$DEVTO_HOME/paused"; echo "paused (draft runs exit at once). Resume: devto resume" ;;
   resume) rm -f "$DEVTO_HOME/paused"; echo "resumed" ;;
   log) tail -n "${2:-40}" "$LOG" ;;
-  uninstall) launchctl bootout "gui/$UIDN/$LABEL" 2>/dev/null || true; rm -f "$PLIST"; echo "uninstalled (queue, state and logs kept in $DEVTO_HOME)" ;;
-  *) echo "usage: devto review [--all] | approve <ids> | reject <ids> | edit <id> | post | status | feedback | lessons [<v>|rollback <v>] | run | pause [why] | resume | log | install | uninstall"; exit 1 ;;
+  uninstall) launchctl bootout "gui/$UIDN/$LABEL" 2>/dev/null || true; launchctl bootout "gui/$UIDN/$DLABEL" 2>/dev/null || true; rm -f "$PLIST" "$DPLIST"; echo "uninstalled (queue, state and logs kept in $DEVTO_HOME)" ;;
+  *) echo "usage: devto review [--all] | approve <ids> | reject <ids> | edit <id> | post | status | feedback | lessons [<v>|rollback <v>] | run | discover-run | pause [why] | resume | log | install | uninstall"; exit 1 ;;
 esac

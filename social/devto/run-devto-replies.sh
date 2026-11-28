@@ -12,9 +12,17 @@
 #   3. logs the run summary (DEVTO_SUMMARY line here, runs.jsonl there).
 # Draft mode never posts, reacts or writes to dev.to.
 #
+#   run-devto-replies.sh discover   (launchd, daily 12:30: com.ahmedmahmoud.devya-devto-discovery)
+#       devto.mjs discover: recent posts by others matching his tags and
+#       searches; drafts a comment (and maybe a reaction and a follow) where a
+#       real comment adds value, into the same queue, within the daily caps of
+#       social/devto/discovery.json. Never posts either.
+#
 #   run-devto-replies.sh post   (by hand, after `devto approve <ids>`)
-#       posts ONLY approved drafts whose approval record matches their exact
-#       text (devto.mjs post-plan), through a Chrome-tools-only Claude session on
+#       posts ONLY approved items whose approval record matches their exact
+#       text or action (devto.mjs post-plan, within the daily caps): reactions
+#       through the API (devto.mjs post-reactions), replies, comments and follows
+#       through a Chrome-tools-only Claude session on
 #       the DEVTO_POST_SEAT seat (default ceo: Chrome "Profile 2", which must be
 #       signed in to dev.to as @ahmed_mahmoud360), then records only what dev.to's
 #       API shows under each comment (devto.mjs post-record).
@@ -48,10 +56,10 @@ echo
 echo "=============================================================="
 echo "[$(ts)] $NAME $MODE run starting"
 
-if [[ "$MODE" != "draft" && "$MODE" != "post" ]]; then
-  echo "usage: $0 [draft|post]"; exit 2
+if [[ "$MODE" != "draft" && "$MODE" != "discover" && "$MODE" != "post" ]]; then
+  echo "usage: $0 [draft|discover|post]"; exit 2
 fi
-if [[ "$MODE" == "draft" && -f "$DEVTO_HOME/paused" ]]; then
+if [[ "$MODE" != "post" && -f "$DEVTO_HOME/paused" ]]; then
   echo "paused: $DEVTO_HOME/paused exists ($(cat "$DEVTO_HOME/paused" 2>/dev/null)). Nothing to do."
   exit 0
 fi
@@ -84,20 +92,27 @@ draft_run() {
   $DEVTO scan
 }
 
+discover_run() {
+  $DEVTO discover
+}
+
 post_run() {
   local SEAT="${DEVTO_POST_SEAT:-ceo}" PLAN RESULT OUT DEVICE_ID PRE_JSON PRE_RC READY
   PLAN="$($DEVTO post-plan)" || { echo "ERROR: post-plan failed"; return 1; }
   READY="$(printf '%s' "$PLAN" | node -pe 'JSON.parse(require("fs").readFileSync(0,"utf8")).ready.length')"
   printf '%s' "$PLAN" | node -e 'const j=JSON.parse(require("fs").readFileSync(0,"utf8")); for (const k of ["stale","found","blocked"]) for (const x of j[k]||[]) console.log(`${k}: ${x.id} ${x.reason||x.url||""}`)'
   if [[ "$READY" -eq 0 ]]; then echo "nothing approved to post"; return 0; fi
-  echo "posting $READY approved repl(y/ies) through the $SEAT seat's Chrome"
+  if printf '%s' "$PLAN" | grep -q '"kind":"reaction"'; then $DEVTO post-reactions || return $?; fi
+  READY="$(printf '%s' "$PLAN" | node -pe 'JSON.parse(require("fs").readFileSync(0,"utf8")).ready.filter((p)=>p.kind!=="reaction").length')"
+  if [[ "$READY" -eq 0 ]]; then echo "no replies, comments or follows to post"; return 0; fi
+  echo "posting $READY approved item(s) through the $SEAT seat's Chrome"
   PRE_JSON="$(node social/routine/preflight.mjs browser --seat "$SEAT")"; PRE_RC=$?
   echo "$(printf '%s' "$PRE_JSON" | node -pe 'JSON.parse(require("fs").readFileSync(0,"utf8")).line' 2>/dev/null)"
   [[ $PRE_RC -eq 3 ]] && return 5
   DEVICE_ID="$(printf '%s' "$PRE_JSON" | node -pe 'JSON.parse(require("fs").readFileSync(0,"utf8")).deviceId || ""' 2>/dev/null)"
   local TOOLS="mcp__claude-in-chrome__list_connected_browsers mcp__claude-in-chrome__select_browser mcp__claude-in-chrome__tabs_context_mcp mcp__claude-in-chrome__tabs_create_mcp mcp__claude-in-chrome__tabs_close_mcp mcp__claude-in-chrome__navigate mcp__claude-in-chrome__computer mcp__claude-in-chrome__find mcp__claude-in-chrome__get_page_text mcp__claude-in-chrome__read_page mcp__claude-in-chrome__form_input"
   local PROMPT
-  PROMPT="$(printf 'Post these approved dev.to replies, in this order. Follow the system prompt exactly and end with one RESULT_JSON line.\n\n--- BEGIN plan ---\n%s\n--- END plan ---\n' "$(printf '%s' "$PLAN" | node -pe 'JSON.stringify(JSON.parse(require("fs").readFileSync(0,"utf8")).ready.map(({id,commentUrl,articleTitle,author,reply})=>({id,commentUrl,articleTitle,author,reply})),null,1)')")"
+  PROMPT="$(printf 'Post these approved dev.to replies, in this order. Follow the system prompt exactly and end with one RESULT_JSON line.\n\n--- BEGIN plan ---\n%s\n--- END plan ---\n' "$(printf '%s' "$PLAN" | node -pe 'JSON.stringify(JSON.parse(require("fs").readFileSync(0,"utf8")).ready.filter((p)=>p.kind!=="reaction").map(({id,kind,commentUrl,articleUrl,articleTitle,author,username,reply})=>({id,kind:kind||"reply",commentUrl,articleUrl,articleTitle,author,username,reply})),null,1)')")"
   [[ -n "$DEVICE_ID" ]] && PROMPT="$(printf '%s\nBrowser: the %s seat'"'"'s Chrome is deviceId %s. If list_connected_browsers lists more than one browser, select_browser this deviceId; never use another.\n' "$PROMPT" "$SEAT" "$DEVICE_ID")"
   OUT="$(CLAUDE_CONFIG_DIR="$HOME/.claude-brain/profiles/$SEAT" "$CLAUDE" --print --chrome --allowed-tools "$TOOLS" \
     --append-system-prompt "$(cat social/devto/post-worker.md)" "$PROMPT")"
@@ -108,6 +123,10 @@ post_run() {
 }
 
 RC=0
-if [[ "$MODE" == "post" ]]; then post_run; RC=$?; else draft_run; RC=$?; fi
+case "$MODE" in
+  post) post_run; RC=$? ;;
+  discover) discover_run; RC=$? ;;
+  *) draft_run; RC=$? ;;
+esac
 echo "[$(ts)] run finished (rc $RC)"
 exit "$RC"

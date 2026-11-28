@@ -49,9 +49,25 @@ Ids are dev.to comment ids, as printed by `devto review`.
 
 Test without changing anything: `node social/devto/devto.mjs scan --dry-run` writes the drafts to `~/.config/devya-social/devto/dry/` and leaves the queue, state and lessons alone. `--no-draft` only lists the new comments. `--no-distill` skips the lessons update for one run.
 
+## Discovery (`devto.mjs discover`, daily 12:30)
+
+A second routine, `com.ahmedmahmoud.devya-devto-discovery`, runs the same launcher with `discover` and is also draft-only. It looks for recent posts by other people where a comment from Ahmed would add something:
+
+- **Finding posts** (official API, read-only): it reads `GET /api/articles?tag=<tag>&top=<days>` for his most used tags (taken from his own articles) plus the tags in `discovery.json`, and `GET /api/articles/search?q=<query>&top=<days>` for the queries there.
+- **Filtering** before any model call: drop his own posts, posts examined before, posts already in the queue, anything older than `maxAgeDays` (3), other languages, posts under `minReadingMinutes` (3), threads with over `maxExistingComments` (25), and titles that look like spam. The rest are ranked by tag overlap, search hits and recency.
+- **Deciding** (`discover-worker.md`): per candidate, if he already commented in the thread it is skipped without a model call. Otherwise a tool-less Claude session reads the article and its existing comments and either skips (the expected outcome when it would only be agreeing or praising) or drafts a comment.
+- **Comment checks**: at least 80 and at most 900 characters, in the article's language, with no links or domains, no self-promotion (Devya, "my article", "check out", "DM me"), no generic praise opener, no hashtag and no placeholder. A comment that fails is redrafted once.
+- **Optional suggestions** that go with a comment: one reaction (`like`, `unicorn`, `exploding_head`, `raised_hands`, `fire`) and a follow of the author.
+- **Queue**: kinds `comment` (`a<articleId>`), `reaction` (`r<articleId>`) and `follow` (`u-<username>`), with `source: "discovery"`.
+- **Daily caps** (per Cairo day, `discovery.json`): `candidates` sent to the model, plus queued and posted `comment`, `reaction` and `follow`. They are checked when queuing and again when posting (`postPlan` counts what `posted.jsonl` holds for today).
+- **No duplicate threads**: never a second comment on an article that was examined, queued or already commented on by him.
+- **One comment per author per day** (`perAuthorPerDay`), so it never reads as targeting someone.
+
+`devto discover-run` fires one discovery run now. `node social/devto/devto.mjs discover --dry-run` writes the drafts to `dry/discover-*.md` and nothing else. `--no-draft` lists the candidates.
+
 ## The approval gate
 
-`devto approve <id>` appends a record to `decisions.jsonl`: the id, the SHA-256 of the exact reply text, the time, and who approved it. `gate.mjs` `postPlan()` is the only way to anything that posts, and it lets a draft through only when all of these hold:
+`devto approve <id>` appends a record to `decisions.jsonl`: the id, the SHA-256 of what would be posted (the exact reply or comment text, or the exact action, such as `reaction like on article 123` or `follow @name`), the time, and who approved it. `gate.mjs` `postPlan()` is the only way to anything that posts, and it lets a draft through only when all of these hold:
 
 - it is a reply draft (a flag has no text and cannot be approved);
 - its status is `approved`;
@@ -64,9 +80,10 @@ The scheduled run never builds a plan, and the tests check that the launchd job 
 
 The Forem API v1 cannot create comments: it offers only `GET /comments`, `GET /comments/{id}` and `POST /comments/preview`. Posting is therefore a browser step:
 
-1. `devto.mjs post-plan` takes the gated drafts and re-reads each comment's thread on dev.to. A deleted comment, or one he has answered since, becomes `stale` and is not posted. A reply already there with the approved text is recorded, not posted again.
+0. Approved reactions go through the official API (`POST /api/reactions`, idempotent) with `devto.mjs post-reactions`. It is the only write the code makes, and only for items the gate passed. Follows and comments are browser steps.
+1. `devto.mjs post-plan` takes the gated items (within today's caps) and re-reads each reply's and comment's thread on dev.to. A deleted comment, or one he has answered since, becomes `stale` and is not posted. A reply already there with the approved text is recorded, not posted again.
 2. A Claude session on the `DEVTO_POST_SEAT` seat (default `ceo`: Chrome "Profile 2", which must be signed in to dev.to as @ahmed_mahmoud360) gets only those items. It has only Chrome tools, follows `post-worker.md`, checks the signed-in account, clicks **Reply** under each comment, enters the approved text verbatim, and (if dev.to asks) picks "some AI assistance". It stops at the first error.
-3. `devto.mjs post-record` records a reply as `posted` only when dev.to's API shows a reply by @ahmed_mahmoud360 with the approved text under that comment.
+3. `devto.mjs post-record` records a reply or comment as `posted` only when dev.to's API shows it, by @ahmed_mahmoud360 and with the approved text. A follow can't be read back through the API, so it is recorded as reported (`verified: false`).
 
 ## Files
 

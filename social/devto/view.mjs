@@ -8,7 +8,16 @@ const quote = (s, n = 600) => {
 };
 const day = (iso) => String(iso || '').slice(0, 10);
 
+function discoveryCard(it) {
+  const on = `“${it.articleTitle}” by @${it.author} · ${it.articleUrl}${it.why ? `\nfound by: ${it.why}` : ''}`;
+  const extra = [it.postedUrl ? `posted: ${it.postedUrl}` : '', it.note ? `note: ${it.note}` : ''].filter(Boolean).join(' · ');
+  if (it.kind === 'reaction') return `### \`${it.id}\` · reaction **${it.category}** on ${on}${extra ? `\n${extra}` : ''}\n`;
+  if (it.kind === 'follow') return `### \`${it.id}\` · follow **@${it.username}** · https://dev.to/${it.username}\n${it.reason || ''}${extra ? `\n${extra}` : ''}\n`;
+  return `### \`${it.id}\` · comment on ${on}\n\n**Comment${it.lang ? ` (${it.lang})` : ''}${it.edited ? ' · edited' : ''}${extra ? ` · ${extra}` : ''}:**\n\n${it.reply}\n`;
+}
+
 function card(it) {
+  if (it.source === 'discovery') return discoveryCard(it);
   const above = it.thread?.length ? `\n> ↳ in reply to @${it.thread.at(-1).author}: “${String(it.thread.at(-1).text).replace(/\s+/g, ' ').slice(0, 160)}”\n>` : '';
   const head = `### \`${it.id}\` · ${it.articleTitle}\n@${it.author}${it.authorName && it.authorName !== it.author ? ` (${it.authorName})` : ''} · ${day(it.commentAt)} · ${it.commentUrl}\n${above}\n${quote(it.comment)}\n`;
   if (it.kind === 'flag') return `${head}\n**Flagged, no draft:** ${it.reason}\n`;

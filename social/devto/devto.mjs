@@ -8,6 +8,11 @@
 //       --dry-run: drafts to $DEVTO_HOME/dry/, queue and state untouched.
 //       --no-draft: list new comments only (no model, nothing written).
 //       --no-distill: skip the feedback loop's lessons update this run.
+//   node devto.mjs discover [--dry-run] [--no-draft]
+//       Discovery (the second daily routine): recent posts by others that match
+//       his tags and searches (discovery.json); drafts a comment, and maybe a
+//       reaction and a follow, for posts where a real comment adds value, into
+//       the same queue, within the daily caps. Never posts.
 //   node devto.mjs review [--all]           print the queue (and rewrite queue.md)
 //   node devto.mjs approve <id> [<id> ...]  approve these exact drafts
 //   node devto.mjs reject <id> [<id> ...]   reject drafts / dismiss flags
@@ -18,6 +23,7 @@
 //   node devto.mjs lessons rollback <v>     make version v current again (saved as a new version)
 //   node devto.mjs post-plan                approved drafts that may be posted now, re-checked on dev.to (JSON)
 //   node devto.mjs post-record < result     record the browser session's RESULT_JSON (verified on dev.to)
+//   node devto.mjs post-reactions           post the approved reactions in the plan through the API
 //
 // Exit: 0 ok · 1 error · 2 usage · 5 NEEDS-YOU (API key missing, rejected or
 // another account's) · 6 stopped on a usage limit (the rest is retried next run).
@@ -25,10 +31,11 @@
 import { spawnSync } from 'node:child_process';
 import { readFileSync } from 'node:fs';
 import { hostname, userInfo } from 'node:os';
-import { ForemError, KEYCHAIN, createClient, keychainCommand, readKeychainKey } from './forem.mjs';
+import { ForemError, KEYCHAIN, createClient, createWriter, keychainCommand, readKeychainKey } from './forem.mjs';
+import { discoverySummaryLine, loadConfig, runDiscovery, systemPrompt as discoverSystemPrompt } from './discover.mjs';
 import { claudeDrafter, systemPrompt } from './drafts.mjs';
 import { decisionEvents, distillSystemPrompt, lessonsLog, lessonsVersion, loadLessons, saveLessons } from './feedback.mjs';
-import { approve, edit, postPlan, recheck, recordPosted, reject } from './gate.mjs';
+import { approve, edit, postPlan, postReactions, recheck, recordPosted, reject } from './gate.mjs';
 import { runScan, summaryLine } from './scan.mjs';
 import { defaultHome, openStore } from './store.mjs';
 import { renderQueue } from './view.mjs';
@@ -69,6 +76,7 @@ async function client() {
 }
 
 const store = openStore(defaultHome());
+const discoveryConfig = () => loadConfig(process.env.DEVTO_DISCOVERY_CONFIG || undefined);
 const saveQueue = (q) => { store.saveQueue(q); store.writeText('queue.md', renderQueue(q)); };
 
 async function main() {
@@ -94,6 +102,22 @@ async function main() {
         console.log(`LIMIT: the drafting seat hit a ${summary.limit} usage limit; ${summary.deferred} comment(s) wait for the next run.`);
         process.exit(LIMITED);
       }
+      return;
+    }
+    case 'discover': {
+      const c = await client();
+      const seat = process.env.DEVTO_SEAT || 'ceo';
+      const { summary, listed } = await runDiscovery({
+        client: c, store, username: USERNAME, config: discoveryConfig(),
+        runModel: flag('--no-draft') ? null : claudeDrafter({ seat, system: discoverSystemPrompt(), done: /^DISCOVER_JSON:/m }),
+        drafter: `claude (${seat} seat)`, dryRun: flag('--dry-run'), noDraft: flag('--no-draft'),
+      });
+      if (flag('--no-draft')) for (const l of listed) console.log(`candidate · ${l.score} · @${l.author} · ${l.title} · ${l.url} (${l.why})`);
+      console.log(discoverySummaryLine(summary));
+      if (summary.dryFile) console.log(`dry-run drafts: ${summary.dryFile}`);
+      console.log(`DEVTO_DISCOVERY: ${JSON.stringify(summary)}`);
+      if (summary.mode === 'discover' && summary.comments + summary.reactions + summary.follows) console.log(`NEEDS-YOU: ${summary.comments} comment(s), ${summary.reactions} reaction(s), ${summary.follows} follow(s) from discovery waiting for review: devto review`);
+      if (summary.limit) process.exit(LIMITED);
       return;
     }
     case 'review': {
@@ -176,7 +200,7 @@ async function main() {
     }
     case 'post-plan': {
       const q = store.loadQueue();
-      const plan = postPlan(q, store.decisions(), store.posted());
+      const plan = postPlan(q, store.decisions(), store.posted(), { caps: discoveryConfig().caps });
       if (!plan.ready.length) { console.log(JSON.stringify({ ready: [], stale: [], found: [], blocked: plan.blocked })); return; }
       const c = await client();
       const checked = await recheck(c, plan, USERNAME);
@@ -192,6 +216,18 @@ async function main() {
       console.log(JSON.stringify(checked));
       return;
     }
+    case 'post-reactions': {
+      const q = store.loadQueue();
+      const plan = postPlan(q, store.decisions(), store.posted(), { caps: discoveryConfig().caps });
+      if (!plan.ready.some((p) => p.kind === 'reaction')) { console.log('no approved reactions to post'); return; }
+      await client(); // checks the key belongs to the right account first
+      const writer = createWriter({ apiKey: readKeychainKey({ service: SERVICE, account: ACCOUNT }) });
+      const r = await postReactions({ plan, queue: q, writer, addPosted: store.addPosted });
+      saveQueue(q);
+      for (const p of r.posted) console.log(`reacted ${p.category} on article ${p.articleId} (${p.id})`);
+      for (const f of r.failed) console.log(`failed ${f.id}: ${f.reason}`);
+      process.exit(r.failed.length ? 3 : 0);
+    }
     case 'post-record': {
       const raw = readFileSync(0, 'utf8').trim().replace(/^RESULT_JSON:\s*/, '');
       let results;
@@ -206,7 +242,7 @@ async function main() {
       process.exit(r.failed.length || r.unverified.length ? 3 : 0);
     }
     default:
-      console.error('usage: devto.mjs scan [--dry-run|--no-draft|--no-distill] | review [--all] | approve <ids> | reject <ids> | edit <id> [--text …] | status | feedback | lessons [<v>|rollback <v>] | post-plan | post-record < result');
+      console.error('usage: devto.mjs scan [--dry-run|--no-draft|--no-distill] | discover [--dry-run|--no-draft] | post-reactions | review [--all] | approve <ids> | reject <ids> | edit <id> [--text …] | status | feedback | lessons [<v>|rollback <v>] | post-plan | post-record < result');
       process.exit(2);
   }
 }
