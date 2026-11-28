@@ -33,7 +33,7 @@ test('corrected captions pass the link checker and hashtag rules, keep the copy 
 });
 
 test('what each platform can fix in place', () => {
-  const by = (net) => rows.filter((r) => r.network === net && r.date < '2026-11-28');
+  const by = (net) => rows.filter((r) => r.network === net && r.date < '2026-11-28' && !r.fixedInPlace); // fixed ones: see the next test
   for (const r of by('facebook_reel')) assert.ok(r.actions.some((a) => a.type === 'replace-video' && a.inPlace), r.date);
   for (const net of ['instagram_reel', 'linkedin_video', 'linkedin', 'facebook', 'instagram']) for (const r of by(net)) assert.ok(r.actions.some((a) => a.type === 'repost-needed' && !a.inPlace && a.recommendation), `${net} ${r.date}`);
   for (const r of by('facebook_story')) assert.ok(r.actions.every((a) => a.type === 'none'), r.date);
