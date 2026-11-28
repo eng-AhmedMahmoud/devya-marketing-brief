@@ -18,8 +18,9 @@ jobs:
     with:
       package-manager: pnpm
       build-command: pnpm run build
-      # Social quality gate: fails on an untagged, off-site or Vercel link (render/validate.mjs).
-      test-command: node social/render/validate.mjs --images
+      # dev.to replies routine tests (mocked HTTP, no network), then the social
+      # quality gate: fails on an untagged, off-site or Vercel link (render/validate.mjs).
+      test-command: node --test social/devto/*.test.mjs && node social/render/validate.mjs --images
   security:
     uses: eng-AhmedMahmoud/devya-workflows/.github/workflows/node-security.yml@v1
     with:
