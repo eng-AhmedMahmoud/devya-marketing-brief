@@ -1,8 +1,11 @@
 // One draft-mode run: list every article, read each comment tree, skip what
-// was seen before / is his own / he already answered / is deleted, flag spam
-// and abuse, draft the rest and queue them for review. Read-only on dev.to.
+// was seen before / is his own / he already answered / is deleted; collect how
+// earlier drafts and replies did and distil it into the next lessons version
+// (feedback.mjs); then flag spam and abuse, draft the rest with the current
+// lessons and queue them for review. Read-only on dev.to.
 
 import { draftBatch, spamCheck } from './drafts.mjs';
+import { decisionEvents, distill, loadLessons, markReported, mergeOutcomes, replyOutcomes } from './feedback.mjs';
 import { enqueue, markSeen } from './store.mjs';
 import { classify, clip, commentUrl, flattenTree, threadOf } from './threads.mjs';
 import { renderQueue } from './view.mjs';
@@ -14,6 +17,8 @@ export async function runScan({
   store,
   username,
   runModel,
+  distiller = null,
+  minEvents = 3,
   drafter = 'claude',
   now = () => new Date(),
   maxDrafts = 30,
@@ -32,9 +37,14 @@ export async function runScan({
   const articles = await client.listArticles(username);
   s.articles = articles.length;
   const work = [];
+  const postedLedger = store.posted();
+  const freshOutcomes = [];
+  const articleReactions = {};
   for (const a of articles) {
     if (!allArticles && Number(a.comments_count) === 0) continue;
     const flat = flattenTree(await client.listComments(a.id), { articleId: a.id });
+    articleReactions[a.id] = a.public_reactions_count ?? null;
+    if (postedLedger.length) freshOutcomes.push(...replyOutcomes(flat, postedLedger, username));
     s.scanned++;
     s.comments += flat.length;
     const c = classify(flat, { me: username, seen: state.seen });
@@ -50,6 +60,28 @@ export async function runScan({
     }
     if (c.toDraft.length) work.push({ article: a, items: c.toDraft.map((n) => ({ ...n, thread: threadOf(n, flat) })) });
   }
+
+  // Feedback loop, before any drafting so the drafter reads the newest lessons.
+  const outcomes = store.loadOutcomes();
+  const outcomeEvents = mergeOutcomes(outcomes, freshOutcomes, { articleReactions, at });
+  const fb = { decisionsSince: '', ...state.feedback };
+  const events = [...decisionEvents(queue, store.decisions(), { since: fb.decisionsSince }), ...outcomeEvents];
+  s.feedbackEvents = events.length;
+  s.repliesTracked = Object.keys(outcomes).length;
+  if (write && distiller) {
+    const d = await distill({ store, events, runModel: distiller, minEvents, at });
+    s.lessons = `${d.status}${d.reason ? ` (${d.reason})` : ''}${d.changes ? `: ${d.changes}` : ''}`;
+    if (d.status === 'limit') s.limit = d.reason.split(' ')[0];
+    if (d.consumed) {
+      const last = events.filter((e) => e.type !== 'reply-outcome').map((e) => e.at).sort().at(-1);
+      if (last) fb.decisionsSince = last;
+      markReported(outcomes, events);
+    }
+  } else {
+    s.lessons = write ? 'distiller off' : `not distilled in ${s.mode} mode`;
+  }
+  s.lessonsVersion = loadLessons(store).version;
+  if (write) { state.feedback = fb; store.saveOutcomes(outcomes); }
 
   const base = (it, a) => ({
     id: it.id, commentId: it.id, articleId: a.id, articleTitle: a.title, articleUrl: a.url, commentUrl: commentUrl(it),
@@ -123,6 +155,7 @@ export function summaryLine(s) {
     `${s.newComments} new → ${s.drafted} drafted, ${s.flagged} flagged, ${s.failed} failed, ${s.deferred} deferred`,
     `skipped: ${s.seenBefore} seen before, ${s.own} own, ${s.answered} already answered, ${s.deleted} deleted`,
   ];
+  parts.push(`feedback: ${s.feedbackEvents ?? 0} new event(s), ${s.repliesTracked ?? 0} posted repl(y/ies) tracked; lessons v${s.lessonsVersion ?? 0}: ${s.lessons ?? '-'}`);
   if (s.mode === 'draft') parts.push(`queue: ${s.pending} pending review`);
   if (s.limit) parts.push(`stopped on a ${s.limit} usage limit`);
   return `dev.to (${s.mode}): ${parts.join(' · ')}`;

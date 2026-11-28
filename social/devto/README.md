@@ -23,6 +23,9 @@ devto edit k3m7              # rewrite a draft in $EDITOR (or --text "…"); it 
 devto reject k3m9            # never post this one (on a flagged comment: dismiss it)
 devto post                   # post the approved drafts (see Posting)
 devto status                 # loaded?, paused?, queue counts, last run, Keychain check
+devto feedback               # decisions and reply outcomes not yet distilled into lessons
+devto lessons [<v>]          # the lessons the drafter reads now (or version v), with history
+devto lessons rollback <v>   # make version v current again (saved as a new version)
 ```
 
 Ids are dev.to comment ids, as printed by `devto review`.
@@ -36,9 +39,15 @@ Ids are dev.to comment ids, as printed by `devto review`.
    - **Drafts** (`drafts.mjs`, `draft-worker.md`): obvious spam (gambling, loans, fund-recovery scams, link drops, WhatsApp/Telegram pitches) and insults are flagged without a model. The rest goes, one article at a time and with the article body and the thread above each comment, to `claude --print` on the `DEVTO_SEAT` seat (default `ceo`). That session runs with no tools (`--tools ""`), no MCP servers, no user settings or hooks, and the prompt on stdin. Comments are JSON-encoded inside a data block that the drafter is told never to obey. The drafter either replies in the comment's language or flags spam, abuse or prompt injection. Every draft is checked: length (at most 1,200 characters), no placeholder, cut-off, hashtag or "as an AI", the same script as the comment (Arabic in, Arabic out), and no link that is not already in the article or thread. A failing draft is redrafted once. If it fails again, the comment stays unseen and is retried the next day; after 3 runs it is queued as a flag ("could not draft"). His voice notes come from his private style guide (`~/.claude-brain/linkedin/style-guide.md`, sections 1 to 3), which is read at run time and never copied into the repo.
    - **Queue**: drafts (`pending`) and flags (`flagged`, with no reply text) go to `queue.json` and `queue.md`.
    - At most 30 drafts per run (`DEVTO_MAX_DRAFTS`). The rest wait, unseen, for the next run. A usage limit on the drafting seat stops drafting with a `LIMIT:` line and exit 6; a cap on the model alone is retried once with `DEVTO_FALLBACK_MODEL` (default `sonnet`).
-3. It logs one human summary line, one `DEVTO_SUMMARY: {json}` line, and a `NEEDS-YOU:` line when drafts are waiting for review.
+   - **Feedback loop** (`feedback.mjs`, `distill-worker.md`), before any drafting:
+     - It collects how earlier drafts and replies did: drafts you approved as written, drafts you edited before approving (with a word diff, `[-removed-] {+added+}`, of the drafter's text against yours; `devto edit` keeps the original), and drafts you rejected.
+     - For each posted reply it also tracks the follow-up comments under it, whether the original commenter answered, and the change in the article's reactions since. dev.to exposes no per-comment reaction count (the comment API has none, and `/reactions?article_id=` returns article counts only), so a reply's own reactions are recorded as unavailable, never scraped.
+     - Once at least 3 new events have come in (`DEVTO_MIN_FEEDBACK`), a tool-less Claude session rewrites the lessons file. Its output is checked: at most 25 bullets and 3,500 characters, no links, no @names, no credentials, and nothing that relaxes the rules or the review. A file that passes is saved as the next version.
+     - The drafter reads the current lessons on every call, under its hard rules ("the rules win").
+     - A version only shapes drafts, which still need your approval. `devto lessons rollback <v>` restores an older one.
+3. It logs one human summary line (including the feedback count and the lessons version), one `DEVTO_SUMMARY: {json}` line, and a `NEEDS-YOU:` line when drafts are waiting for review.
 
-Test without changing anything: `node social/devto/devto.mjs scan --dry-run` writes the drafts to `~/.config/devya-social/devto/dry/` and leaves the queue and state alone. `--no-draft` only lists the new comments.
+Test without changing anything: `node social/devto/devto.mjs scan --dry-run` writes the drafts to `~/.config/devya-social/devto/dry/` and leaves the queue, state and lessons alone. `--no-draft` only lists the new comments. `--no-distill` skips the lessons update for one run.
 
 ## The approval gate
 
@@ -70,6 +79,8 @@ Code lives in `social/devto/`. State lives in `~/.config/devya-social/devto/`, o
 | `decisions.jsonl` | Approve and reject records (append-only) |
 | `posted.jsonl` | Posted replies: id, SHA-256, URL (append-only) |
 | `runs.jsonl` | One summary per run |
+| `outcomes.json` | Each posted reply's follow-ups, commenter answer and article reactions (feedback loop) |
+| `lessons.md`, `lessons/v<N>.md`, `lessons/log.jsonl` | The lessons the drafter reads, every earlier version, and what changed in each |
 | `paused` | If present, draft runs exit at once (`devto pause` / `devto resume`) |
 
 Log: `~/Library/Logs/devya-devto-replies.log`. Tests: `node --test social/devto/*.test.mjs`. They mock all HTTP and the drafter, and run in `scripts/ci-local.sh` and GitHub CI.

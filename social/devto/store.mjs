@@ -9,6 +9,8 @@
 //                    exact approved text, time, who): the approval gate
 //   posted.jsonl     append-only ledger of posted replies (never twice)
 //   runs.jsonl       one summary per run
+//   outcomes.json    what happened under each posted reply (feedback loop)
+//   lessons.md, lessons/  the versioned lessons file the drafter reads (feedback.mjs)
 //   dry/             drafts of --dry-run runs (never queued)
 
 import { appendFileSync, existsSync, mkdirSync, readFileSync, renameSync, writeFileSync } from 'node:fs';
@@ -41,6 +43,12 @@ export function openStore(dir = defaultHome()) {
     addPosted: (r) => append('posted.jsonl', r),
     runs: () => readLines('runs.jsonl'),
     addRun: (r) => append('runs.jsonl', r),
+    appendLine: (f, v) => {
+      mkdirSync(join(p(f), '..'), { recursive: true, mode: 0o700 });
+      append(f, v);
+    },
+    loadOutcomes: () => readJson('outcomes.json', {}),
+    saveOutcomes: (o) => writeJson('outcomes.json', o),
     writeText: (f, s) => {
       mkdirSync(join(p(f), '..'), { recursive: true, mode: 0o700 });
       writeFileSync(p(f), s, { mode: 0o600 });

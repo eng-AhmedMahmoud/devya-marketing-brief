@@ -79,6 +79,7 @@ export function edit(queue, id, text, { at = new Date().toISOString() } = {}) {
   if (!reply) return `${id}: empty text`;
   if (reply.length > MAX_REPLY) return `${id}: too long (${reply.length} > ${MAX_REPLY})`;
   it.kind = 'reply';
+  if (it.original === undefined && it.reply) it.original = it.reply; // the drafter's text, for the feedback loop's diff
   it.reply = reply;
   it.status = 'pending';
   it.edited = true;
