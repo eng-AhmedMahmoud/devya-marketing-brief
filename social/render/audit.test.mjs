@@ -11,6 +11,12 @@ const SOCIAL = join(dirname(fileURLToPath(import.meta.url)), '..');
 const CAL = JSON.parse(readFileSync(join(SOCIAL, 'calendar.json'), 'utf8'));
 const STATE = JSON.parse(readFileSync(join(SOCIAL, 'state.json'), 'utf8'));
 const rows = auditPublished(CAL, STATE, { today: '2026-11-28' });
+// The same posts as first published, before any fix-published.sh run recorded
+// them as fixed (by: fix): the caption and media rules are tested on these, so
+// the tests keep working however many live posts have since been fixed.
+const ORIGINAL = structuredClone(STATE);
+for (const nets of Object.values(ORIGINAL.published)) for (const rec of Object.values(nets)) if (rec.by === 'fix') rec.by = 'routine';
+const before = auditPublished(CAL, ORIGINAL, { today: '2026-11-28' });
 
 test('every published post is audited, and every one made before 2026-11-28 falls short (old template or silent video)', () => {
   const published = Object.values(STATE.published).reduce((n, nets) => n + Object.keys(nets).length, 0);
@@ -20,7 +26,7 @@ test('every published post is audited, and every one made before 2026-11-28 fall
 
 test('corrected captions pass the link checker and hashtag rules, keep the copy and only touch links and hashtags', () => {
   let edits = 0;
-  for (const r of rows) for (const a of r.actions.filter((x) => x.type === 'edit-caption')) {
+  for (const r of before) for (const a of r.actions.filter((x) => x.type === 'edit-caption')) {
     edits++;
     assert.deepEqual(a.remaining, [], `${r.date} ${r.network}`);
     const day = CAL.days.find((d) => d.date === r.date);
@@ -40,11 +46,11 @@ test('corrected captions pass the link checker and hashtag rules, keep the copy 
 });
 
 test('what each platform can fix in place', () => {
-  const by = (net) => rows.filter((r) => r.network === net && r.date < '2026-11-28' && !r.fixedInPlace); // fixed ones: see the next test
+  const by = (net) => before.filter((r) => r.network === net && r.date < '2026-11-28');
   for (const r of by('facebook_reel')) assert.ok(r.actions.some((a) => a.type === 'replace-video' && a.inPlace), r.date);
   for (const net of ['instagram_reel', 'linkedin_video', 'linkedin', 'facebook', 'instagram']) for (const r of by(net)) assert.ok(r.actions.some((a) => a.type === 'repost-needed' && !a.inPlace && a.recommendation), `${net} ${r.date}`);
   for (const r of by('facebook_story')) assert.ok(r.actions.every((a) => a.type === 'none'), r.date);
-  for (const r of rows) for (const a of r.actions) if (a.type === 'edit-caption') assert.equal(a.inPlace, true);
+  for (const r of before) for (const a of r.actions) if (a.type === 'edit-caption') assert.equal(a.inPlace, true);
 });
 
 test('moved pages are re-pointed and tagged', () => {
