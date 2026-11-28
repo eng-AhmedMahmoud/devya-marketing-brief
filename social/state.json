@@ -224,6 +224,14 @@
         "by": "fix",
         "proof": "proof/2026-11-27-instagram-fixed.jpg"
       }
+    },
+    "2026-11-28": {
+      "linkedin": {
+        "url": "https://www.linkedin.com/feed/update/urn:li:share:7532353039350038528",
+        "at": "2026-11-28 10:02",
+        "by": "routine",
+        "proof": "proof/2026-11-28-linkedin.jpg"
+      }
     }
   }
 }
