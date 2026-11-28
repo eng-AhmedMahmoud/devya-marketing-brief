@@ -12,6 +12,12 @@
 //                                     project page must still list the project link
 //                                     the posts use (social/projects.json)
 //   node validate.mjs --calendar F    validate file F instead of social/calendar.json
+//   node validate.mjs --youtube F     check YouTube registry F instead of social/youtube/episodes.json
+//
+// The YouTube episodes (social/youtube/episodes.json) are checked too:
+// titles, descriptions as composed, tags, hashtags, one upload a day, and the
+// same link rule (a devya.dev link, the project's own link, UTM-tagged
+// utm_source=youtube&utm_medium=video, never Vercel): youtube/youtube.mjs.
 //
 // Days before seo.RULES_FROM (2026-11-28) were published under the older rules
 // (no utm_campaign, Instagram 5-8 hashtags, Facebook none, per-pillar accent
@@ -26,6 +32,7 @@ import { dirname, join } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { spawnSync } from 'node:child_process';
 import { shotUrlProblem } from './shot-guard.mjs';
+import { youtubeProblems, registryLinks } from '../youtube/youtube.mjs';
 import { RULES_FROM, POST_TAGS, REEL_TAGS, BRAND_TAG, CHANNEL, DEVYA_VIDEOS, PROJECT_LINKS, campaignSlug, captionLinks, linkProblems, linkBase, allowedPages, hashtags, keywordLed, namingProblems, altText, altProblems, youtubeId, videoUrl, isYouTubeHost, isDevyaHost, isProjectLink, projectSlug, requiredLinkProblems } from './seo.mjs';
 
 const SOCIAL = join(dirname(fileURLToPath(import.meta.url)), '..');
@@ -192,6 +199,19 @@ cal.days.forEach((d, i) => {
   }
 });
 
+// YouTube episodes: the same rules for every title, description and link.
+const ytFile = args.includes('--youtube') ? args[args.indexOf('--youtube') + 1] : join(SOCIAL, 'youtube', 'episodes.json');
+let ytCount = 0;
+if (existsSync(ytFile)) {
+  const reg = JSON.parse(readFileSync(ytFile, 'utf8'));
+  ytCount = reg.episodes.length;
+  for (const p of youtubeProblems(reg)) err({ date: p.where }, `youtube ${p.slug}: ${p.msg}`);
+  for (const [page, date] of registryLinks(reg)) if (!pages.has(page)) pages.set(page, date);
+  for (const ep of reg.episodes) {
+    if (ep.project && PROJECT_LINKS.has(ep.project) && /^https:\/\/www\.devya\.dev\/projects\//.test(ep.site || '')) listed.set(linkBase(ep.site), { link: PROJECT_LINKS.get(ep.project), date: (ep.publishAt || '').slice(0, 10) });
+  }
+}
+
 // curl rather than fetch: no redirect following, and it copes with this Mac's
 // dual-stack DNS where Node's fetch can time out connecting.
 if (live) {
@@ -246,7 +266,7 @@ const shown = only ? errors.filter((e) => e.date === only) : errors;
 if (only && !cal.days.some((d) => d.date === only)) console.log(`(no calendar day ${only})`);
 if (shown.length) {
   console.error(shown.map((e) => `✗ ${e.date}: ${e.msg}`).join('\n'));
-  console.error(`\n${shown.length} problem(s) in calendar.json${only ? ` for ${only}` : ''}`);
+  console.error(`\n${shown.length} problem(s) in calendar.json or the YouTube episodes${only ? ` for ${only}` : ''}`);
   process.exit(1);
 }
-console.log(`✓ calendar.json: ${only ? `${only} passes` : `${cal.days.length} days pass`} the quality gate${checkImages ? ' (images present)' : ''}${live ? ' (linked pages answer 200)' : ''}`);
+console.log(`✓ calendar.json: ${only ? `${only} passes` : `${cal.days.length} days pass`} the quality gate${checkImages ? ' (images present)' : ''}${live ? ' (linked pages answer 200)' : ''}${ytCount && !only ? `; ${ytCount} YouTube episodes pass` : ''}`);

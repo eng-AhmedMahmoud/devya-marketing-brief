@@ -1,0 +1,949 @@
+{
+ "slug": "claude-code-workflow",
+ "lang": "ar",
+ "endLine": "اللينكات في الوصف · اعمل subscribe",
+ "slides": {
+  "s1": {
+   "type": "hook",
+   "chapter": "المقدمة",
+   "kicker": "Claude Code بالعربي",
+   "title": "من *issue* لـ *Pull Request*",
+   "sub": "الـ workflow اللي بنشتغل بيه في Devya كل يوم",
+   "subKey": "sub",
+   "chips": [
+    {
+     "k": "c1",
+     "text": "issue"
+    },
+    {
+     "k": "c2",
+     "text": "plan"
+    },
+    {
+     "k": "c3",
+     "text": "test"
+    },
+    {
+     "k": "c4",
+     "text": "Pull Request"
+    }
+   ]
+  },
+  "s2": {
+   "type": "bullets",
+   "chapter": "Claude Code ده إيه؟",
+   "title": "Claude Code ده إيه أصلًا؟",
+   "items": [
+    {
+     "k": "a",
+     "text": "agent بيشتغل جُوّا الـ *terminal* بتاعك"
+    },
+    {
+     "k": "b",
+     "text": "بيدوّر في الـ repo كله، مش الملف اللي فاتحه بس"
+    },
+    {
+     "k": "c",
+     "text": "بيشغّل commands: الـ tests والـ build و git"
+    },
+    {
+     "k": "d",
+     "text": "وإنت اللي بتوافق على كل خطوة"
+    }
+   ]
+  },
+  "s3": {
+   "type": "terminal",
+   "chapter": "التسطيب و /init",
+   "title": "التسطيب: سطر واحد",
+   "lines": [
+    {
+     "k": "a",
+     "text": "$ curl -fsSL https://claude.ai/install.sh | bash"
+    },
+    {
+     "k": "b",
+     "text": "$ cd my-app"
+    },
+    {
+     "k": "c",
+     "text": "$ claude"
+    },
+    {
+     "k": "d",
+     "text": "> /init"
+    },
+    {
+     "k": "e",
+     "text": "✓ Created CLAUDE.md"
+    }
+   ]
+  },
+  "s4": {
+   "type": "code",
+   "chapter": "CLAUDE.md: ذاكرة المشروع",
+   "title": "CLAUDE.md: ذاكرة المشروع",
+   "file": "CLAUDE.md",
+   "lines": [
+    {
+     "k": "a",
+     "code": "# my-app: orders dashboard (Next.js + Postgres)"
+    },
+    {
+     "code": ""
+    },
+    {
+     "k": "b",
+     "code": "## Commands"
+    },
+    {
+     "k": "b",
+     "code": "- pnpm dev · pnpm test · pnpm lint"
+    },
+    {
+     "code": ""
+    },
+    {
+     "k": "c",
+     "code": "## Rules"
+    },
+    {
+     "k": "r1",
+     "code": "- Never commit .env files"
+    },
+    {
+     "k": "r2",
+     "code": "- Every change ships with a test"
+    },
+    {
+     "k": "r3",
+     "code": "- Never push to main: open a Pull Request"
+    }
+   ]
+  },
+  "s5": {
+   "type": "flow",
+   "chapter": "الـ workflow في ستة خطوات",
+   "title": "الـ workflow: ستة خطوات",
+   "nodes": [
+    {
+     "k": "a",
+     "label": "Issue",
+     "sub": "عايزين إيه"
+    },
+    {
+     "k": "b",
+     "label": "Plan",
+     "sub": "plan mode"
+    },
+    {
+     "k": "c",
+     "label": "Test",
+     "sub": "قبل الكود"
+    },
+    {
+     "k": "d",
+     "label": "Code",
+     "sub": "لحد ما يخضر"
+    },
+    {
+     "k": "e",
+     "label": "Review",
+     "sub": "الـ diff"
+    },
+    {
+     "k": "f",
+     "label": "PR",
+     "sub": "والـ CI"
+    }
+   ]
+  },
+  "s6": {
+   "type": "terminal",
+   "chapter": "Plan mode",
+   "title": "Plan mode: فكّر قبل ما تكتب",
+   "lines": [
+    {
+     "k": "a",
+     "text": "⏸ plan mode on (shift+tab to cycle)"
+    },
+    {
+     "k": "b",
+     "text": "> Add a branch filter to the orders page. Plan first."
+    },
+    {
+     "k": "c",
+     "text": "Plan:"
+    },
+    {
+     "k": "c",
+     "text": "  1. Read src/orders/query.ts and page.tsx"
+    },
+    {
+     "k": "c",
+     "text": "  2. Add a failing test for ?branch="
+    },
+    {
+     "k": "c",
+     "text": "  3. Filter in getOrders(), then the dropdown"
+    },
+    {
+     "k": "c",
+     "text": "  4. Run pnpm test and pnpm lint"
+    }
+   ]
+  },
+  "s7": {
+   "type": "code",
+   "chapter": "الـ test الأول",
+   "title": "الـ test قبل الكود",
+   "file": "orders.test.ts",
+   "lines": [
+    {
+     "k": "a",
+     "code": "test('filters orders by branch', async () => {"
+    },
+    {
+     "k": "b",
+     "code": "  const res = await getOrders({ branch: 'nasr-city' })"
+    },
+    {
+     "k": "c",
+     "code": "  expect(res.length).toBeGreaterThan(0)"
+    },
+    {
+     "k": "c",
+     "code": "  expect(res.every((o) => o.branch === 'nasr-city')).toBe(true)"
+    },
+    {
+     "k": "a",
+     "code": "})"
+    }
+   ]
+  },
+  "s8": {
+   "type": "terminal",
+   "chapter": "من أحمر لأخضر",
+   "title": "أحمر، وبعدين أخضر",
+   "lines": [
+    {
+     "k": "a",
+     "text": "$ pnpm test"
+    },
+    {
+     "k": "b",
+     "text": "✗ filters orders by branch (expected true, got false)"
+    },
+    {
+     "k": "c",
+     "text": "… editing src/orders/query.ts"
+    },
+    {
+     "k": "d",
+     "text": "$ pnpm test"
+    },
+    {
+     "k": "e",
+     "text": "✓ 42 passed (42)"
+    }
+   ]
+  },
+  "s9": {
+   "type": "bullets",
+   "chapter": "الـ review",
+   "title": "الـ review مسؤوليتك إنت",
+   "items": [
+    {
+     "k": "a",
+     "text": "اقرا الـ *diff* سطر سطر"
+    },
+    {
+     "k": "b",
+     "text": "اسأل: إيه اللي ممكن يبوظ؟"
+    },
+    {
+     "k": "c",
+     "text": "commit صغير برسالة واضحة"
+    }
+   ]
+  },
+  "s10": {
+   "type": "terminal",
+   "chapter": "الـ Pull Request",
+   "title": "الـ Pull Request",
+   "lines": [
+    {
+     "k": "a",
+     "text": "$ git switch -c feat/orders-branch-filter"
+    },
+    {
+     "k": "b",
+     "text": "$ git commit -m \"feat(orders): filter by branch\""
+    },
+    {
+     "k": "c",
+     "text": "$ gh pr create --fill"
+    },
+    {
+     "k": "d",
+     "text": "✓ Pull request #57 opened · CI running"
+    }
+   ]
+  },
+  "s11": {
+   "type": "bullets",
+   "chapter": "تلاتة حواجز أمان",
+   "title": "تلاتة حواجز أمان",
+   "items": [
+    {
+     "k": "a",
+     "text": "*Permissions*: بيستأذن قبل أي command"
+    },
+    {
+     "k": "b",
+     "text": "*pre-commit hook*: يوقف أي secret"
+    },
+    {
+     "k": "c",
+     "text": "*CI*: مفيش merge والـ check أحمر"
+    }
+   ]
+  },
+  "s12": {
+   "type": "compare",
+   "chapter": "أربعة أخطاء",
+   "title": "أربعة أخطاء بنشوفها كتير",
+   "left": {
+    "label": "الغلط",
+    "items": [
+     {
+      "k": "l1",
+      "text": "prompt كبير ومبهم"
+     },
+     {
+      "k": "l2",
+      "text": "من غير tests"
+     },
+     {
+      "k": "l3",
+      "text": "merge من غير ما تقرا"
+     },
+     {
+      "k": "l4",
+      "text": "الـ keys في الـ chat"
+     }
+    ]
+   },
+   "right": {
+    "label": "الصح",
+    "items": [
+     {
+      "k": "r1",
+      "text": "مهمة صغيرة، PR واحد"
+     },
+     {
+      "k": "r2",
+      "text": "test الأول"
+     },
+     {
+      "k": "r3",
+      "text": "اقرا الـ diff"
+     },
+     {
+      "k": "r4",
+      "text": "الـ secrets برّه الـ repo"
+     }
+    ]
+   }
+  },
+  "s13": {
+   "type": "bullets",
+   "chapter": "الخلاصة",
+   "title": "الخلاصة",
+   "items": [
+    {
+     "k": "a",
+     "text": "CLAUDE.md فيه قواعد المشروع"
+    },
+    {
+     "k": "b",
+     "text": "plan قبل الكود"
+    },
+    {
+     "k": "c",
+     "text": "test قبل الـ implementation"
+    },
+    {
+     "k": "d",
+     "text": "review للـ diff"
+    },
+    {
+     "k": "e",
+     "text": "Pull Request والـ CI أخضر"
+    }
+   ]
+  }
+ },
+ "beats": [
+  {
+   "id": "B01",
+   "slide": "s1",
+   "text": "في Devya، كل ميزة بنعملها بتمشي في نفس الطريق: issue، وبعدين plan، وبعدين test، وفي الآخر Pull Request. والكود نفسه بيكتبه Claude Code. بس الفكرة مش إنه بيكتب بسرعة، الفكرة إن كل خطوة فيه تقدر تراجعها.",
+   "marks": [
+    {
+     "at": "issue،",
+     "show": [
+      "c1"
+     ]
+    },
+    {
+     "at": "plan،",
+     "show": [
+      "c2"
+     ]
+    },
+    {
+     "at": "test،",
+     "show": [
+      "c3"
+     ]
+    },
+    {
+     "at": "Pull Request.",
+     "show": [
+      "c4"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "B02",
+   "slide": "s1",
+   "text": "في الفيديو ده نتكلم عن الـ workflow ده خطوة خطوة، من أول ما تنزّل Claude Code، لحد ما تفتح Pull Request نضيف. ونتكلم كمان عن أربعة أخطاء بيقع فيها ناس كتير وهم بيستخدموه.",
+   "show": [
+    "sub",
+    "c1",
+    "c2",
+    "c3",
+    "c4"
+   ]
+  },
+  {
+   "id": "B03",
+   "slide": "s2",
+   "text": "طيب، Claude Code ده إيه أصلًا؟ ده agent بيشتغل جُوّا الـ terminal بتاعك. يعني مش chat في المتصفح بتنسخ منه كود وتلزقه، لأ، ده قاعد في الـ repo معاك.",
+   "show": [
+    "a"
+   ],
+   "focus": "a"
+  },
+  {
+   "id": "B04",
+   "slide": "s2",
+   "text": "وبيقدر يدوّر في الـ repo كله، مش بس الملف اللي إنت فاتحه. فلما تقوله صلّح الـ bug ده، بيدوّر بنفسه على الملفات اللي ليها علاقة، ويفهم الكود متقسم إزاي.",
+   "show": [
+    "b"
+   ],
+   "focus": "b"
+  },
+  {
+   "id": "B04a",
+   "slide": "s2",
+   "text": "يعني مثلًا تقوله، فيه bug في صفحة الطلبات، التاريخ بيظهر غلط. فيدوّر على الكود اللي بيعرض التاريخ، ويلاقي مشكلة الـ timezone، ويقترح التصليح، ويشغّل الـ test.",
+   "show": [
+    "b"
+   ],
+   "focus": "b"
+  },
+  {
+   "id": "B05",
+   "slide": "s2",
+   "text": "وبيقدر يشغّل commands، يشغّل الـ tests، ويعمل build، ويستخدم git. وده اللي بيفرّقه عن أدوات كتير، إنه بيجرّب الكود اللي كتبه بنفسه، قبل ما يقولك خلصت.",
+   "show": [
+    "c"
+   ],
+   "focus": "c"
+  },
+  {
+   "id": "B06",
+   "slide": "s2",
+   "text": "والأهم، إن إنت اللي بتوافق على كل خطوة. قبل ما يعدّل ملف أو يشغّل command جديد، بيستأذنك. فإنت الـ reviewer، وهو اللي بيكتب. تمام؟",
+   "show": [
+    "d"
+   ],
+   "focus": "d"
+  },
+  {
+   "id": "B07",
+   "slide": "s3",
+   "text": "نبتدي بالتسطيب. على الـ Mac أو Linux، سطر واحد في الـ terminal بينزّله. وبعدين تدخل على فولدر المشروع بتاعك، وتكتب claude، وخلاص، هو شغال.",
+   "show": [
+    "a"
+   ],
+   "focus": "a",
+   "marks": [
+    {
+     "at": "تدخل على فولدر",
+     "show": [
+      "b"
+     ],
+     "focus": "b"
+    },
+    {
+     "at": "وتكتب claude",
+     "show": [
+      "c"
+     ],
+     "focus": "c"
+    }
+   ]
+  },
+  {
+   "id": "B08",
+   "slide": "s3",
+   "text": "وأول حاجة بنعملها في أي repo جديد، إننا نكتب /init. الأمر ده بيخلّي Claude Code يقرا المشروع، ويكتب ملف اسمه CLAUDE.md، فيه وصف المشروع والـ commands بتاعته.",
+   "show": [
+    "a",
+    "b",
+    "c"
+   ],
+   "marks": [
+    {
+     "at": "/init",
+     "show": [
+      "d"
+     ],
+     "focus": "d"
+    },
+    {
+     "at": "ويكتب ملف",
+     "show": [
+      "e"
+     ],
+     "focus": "e"
+    }
+   ]
+  },
+  {
+   "id": "B09",
+   "slide": "s4",
+   "text": "ملف CLAUDE.md هو ذاكرة المشروع. كل مرة تفتح فيها session جديدة، Claude Code بيقراه الأول. فبدل ما تشرح له كل مرة المشروع بيشتغل إزاي، بتكتبها مرة واحدة هنا.",
+   "show": [
+    "a"
+   ],
+   "focus": "a"
+  },
+  {
+   "id": "B10",
+   "slide": "s4",
+   "text": "أول جزء فيه هو الـ commands، إزاي نشغّل المشروع، وإزاي نشغّل الـ tests، وإزاي نعمل lint. وده بيخلّيه يجرّب شغله بنفس الطريقة اللي إنت بتجرّب بيها.",
+   "show": [
+    "b"
+   ],
+   "focus": "b"
+  },
+  {
+   "id": "B11",
+   "slide": "s4",
+   "text": "والجزء التاني هو القواعد، ودي أهم حاجة في الملف. عندنا مثلًا، ممنوع أي ملف env يتعمل له commit، وكل تعديل لازم يبقى معاه test، ومفيش push على main خالص، كله بيروح Pull Request.",
+   "show": [
+    "c"
+   ],
+   "focus": "c",
+   "marks": [
+    {
+     "at": "ممنوع أي ملف",
+     "show": [
+      "r1"
+     ],
+     "focus": "r1"
+    },
+    {
+     "at": "وكل تعديل",
+     "show": [
+      "r2"
+     ],
+     "focus": "r2"
+    },
+    {
+     "at": "ومفيش push",
+     "show": [
+      "r3"
+     ],
+     "focus": "r3"
+    }
+   ]
+  },
+  {
+   "id": "B12",
+   "slide": "s4",
+   "text": "وخلّي بالك، الملف ده مش بيتكتب مرة وخلاص. كل ما تلاقي Claude Code بيغلط نفس الغلطة مرتين، زوّد قاعدة في CLAUDE.md. وبعد أسبوعين، هتلاقي الغلطات دي اختفت.",
+   "show": [
+    "*"
+   ]
+  },
+  {
+   "id": "B12a",
+   "slide": "s4",
+   "text": "وفيه حاجة كمان مهمة، الـ context. كل session ليها ذاكرة محدودة، فلما تخلص مهمة وتبدأ في التانية، اكتب /clear. كده بيبدأ من جديد، ومعاه CLAUDE.md بس، من غير كلام المهمة اللي فاتت.",
+   "show": [
+    "*"
+   ]
+  },
+  {
+   "id": "B13",
+   "slide": "s5",
+   "text": "دلوقتي نيجي للـ workflow نفسه. ستة خطوات، وكل خطوة ليها هدف واضح. الـ issue، والـ plan، والـ test، والكود، والـ review، وفي الآخر الـ Pull Request.",
+   "marks": [
+    {
+     "at": "الـ issue",
+     "show": [
+      "a"
+     ]
+    },
+    {
+     "at": "والـ plan",
+     "show": [
+      "b"
+     ]
+    },
+    {
+     "at": "والـ test",
+     "show": [
+      "c"
+     ]
+    },
+    {
+     "at": "والكود",
+     "show": [
+      "d"
+     ]
+    },
+    {
+     "at": "والـ review",
+     "show": [
+      "e"
+     ]
+    },
+    {
+     "at": "الـ Pull Request.",
+     "show": [
+      "f"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "B14",
+   "slide": "s5",
+   "text": "الـ issue هو نقطة البداية. جملة أو اتنين، بتقول إحنا عايزين إيه، من غير ما تقول هنعمله إزاي. مثلًا، صفحة الطلبات محتاجة filter بالفرع.",
+   "show": [
+    "*"
+   ],
+   "focus": "a"
+  },
+  {
+   "id": "B15",
+   "slide": "s6",
+   "text": "أهم خطوة وإنت شغال مع Claude Code هي الـ plan. قبل ما يكتب ولا سطر، بنحطه في plan mode. بتدوس Shift وTab، فيدخل في mode بيقرا ويفكر بس، من غير ما يعدّل أي ملف.",
+   "show": [
+    "a"
+   ],
+   "focus": "a"
+  },
+  {
+   "id": "B16",
+   "slide": "s6",
+   "text": "بعد كده بنكتب له المهمة، ونقوله اعمل plan الأول. فيرجع لنا بخطة، هيقرا ملفات إيه، وهيكتب test إيه، وهيغيّر إيه بالظبط. وهنا بقى دورك إنت.",
+   "show": [
+    "b"
+   ],
+   "focus": "b",
+   "marks": [
+    {
+     "at": "فيرجع لنا بخطة",
+     "show": [
+      "c"
+     ],
+     "focus": "c"
+    }
+   ]
+  },
+  {
+   "id": "B17",
+   "slide": "s6",
+   "text": "اقرا الخطة كويس. لو فيها حاجة غلط، صحّحها دلوقتي، وده ببلاش. لأن غلطة في الخطة بتاخد منك دقيقة، لكن نفس الغلطة بعد ما يكتب عشرين ملف، بتاخد منك ساعة.",
+   "show": [
+    "*"
+   ],
+   "focus": "c"
+  },
+  {
+   "id": "B17a",
+   "slide": "s6",
+   "text": "ولو لقيت الخطة طويلة، أكتر من خمسة ستة خطوات، فده معناه إن المهمة كبيرة. قسّمها، وكل جزء يبقى في Pull Request لوحده. ده أسهل في الـ review، وأسهل لو حبيت ترجع فيه.",
+   "show": [
+    "*"
+   ],
+   "focus": "c"
+  },
+  {
+   "id": "B18",
+   "slide": "s7",
+   "text": "الخطوة التالتة هي الـ test، وبيتكتب قبل الكود. ليه؟ لأن الـ test هو الطريقة الوحيدة اللي Claude Code يعرف بيها إنه خلص فعلًا، مش إنه فاكر إنه خلص.",
+   "show": [
+    "a"
+   ],
+   "focus": "a"
+  },
+  {
+   "id": "B19",
+   "slide": "s7",
+   "text": "هنا مثلًا، test بسيط. بنطلب الطلبات بتاعة فرع مدينة نصر، ونتأكد إن كل طلب راجع فعلًا من الفرع ده. سطرين بس، لكن بيقفلوا الباب على أي فهم غلط للمهمة.",
+   "show": [
+    "a",
+    "b"
+   ],
+   "focus": "b",
+   "marks": [
+    {
+     "at": "ونتأكد إن كل طلب",
+     "show": [
+      "c"
+     ],
+     "focus": "c"
+    }
+   ]
+  },
+  {
+   "id": "B20",
+   "slide": "s8",
+   "text": "وأول ما الـ test يتكتب، بيفشل، وده المطلوب. لأن الـ test اللي بيعدّي من أول مرة، غالبًا مش بيختبر حاجة. بعد كده Claude Code يكتب الكود، ويشغّل الـ tests تاني.",
+   "show": [
+    "a",
+    "b"
+   ],
+   "focus": "b",
+   "marks": [
+    {
+     "at": "بعد كده Claude Code",
+     "show": [
+      "c"
+     ],
+     "focus": "c"
+    }
+   ]
+  },
+  {
+   "id": "B21",
+   "slide": "s8",
+   "text": "ويفضل يعدّل ويشغّل، لحد ما كل الـ tests تبقى خضرا. مش بس الـ test الجديد، كلهم. عشان نضمن إن الميزة الجديدة مأثّرتش على اللي كان شغال قبلها.",
+   "show": [
+    "d",
+    "e"
+   ],
+   "focus": "e"
+  },
+  {
+   "id": "B22",
+   "slide": "s9",
+   "text": "الخطوة الخامسة هي الـ review، ودي مسؤوليتك إنت، مش مسؤوليته هو. اقرا الـ diff سطر سطر، زي ما بتعمل review لكود زميلك بالظبط.",
+   "show": [
+    "a"
+   ],
+   "focus": "a"
+  },
+  {
+   "id": "B23",
+   "slide": "s9",
+   "text": "وفيه سؤال بنسأله دايمًا، إيه اللي ممكن يبوظ من التعديل ده؟ وساعات هو نفسه بيلاقي حالة ما خدش باله منها، ويزوّد لها test.",
+   "show": [
+    "b"
+   ],
+   "focus": "b"
+  },
+  {
+   "id": "B23a",
+   "slide": "s9",
+   "text": "وفيه حاجة بنعملها كتير، بنفتح session جديدة، ونطلب من Claude Code يعمل review للـ diff، كأنه reviewer تاني عمره ما شاف الكود ده. وساعات بيلاقي حاجات فاتتنا.",
+   "show": [
+    "b"
+   ],
+   "focus": "b"
+  },
+  {
+   "id": "B24",
+   "slide": "s9",
+   "text": "ولو كله تمام، commit صغير، برسالة واضحة بتقول إيه اللي اتغيّر. الـ commits الصغيرة بتخلّي أي مشكلة بعد كده سهل تلاقيها وترجع فيها.",
+   "show": [
+    "c"
+   ],
+   "focus": "c"
+  },
+  {
+   "id": "B25",
+   "slide": "s10",
+   "text": "وآخر خطوة، الـ Pull Request. Claude Code بيعمل branch جديدة، ويعمل الـ commit، ويستخدم GitHub CLI عشان يفتح الـ Pull Request بوصف كامل للتعديل.",
+   "marks": [
+    {
+     "at": "بيعمل branch",
+     "show": [
+      "a"
+     ],
+     "focus": "a"
+    },
+    {
+     "at": "ويعمل الـ commit",
+     "show": [
+      "b"
+     ],
+     "focus": "b"
+    },
+    {
+     "at": "ويستخدم GitHub",
+     "show": [
+      "c"
+     ],
+     "focus": "c"
+    }
+   ]
+  },
+  {
+   "id": "B26",
+   "slide": "s10",
+   "text": "والـ Pull Request ده مش شكليات. ده المكان اللي الـ CI بيجرّب فيه الكود تاني على سيرفر نضيف، والمكان اللي حد تاني من الفريق يقدر يراجع فيه التعديل.",
+   "show": [
+    "*"
+   ],
+   "focus": "d"
+  },
+  {
+   "id": "B27",
+   "slide": "s11",
+   "text": "طيب، إزاي نخلّي ده كله آمن؟ عندنا تلاتة حواجز. أولها الـ permissions، يعني Claude Code بيستأذن قبل أي command مش في القائمة اللي إنت وافقت عليها.",
+   "show": [
+    "a"
+   ],
+   "focus": "a"
+  },
+  {
+   "id": "B28",
+   "slide": "s11",
+   "text": "التاني، pre-commit hook على كل repo، بيعمل scan لأي secret أو key قبل الـ commit. ولو لقى حاجة، الـ commit بيقف، حتى لو الـ agent هو اللي بيحاول.",
+   "show": [
+    "b"
+   ],
+   "focus": "b"
+  },
+  {
+   "id": "B29",
+   "slide": "s11",
+   "text": "والتالت هو الـ CI. مفيش merge والـ check أحمر، مهما كان التعديل صغير. والقاعدة دي بتمشي علينا، وعلى Claude Code بالظبط.",
+   "show": [
+    "c"
+   ],
+   "focus": "c"
+  },
+  {
+   "id": "B30",
+   "slide": "s12",
+   "text": "فيه أربعة أخطاء بنشوفها كتير مع Claude Code. أولها، prompt كبير ومبهم، زي اعمل لي الـ app كله. والصح إنك تدي مهمة صغيرة وواضحة، تتعمل في Pull Request واحد.",
+   "show": [
+    "l1"
+   ],
+   "focus": "l1",
+   "marks": [
+    {
+     "at": "والصح إنك",
+     "show": [
+      "r1"
+     ],
+     "focus": "r1"
+    }
+   ]
+  },
+  {
+   "id": "B31",
+   "slide": "s12",
+   "text": "التاني، إنك تشتغل من غير tests، فمتعرفش هو خلص ولا لأ. والتالت، إنك تعمل merge من غير ما تقرا الـ diff، عشان شكله شغال.",
+   "show": [
+    "l2",
+    "r2"
+   ],
+   "focus": "l2",
+   "marks": [
+    {
+     "at": "والتالت",
+     "show": [
+      "l3",
+      "r3"
+     ],
+     "focus": "l3"
+    }
+   ]
+  },
+  {
+   "id": "B32",
+   "slide": "s12",
+   "text": "والرابع، وده أخطرهم، إنك تديله الـ API keys في الـ chat، أو تحطها في الكود. الـ secrets مكانها برّه الـ repo، في الـ Keychain أو في environment variables.",
+   "show": [
+    "l4"
+   ],
+   "focus": "l4",
+   "marks": [
+    {
+     "at": "الـ secrets مكانها",
+     "show": [
+      "r4"
+     ],
+     "focus": "r4"
+    }
+   ]
+  },
+  {
+   "id": "B33",
+   "slide": "s13",
+   "text": "نلخص. CLAUDE.md فيه قواعد المشروع، والـ plan قبل الكود، والـ test قبل الـ implementation، والـ review للـ diff، وPull Request عليه CI أخضر. وده الـ workflow كله.",
+   "marks": [
+    {
+     "at": "CLAUDE.md فيه",
+     "show": [
+      "a"
+     ]
+    },
+    {
+     "at": "والـ plan قبل",
+     "show": [
+      "b"
+     ]
+    },
+    {
+     "at": "والـ test قبل",
+     "show": [
+      "c"
+     ]
+    },
+    {
+     "at": "والـ review",
+     "show": [
+      "d"
+     ]
+    },
+    {
+     "at": "وPull Request",
+     "show": [
+      "e"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "B34",
+   "slide": "s13",
+   "text": "ولو عندك فريق، وعايز تعرف الكود بتاعكم واقف فين، Devya X-Ray بيعمل review للـ repo كله، ويطلّع لكم خطة تصليح مرتبة، واللينك في الوصف. ولو الفيديو ده فادك، اعمل subscribe، وأشوفكم إن شاء الله في الفيديو الجاي.",
+   "show": [
+    "*"
+   ]
+  }
+ ]
+}

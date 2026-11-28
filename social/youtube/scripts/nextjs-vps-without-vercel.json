@@ -1,0 +1,976 @@
+{
+ "slug": "nextjs-vps-without-vercel",
+ "lang": "ar",
+ "endLine": "اللينكات في الوصف · اعمل subscribe",
+ "slides": {
+  "s1": {
+   "type": "hook",
+   "chapter": "المقدمة",
+   "kicker": "Next.js على VPS",
+   "title": "ارفع مشروعك على *سيرفرك*، من غير Vercel",
+   "sub": "Docker و Caddy و HTTPS، خطوة خطوة",
+   "subKey": "sub",
+   "chips": [
+    {
+     "k": "c1",
+     "text": "This deployment is temporarily paused"
+    },
+    {
+     "k": "c2",
+     "text": "سيرفرات إحنا ماسكينها"
+    }
+   ]
+  },
+  "s2": {
+   "type": "terminal",
+   "chapter": "ليه بطّلنا Vercel",
+   "title": "اليوم اللي الموقع وقف فيه",
+   "file": "browser",
+   "lines": [
+    {
+     "k": "a",
+     "text": "GET https://our-app/ → 503"
+    },
+    {
+     "k": "a",
+     "text": ""
+    },
+    {
+     "k": "a",
+     "text": "✗ This deployment is temporarily paused"
+    }
+   ]
+  },
+  "s3": {
+   "type": "bullets",
+   "chapter": "ليه VPS؟",
+   "title": "ليه VPS؟",
+   "items": [
+    {
+     "k": "a",
+     "text": "فاتورة ثابتة، تعرفها من أول يوم"
+    },
+    {
+     "k": "b",
+     "text": "محدش يقدر يوقف موقعك"
+    },
+    {
+     "k": "c",
+     "text": "الداتا في البلد اللي عملاءك محتاجينها"
+    }
+   ]
+  },
+  "s4": {
+   "type": "bullets",
+   "chapter": "محتاجين إيه",
+   "title": "محتاجين إيه؟",
+   "items": [
+    {
+     "k": "a",
+     "text": "VPS: اتنين vCPU و 4 GB RAM"
+    },
+    {
+     "k": "b",
+     "text": "دومين على Cloudflare"
+    },
+    {
+     "k": "c",
+     "text": "Docker على السيرفر"
+    },
+    {
+     "k": "d",
+     "text": "الـ build في CI، أو swap لو السيرفر صغير"
+    }
+   ]
+  },
+  "s5": {
+   "type": "code",
+   "chapter": "output: standalone",
+   "title": "سطر واحد في next.config.ts",
+   "file": "next.config.ts",
+   "lines": [
+    {
+     "code": "import type { NextConfig } from 'next'"
+    },
+    {
+     "code": ""
+    },
+    {
+     "code": "const config: NextConfig = {"
+    },
+    {
+     "k": "a",
+     "code": "  output: 'standalone', // .next/standalone/server.js"
+    },
+    {
+     "code": "}"
+    },
+    {
+     "code": "export default config"
+    }
+   ]
+  },
+  "s6": {
+   "type": "code",
+   "chapter": "الـ Dockerfile: build",
+   "title": "Dockerfile: المرحلة الأولى والتانية",
+   "file": "Dockerfile",
+   "dense": true,
+   "lines": [
+    {
+     "k": "a",
+     "code": "FROM node:22-alpine AS deps"
+    },
+    {
+     "k": "a",
+     "code": "WORKDIR /app"
+    },
+    {
+     "k": "a",
+     "code": "COPY package.json pnpm-lock.yaml ./"
+    },
+    {
+     "k": "a",
+     "code": "RUN corepack enable && pnpm install --frozen-lockfile"
+    },
+    {
+     "code": ""
+    },
+    {
+     "k": "b",
+     "code": "FROM node:22-alpine AS build"
+    },
+    {
+     "k": "b",
+     "code": "WORKDIR /app"
+    },
+    {
+     "k": "b",
+     "code": "COPY --from=deps /app/node_modules ./node_modules"
+    },
+    {
+     "k": "b",
+     "code": "COPY . ."
+    },
+    {
+     "k": "b",
+     "code": "RUN corepack enable && pnpm build"
+    }
+   ]
+  },
+  "s7": {
+   "type": "code",
+   "chapter": "الـ Dockerfile: run",
+   "title": "Dockerfile: المرحلة التالتة",
+   "file": "Dockerfile",
+   "dense": true,
+   "lines": [
+    {
+     "code": "FROM node:22-alpine AS run"
+    },
+    {
+     "code": "WORKDIR /app"
+    },
+    {
+     "k": "e",
+     "code": "ENV NODE_ENV=production HOSTNAME=0.0.0.0 PORT=3000"
+    },
+    {
+     "k": "c",
+     "code": "COPY --from=build /app/.next/standalone ./"
+    },
+    {
+     "k": "c",
+     "code": "COPY --from=build /app/.next/static ./.next/static"
+    },
+    {
+     "k": "c",
+     "code": "COPY --from=build /app/public ./public"
+    },
+    {
+     "k": "f",
+     "code": "USER node"
+    },
+    {
+     "code": "EXPOSE 3000"
+    },
+    {
+     "code": "CMD [\"node\", \"server.js\"]"
+    }
+   ]
+  },
+  "s8": {
+   "type": "code",
+   "chapter": "compose و healthcheck",
+   "title": "compose.yaml",
+   "file": "compose.yaml",
+   "dense": true,
+   "lines": [
+    {
+     "code": "services:"
+    },
+    {
+     "k": "a",
+     "code": "  web:"
+    },
+    {
+     "k": "a",
+     "code": "    build: ."
+    },
+    {
+     "k": "a",
+     "code": "    restart: unless-stopped"
+    },
+    {
+     "k": "h",
+     "code": "    healthcheck:"
+    },
+    {
+     "k": "h",
+     "code": "      test: [\"CMD\", \"wget\", \"-qO-\", \"http://localhost:3000/api/health\"]"
+    },
+    {
+     "k": "h",
+     "code": "      interval: 30s"
+    },
+    {
+     "k": "b",
+     "code": "  caddy:"
+    },
+    {
+     "k": "b",
+     "code": "    image: caddy:2"
+    },
+    {
+     "k": "b",
+     "code": "    restart: unless-stopped"
+    },
+    {
+     "k": "p",
+     "code": "    ports: [\"80:80\", \"443:443\"]"
+    },
+    {
+     "k": "b",
+     "code": "    volumes: [\"./Caddyfile:/etc/caddy/Caddyfile\", \"caddy_data:/data\"]"
+    },
+    {
+     "code": "volumes: { caddy_data: {} }"
+    }
+   ]
+  },
+  "s9": {
+   "type": "code",
+   "chapter": "HTTPS مع Caddy",
+   "title": "HTTPS في تلاتة سطور",
+   "file": "Caddyfile",
+   "lines": [
+    {
+     "k": "a",
+     "code": "shop.example.com {"
+    },
+    {
+     "k": "b",
+     "code": "  reverse_proxy web:3000"
+    },
+    {
+     "k": "a",
+     "code": "}"
+    },
+    {
+     "code": ""
+    },
+    {
+     "k": "c",
+     "code": "# certificate from Let's Encrypt, renewed by Caddy"
+    }
+   ]
+  },
+  "s10": {
+   "type": "flow",
+   "chapter": "الـ DNS",
+   "title": "الطلب بيمشي إزاي",
+   "nodes": [
+    {
+     "k": "a",
+     "label": "Cloudflare",
+     "sub": "A record → IP السيرفر"
+    },
+    {
+     "k": "b",
+     "label": "Caddy",
+     "sub": "443 · HTTPS"
+    },
+    {
+     "k": "c",
+     "label": "web",
+     "sub": "Next.js :3000"
+    }
+   ]
+  },
+  "s11": {
+   "type": "terminal",
+   "chapter": "الـ deploy",
+   "title": "الـ deploy",
+   "lines": [
+    {
+     "k": "a",
+     "text": "$ ssh deploy@shop.example.com"
+    },
+    {
+     "k": "b",
+     "text": "$ git pull --ff-only"
+    },
+    {
+     "k": "c",
+     "text": "$ docker compose up -d --build"
+    },
+    {
+     "k": "d",
+     "text": "✓ web  Healthy"
+    },
+    {
+     "k": "e",
+     "text": "$ curl -sI https://shop.example.com | head -1"
+    },
+    {
+     "k": "f",
+     "text": "HTTP/2 200"
+    }
+   ]
+  },
+  "s12": {
+   "type": "bullets",
+   "chapter": "التحديثات والرجوع",
+   "title": "التحديثات والرجوع",
+   "items": [
+    {
+     "k": "a",
+     "text": "كل release ليه *tag* في git"
+    },
+    {
+     "k": "b",
+     "text": "الرجوع = checkout للـ tag اللي قبله"
+    },
+    {
+     "k": "c",
+     "text": "المشروع يكبر؟ الـ build في الـ CI"
+    }
+   ]
+  },
+  "s13": {
+   "type": "bullets",
+   "chapter": "تأمين السيرفر",
+   "title": "أول يوم على السيرفر",
+   "items": [
+    {
+     "k": "a",
+     "text": "SSH keys بس، من غير passwords"
+    },
+    {
+     "k": "b",
+     "text": "PermitRootLogin no"
+    },
+    {
+     "k": "c",
+     "text": "firewall: 22 و 80 و 443 بس"
+    },
+    {
+     "k": "d",
+     "text": "تحديثات الأمان أوتوماتيك"
+    },
+    {
+     "k": "e",
+     "text": "backup يومي برّه السيرفر"
+    }
+   ]
+  },
+  "s14": {
+   "type": "flow",
+   "chapter": "الخلاصة",
+   "title": "الخلاصة",
+   "nodes": [
+    {
+     "k": "a",
+     "label": "standalone",
+     "sub": "next.config"
+    },
+    {
+     "k": "b",
+     "label": "Dockerfile",
+     "sub": "تلاتة مراحل"
+    },
+    {
+     "k": "c",
+     "label": "compose",
+     "sub": "web + caddy"
+    },
+    {
+     "k": "d",
+     "label": "DNS",
+     "sub": "A record"
+    },
+    {
+     "k": "e",
+     "label": "deploy",
+     "sub": "up --build"
+    }
+   ]
+  }
+ },
+ "beats": [
+  {
+   "id": "B01",
+   "slide": "s1",
+   "text": "مشروع من مشاريعنا وقف فجأة، وبدل الموقع ظهرت رسالة واحدة، This deployment is temporarily paused. ومن اليوم ده، قررنا إن كل حاجة بنعملها في Devya تترفع على سيرفرات إحنا اللي ماسكينها.",
+   "marks": [
+    {
+     "at": "This deployment",
+     "show": [
+      "c1"
+     ],
+     "focus": "c1"
+    },
+    {
+     "at": "تترفع على سيرفرات",
+     "show": [
+      "c2"
+     ],
+     "focus": "c2"
+    }
+   ]
+  },
+  {
+   "id": "B02",
+   "slide": "s1",
+   "text": "في الفيديو ده نرفع مشروع Next.js على VPS خطوة خطوة، بـ Docker، وCaddy عشان الـ HTTPS، وفي الآخر نأمّن السيرفر. وكل ده من غير Vercel.",
+   "show": [
+    "sub",
+    "c1",
+    "c2"
+   ]
+  },
+  {
+   "id": "B03",
+   "slide": "s2",
+   "text": "الرسالة دي ظهرت لزوارنا مكان الموقع، ومكانش في إيدنا نعمل حاجة غير إننا نستنى. ساعتها فهمنا إن الموقع اللي مش على سيرفرك، مش موقعك بالكامل.",
+   "show": [
+    "a"
+   ],
+   "focus": "a"
+  },
+  {
+   "id": "B03a",
+   "slide": "s2",
+   "text": "ومش بنقول إن الـ platforms دي وحشة، هي مريحة جدًا في الأول. بس لما المشروع يبقى شغل حقيقي، وفيه عملاء معتمدين عليه، لازم يبقى في إيدك إنت.",
+   "show": [
+    "a"
+   ]
+  },
+  {
+   "id": "B04",
+   "slide": "s3",
+   "text": "طيب ليه VPS أصلًا؟ أول سبب، الفاتورة. سيرفر في حدود عشرة دولار في الشهر، بتعرف تكلفته من أول يوم، ومش بتتفاجئ بيها لو الموقع جاله traffic زيادة.",
+   "show": [
+    "a"
+   ],
+   "focus": "a"
+  },
+  {
+   "id": "B05",
+   "slide": "s3",
+   "text": "السبب التاني، محدش يقدر يوقف موقعك. مفيش limits مخفية، ومفيش حد يقرر إن حسابك عدّى حاجة، فيقفل الموقع وإنت نايم.",
+   "show": [
+    "b"
+   ],
+   "focus": "b"
+  },
+  {
+   "id": "B06",
+   "slide": "s3",
+   "text": "والتالت، الداتا. لو عملاءك في السعودية مثلًا، ساعات القانون بيطلب إن الداتا تفضل جُوّا المملكة. وعلى VPS، إنت اللي بتختار السيرفر في أنهي بلد. تمام؟",
+   "show": [
+    "c"
+   ],
+   "focus": "c"
+  },
+  {
+   "id": "B07",
+   "slide": "s4",
+   "text": "محتاجين إيه؟ VPS فيه اتنين vCPU وأربعة جيجا RAM، وده كفاية لأغلب المشاريع. ودومين على Cloudflare، وDocker متسطب على السيرفر.",
+   "show": [
+    "a"
+   ],
+   "focus": "a",
+   "marks": [
+    {
+     "at": "ودومين على",
+     "show": [
+      "b"
+     ],
+     "focus": "b"
+    },
+    {
+     "at": "وDocker متسطب",
+     "show": [
+      "c"
+     ],
+     "focus": "c"
+    }
+   ]
+  },
+  {
+   "id": "B08",
+   "slide": "s4",
+   "text": "وخلّي بالك من حاجة، الـ build بتاع Next.js بياكل RAM كتير. لو السيرفر صغير، يا إما تعمل swap، يا إما تعمل الـ build في الـ CI، وتبعت للسيرفر الـ image جاهزة.",
+   "show": [
+    "d"
+   ],
+   "focus": "d"
+  },
+  {
+   "id": "B08a",
+   "slide": "s4",
+   "text": "ولو مش متأكد السيرفر محتاج قد إيه، ابدأ بالمقاس الصغير، وراقب الـ RAM والـ CPU أسبوع. وتكبير السيرفر بعد كده بياخد دقايق عند أغلب الـ providers.",
+   "show": [
+    "*"
+   ],
+   "focus": "a"
+  },
+  {
+   "id": "B09",
+   "slide": "s5",
+   "text": "نبدأ من المشروع نفسه. في next.config.ts، بنزوّد سطر واحد، output standalone. والسطر ده بيخلّي Next.js يطلّع نسخة صغيرة من المشروع، فيها السيرفر والحاجات اللي محتاجها بس.",
+   "show": [],
+   "marks": [
+    {
+     "at": "output standalone",
+     "show": [
+      "a"
+     ],
+     "focus": "a"
+    }
+   ]
+  },
+  {
+   "id": "B10",
+   "slide": "s5",
+   "text": "يعني بدل ما تنقل الـ node_modules كلها على السيرفر، بتنقل فولدر صغير، فيه ملف اسمه server.js، وده اللي هنشغّله.",
+   "show": [
+    "a"
+   ],
+   "focus": "a"
+  },
+  {
+   "id": "B11",
+   "slide": "s6",
+   "text": "الـ Dockerfile لمشروع Next.js بنعمله على تلاتة مراحل. أول مرحلة بتسطب الـ dependencies بس، من الـ package.json والـ lock file.",
+   "show": [
+    "a"
+   ],
+   "focus": "a"
+  },
+  {
+   "id": "B12",
+   "slide": "s6",
+   "text": "والمرحلة التانية بتنسخ الكود، وتعمل pnpm build. وفايدة الفصل ده، إن Docker بيعمل cache للمرحلة الأولى، فلو الـ dependencies متغيّرتش، الـ build اللي بعده بيبقى أسرع بكتير.",
+   "show": [
+    "a",
+    "b"
+   ],
+   "focus": "b"
+  },
+  {
+   "id": "B13",
+   "slide": "s7",
+   "text": "والمرحلة التالتة هي اللي بتشتغل فعلًا. بناخد منها الـ standalone، والـ static، والـ public، وبس. من غير source code، ومن غير dev dependencies.",
+   "show": [
+    "c"
+   ],
+   "focus": "c"
+  },
+  {
+   "id": "B14",
+   "slide": "s7",
+   "text": "وفيه سطرين مهمين هنا. HOSTNAME بنخليه 0.0.0.0، عشان السيرفر يسمع من برّه الـ container. وUSER node، عشان التطبيق ميشتغلش بصلاحيات root.",
+   "show": [
+    "c",
+    "e"
+   ],
+   "focus": "e",
+   "marks": [
+    {
+     "at": "وUSER node",
+     "show": [
+      "f"
+     ],
+     "focus": "f"
+    }
+   ]
+  },
+  {
+   "id": "B14a",
+   "slide": "s7",
+   "text": "واستخدمنا node:22-alpine، عشان الـ image تبقى صغيرة. image أصغر يعني pull أسرع، و deploy أسرع، ومساحة أقل على السيرفر.",
+   "show": [
+    "c",
+    "e",
+    "f"
+   ]
+  },
+  {
+   "id": "B14b",
+   "slide": "s7",
+   "text": "وخلّي بالك، الـ environment variables الحساسة، زي الـ database password، متتكتبش في الـ Dockerfile خالص. بتتحط في ملف env على السيرفر، والـ compose هو اللي يقراه.",
+   "show": [
+    "c",
+    "e",
+    "f"
+   ],
+   "focus": "e"
+  },
+  {
+   "id": "B15",
+   "slide": "s8",
+   "text": "بعد كده ملف الـ compose. فيه خدمتين، web، وده التطبيق بتاعنا، وcaddy، وده اللي بيستقبل الـ traffic من برّه، على port 80 و port 443.",
+   "marks": [
+    {
+     "at": "web،",
+     "show": [
+      "a"
+     ],
+     "focus": "a"
+    },
+    {
+     "at": "وcaddy،",
+     "show": [
+      "b"
+     ],
+     "focus": "b"
+    },
+    {
+     "at": "على port",
+     "show": [
+      "p"
+     ],
+     "focus": "p"
+    }
+   ]
+  },
+  {
+   "id": "B16",
+   "slide": "s8",
+   "text": "لاحظ إن الـ web مفيهوش ports خالص، فمحدش يقدر يوصل له غير عن طريق caddy. ومعاه healthcheck، بيسأل التطبيق كل تلاتين ثانية، إنت شغال؟",
+   "show": [
+    "a",
+    "b",
+    "p"
+   ],
+   "focus": "a",
+   "marks": [
+    {
+     "at": "ومعاه healthcheck",
+     "show": [
+      "h"
+     ],
+     "focus": "h"
+    }
+   ]
+  },
+  {
+   "id": "B17",
+   "slide": "s8",
+   "text": "والـ healthcheck ده محتاج endpoint بسيط في التطبيق، يرجّع ok. ولو التطبيق وقع، Docker بيعرف، والـ restart policy بترجّعه تاني لوحدها.",
+   "show": [
+    "*"
+   ],
+   "focus": "h"
+  },
+  {
+   "id": "B17a",
+   "slide": "s8",
+   "text": "ولو عندك database، زي Postgres، بتتضاف كخدمة تالتة في نفس الملف، ومعاها volume، عشان الداتا متضيعش لما الـ container يتعمل له restart.",
+   "show": [
+    "*"
+   ]
+  },
+  {
+   "id": "B18",
+   "slide": "s9",
+   "text": "HTTPS لموقعك في تلاتة سطور، مع Caddy. الـ Caddyfile كله، اسم الدومين، وreverse_proxy على web، على port 3000. وبس.",
+   "show": [
+    "a"
+   ],
+   "focus": "a",
+   "marks": [
+    {
+     "at": "وreverse_proxy",
+     "show": [
+      "b"
+     ],
+     "focus": "b"
+    }
+   ]
+  },
+  {
+   "id": "B19",
+   "slide": "s9",
+   "text": "وCaddy بيطلب الـ certificate من Let's Encrypt لوحده، ويجدّده لوحده قبل ما يخلص. مفيش certbot، ومفيش cron jobs، ومفيش موقع يقع عشان شهادة انتهت.",
+   "show": [
+    "a",
+    "b",
+    "c"
+   ],
+   "focus": "c"
+  },
+  {
+   "id": "B20",
+   "slide": "s10",
+   "text": "بس عشان ده يشتغل، الـ DNS لازم يشاور على السيرفر. في Cloudflare، بتعمل A record للدومين بالـ IP بتاع السيرفر، وخلّيه DNS only في الأول، لحد ما Caddy ياخد الشهادة.",
+   "show": [
+    "a"
+   ],
+   "focus": "a"
+  },
+  {
+   "id": "B20a",
+   "slide": "s10",
+   "text": "وبعد ما الشهادة تطلع، تقدر تشغّل الـ proxy بتاع Cloudflare، وتخلّي الـ SSL mode على Full strict، عشان الطريق كله يبقى encrypted، من المتصفح لحد سيرفرك.",
+   "show": [
+    "a"
+   ],
+   "focus": "a"
+  },
+  {
+   "id": "B21",
+   "slide": "s10",
+   "text": "يعني الطلب بيمشي كده، المتصفح يسأل Cloudflare عن الدومين، ويوصل للسيرفر على 443، وCaddy يفك الـ HTTPS، ويبعت الطلب للتطبيق جُوّا الـ network بتاعة Docker.",
+   "show": [
+    "a"
+   ],
+   "focus": "a",
+   "marks": [
+    {
+     "at": "ويوصل للسيرفر",
+     "show": [
+      "b"
+     ],
+     "focus": "b"
+    },
+    {
+     "at": "ويبعت الطلب",
+     "show": [
+      "c"
+     ],
+     "focus": "c"
+    }
+   ]
+  },
+  {
+   "id": "B22",
+   "slide": "s11",
+   "text": "يلا نرفع. بنعمل ssh على السيرفر، وgit pull، وبعدين docker compose up بـ build. والأمر ده بيبني الـ image الجديدة، ويشغّلها مكان القديمة.",
+   "marks": [
+    {
+     "at": "بنعمل ssh",
+     "show": [
+      "a"
+     ],
+     "focus": "a"
+    },
+    {
+     "at": "وgit pull",
+     "show": [
+      "b"
+     ],
+     "focus": "b"
+    },
+    {
+     "at": "وبعدين docker",
+     "show": [
+      "c"
+     ],
+     "focus": "c"
+    }
+   ]
+  },
+  {
+   "id": "B23",
+   "slide": "s11",
+   "text": "وبعد ما الـ healthcheck يقول healthy، بنعمل curl على الدومين، ونتأكد إنه بيرد بـ 200. وكده الموقع شغال، على سيرفرك، وبـ HTTPS.",
+   "show": [
+    "a",
+    "b",
+    "c",
+    "d"
+   ],
+   "focus": "d",
+   "marks": [
+    {
+     "at": "بنعمل curl",
+     "show": [
+      "e"
+     ],
+     "focus": "e"
+    },
+    {
+     "at": "ونتأكد إنه",
+     "show": [
+      "f"
+     ],
+     "focus": "f"
+    }
+   ]
+  },
+  {
+   "id": "B23a",
+   "slide": "s11",
+   "text": "ولو حاجة مشتغلتش، أول أمر تكتبه docker compose logs، وتشوف آخر سطور الـ web. وأغلب المشاكل بتبان هناك من أول نظرة.",
+   "show": [
+    "*"
+   ],
+   "focus": "c"
+  },
+  {
+   "id": "B24",
+   "slide": "s12",
+   "text": "طيب والتحديثات؟ كل release بنعمل له tag في git. فلو حاجة باظت بعد الـ deploy، الرجوع هو checkout للـ tag اللي قبله، ونفس الأمر تاني. دقيقة، وترجع.",
+   "show": [
+    "a"
+   ],
+   "focus": "a",
+   "marks": [
+    {
+     "at": "الرجوع هو",
+     "show": [
+      "b"
+     ],
+     "focus": "b"
+    }
+   ]
+  },
+  {
+   "id": "B25",
+   "slide": "s12",
+   "text": "ولما المشروع يكبر، انقل الـ build للـ CI. الـ CI يبني الـ image، ويرفعها على registry، والسيرفر يعمل pull بس. وده بيخلّي الـ deploy ثواني بدل دقايق.",
+   "show": [
+    "c"
+   ],
+   "focus": "c"
+  },
+  {
+   "id": "B25a",
+   "slide": "s12",
+   "text": "وعلى سيرفر واحد، الـ deploy ده بيوقف الموقع ثانيتين تلاتة وهو بيبدّل الـ container. ولأغلب المشاريع ده مقبول. ولو مش مقبول، محتاج نسختين من الـ web ورا Caddy، وده موضوع فيديو تاني.",
+   "show": [
+    "*"
+   ],
+   "focus": "b"
+  },
+  {
+   "id": "B26",
+   "slide": "s13",
+   "text": "أول ما تستلم سيرفر جديد، فيه حاجات لازم تعملها قبل أي حاجة. أولها، الدخول بـ SSH keys بس، وتقفل الـ passwords خالص.",
+   "show": [
+    "a"
+   ],
+   "focus": "a"
+  },
+  {
+   "id": "B27",
+   "slide": "s13",
+   "text": "تانيًا، تمنع الدخول بـ root، وتعمل user عادي بصلاحيات محدودة. وتالتًا، firewall يفتح تلاتة ports بس، 22، و 80، و 443.",
+   "show": [
+    "b"
+   ],
+   "focus": "b",
+   "marks": [
+    {
+     "at": "وتالتًا",
+     "show": [
+      "c"
+     ],
+     "focus": "c"
+    }
+   ]
+  },
+  {
+   "id": "B28",
+   "slide": "s13",
+   "text": "ورابعًا، تحديثات الأمان تنزل أوتوماتيك. وخامسًا، backup يومي للداتا، يتحفظ برّه السيرفر. لأن الـ backup اللي على نفس السيرفر، بيضيع معاه.",
+   "show": [
+    "d"
+   ],
+   "focus": "d",
+   "marks": [
+    {
+     "at": "وخامسًا",
+     "show": [
+      "e"
+     ],
+     "focus": "e"
+    }
+   ]
+  },
+  {
+   "id": "B28a",
+   "slide": "s13",
+   "text": "وآخر حاجة، uptime monitor من برّه السيرفر، يبعت لك لو الموقع وقع. عشان تعرف إنت الأول، مش العميل.",
+   "show": [
+    "*"
+   ]
+  },
+  {
+   "id": "B29",
+   "slide": "s14",
+   "text": "نلخص. output standalone، وDockerfile على تلاتة مراحل، وcompose فيه web وcaddy، وA record على Cloudflare، وdocker compose up. خمسة خطوات، وموقعك على سيرفرك.",
+   "marks": [
+    {
+     "at": "output standalone",
+     "show": [
+      "a"
+     ]
+    },
+    {
+     "at": "وDockerfile",
+     "show": [
+      "b"
+     ]
+    },
+    {
+     "at": "وcompose",
+     "show": [
+      "c"
+     ]
+    },
+    {
+     "at": "وA record",
+     "show": [
+      "d"
+     ]
+    },
+    {
+     "at": "وdocker compose",
+     "show": [
+      "e"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "B29a",
+   "slide": "s14",
+   "text": "والـ Dockerfile والـ Caddyfile اللي شفناهم في الفيديو ده، هتلاقيهم مكتوبين في الوصف، عشان تنسخهم وتبدأ على طول.",
+   "show": [
+    "*"
+   ]
+  },
+  {
+   "id": "B30",
+   "slide": "s14",
+   "text": "ولو عايز حد يعمل لك ده على مشروعك، أو ينقل مشاريعك من Vercel لسيرفرات إنت اللي ماسكها، ده شغلنا في Devya، واللينك في الوصف. ولو الفيديو فادك، اعمل subscribe، وأشوفكم إن شاء الله في الفيديو الجاي.",
+   "show": [
+    "*"
+   ]
+  }
+ ]
+}

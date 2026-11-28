@@ -1,0 +1,38 @@
+{
+  "slug": "nextjs-dockerfile",
+  "kind": "short",
+  "title": "Dockerfile لمشروع Next.js في دقيقة: تلاتة مراحل",
+  "description": "Dockerfile لمشروع Next.js على تلاتة مراحل: dependencies، و build، و run صغيرة من غير source code، و HOSTNAME و USER node.\n\nالفيديو الكامل: https://www.youtube.com/watch?v=CrUNtzWcOvA\nDevya: https://www.devya.dev/solutions?utm_source=youtube&utm_medium=video&utm_campaign=yt-nextjs-vps-without-vercel&utm_content=short\n\nMusic: \"Lag\" by Loyalty Freak Music (CC0-1.0)\n\n#NextJS #BuildWithDevya #Shorts",
+  "tags": [
+    "Next.js",
+    "Dockerfile",
+    "Next.js Dockerfile",
+    "Docker بالعربي",
+    "standalone",
+    "Shorts",
+    "Devya"
+  ],
+  "playlist": {
+    "key": "ship-it",
+    "title": "Ship it yourself: ارفع مشروعك بنفسك"
+  },
+  "publishAt": "2026-12-04T19:00",
+  "timezone": "Africa/Cairo",
+  "category": "Education",
+  "language": "ar",
+  "madeForKids": false,
+  "duration": 48.38,
+  "chapters": null,
+  "captions": "captions.ar.srt",
+  "thumbnail": null,
+  "video": "social/youtube/build/nextjs-dockerfile/video.mp4",
+  "music": {
+    "title": "Lag",
+    "artist": "Loyalty Freak Music",
+    "licence": "CC0-1.0"
+  },
+  "voiceCredits": {
+    "chars": 5918,
+    "takes": 41
+  }
+}

@@ -1,0 +1,38 @@
+{
+  "slug": "claude-code-plan-mode",
+  "kind": "short",
+  "title": "Claude Code بالعربي: اعمل plan قبل أول سطر كود",
+  "description": "Claude Code بالعربي: plan mode بيخلّي الـ agent يقرا ويفكر قبل ما يعدّل أي ملف. غلطة في الخطة بدقيقة، وبعد الكود بساعة.\n\nالفيديو الكامل: https://www.youtube.com/watch?v=5p_u9F1PXLw\nالمشروع: https://xray.devya.dev/en?utm_source=youtube&utm_medium=video&utm_campaign=yt-claude-code-workflow&utm_content=short\nDevya: https://www.devya.dev/projects/devya-xray?utm_source=youtube&utm_medium=video&utm_campaign=yt-claude-code-workflow&utm_content=short\n\nMusic: \"Static Shoes\" by Loyalty Freak Music (CC0-1.0)\n\n#ClaudeCode #BuildWithDevya #Shorts",
+  "tags": [
+    "Claude Code",
+    "Claude Code بالعربي",
+    "plan mode",
+    "كلود كود",
+    "AI coding agent",
+    "Shorts",
+    "Devya"
+  ],
+  "playlist": {
+    "key": "claude-code",
+    "title": "Claude Code بالعربي"
+  },
+  "publishAt": "2026-11-29T19:00",
+  "timezone": "Africa/Cairo",
+  "category": "Education",
+  "language": "ar",
+  "madeForKids": false,
+  "duration": 40.81,
+  "chapters": null,
+  "captions": "captions.ar.srt",
+  "thumbnail": null,
+  "video": "social/youtube/build/claude-code-plan-mode/video.mp4",
+  "music": {
+    "title": "Static Shoes",
+    "artist": "Loyalty Freak Music",
+    "licence": "CC0-1.0"
+  },
+  "voiceCredits": {
+    "chars": 6629,
+    "takes": 44
+  }
+}
