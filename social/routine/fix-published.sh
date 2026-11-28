@@ -37,7 +37,20 @@ if [[ "$DRY" == "1" ]]; then printf '%s\n' "$FIX_JSON"; echo "dry run: nothing e
 
 TOOLS="mcp__claude-in-chrome__list_connected_browsers mcp__claude-in-chrome__select_browser mcp__claude-in-chrome__tabs_context_mcp mcp__claude-in-chrome__tabs_create_mcp mcp__claude-in-chrome__tabs_close_mcp mcp__claude-in-chrome__navigate mcp__claude-in-chrome__browser_batch mcp__claude-in-chrome__computer mcp__claude-in-chrome__find mcp__claude-in-chrome__get_page_text mcp__claude-in-chrome__read_page mcp__claude-in-chrome__form_input mcp__claude-in-chrome__javascript_tool mcp__claude-in-chrome__file_upload"
 PROMPT="$(printf 'Fix these published Devya posts in place. Follow the system prompt exactly and end with one RESULT_JSON line.\n\n--- BEGIN fix.json ---\n%s\n--- END fix.json ---\n' "$FIX_JSON")"
-OUT="$(CLAUDE_CONFIG_DIR="$SEAT_DIR" "$CLAUDE" --print --chrome --allowed-tools "$TOOLS" --append-system-prompt "$(cat social/routine/fix-published-worker.md)" "$PROMPT")"
+# Every step of the session is streamed (stream-json) to a log as it happens,
+# so a run that is killed part-way still shows which posts it changed: check
+# those and record them before re-running (posts recorded with by: fix are
+# skipped by the audit, so a re-run never edits or swaps them again).
+FIXLOG="$HOME/Library/Logs/devya-social-fix-$(date '+%Y%m%d-%H%M%S').jsonl"
+echo "session log: $FIXLOG"
+CLAUDE_CONFIG_DIR="$SEAT_DIR" "$CLAUDE" --print --chrome --output-format stream-json --verbose --allowed-tools "$TOOLS" \
+  --append-system-prompt "$(cat social/routine/fix-published-worker.md)" "$PROMPT" > "$FIXLOG"
+OUT="$(node -e '
+  const lines = require("fs").readFileSync(process.argv[1], "utf8").split("\n").filter(Boolean);
+  let text = "";
+  for (const l of lines) { try { const e = JSON.parse(l); if (e.type === "result" && typeof e.result === "string") text = e.result; } catch {} }
+  process.stdout.write(text);
+' "$FIXLOG")"
 printf '%s\n' "$OUT"
 RESULT="$(printf '%s\n' "$OUT" | grep -E '^RESULT_JSON:' | tail -n1 | sed 's/^RESULT_JSON: *//')"
 [[ -z "$RESULT" ]] && { echo "ERROR: no RESULT_JSON; check the posts by hand before re-running"; exit 1; }

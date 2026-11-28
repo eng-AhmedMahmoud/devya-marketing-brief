@@ -43,7 +43,8 @@ for (const [net, r] of Object.entries(results)) {
   let proofRel = '';
   if (proof && existsSync(proof)) {
     mkdirSync(join(SOCIAL, 'proof'), { recursive: true });
-    proofRel = `proof/${date}-${net}${extname(proof) || '.jpg'}`;
+    // A fix keeps the original publish proof and adds its own (<date>-<net>-fixed.<ext>).
+    proofRel = `proof/${date}-${net}${by === 'fix' ? '-fixed' : ''}${extname(proof) || '.jpg'}`;
     copyFileSync(proof, join(SOCIAL, proofRel));
   }
   if (status === 'published') {
