@@ -133,6 +133,14 @@ export function auditPublished(cal, state, { today }) {
         else if (CAN[key].media) actions.push({ type: 'replace-video', inPlace: true, media: file, note: 'Facebook replaces a Reel\'s video in place; the Reel gets a new ID, so record the new URL in state.json' });
         else actions.push({ type: 'repost-needed', inPlace: false, media: file, reason: `${NET[key].split(' ')[0]} cannot replace the ${media} of a published post`, recommendation: 'keep it: do not delete; future posts carry the new standard, and the caption fix (if any) is applied in place' });
       }
+      // Already fixed in place (fix-published.sh records by: 'fix'): its in-place
+      // actions are done, so a re-run never edits or swaps it again.
+      if (rec.by === 'fix') {
+        const left = actions.filter((a) => !a.inPlace);
+        const keep = issues.filter((i) => !i.startsWith('caption:') && !(CAN[key].media && i.startsWith('video rendered')));
+        rows.push({ date, network: key, label: NET[key], lang, url: rec.url, published: rec.at, fixedInPlace: true, issues: keep, actions: left });
+        continue;
+      }
       rows.push({ date, network: key, label: NET[key], lang, url: rec.url, published: rec.at, issues, actions });
     }
   }
@@ -159,10 +167,10 @@ function markdown({ today, published, scheduled }) {
   const edits = published.flatMap((r) => r.actions.filter((a) => a.type === 'edit-caption').map((a) => ({ r, a })));
   const swaps = published.flatMap((r) => r.actions.filter((a) => a.type === 'replace-video').map((a) => ({ r, a })));
   const reposts = published.flatMap((r) => r.actions.filter((a) => a.type === 'repost-needed').map((a) => ({ r, a })));
-  out.push(`## Published posts: ${published.length}`, '', `- Caption edits in place: ${edits.length}`, `- Facebook Reel videos to replace in place: ${swaps.length} (Facebook reissues the Reel under a new ID, so its URL changes and its view count restarts)`, `- Need delete and repost to fix the media (not done; recommendation below): ${reposts.length}`, `- Stories (expire, cannot be edited): ${published.filter((r) => r.network.endsWith('_story')).length}`, '');
+  out.push(`## Published posts: ${published.length}`, '', `- Caption edits in place: ${edits.length}`, `- Facebook Reel videos to replace in place: ${swaps.length} (Facebook reissues the Reel under a new ID, so its URL changes and its view count restarts)`, `- Need delete and repost to fix the media (not done; recommendation below): ${reposts.length}`, `- Stories (expire, cannot be edited): ${published.filter((r) => r.network.endsWith('_story')).length}`, `- Already fixed in place (fix-published.sh): ${published.filter((r) => r.fixedInPlace).length}`, '');
   out.push('| Date | Post | Lang | Issues | Fix |', '|---|---|---|---|---|');
   for (const r of published) {
-    const fix = r.actions.map((a) => ({ 'edit-caption': 'edit caption in place', 'replace-video': 'replace video in place', 'repost-needed': 'media: repost needed (keep, see below)', none: 'none (story)' }[a.type])).join('; ') || 'none';
+    const fix = (r.fixedInPlace ? 'fixed in place; ' : '') + r.actions.map((a) => ({ 'edit-caption': 'edit caption in place', 'replace-video': 'replace video in place', 'repost-needed': 'media: repost needed (keep, see below)', none: 'none (story)' }[a.type])).join('; ') || 'none';
     out.push(`| ${r.date} | [${r.label}](${r.url === 'posted' ? '#' : r.url}) | ${String(r.lang || '').toUpperCase()} | ${r.issues.join('<br>') || 'passes'} | ${fix} |`);
   }
   out.push('', '## Caption edits (exact new text)', '');

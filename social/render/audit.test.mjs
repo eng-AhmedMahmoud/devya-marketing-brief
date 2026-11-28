@@ -15,7 +15,7 @@ const rows = auditPublished(CAL, STATE, { today: '2026-11-28' });
 test('every published post is audited, and every one made before 2026-11-28 falls short (old template or silent video)', () => {
   const published = Object.values(STATE.published).reduce((n, nets) => n + Object.keys(nets).length, 0);
   assert.equal(rows.length, published);
-  for (const r of rows.filter((x) => x.date < '2026-11-28')) assert.ok(r.issues.length, `${r.date} ${r.network}`);
+  for (const r of rows.filter((x) => x.date < '2026-11-28' && !x.fixedInPlace)) assert.ok(r.issues.length, `${r.date} ${r.network}`);
 });
 
 test('corrected captions pass the link checker and hashtag rules, keep the copy and only touch links and hashtags', () => {
@@ -52,4 +52,19 @@ test('fixHashtags trims to the cap with #BuildWithDevya first, and adds tags whe
   assert.equal(fixHashtags('Hi.\n\n#A #B #C #D #E #BuildWithDevya #F', [3, 5]), 'Hi.\n\n#BuildWithDevya #A #B #C #D');
   assert.equal(fixHashtags('Hi.\nhttps://x.y', [1, 3], ['#One', '#Two']), 'Hi.\nhttps://x.y\n\n#BuildWithDevya #One #Two');
   assert.equal(hashtags(fixHashtags('Line\n\n#BuildWithDevya #A', [3, 5], ['#X'])).length, 2, 'never invents tags beyond the caption\'s own');
+});
+
+test('a post already fixed in place (by: fix) is never edited or swapped again', () => {
+  const state = structuredClone(STATE);
+  const [date, nets] = Object.entries(state.published).find(([, n]) => n.facebook_reel && n.facebook);
+  nets.facebook_reel = { ...nets.facebook_reel, url: 'https://www.facebook.com/reel/1', by: 'fix' };
+  nets.facebook = { ...nets.facebook, by: 'fix' };
+  const r = auditPublished(CAL, state, { today: '2026-11-28' });
+  const reel = r.find((x) => x.date === date && x.network === 'facebook_reel');
+  const post = r.find((x) => x.date === date && x.network === 'facebook');
+  assert.equal(reel.fixedInPlace, true);
+  assert.deepEqual(reel.actions, []);
+  assert.deepEqual(reel.issues, []);
+  assert.ok(post.actions.every((a) => !a.inPlace), 'the feed post keeps only its repost-needed note');
+  assert.ok(post.actions.some((a) => a.type === 'repost-needed'));
 });
