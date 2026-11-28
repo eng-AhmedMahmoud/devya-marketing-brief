@@ -8,19 +8,25 @@
 //   node validate.mjs --date D        report only day D's problems (the routine's gate)
 //   node validate.mjs --images        also require each day's three PNGs
 //   node validate.mjs --live          also fetch every linked page: it must answer
-//                                     200 directly (no redirect, no error)
+//                                     200 directly (no redirect, no error), and each
+//                                     project page must still list the project link
+//                                     the posts use (social/projects.json)
 //   node validate.mjs --calendar F    validate file F instead of social/calendar.json
 //
 // Days before seo.RULES_FROM (2026-11-28) were published under the older rules
 // (no utm_campaign, Instagram 5-8 hashtags, Facebook none, per-pillar accent
 // colours) and are checked against those, so the published record stays as is.
+// From RULES_FROM on, every caption (feed posts and videos, every network,
+// plain text on Instagram) carries a devya.dev link, plus the project's own
+// link on a day about a project (seo.requiredLinkProblems): the routine's
+// pre-publish gate (--date) holds the day when either is missing.
 
 import { readFileSync, existsSync } from 'node:fs';
 import { dirname, join } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { spawnSync } from 'node:child_process';
 import { shotUrlProblem } from './shot-guard.mjs';
-import { RULES_FROM, POST_TAGS, REEL_TAGS, BRAND_TAG, CHANNEL, DEVYA_VIDEOS, campaignSlug, captionLinks, linkProblems, linkBase, allowedPages, hashtags, keywordLed, namingProblems, altText, altProblems, youtubeId, videoUrl, isYouTubeHost } from './seo.mjs';
+import { RULES_FROM, POST_TAGS, REEL_TAGS, BRAND_TAG, CHANNEL, DEVYA_VIDEOS, PROJECT_LINKS, campaignSlug, captionLinks, linkProblems, linkBase, allowedPages, hashtags, keywordLed, namingProblems, altText, altProblems, youtubeId, videoUrl, isYouTubeHost, isDevyaHost, isProjectLink, projectSlug, requiredLinkProblems } from './seo.mjs';
 
 const SOCIAL = join(dirname(fileURLToPath(import.meta.url)), '..');
 const args = process.argv.slice(2);
@@ -45,6 +51,7 @@ const LATIN = /[A-Za-z]/g;
 const errors = [];
 const err = (d, m) => errors.push({ date: d?.date ?? '?', msg: m });
 const pages = new Map(); // link base -> first day that uses it (for --live)
+const listed = new Map(); // project page -> {link, date}: the page must list the link (for --live)
 
 let prev = '';
 const topics = [];
@@ -101,6 +108,7 @@ cal.days.forEach((d, i) => {
     if (!DEVYA_VIDEOS.has(id) || d.video !== videoUrl(id)) err(d, `video ${d.video} must be ${id ? videoUrl(id) : 'a canonical watch URL'} of a video on Devya's channel (social/videos.json)`);
   }
   const okPages = allowedPages(d);
+  if (modern && projectSlug(d) && PROJECT_LINKS.has(projectSlug(d))) listed.set(linkBase(d.source), { link: PROJECT_LINKS.get(projectSlug(d)), date: d.date });
 
   // Posts.
   const p = d.posts || {};
@@ -131,6 +139,7 @@ cal.days.forEach((d, i) => {
         if (!okPages.has(linkBase(url))) err(d, `${net}: ${linkBase(url)} is not this day's page (source, /contact, the product shown, or day.links)`);
         if (!pages.has(linkBase(url))) pages.set(linkBase(url), d.date);
       }
+      for (const pr of requiredLinkProblems(d, s)) err(d, `${net}: ${pr}`);
       for (const pr of altProblems(altText(d, post.lang))) err(d, `${net}: ${pr}`);
     } else {
       for (const url of urls) {
@@ -139,9 +148,10 @@ cal.days.forEach((d, i) => {
       }
     }
     if (net === 'linkedin' && d.linkedinLink !== (urls.length > 0)) err(d, `linkedin: linkedinLink=${d.linkedinLink} but ${urls.length} link(s)`);
-    if (net === 'facebook' && modern && urls.length !== 1) err(d, `facebook: needs exactly one link at the end, has ${urls.length}`);
-    if (modern && d.video && (net === 'facebook' || net === 'linkedin') && urls.some((u) => linkBase(u) !== linkBase(d.video))) err(d, `${net}: a video day links its video (${d.video})`);
-    if (net === 'instagram' && urls.length) err(d, 'instagram: links are not clickable, say "link in bio"');
+    if (modern && urls.length > 3) err(d, `${net}: ${urls.length} links, at most 3 (the project's link, a devya.dev page, the video)`);
+    if (modern && d.video && (net === 'facebook' || net === 'linkedin') && !urls.some((u) => linkBase(u) === linkBase(d.video))) err(d, `${net}: a video day links its video (${d.video})`);
+    // Older days said "link in bio" on Instagram; since RULES_FROM the links go in as plain text.
+    if (!modern && net === 'instagram' && urls.length) err(d, 'instagram: links are not clickable, say "link in bio"');
     const body = s.replace(/#[\p{L}\p{N}_]+/gu, '').replace(/https?:\/\/\S+/g, '');
     const ar = (body.match(ARABIC) || []).length;
     const la = (body.match(LATIN) || []).length;
@@ -171,11 +181,12 @@ cal.days.forEach((d, i) => {
     const [lo, hi] = (modern ? REEL_TAGS : LEGACY_REEL_TAGS)[net];
     const n = hashtags(cap).length;
     if (n < lo || n > hi) err(d, `reels.${net}: ${n} hashtags, want ${lo}-${hi}`);
+    if (modern) for (const pr of requiredLinkProblems(d, cap)) err(d, `reels.${net}: ${pr}`);
     for (const url of captionLinks(cap)) {
       if (modern) {
-        if (net !== 'facebook') err(d, `reels.${net}: no links on ${net} video captions (${url})`);
-        for (const pr of linkProblems(url, { platform: 'facebook', campaign, content: 'reel' })) err(d, `reels.${net}: ${pr}`);
+        for (const pr of linkProblems(url, { platform: net, campaign, content: 'reel' })) err(d, `reels.${net}: ${pr}`);
         if (!okPages.has(linkBase(url))) err(d, `reels.${net}: ${linkBase(url)} is not this day's page`);
+        if (!pages.has(linkBase(url))) pages.set(linkBase(url), d.date);
       } else if (net !== 'facebook' || !url.startsWith('https://www.devya.dev/') || !url.includes('utm_source=facebook&utm_medium=social')) err(d, `reels.${net}: bad link ${url}`);
     }
   }
@@ -200,11 +211,34 @@ if (live) {
       else if (!String(meta.author_url || '').endsWith(`/${CHANNEL.handle}`)) err({ date }, `${page} belongs to ${meta.author_url}, not ${CHANNEL.url}`);
       continue;
     }
+    // A project's own app (projects.json, off devya.dev) is linked exactly as its
+    // devya.dev page lists it; it may redirect within its own host (a locale
+    // page such as /ar) as long as it lands on a 200.
+    const host = new URL(page).hostname;
+    if (!isDevyaHost(host) && isProjectLink(page)) {
+      const pr = spawnSync('curl', ['-sS', '-L', '--max-redirs', '5', '-o', '/dev/null', '-m', '25', '--retry', '2', '-A', 'devya-social-validate', '-w', '%{http_code} %{url_effective}', page], { encoding: 'utf8' });
+      const [code, final] = (pr.stdout || '').trim().split(' ');
+      if (pr.status !== 0) err({ date }, `${page} could not be fetched: ${(pr.stderr || '').trim()}`);
+      else if (code !== '200') err({ date }, `${page} answers HTTP ${code}`);
+      else if (new URL(final).hostname !== host) err({ date }, `${page} redirects off its host to ${final}`);
+      continue;
+    }
     const r = spawnSync('curl', ['-sS', '-o', '/dev/null', '-m', '25', '--retry', '2', '-A', 'devya-social-validate', '-w', '%{http_code} %{redirect_url}', page], { encoding: 'utf8' });
     const [code, location] = (r.stdout || '').trim().split(' ');
     if (r.status !== 0) err({ date }, `${page} could not be fetched: ${(r.stderr || '').trim()}`);
     else if (/^3/.test(code)) err({ date }, `${page} redirects (${code}) to ${location}: link the final page`);
     else if (code !== '200') err({ date }, `${page} answers HTTP ${code}`);
+  }
+}
+
+// Each project page must still list the link the posts give for the project.
+if (live) {
+  for (const [page, { link, date }] of listed) {
+    if (only && date !== only) continue;
+    const r = spawnSync('curl', ['-sS', '-m', '25', '--retry', '2', '-A', 'devya-social-validate', page], { encoding: 'utf8', maxBuffer: 32 * 1024 * 1024 });
+    if (r.status !== 0) { err({ date }, `${page} could not be fetched: ${(r.stderr || '').trim()}`); continue; }
+    const hrefs = [...(r.stdout || '').matchAll(/href="(https?:\/\/[^"]+)"/g)].map((m) => m[1].replace(/&amp;/g, '&'));
+    if (!hrefs.some((h) => { try { return linkBase(h) === linkBase(link); } catch { return false; } })) err({ date }, `${page} no longer lists ${link}: update social/projects.json to the link the page shows`);
   }
 }
 

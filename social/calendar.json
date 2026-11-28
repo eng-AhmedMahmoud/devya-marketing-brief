@@ -1066,7 +1066,7 @@
       "topic": "Stop adding Postgres indexes by guesswork: EXPLAIN ANALYZE",
       "source": "https://www.devya.dev/blogs/postgres-explain-analyze-query-plans-indexes-field-notes",
       "basis": "Devya blog field notes: reading PostgreSQL EXPLAIN ANALYZE",
-      "linkedinLink": false,
+      "linkedinLink": true,
       "skip": false,
       "card": {
         "en": {
@@ -1090,7 +1090,7 @@
       "posts": {
         "linkedin": {
           "lang": "en",
-          "caption": "We used to add PostgreSQL indexes the way most teams do: someone says a page is slow, someone adds an index, everyone hopes.\n\nOur process now has three steps:\n1. Find the costliest query in pg_stat_statements, ordered by total execution time rather than the slowest single run. A fast query called a million times can cost more than a slow report run once a day.\n2. Run EXPLAIN (ANALYZE, BUFFERS) on it and read what the planner actually did: sequential scans on big tables, row estimates that are far off, sorts spilling to disk.\n3. Add the one index the plan asks for, then run it again and compare.\n\nEvery index slows down writes and costs disk. Each one should come with the plan that justified it.\n\n#PostgreSQL #Database #BackendEngineering #BuildWithDevya"
+          "caption": "We used to add PostgreSQL indexes the way most teams do: someone says a page is slow, someone adds an index, everyone hopes.\n\nOur process now has three steps:\n1. Find the costliest query in pg_stat_statements, ordered by total execution time rather than the slowest single run. A fast query called a million times can cost more than a slow report run once a day.\n2. Run EXPLAIN (ANALYZE, BUFFERS) on it and read what the planner actually did: sequential scans on big tables, row estimates that are far off, sorts spilling to disk.\n3. Add the one index the plan asks for, then run it again and compare.\n\nEvery index slows down writes and costs disk. Each one should come with the plan that justified it.\n\nDetails: https://www.devya.dev/blogs/postgres-explain-analyze-query-plans-indexes-field-notes?utm_source=linkedin&utm_medium=social&utm_campaign=2026-11-28-stop-adding-postgres-indexes-by-guesswork\n\n#PostgreSQL #Database #BackendEngineering #BuildWithDevya"
         },
         "facebook": {
           "lang": "en",
@@ -1098,7 +1098,7 @@
         },
         "instagram": {
           "lang": "ar",
-          "caption": "توقف عن إضافة الفهارس إلى قاعدة البيانات بالتخمين.\nابحث أولًا عن الاستعلام الأعلى تكلفة إجمالًا، ثم اقرأ خطة التنفيذ الفعلية عبر EXPLAIN ANALYZE، وأضف الفهرس الذي تطلبه الخطة فقط، ثم قِس من جديد.\nالرابط في البايو.\n\n#قواعد_البيانات #برمجة #تطوير_البرمجيات #تقنية #BuildWithDevya"
+          "caption": "توقف عن إضافة الفهارس إلى قاعدة البيانات بالتخمين.\nابحث أولًا عن الاستعلام الأعلى تكلفة إجمالًا، ثم اقرأ خطة التنفيذ الفعلية عبر EXPLAIN ANALYZE، وأضف الفهرس الذي تطلبه الخطة فقط، ثم قِس من جديد.\n\nالتفاصيل: https://www.devya.dev/blogs/postgres-explain-analyze-query-plans-indexes-field-notes?utm_source=instagram&utm_medium=social&utm_campaign=2026-11-28-stop-adding-postgres-indexes-by-guesswork\n\n#قواعد_البيانات #برمجة #تطوير_البرمجيات #تقنية #BuildWithDevya"
         }
       },
       "reel": {
@@ -1122,7 +1122,7 @@
       "reels": {
         "linkedin": {
           "lang": "en",
-          "caption": "Stop adding indexes by guesswork. Read the plan first.\n\n#PostgreSQL #Database #BackendEngineering"
+          "caption": "Stop adding indexes by guesswork. Read the plan first.\n\nDetails: https://www.devya.dev/blogs/postgres-explain-analyze-query-plans-indexes-field-notes?utm_source=linkedin&utm_medium=social&utm_campaign=2026-11-28-stop-adding-postgres-indexes-by-guesswork&utm_content=reel\n\n#PostgreSQL #Database #BackendEngineering"
         },
         "facebook": {
           "lang": "en",
@@ -1130,7 +1130,7 @@
         },
         "instagram": {
           "lang": "ar",
-          "caption": "توقف عن إضافة الفهارس بالتخمين. اقرأ خطة التنفيذ أولًا.\n\n#قواعد_البيانات #برمجة #تطوير_البرمجيات #تقنية #BuildWithDevya"
+          "caption": "توقف عن إضافة الفهارس بالتخمين. اقرأ خطة التنفيذ أولًا.\n\nالتفاصيل: https://www.devya.dev/blogs/postgres-explain-analyze-query-plans-indexes-field-notes?utm_source=instagram&utm_medium=social&utm_campaign=2026-11-28-stop-adding-postgres-indexes-by-guesswork&utm_content=reel\n\n#قواعد_البيانات #برمجة #تطوير_البرمجيات #تقنية #BuildWithDevya"
         }
       },
       "stories": {
@@ -1149,7 +1149,7 @@
       "topic": "Ask for repo, staging and admin access from sprint one",
       "source": "https://www.devya.dev/solutions",
       "basis": "devya-market-intel latest guide.avoid: backend, database and logs kept closed to the client during the build; give read access to repo, staging and admin from the first sprint, even on fixed price",
-      "linkedinLink": false,
+      "linkedinLink": true,
       "card": {
         "en": {
           "kicker": "From sprint one",
@@ -1175,7 +1175,7 @@
       "posts": {
         "linkedin": {
           "lang": "en",
-          "caption": "If the only way you see your product is a demo your vendor prepares, you're seeing what they chose to show you.\n\nAsk for access from the first sprint, and write it into the contract:\n→ Read access to the code repository. You don't have to read the code yourself; someone you trust can.\n→ A staging link you can open on any day, not only on demo day.\n→ Your own login to the admin panel, so you can try the real flows yourself.\n\nThis applies to fixed-price work too. A fixed price fixes the cost. It doesn't remove your right to see what you're paying for.\n\nAccess is cheap to give. If the answer is \"after launch\", you'll find the problems at the point where they cost the most to fix.\n\nA vendor who is confident in the work says yes on the first call.\n\n#Outsourcing #Founders #ProductDevelopment #BuildWithDevya"
+          "caption": "If the only way you see your product is a demo your vendor prepares, you're seeing what they chose to show you.\n\nAsk for access from the first sprint, and write it into the contract:\n→ Read access to the code repository. You don't have to read the code yourself; someone you trust can.\n→ A staging link you can open on any day, not only on demo day.\n→ Your own login to the admin panel, so you can try the real flows yourself.\n\nThis applies to fixed-price work too. A fixed price fixes the cost. It doesn't remove your right to see what you're paying for.\n\nAccess is cheap to give. If the answer is \"after launch\", you'll find the problems at the point where they cost the most to fix.\n\nA vendor who is confident in the work says yes on the first call.\n\nDetails: https://www.devya.dev/solutions?utm_source=linkedin&utm_medium=social&utm_campaign=2026-11-29-ask-for-repo-staging-and-admin-access-from\n\n#Outsourcing #Founders #ProductDevelopment #BuildWithDevya"
         },
         "facebook": {
           "lang": "ar",
@@ -1183,7 +1183,7 @@
         },
         "instagram": {
           "lang": "en",
-          "caption": "Demos show what your vendor picks.\nAsk for three things from sprint one: read access to the code repository, a staging link you can open any day, and your own admin login. A fixed price fixes the cost, not your right to see the work.\nSave this for your next contract. Link in bio.\n\n#BuildWithDevya #Founders #Startups #Outsourcing #SoftwareDevelopment"
+          "caption": "Demos show what your vendor picks.\nAsk for three things from sprint one: read access to the code repository, a staging link you can open any day, and your own admin login. A fixed price fixes the cost, not your right to see the work.\nSave this for your next contract.\n\nDetails: https://www.devya.dev/solutions?utm_source=instagram&utm_medium=social&utm_campaign=2026-11-29-ask-for-repo-staging-and-admin-access-from\n\n#BuildWithDevya #Founders #Startups #Outsourcing #SoftwareDevelopment"
         }
       },
       "reel": {
@@ -1210,7 +1210,7 @@
       "reels": {
         "linkedin": {
           "lang": "en",
-          "caption": "Only seeing your app in demos? Ask for repo, staging and admin access from sprint one.\n\n#Outsourcing #Founders #ProductDevelopment"
+          "caption": "Only seeing your app in demos? Ask for repo, staging and admin access from sprint one.\n\nDetails: https://www.devya.dev/solutions?utm_source=linkedin&utm_medium=social&utm_campaign=2026-11-29-ask-for-repo-staging-and-admin-access-from&utm_content=reel\n\n#Outsourcing #Founders #ProductDevelopment"
         },
         "facebook": {
           "lang": "ar",
@@ -1218,7 +1218,7 @@
         },
         "instagram": {
           "lang": "en",
-          "caption": "Only seeing your app in demos? Ask for repo, staging and admin access from sprint one.\n\n#BuildWithDevya #Founders #Startups #Outsourcing #SoftwareDevelopment"
+          "caption": "Only seeing your app in demos? Ask for repo, staging and admin access from sprint one.\n\nDetails: https://www.devya.dev/solutions?utm_source=instagram&utm_medium=social&utm_campaign=2026-11-29-ask-for-repo-staging-and-admin-access-from&utm_content=reel\n\n#BuildWithDevya #Founders #Startups #Outsourcing #SoftwareDevelopment"
         }
       },
       "stories": {
@@ -1287,15 +1287,15 @@
       "posts": {
         "linkedin": {
           "lang": "en",
-          "caption": "Paste a JWT into any online decoder and you'll usually see the user ID, the role and the expiry in plain text. Three things follow from that.\n\nFirst, a JWT is encoded, not encrypted. Anyone holding the token can read its payload, so keep secrets and personal data out of it.\n\nSecond, decoding proves nothing. A decoded token tells you what it claims, not who signed it. Only a signature check with a key you keep on your server makes those claims worth trusting.\n\nThird, those convenient online decoders send your token to a server you don't control. For anything but a throwaway token, that's a leak.\n\nSo we built jwt-inspector. It decodes the header and payload, shows the standard claims with readable dates and a live expiry status, and makes zero network calls. The token never leaves the page.\n\nhttps://www.devya.dev/projects/jwt-inspector?utm_source=linkedin&utm_medium=social&utm_campaign=2026-11-30-a-jwt-is-encoded-not-encrypted-decoding-isn-t\n\n#WebSecurity #JWT #Authentication #BuildWithDevya"
+          "caption": "Paste a JWT into any online decoder and you'll usually see the user ID, the role and the expiry in plain text. Three things follow from that.\n\nFirst, a JWT is encoded, not encrypted. Anyone holding the token can read its payload, so keep secrets and personal data out of it.\n\nSecond, decoding proves nothing. A decoded token tells you what it claims, not who signed it. Only a signature check with a key you keep on your server makes those claims worth trusting.\n\nThird, those convenient online decoders send your token to a server you don't control. For anything but a throwaway token, that's a leak.\n\nSo we built jwt-inspector. It decodes the header and payload, shows the standard claims with readable dates and a live expiry status, and makes zero network calls. The token never leaves the page.\n\nhttps://www.devya.dev/projects/jwt-inspector?utm_source=linkedin&utm_medium=social&utm_campaign=2026-11-30-a-jwt-is-encoded-not-encrypted-decoding-isn-t\n\nProject: https://jwt.devya.dev/?utm_source=linkedin&utm_medium=social&utm_campaign=2026-11-30-a-jwt-is-encoded-not-encrypted-decoding-isn-t\n\n#WebSecurity #JWT #Authentication #BuildWithDevya"
         },
         "facebook": {
           "lang": "ar",
-          "caption": "رمز الدخول JWT الذي يستخدمه تطبيقك يستطيع أي شخص يحمله أن يقرأ محتواه، فهو مُرمَّز وليس مشفّرًا.\n\nلذلك لا تضع فيه أسرارًا أو بيانات شخصية.\nوقراءة الرمز لا تعني الثقة به؛ فالثقة تأتي بعد التحقق من توقيعه بمفتاح محفوظ على خادمك.\nوانتبه: مواقع فك الترميز السريعة على الإنترنت ترسل رمزك إلى خادم لا تتحكم فيه.\n\nلهذا بنينا أداة تفك الترميز داخل متصفحك فقط، دون أي اتصال بالشبكة، وتعرض تاريخ انتهاء الرمز بوضوح: https://www.devya.dev/projects/jwt-inspector?utm_source=facebook&utm_medium=social&utm_campaign=2026-11-30-a-jwt-is-encoded-not-encrypted-decoding-isn-t\n\n#BuildWithDevya #أمن_المعلومات"
+          "caption": "رمز الدخول JWT الذي يستخدمه تطبيقك يستطيع أي شخص يحمله أن يقرأ محتواه، فهو مُرمَّز وليس مشفّرًا.\n\nلذلك لا تضع فيه أسرارًا أو بيانات شخصية.\nوقراءة الرمز لا تعني الثقة به؛ فالثقة تأتي بعد التحقق من توقيعه بمفتاح محفوظ على خادمك.\nوانتبه: مواقع فك الترميز السريعة على الإنترنت ترسل رمزك إلى خادم لا تتحكم فيه.\n\nلهذا بنينا أداة تفك الترميز داخل متصفحك فقط، دون أي اتصال بالشبكة، وتعرض تاريخ انتهاء الرمز بوضوح: https://www.devya.dev/projects/jwt-inspector?utm_source=facebook&utm_medium=social&utm_campaign=2026-11-30-a-jwt-is-encoded-not-encrypted-decoding-isn-t\n\nرابط المشروع: https://jwt.devya.dev/?utm_source=facebook&utm_medium=social&utm_campaign=2026-11-30-a-jwt-is-encoded-not-encrypted-decoding-isn-t\n\n#BuildWithDevya #أمن_المعلومات"
         },
         "instagram": {
           "lang": "en",
-          "caption": "A JWT is encoded, not encrypted.\nAnyone holding the token can read the payload, so keep secrets out of it. And decoding proves nothing: trust the claims only after your server checks the signature.\nDebugging? Decode in your browser, not on someone else's server. Link in bio.\n\n#BuildWithDevya #WebSecurity #JWT #Authentication #CyberSecurity"
+          "caption": "A JWT is encoded, not encrypted.\nAnyone holding the token can read the payload, so keep secrets out of it. And decoding proves nothing: trust the claims only after your server checks the signature.\nDebugging? Decode in your browser, not on someone else's server.\n\nProject: https://jwt.devya.dev/?utm_source=instagram&utm_medium=social&utm_campaign=2026-11-30-a-jwt-is-encoded-not-encrypted-decoding-isn-t\nDetails: https://www.devya.dev/projects/jwt-inspector?utm_source=instagram&utm_medium=social&utm_campaign=2026-11-30-a-jwt-is-encoded-not-encrypted-decoding-isn-t\n\n#BuildWithDevya #WebSecurity #JWT #Authentication #CyberSecurity"
         }
       },
       "reel": {
@@ -1317,15 +1317,15 @@
       "reels": {
         "linkedin": {
           "lang": "en",
-          "caption": "A JWT is encoded, not encrypted. Decoding it proves nothing.\n\n#WebSecurity #JWT #Authentication"
+          "caption": "A JWT is encoded, not encrypted. Decoding it proves nothing.\n\nProject: https://jwt.devya.dev/?utm_source=linkedin&utm_medium=social&utm_campaign=2026-11-30-a-jwt-is-encoded-not-encrypted-decoding-isn-t&utm_content=reel\nDetails: https://www.devya.dev/projects/jwt-inspector?utm_source=linkedin&utm_medium=social&utm_campaign=2026-11-30-a-jwt-is-encoded-not-encrypted-decoding-isn-t&utm_content=reel\n\n#WebSecurity #JWT #Authentication"
         },
         "facebook": {
           "lang": "ar",
-          "caption": "رمز JWT مُرمَّز وليس مشفّرًا، وفك ترميزه لا يثبت شيئًا.\n\nالتفاصيل: https://www.devya.dev/projects/jwt-inspector?utm_source=facebook&utm_medium=social&utm_campaign=2026-11-30-a-jwt-is-encoded-not-encrypted-decoding-isn-t&utm_content=reel\n\n#BuildWithDevya #أمن_المعلومات"
+          "caption": "رمز JWT مُرمَّز وليس مشفّرًا، وفك ترميزه لا يثبت شيئًا.\n\nالتفاصيل: https://www.devya.dev/projects/jwt-inspector?utm_source=facebook&utm_medium=social&utm_campaign=2026-11-30-a-jwt-is-encoded-not-encrypted-decoding-isn-t&utm_content=reel\n\nرابط المشروع: https://jwt.devya.dev/?utm_source=facebook&utm_medium=social&utm_campaign=2026-11-30-a-jwt-is-encoded-not-encrypted-decoding-isn-t&utm_content=reel\n\n#BuildWithDevya #أمن_المعلومات"
         },
         "instagram": {
           "lang": "en",
-          "caption": "A JWT is encoded, not encrypted. Decoding it proves nothing.\n\n#BuildWithDevya #WebSecurity #JWT #Authentication #CyberSecurity"
+          "caption": "A JWT is encoded, not encrypted. Decoding it proves nothing.\n\nProject: https://jwt.devya.dev/?utm_source=instagram&utm_medium=social&utm_campaign=2026-11-30-a-jwt-is-encoded-not-encrypted-decoding-isn-t&utm_content=reel\nDetails: https://www.devya.dev/projects/jwt-inspector?utm_source=instagram&utm_medium=social&utm_campaign=2026-11-30-a-jwt-is-encoded-not-encrypted-decoding-isn-t&utm_content=reel\n\n#BuildWithDevya #WebSecurity #JWT #Authentication #CyberSecurity"
         }
       },
       "stories": {
@@ -1380,7 +1380,7 @@
         },
         "instagram": {
           "lang": "ar",
-          "caption": "مساعد محادثة يجيب عملاءك من محتواك أنت.\nخدمة Devya Converse تقرأ مستنداتك وأسئلتك الشائعة، ثم تردّ على عملائك بالعربية أو الإنجليزية عبر موقعك وواتساب وماسنجر، وتحجز المواعيد، وتسلّم المحادثة لموظف عند الحاجة.\nلا ردود مُختلقة: كل إجابة مبنية على موادك.\nالرابط في البايو.\n\n#ذكاء_اصطناعي #خدمة_العملاء #ريادة_الأعمال #التجارة_الإلكترونية #BuildWithDevya"
+          "caption": "مساعد محادثة يجيب عملاءك من محتواك أنت.\nخدمة Devya Converse تقرأ مستنداتك وأسئلتك الشائعة، ثم تردّ على عملائك بالعربية أو الإنجليزية عبر موقعك وواتساب وماسنجر، وتحجز المواعيد، وتسلّم المحادثة لموظف عند الحاجة.\nلا ردود مُختلقة: كل إجابة مبنية على موادك.\n\nالتفاصيل: https://www.devya.dev/converse?utm_source=instagram&utm_medium=social&utm_campaign=2026-12-01-devya-converse-ai-chat-that-answers-from-your\n\n#ذكاء_اصطناعي #خدمة_العملاء #ريادة_الأعمال #التجارة_الإلكترونية #BuildWithDevya"
         }
       },
       "reel": {
@@ -1406,7 +1406,7 @@
       "reels": {
         "linkedin": {
           "lang": "en",
-          "caption": "Devya Converse: AI chat that answers from your own content, in Arabic and English.\n\n#ConversationalAI #CustomerSupport #MENA"
+          "caption": "Devya Converse: AI chat that answers from your own content, in Arabic and English.\n\nDetails: https://www.devya.dev/converse?utm_source=linkedin&utm_medium=social&utm_campaign=2026-12-01-devya-converse-ai-chat-that-answers-from-your&utm_content=reel\n\n#ConversationalAI #CustomerSupport #MENA"
         },
         "facebook": {
           "lang": "en",
@@ -1414,7 +1414,7 @@
         },
         "instagram": {
           "lang": "ar",
-          "caption": "مساعد Devya Converse يجيب عملاءك من محتواك أنت، بالعربية والإنجليزية.\n\n#ذكاء_اصطناعي #خدمة_العملاء #ريادة_الأعمال #التجارة_الإلكترونية #BuildWithDevya"
+          "caption": "مساعد Devya Converse يجيب عملاءك من محتواك أنت، بالعربية والإنجليزية.\n\nالتفاصيل: https://www.devya.dev/converse?utm_source=instagram&utm_medium=social&utm_campaign=2026-12-01-devya-converse-ai-chat-that-answers-from-your&utm_content=reel\n\n#ذكاء_اصطناعي #خدمة_العملاء #ريادة_الأعمال #التجارة_الإلكترونية #BuildWithDevya"
         }
       },
       "stories": {
@@ -1433,7 +1433,7 @@
       "topic": "Ask for the real start date and the named team in writing",
       "source": "https://www.devya.dev/solutions",
       "basis": "devya-market-intel latest guide.do: when the team is booked, give the real start date in writing with the named team, and offer a paid discovery phase in the gap",
-      "linkedinLink": false,
+      "linkedinLink": true,
       "card": {
         "en": {
           "kicker": "Hiring a dev team?",
@@ -1449,7 +1449,7 @@
       "posts": {
         "linkedin": {
           "lang": "en",
-          "caption": "\"We can start Monday.\" Before you celebrate, ask who exactly will start.\n\nA fully booked vendor has two options. Start you early with whoever is free and fill the seats later, or tell you the real start date and wait for the right people. You want the second, in writing:\n→ The actual start date.\n→ The names and roles of the people who start on that date.\n→ What happens if either changes: notice, and your right to say no.\n\nIf you want momentum before then, ask for a short, paid discovery phase in the gap: user roles, existing systems, the flows that matter. It moves the project forward without pretending the build has started.\n\nAn honest wait is easier to plan around than a team that's thin from week one.\n\n#Outsourcing #Founders #ProjectManagement #BuildWithDevya"
+          "caption": "\"We can start Monday.\" Before you celebrate, ask who exactly will start.\n\nA fully booked vendor has two options. Start you early with whoever is free and fill the seats later, or tell you the real start date and wait for the right people. You want the second, in writing:\n→ The actual start date.\n→ The names and roles of the people who start on that date.\n→ What happens if either changes: notice, and your right to say no.\n\nIf you want momentum before then, ask for a short, paid discovery phase in the gap: user roles, existing systems, the flows that matter. It moves the project forward without pretending the build has started.\n\nAn honest wait is easier to plan around than a team that's thin from week one.\n\nDetails: https://www.devya.dev/solutions?utm_source=linkedin&utm_medium=social&utm_campaign=2026-12-02-ask-for-the-real-start-date-and-the-named-team\n\n#Outsourcing #Founders #ProjectManagement #BuildWithDevya"
         },
         "facebook": {
           "lang": "ar",
@@ -1457,7 +1457,7 @@
         },
         "instagram": {
           "lang": "en",
-          "caption": "\"We can start Monday.\" Who, exactly?\nAsk your vendor for the real start date and the names of the people starting on it, in writing. Want momentum before then? Ask for a short paid discovery phase in the gap.\nAn honest date beats an early start with half a team. Link in bio.\n\n#BuildWithDevya #Founders #ProjectManagement #Egypt #SaudiArabia"
+          "caption": "\"We can start Monday.\" Who, exactly?\nAsk your vendor for the real start date and the names of the people starting on it, in writing. Want momentum before then? Ask for a short paid discovery phase in the gap.\nAn honest date beats an early start with half a team.\n\nDetails: https://www.devya.dev/solutions?utm_source=instagram&utm_medium=social&utm_campaign=2026-12-02-ask-for-the-real-start-date-and-the-named-team\n\n#BuildWithDevya #Founders #ProjectManagement #Egypt #SaudiArabia"
         }
       },
       "reel": {
@@ -1482,7 +1482,7 @@
       "reels": {
         "linkedin": {
           "lang": "en",
-          "caption": "\"We can start Monday.\" Ask who, exactly, and get it in writing.\n\n#Outsourcing #Founders #ProjectManagement"
+          "caption": "\"We can start Monday.\" Ask who, exactly, and get it in writing.\n\nDetails: https://www.devya.dev/solutions?utm_source=linkedin&utm_medium=social&utm_campaign=2026-12-02-ask-for-the-real-start-date-and-the-named-team&utm_content=reel\n\n#Outsourcing #Founders #ProjectManagement"
         },
         "facebook": {
           "lang": "ar",
@@ -1490,7 +1490,7 @@
         },
         "instagram": {
           "lang": "en",
-          "caption": "\"We can start Monday.\" Ask who, exactly, and get it in writing.\n\n#BuildWithDevya #Founders #ProjectManagement #Egypt #SaudiArabia"
+          "caption": "\"We can start Monday.\" Ask who, exactly, and get it in writing.\n\nDetails: https://www.devya.dev/solutions?utm_source=instagram&utm_medium=social&utm_campaign=2026-12-02-ask-for-the-real-start-date-and-the-named-team&utm_content=reel\n\n#BuildWithDevya #Founders #ProjectManagement #Egypt #SaudiArabia"
         }
       },
       "stories": {
@@ -1532,15 +1532,15 @@
       "posts": {
         "linkedin": {
           "lang": "en",
-          "caption": "Nothing breaks when a cron line is wrong. The job still runs, just at the wrong time, and nobody notices until a weekly report is missing or a reminder goes out twice.\n\nThe classic trap: 0 9 1 * 1 looks like \"9am on the 1st, if it's a Monday\". It isn't. When both the day-of-month and day-of-week fields are set, cron runs when either one matches: on the 1st of every month, and on every Monday.\n\nAnother one: the schedule runs in the server's time zone, which is often UTC rather than Cairo or Riyadh time.\n\nThe habit that catches most of this: before a schedule ships, read it back in plain English and check the next few run times.\n\ncron-builder does exactly that in the browser. Paste a standard five-field expression and get a plain-English description plus the upcoming run times, or build one from presets. No libraries, no server.\n\nhttps://www.devya.dev/projects/cron-builder?utm_source=linkedin&utm_medium=social&utm_campaign=2026-12-03-a-wrong-cron-line-still-runs-read-it-back-before\n\n#DevOps #Cron #BackendEngineering #BuildWithDevya"
+          "caption": "Nothing breaks when a cron line is wrong. The job still runs, just at the wrong time, and nobody notices until a weekly report is missing or a reminder goes out twice.\n\nThe classic trap: 0 9 1 * 1 looks like \"9am on the 1st, if it's a Monday\". It isn't. When both the day-of-month and day-of-week fields are set, cron runs when either one matches: on the 1st of every month, and on every Monday.\n\nAnother one: the schedule runs in the server's time zone, which is often UTC rather than Cairo or Riyadh time.\n\nThe habit that catches most of this: before a schedule ships, read it back in plain English and check the next few run times.\n\ncron-builder does exactly that in the browser. Paste a standard five-field expression and get a plain-English description plus the upcoming run times, or build one from presets. No libraries, no server.\n\nhttps://www.devya.dev/projects/cron-builder?utm_source=linkedin&utm_medium=social&utm_campaign=2026-12-03-a-wrong-cron-line-still-runs-read-it-back-before\n\nProject: https://cron.devya.dev/?utm_source=linkedin&utm_medium=social&utm_campaign=2026-12-03-a-wrong-cron-line-still-runs-read-it-back-before\n\n#DevOps #Cron #BackendEngineering #BuildWithDevya"
         },
         "facebook": {
           "lang": "ar",
-          "caption": "تقرير أسبوعي أو رسالة تذكير تُرسَل تلقائيًا؟ غالبًا ما يُجدوَل ذلك بسطر cron من خمسة حقول.\n\nخطأ واحد في هذا السطر لا يوقف المهمة، بل يشغّلها في توقيت خاطئ دون أن ينتبه أحد.\n\nمثال شائع: السطر «0 9 1 * 1» لا يعني «التاسعة صباحًا أول الشهر إذا وافق يوم اثنين»، بل يعني أول كل شهر وكل يوم اثنين أيضًا.\n\nنصيحتنا: اقرأ الجدول بكلمات واضحة، وراجع مواعيد التشغيل القادمة قبل اعتماده.\n\nأداتنا تفعل ذلك داخل المتصفح: https://www.devya.dev/projects/cron-builder?utm_source=facebook&utm_medium=social&utm_campaign=2026-12-03-a-wrong-cron-line-still-runs-read-it-back-before\n\n#BuildWithDevya #برمجة"
+          "caption": "تقرير أسبوعي أو رسالة تذكير تُرسَل تلقائيًا؟ غالبًا ما يُجدوَل ذلك بسطر cron من خمسة حقول.\n\nخطأ واحد في هذا السطر لا يوقف المهمة، بل يشغّلها في توقيت خاطئ دون أن ينتبه أحد.\n\nمثال شائع: السطر «0 9 1 * 1» لا يعني «التاسعة صباحًا أول الشهر إذا وافق يوم اثنين»، بل يعني أول كل شهر وكل يوم اثنين أيضًا.\n\nنصيحتنا: اقرأ الجدول بكلمات واضحة، وراجع مواعيد التشغيل القادمة قبل اعتماده.\n\nأداتنا تفعل ذلك داخل المتصفح: https://www.devya.dev/projects/cron-builder?utm_source=facebook&utm_medium=social&utm_campaign=2026-12-03-a-wrong-cron-line-still-runs-read-it-back-before\n\nرابط المشروع: https://cron.devya.dev/?utm_source=facebook&utm_medium=social&utm_campaign=2026-12-03-a-wrong-cron-line-still-runs-read-it-back-before\n\n#BuildWithDevya #برمجة"
         },
         "instagram": {
           "lang": "en",
-          "caption": "Get a cron line wrong and it still runs. Just at the wrong time.\n0 9 1 * 1 isn't \"9am on the 1st if it's a Monday\". It runs on the 1st of every month and on every Monday.\nRead a schedule back in plain English and check its next run times before it ships. Link in bio.\n\n#BuildWithDevya #DevOps #Cron #BackendDevelopment #CodingTips"
+          "caption": "Get a cron line wrong and it still runs. Just at the wrong time.\n0 9 1 * 1 isn't \"9am on the 1st if it's a Monday\". It runs on the 1st of every month and on every Monday.\nRead a schedule back in plain English and check its next run times before it ships.\n\nProject: https://cron.devya.dev/?utm_source=instagram&utm_medium=social&utm_campaign=2026-12-03-a-wrong-cron-line-still-runs-read-it-back-before\nDetails: https://www.devya.dev/projects/cron-builder?utm_source=instagram&utm_medium=social&utm_campaign=2026-12-03-a-wrong-cron-line-still-runs-read-it-back-before\n\n#BuildWithDevya #DevOps #Cron #BackendDevelopment #CodingTips"
         }
       },
       "reel": {
@@ -1561,15 +1561,15 @@
       "reels": {
         "linkedin": {
           "lang": "en",
-          "caption": "A wrong cron line doesn't fail. It runs at the wrong time.\n\n#DevOps #Cron #BackendEngineering"
+          "caption": "A wrong cron line doesn't fail. It runs at the wrong time.\n\nProject: https://cron.devya.dev/?utm_source=linkedin&utm_medium=social&utm_campaign=2026-12-03-a-wrong-cron-line-still-runs-read-it-back-before&utm_content=reel\nDetails: https://www.devya.dev/projects/cron-builder?utm_source=linkedin&utm_medium=social&utm_campaign=2026-12-03-a-wrong-cron-line-still-runs-read-it-back-before&utm_content=reel\n\n#DevOps #Cron #BackendEngineering"
         },
         "facebook": {
           "lang": "ar",
-          "caption": "سطر cron الخاطئ لا يتوقف، بل يعمل في التوقيت الخاطئ.\n\nالتفاصيل: https://www.devya.dev/projects/cron-builder?utm_source=facebook&utm_medium=social&utm_campaign=2026-12-03-a-wrong-cron-line-still-runs-read-it-back-before&utm_content=reel\n\n#BuildWithDevya #برمجة"
+          "caption": "سطر cron الخاطئ لا يتوقف، بل يعمل في التوقيت الخاطئ.\n\nالتفاصيل: https://www.devya.dev/projects/cron-builder?utm_source=facebook&utm_medium=social&utm_campaign=2026-12-03-a-wrong-cron-line-still-runs-read-it-back-before&utm_content=reel\n\nرابط المشروع: https://cron.devya.dev/?utm_source=facebook&utm_medium=social&utm_campaign=2026-12-03-a-wrong-cron-line-still-runs-read-it-back-before&utm_content=reel\n\n#BuildWithDevya #برمجة"
         },
         "instagram": {
           "lang": "en",
-          "caption": "A wrong cron line doesn't fail. It runs at the wrong time.\n\n#BuildWithDevya #DevOps #Cron #BackendDevelopment #CodingTips"
+          "caption": "A wrong cron line doesn't fail. It runs at the wrong time.\n\nProject: https://cron.devya.dev/?utm_source=instagram&utm_medium=social&utm_campaign=2026-12-03-a-wrong-cron-line-still-runs-read-it-back-before&utm_content=reel\nDetails: https://www.devya.dev/projects/cron-builder?utm_source=instagram&utm_medium=social&utm_campaign=2026-12-03-a-wrong-cron-line-still-runs-read-it-back-before&utm_content=reel\n\n#BuildWithDevya #DevOps #Cron #BackendDevelopment #CodingTips"
         }
       },
       "stories": {
@@ -1626,7 +1626,7 @@
         },
         "instagram": {
           "lang": "en",
-          "caption": "Security answers, before you ask.\nHTTPS everywhere with HSTS. Passwords hashed with argon2id. Role-based access. An audit trail for admin actions. Daily backups with documented restores. No trackers before consent.\nAll on one page, written for procurement and due-diligence reviews. Link in bio.\n\n#BuildWithDevya #CyberSecurity #DataPrivacy #InfoSec #WebDevelopment"
+          "caption": "Security answers, before you ask.\nHTTPS everywhere with HSTS. Passwords hashed with argon2id. Role-based access. An audit trail for admin actions. Daily backups with documented restores. No trackers before consent.\nAll on one page, written for procurement and due-diligence reviews.\n\nDetails: https://www.devya.dev/security?utm_source=instagram&utm_medium=social&utm_campaign=2026-12-04-our-security-practices-on-one-page-before\n\n#BuildWithDevya #CyberSecurity #DataPrivacy #InfoSec #WebDevelopment"
         }
       },
       "reel": {
@@ -1650,7 +1650,7 @@
       "reels": {
         "linkedin": {
           "lang": "en",
-          "caption": "How we protect client data, on one page: argon2id, HSTS, audit logs, daily backups.\n\n#CyberSecurity #DataProtection #Procurement"
+          "caption": "How we protect client data, on one page: argon2id, HSTS, audit logs, daily backups.\n\nDetails: https://www.devya.dev/security?utm_source=linkedin&utm_medium=social&utm_campaign=2026-12-04-our-security-practices-on-one-page-before&utm_content=reel\n\n#CyberSecurity #DataProtection #Procurement"
         },
         "facebook": {
           "lang": "ar",
@@ -1658,7 +1658,7 @@
         },
         "instagram": {
           "lang": "en",
-          "caption": "How we protect client data, on one page: argon2id, HSTS, audit logs, daily backups.\n\n#BuildWithDevya #CyberSecurity #DataPrivacy #InfoSec #WebDevelopment"
+          "caption": "How we protect client data, on one page: argon2id, HSTS, audit logs, daily backups.\n\nDetails: https://www.devya.dev/security?utm_source=instagram&utm_medium=social&utm_campaign=2026-12-04-our-security-practices-on-one-page-before&utm_content=reel\n\n#BuildWithDevya #CyberSecurity #DataPrivacy #InfoSec #WebDevelopment"
         }
       },
       "stories": {
@@ -1677,7 +1677,7 @@
       "topic": "og-preview: see your link card before you share it",
       "source": "https://www.devya.dev/projects/og-preview",
       "basis": "devya.dev/projects/og-preview: Google, Facebook, X and LinkedIn card previews, live character counters, ready-to-paste meta tags, single static page, free and open source (page copy read from the site source, lib/community-projects.ts)",
-      "linkedinLink": false,
+      "linkedinLink": true,
       "card": {
         "shot": "https://og.devya.dev",
         "shotLabel": "og.devya.dev",
@@ -1705,15 +1705,15 @@
       "posts": {
         "linkedin": {
           "lang": "en",
-          "caption": "The first time many teams see their link preview is when a customer shares it: the wrong image, a title cut in half, or no card at all.\n\nBy then the fix is expensive. The post is already out, and platforms cache what they saw.\n\nog-preview is a free tool we built to catch it earlier:\n→ Fill in the page's metadata and see it rendered as a Google result and as Facebook, X and LinkedIn cards.\n→ Live character counters show where your title and description get cut.\n→ Copy a ready-to-paste meta block in one click.\n\nIt's a single static page with zero dependencies. Nothing to install, it runs entirely in your browser, and it's open source.\n\nWorth a minute before your next launch page goes live.\n\n#SEO #OpenGraph #WebDevelopment #BuildWithDevya"
+          "caption": "The first time many teams see their link preview is when a customer shares it: the wrong image, a title cut in half, or no card at all.\n\nBy then the fix is expensive. The post is already out, and platforms cache what they saw.\n\nog-preview is a free tool we built to catch it earlier:\n→ Fill in the page's metadata and see it rendered as a Google result and as Facebook, X and LinkedIn cards.\n→ Live character counters show where your title and description get cut.\n→ Copy a ready-to-paste meta block in one click.\n\nIt's a single static page with zero dependencies. Nothing to install, it runs entirely in your browser, and it's open source.\n\nWorth a minute before your next launch page goes live.\n\nProject: https://og.devya.dev/?utm_source=linkedin&utm_medium=social&utm_campaign=2026-12-05-og-preview-see-your-link-card-before-you-share-it\nDetails: https://www.devya.dev/projects/og-preview?utm_source=linkedin&utm_medium=social&utm_campaign=2026-12-05-og-preview-see-your-link-card-before-you-share-it\n\n#SEO #OpenGraph #WebDevelopment #BuildWithDevya"
         },
         "facebook": {
           "lang": "en",
-          "caption": "Shared your website link and got the wrong image, or a title cut in half?\n\nThat preview card is built from a few hidden tags on your page. og-preview, a free tool we built, shows how your page will look as a Google result and as Facebook, X and LinkedIn cards before you publish, then gives you the exact tags to paste in. It runs in your browser, with nothing to install.\n\nTry it before your next launch: https://www.devya.dev/projects/og-preview?utm_source=facebook&utm_medium=social&utm_campaign=2026-12-05-og-preview-see-your-link-card-before-you-share-it\n\n#BuildWithDevya #SEO #OpenGraph"
+          "caption": "Shared your website link and got the wrong image, or a title cut in half?\n\nThat preview card is built from a few hidden tags on your page. og-preview, a free tool we built, shows how your page will look as a Google result and as Facebook, X and LinkedIn cards before you publish, then gives you the exact tags to paste in. It runs in your browser, with nothing to install.\n\nTry it before your next launch: https://www.devya.dev/projects/og-preview?utm_source=facebook&utm_medium=social&utm_campaign=2026-12-05-og-preview-see-your-link-card-before-you-share-it\n\nProject: https://og.devya.dev/?utm_source=facebook&utm_medium=social&utm_campaign=2026-12-05-og-preview-see-your-link-card-before-you-share-it\n\n#BuildWithDevya #SEO #OpenGraph"
         },
         "instagram": {
           "lang": "ar",
-          "caption": "هل شاركت رابط موقعك فظهرت صورة خاطئة أو عنوان مقطوع؟\nأداة og-preview المجانية تريك كيف ستبدو صفحتك على Google وFacebook وX وLinkedIn قبل النشر، وتعطيك الوسوم الجاهزة للصق.\nتعمل داخل متصفحك، ولا تحتاج إلى تثبيت، وهي مفتوحة المصدر.\nالرابط في البايو.\n\n#تسويق_رقمي #تحسين_محركات_البحث #تطوير_المواقع #ريادة_الأعمال #BuildWithDevya"
+          "caption": "هل شاركت رابط موقعك فظهرت صورة خاطئة أو عنوان مقطوع؟\nأداة og-preview المجانية تريك كيف ستبدو صفحتك على Google وFacebook وX وLinkedIn قبل النشر، وتعطيك الوسوم الجاهزة للصق.\nتعمل داخل متصفحك، ولا تحتاج إلى تثبيت، وهي مفتوحة المصدر.\n\nرابط المشروع: https://og.devya.dev/?utm_source=instagram&utm_medium=social&utm_campaign=2026-12-05-og-preview-see-your-link-card-before-you-share-it\nالتفاصيل: https://www.devya.dev/projects/og-preview?utm_source=instagram&utm_medium=social&utm_campaign=2026-12-05-og-preview-see-your-link-card-before-you-share-it\n\n#تسويق_رقمي #تحسين_محركات_البحث #تطوير_المواقع #ريادة_الأعمال #BuildWithDevya"
         }
       },
       "reel": {
@@ -1738,15 +1738,15 @@
       "reels": {
         "linkedin": {
           "lang": "en",
-          "caption": "Link preview check: see how your link looks on Google, Facebook, X and LinkedIn before you share it.\n\n#SEO #OpenGraph #WebDevelopment"
+          "caption": "Link preview check: see how your link looks on Google, Facebook, X and LinkedIn before you share it.\n\nProject: https://og.devya.dev/?utm_source=linkedin&utm_medium=social&utm_campaign=2026-12-05-og-preview-see-your-link-card-before-you-share-it&utm_content=reel\nDetails: https://www.devya.dev/projects/og-preview?utm_source=linkedin&utm_medium=social&utm_campaign=2026-12-05-og-preview-see-your-link-card-before-you-share-it&utm_content=reel\n\n#SEO #OpenGraph #WebDevelopment"
         },
         "facebook": {
           "lang": "en",
-          "caption": "Link preview check: see how your link looks on Google, Facebook, X and LinkedIn before you share it.\n\nMore: https://www.devya.dev/projects/og-preview?utm_source=facebook&utm_medium=social&utm_campaign=2026-12-05-og-preview-see-your-link-card-before-you-share-it&utm_content=reel\n\n#BuildWithDevya #SEO #OpenGraph"
+          "caption": "Link preview check: see how your link looks on Google, Facebook, X and LinkedIn before you share it.\n\nMore: https://www.devya.dev/projects/og-preview?utm_source=facebook&utm_medium=social&utm_campaign=2026-12-05-og-preview-see-your-link-card-before-you-share-it&utm_content=reel\n\nProject: https://og.devya.dev/?utm_source=facebook&utm_medium=social&utm_campaign=2026-12-05-og-preview-see-your-link-card-before-you-share-it&utm_content=reel\n\n#BuildWithDevya #SEO #OpenGraph"
         },
         "instagram": {
           "lang": "ar",
-          "caption": "اعرف كيف يظهر رابطك على Google وFacebook وX وLinkedIn قبل أن تشاركه.\n\n#تسويق_رقمي #تحسين_محركات_البحث #تطوير_المواقع #ريادة_الأعمال #BuildWithDevya"
+          "caption": "اعرف كيف يظهر رابطك على Google وFacebook وX وLinkedIn قبل أن تشاركه.\n\nرابط المشروع: https://og.devya.dev/?utm_source=instagram&utm_medium=social&utm_campaign=2026-12-05-og-preview-see-your-link-card-before-you-share-it&utm_content=reel\nالتفاصيل: https://www.devya.dev/projects/og-preview?utm_source=instagram&utm_medium=social&utm_campaign=2026-12-05-og-preview-see-your-link-card-before-you-share-it&utm_content=reel\n\n#تسويق_رقمي #تحسين_محركات_البحث #تطوير_المواقع #ريادة_الأعمال #BuildWithDevya"
         }
       },
       "stories": {
@@ -1765,7 +1765,7 @@
       "topic": "Before launch, ask for a written test pass on real content",
       "source": "https://www.devya.dev/solutions",
       "basis": "devya-market-intel latest guide.avoid: no launch without a written pre-launch test pass on the client's real content, devices and payment or login paths; don't end the project on launch day (two-week support with visible bug triage)",
-      "linkedinLink": false,
+      "linkedinLink": true,
       "card": {
         "en": {
           "kicker": "Before launch day",
@@ -1795,7 +1795,7 @@
       "posts": {
         "linkedin": {
           "lang": "en",
-          "caption": "Launch-day bugs are rarely new. Most were there all along; they just never met real data.\n\nTest content is tidy: short product names, round prices, one language. Real content isn't. A long Arabic title breaks a layout, a missing image breaks a page, and a payment flow that passed with a test card can fail with a real one.\n\nBefore you approve a launch, ask your vendor for a written test pass on:\n1. Your real products, prices and copy, in every language you ship.\n2. The phones and browsers your customers actually use.\n3. Every sign-up, login and password-reset path.\n4. A real payment, end to end, then a refund.\n\nAsk for the results in writing, and sign them off.\n\nThen don't let the project end on launch day. Agree a two-week support window with a daily bug review you can see. Real users will find what testing missed.\n\n#ProductLaunch #QA #Founders #BuildWithDevya"
+          "caption": "Launch-day bugs are rarely new. Most were there all along; they just never met real data.\n\nTest content is tidy: short product names, round prices, one language. Real content isn't. A long Arabic title breaks a layout, a missing image breaks a page, and a payment flow that passed with a test card can fail with a real one.\n\nBefore you approve a launch, ask your vendor for a written test pass on:\n1. Your real products, prices and copy, in every language you ship.\n2. The phones and browsers your customers actually use.\n3. Every sign-up, login and password-reset path.\n4. A real payment, end to end, then a refund.\n\nAsk for the results in writing, and sign them off.\n\nThen don't let the project end on launch day. Agree a two-week support window with a daily bug review you can see. Real users will find what testing missed.\n\nDetails: https://www.devya.dev/solutions?utm_source=linkedin&utm_medium=social&utm_campaign=2026-12-06-before-launch-ask-for-a-written-test-pass-on\n\n#ProductLaunch #QA #Founders #BuildWithDevya"
         },
         "facebook": {
           "lang": "ar",
@@ -1803,7 +1803,7 @@
         },
         "instagram": {
           "lang": "en",
-          "caption": "Dummy data hides launch-day bugs.\nBefore you approve a launch, ask for a written test pass: your real products and prices, your customers' phones, every login path, and a real payment plus a refund. Then agree two weeks of support after launch.\nSave this for launch week. Link in bio.\n\n#BuildWithDevya #ProductLaunch #QA #Startups #AppDevelopment"
+          "caption": "Dummy data hides launch-day bugs.\nBefore you approve a launch, ask for a written test pass: your real products and prices, your customers' phones, every login path, and a real payment plus a refund. Then agree two weeks of support after launch.\nSave this for launch week.\n\nDetails: https://www.devya.dev/solutions?utm_source=instagram&utm_medium=social&utm_campaign=2026-12-06-before-launch-ask-for-a-written-test-pass-on\n\n#BuildWithDevya #ProductLaunch #QA #Startups #AppDevelopment"
         }
       },
       "reel": {
@@ -1829,7 +1829,7 @@
       "reels": {
         "linkedin": {
           "lang": "en",
-          "caption": "Launch-day bugs are rarely new. Test on your real content first.\n\n#ProductLaunch #QA #Founders"
+          "caption": "Launch-day bugs are rarely new. Test on your real content first.\n\nDetails: https://www.devya.dev/solutions?utm_source=linkedin&utm_medium=social&utm_campaign=2026-12-06-before-launch-ask-for-a-written-test-pass-on&utm_content=reel\n\n#ProductLaunch #QA #Founders"
         },
         "facebook": {
           "lang": "ar",
@@ -1837,7 +1837,7 @@
         },
         "instagram": {
           "lang": "en",
-          "caption": "Launch-day bugs are rarely new. Test on your real content first.\n\n#BuildWithDevya #ProductLaunch #QA #Startups #AppDevelopment"
+          "caption": "Launch-day bugs are rarely new. Test on your real content first.\n\nDetails: https://www.devya.dev/solutions?utm_source=instagram&utm_medium=social&utm_campaign=2026-12-06-before-launch-ask-for-a-written-test-pass-on&utm_content=reel\n\n#BuildWithDevya #ProductLaunch #QA #Startups #AppDevelopment"
         }
       },
       "stories": {
@@ -1856,7 +1856,7 @@
       "topic": "Light grey text can fail WCAG contrast: measure it",
       "source": "https://www.devya.dev/projects/contrast-check",
       "basis": "devya.dev/projects/contrast-check: WCAG 2.1 ratio, AA/AAA pass-fail, real-text preview, nearest accessible colour; low-contrast text passes a visual review but fails users and audits (page copy read from the site source, lib/community-projects.ts)",
-      "linkedinLink": false,
+      "linkedinLink": true,
       "card": {
         "en": {
           "kicker": "Engineering",
@@ -1879,15 +1879,15 @@
       "posts": {
         "linkedin": {
           "lang": "en",
-          "caption": "Light grey text is a design favourite: placeholders, captions, helper text. It looks clean on a large monitor. On a phone in bright light, or for a reader with weaker eyesight, it fades away.\n\nContrast has a number. To pass WCAG 2.1 at level AA, body text needs a contrast ratio of at least 4.5:1 against its background, and large text 3:1. AAA asks for 7:1.\n\nA common case: the light grey 9CA3AF on white measures about 2.54:1 and fails AA. One shade darker, 6B7280, measures 4.83:1 and passes.\n\nLow-contrast text gets through a quick visual review, then fails real users and accessibility audits. Measuring it takes seconds.\n\ncontrast-check, a tool we built, does this in the browser: it computes the WCAG 2.1 ratio for any two colours, shows pass or fail at every level, previews real sample text, and suggests the nearest accessible colour when a pair fails. Nothing to install.\n\n#Accessibility #WebDesign #UXDesign #BuildWithDevya"
+          "caption": "Light grey text is a design favourite: placeholders, captions, helper text. It looks clean on a large monitor. On a phone in bright light, or for a reader with weaker eyesight, it fades away.\n\nContrast has a number. To pass WCAG 2.1 at level AA, body text needs a contrast ratio of at least 4.5:1 against its background, and large text 3:1. AAA asks for 7:1.\n\nA common case: the light grey 9CA3AF on white measures about 2.54:1 and fails AA. One shade darker, 6B7280, measures 4.83:1 and passes.\n\nLow-contrast text gets through a quick visual review, then fails real users and accessibility audits. Measuring it takes seconds.\n\ncontrast-check, a tool we built, does this in the browser: it computes the WCAG 2.1 ratio for any two colours, shows pass or fail at every level, previews real sample text, and suggests the nearest accessible colour when a pair fails. Nothing to install.\n\nProject: https://contrast.devya.dev/?utm_source=linkedin&utm_medium=social&utm_campaign=2026-12-07-light-grey-text-can-fail-wcag-contrast-measure-it\nDetails: https://www.devya.dev/projects/contrast-check?utm_source=linkedin&utm_medium=social&utm_campaign=2026-12-07-light-grey-text-can-fail-wcag-contrast-measure-it\n\n#Accessibility #WebDesign #UXDesign #BuildWithDevya"
         },
         "facebook": {
           "lang": "ar",
-          "caption": "في موقعك نصوص رمادية فاتحة تبدو أنيقة؟ قد يصعب على بعض عملائك قراءتها، خاصة على الهاتف.\n\nللوضوح مقياس معروف اسمه نسبة التباين، ومعيار WCAG يطلب 4.5 إلى 1 على الأقل للنص العادي.\n\nمثلًا، اللون الرمادي 9CA3AF على خلفية بيضاء نسبته نحو 2.5 فقط فيرسب، أما الأغمق قليلًا 6B7280 فنسبته نحو 4.8 فينجح.\n\nلا تعتمد على العين، بل احسبها.\n\nأداتنا تحسب النسبة داخل متصفحك وتقترح أقرب لون ناجح: https://www.devya.dev/projects/contrast-check?utm_source=facebook&utm_medium=social&utm_campaign=2026-12-07-light-grey-text-can-fail-wcag-contrast-measure-it\n\n#BuildWithDevya #تصميم_المواقع"
+          "caption": "في موقعك نصوص رمادية فاتحة تبدو أنيقة؟ قد يصعب على بعض عملائك قراءتها، خاصة على الهاتف.\n\nللوضوح مقياس معروف اسمه نسبة التباين، ومعيار WCAG يطلب 4.5 إلى 1 على الأقل للنص العادي.\n\nمثلًا، اللون الرمادي 9CA3AF على خلفية بيضاء نسبته نحو 2.5 فقط فيرسب، أما الأغمق قليلًا 6B7280 فنسبته نحو 4.8 فينجح.\n\nلا تعتمد على العين، بل احسبها.\n\nأداتنا تحسب النسبة داخل متصفحك وتقترح أقرب لون ناجح: https://www.devya.dev/projects/contrast-check?utm_source=facebook&utm_medium=social&utm_campaign=2026-12-07-light-grey-text-can-fail-wcag-contrast-measure-it\n\nرابط المشروع: https://contrast.devya.dev/?utm_source=facebook&utm_medium=social&utm_campaign=2026-12-07-light-grey-text-can-fail-wcag-contrast-measure-it\n\n#BuildWithDevya #تصميم_المواقع"
         },
         "instagram": {
           "lang": "en",
-          "caption": "That pale grey text? Measure it.\nA typical light grey on white scores about 2.5:1. WCAG AA asks for 4.5:1 for body text, so one shade darker can be the difference between pass and fail.\nDon't eyeball contrast. Link in bio.\n\n#BuildWithDevya #Accessibility #WebDesign #UXDesign #A11y"
+          "caption": "That pale grey text? Measure it.\nA typical light grey on white scores about 2.5:1. WCAG AA asks for 4.5:1 for body text, so one shade darker can be the difference between pass and fail.\nDon't eyeball contrast.\n\nProject: https://contrast.devya.dev/?utm_source=instagram&utm_medium=social&utm_campaign=2026-12-07-light-grey-text-can-fail-wcag-contrast-measure-it\nDetails: https://www.devya.dev/projects/contrast-check?utm_source=instagram&utm_medium=social&utm_campaign=2026-12-07-light-grey-text-can-fail-wcag-contrast-measure-it\n\n#BuildWithDevya #Accessibility #WebDesign #UXDesign #A11y"
         }
       },
       "reel": {
@@ -1911,15 +1911,15 @@
       "reels": {
         "linkedin": {
           "lang": "en",
-          "caption": "Light grey text looks clean. Measure it: it can fail WCAG contrast.\n\n#Accessibility #WebDesign #UXDesign"
+          "caption": "Light grey text looks clean. Measure it: it can fail WCAG contrast.\n\nProject: https://contrast.devya.dev/?utm_source=linkedin&utm_medium=social&utm_campaign=2026-12-07-light-grey-text-can-fail-wcag-contrast-measure-it&utm_content=reel\nDetails: https://www.devya.dev/projects/contrast-check?utm_source=linkedin&utm_medium=social&utm_campaign=2026-12-07-light-grey-text-can-fail-wcag-contrast-measure-it&utm_content=reel\n\n#Accessibility #WebDesign #UXDesign"
         },
         "facebook": {
           "lang": "ar",
-          "caption": "النص الرمادي الفاتح يبدو أنيقًا، لكنه قد يرسب في اختبار التباين. احسبه.\n\nالتفاصيل: https://www.devya.dev/projects/contrast-check?utm_source=facebook&utm_medium=social&utm_campaign=2026-12-07-light-grey-text-can-fail-wcag-contrast-measure-it&utm_content=reel\n\n#BuildWithDevya #تصميم_المواقع"
+          "caption": "النص الرمادي الفاتح يبدو أنيقًا، لكنه قد يرسب في اختبار التباين. احسبه.\n\nالتفاصيل: https://www.devya.dev/projects/contrast-check?utm_source=facebook&utm_medium=social&utm_campaign=2026-12-07-light-grey-text-can-fail-wcag-contrast-measure-it&utm_content=reel\n\nرابط المشروع: https://contrast.devya.dev/?utm_source=facebook&utm_medium=social&utm_campaign=2026-12-07-light-grey-text-can-fail-wcag-contrast-measure-it&utm_content=reel\n\n#BuildWithDevya #تصميم_المواقع"
         },
         "instagram": {
           "lang": "en",
-          "caption": "Light grey text looks clean. Measure it: it can fail WCAG contrast.\n\n#BuildWithDevya #Accessibility #WebDesign #UXDesign #A11y"
+          "caption": "Light grey text looks clean. Measure it: it can fail WCAG contrast.\n\nProject: https://contrast.devya.dev/?utm_source=instagram&utm_medium=social&utm_campaign=2026-12-07-light-grey-text-can-fail-wcag-contrast-measure-it&utm_content=reel\nDetails: https://www.devya.dev/projects/contrast-check?utm_source=instagram&utm_medium=social&utm_campaign=2026-12-07-light-grey-text-can-fail-wcag-contrast-measure-it&utm_content=reel\n\n#BuildWithDevya #Accessibility #WebDesign #UXDesign #A11y"
         }
       },
       "stories": {
@@ -1983,15 +1983,15 @@
       "posts": {
         "linkedin": {
           "lang": "en",
-          "caption": "Moving POS is our restaurant POS for Egypt and Saudi Arabia, and it now has an AI companion that answers from the restaurant's own numbers.\n\nMost owners are not short of data. They are short of time to dig through reports and find where the week's profit went.\n\nMoving POS already runs the whole restaurant from one system: the register, a live kitchen display, online ordering, loyalty and recipe-costed inventory, in Arabic and English. 25 branches run on it every day.\n\nThe AI companion sits in the back office. It reads the restaurant's own sales and stock and answers the owner's questions about them in plain words. Insight cards add a demand forecast and menu costing notes.\n\nWe entered it in the Founders Live pitch challenge. The pitch walks through a week of questions in under 90 seconds:\nhttps://www.youtube.com/watch?v=GsNGR6vv_eU&utm_source=linkedin&utm_medium=social&utm_campaign=2026-12-08-moving-pos-a-restaurant-pos-with-an-ai-companion\n\n#MovingPOS #RestaurantTech #AI #BuildWithDevya"
+          "caption": "Moving POS is our restaurant POS for Egypt and Saudi Arabia, and it now has an AI companion that answers from the restaurant's own numbers.\n\nMost owners are not short of data. They are short of time to dig through reports and find where the week's profit went.\n\nMoving POS already runs the whole restaurant from one system: the register, a live kitchen display, online ordering, loyalty and recipe-costed inventory, in Arabic and English. 25 branches run on it every day.\n\nThe AI companion sits in the back office. It reads the restaurant's own sales and stock and answers the owner's questions about them in plain words. Insight cards add a demand forecast and menu costing notes.\n\nWe entered it in the Founders Live pitch challenge. The pitch walks through a week of questions in under 90 seconds:\nhttps://www.youtube.com/watch?v=GsNGR6vv_eU&utm_source=linkedin&utm_medium=social&utm_campaign=2026-12-08-moving-pos-a-restaurant-pos-with-an-ai-companion\n\nDetails: https://www.devya.dev/projects/moving-pos-film?utm_source=linkedin&utm_medium=social&utm_campaign=2026-12-08-moving-pos-a-restaurant-pos-with-an-ai-companion\n\n#MovingPOS #RestaurantTech #AI #BuildWithDevya"
         },
         "facebook": {
           "lang": "en",
-          "caption": "Moving POS: the restaurant POS with an AI companion that answers from your own sales.\n\nAsk it about your week, and it reads your restaurant's sales and stock to answer in plain words. Insight cards add a demand forecast and menu costing notes. Around it, Moving POS runs the register, the kitchen display, online ordering, loyalty and recipe-costed inventory, in Arabic and English, in Egypt and Saudi Arabia.\n\nWatch the pitch video:\nhttps://www.youtube.com/watch?v=GsNGR6vv_eU&utm_source=facebook&utm_medium=social&utm_campaign=2026-12-08-moving-pos-a-restaurant-pos-with-an-ai-companion\n\n#BuildWithDevya #MovingPOS #RestaurantTech"
+          "caption": "Moving POS: the restaurant POS with an AI companion that answers from your own sales.\n\nAsk it about your week, and it reads your restaurant's sales and stock to answer in plain words. Insight cards add a demand forecast and menu costing notes. Around it, Moving POS runs the register, the kitchen display, online ordering, loyalty and recipe-costed inventory, in Arabic and English, in Egypt and Saudi Arabia.\n\nWatch the pitch video:\nhttps://www.youtube.com/watch?v=GsNGR6vv_eU&utm_source=facebook&utm_medium=social&utm_campaign=2026-12-08-moving-pos-a-restaurant-pos-with-an-ai-companion\n\nDetails: https://www.devya.dev/projects/moving-pos-film?utm_source=facebook&utm_medium=social&utm_campaign=2026-12-08-moving-pos-a-restaurant-pos-with-an-ai-companion\n\n#BuildWithDevya #MovingPOS #RestaurantTech"
         },
         "instagram": {
           "lang": "ar",
-          "caption": "نظام نقاط البيع Moving POS يدير مطعمك كله، ومعه مساعد ذكي يجيب من مبيعاتك أنت.\nاسأله عن أسبوعك، فيقرأ مبيعات المطعم ومخزونه ويجيبك بكلمات واضحة، مع توقع للطلب وملاحظات عن تكلفة الأصناف.\nيعمل في مصر والسعودية، بالعربية والإنجليزية.\nشاهد فيديو العرض على قناة Devya في يوتيوب.\n\n#BuildWithDevya #MovingPOS #مطاعم #ذكاء_اصطناعي"
+          "caption": "نظام نقاط البيع Moving POS يدير مطعمك كله، ومعه مساعد ذكي يجيب من مبيعاتك أنت.\nاسأله عن أسبوعك، فيقرأ مبيعات المطعم ومخزونه ويجيبك بكلمات واضحة، مع توقع للطلب وملاحظات عن تكلفة الأصناف.\nيعمل في مصر والسعودية، بالعربية والإنجليزية.\nشاهد فيديو العرض على قناة Devya في يوتيوب.\n\nرابط المشروع: https://www.youtube.com/watch?v=GsNGR6vv_eU&utm_source=instagram&utm_medium=social&utm_campaign=2026-12-08-moving-pos-a-restaurant-pos-with-an-ai-companion\nالتفاصيل: https://www.devya.dev/projects/moving-pos-film?utm_source=instagram&utm_medium=social&utm_campaign=2026-12-08-moving-pos-a-restaurant-pos-with-an-ai-companion\n\n#BuildWithDevya #MovingPOS #مطاعم #ذكاء_اصطناعي"
         }
       },
       "day": 24,
@@ -1999,15 +1999,15 @@
       "reels": {
         "linkedin": {
           "lang": "en",
-          "caption": "Moving POS: a restaurant POS with an AI companion that answers from your own sales.\n\n#MovingPOS #RestaurantTech #AI"
+          "caption": "Moving POS: a restaurant POS with an AI companion that answers from your own sales.\n\nProject: https://www.youtube.com/watch?v=GsNGR6vv_eU&utm_source=linkedin&utm_medium=social&utm_campaign=2026-12-08-moving-pos-a-restaurant-pos-with-an-ai-companion&utm_content=reel\nDetails: https://www.devya.dev/projects/moving-pos-film?utm_source=linkedin&utm_medium=social&utm_campaign=2026-12-08-moving-pos-a-restaurant-pos-with-an-ai-companion&utm_content=reel\n\n#MovingPOS #RestaurantTech #AI"
         },
         "facebook": {
           "lang": "en",
-          "caption": "Moving POS: a restaurant POS with an AI companion that answers from your own sales.\n\nMore: https://www.youtube.com/watch?v=GsNGR6vv_eU&utm_source=facebook&utm_medium=social&utm_campaign=2026-12-08-moving-pos-a-restaurant-pos-with-an-ai-companion&utm_content=reel\n\n#BuildWithDevya #MovingPOS #RestaurantTech"
+          "caption": "Moving POS: a restaurant POS with an AI companion that answers from your own sales.\n\nMore: https://www.youtube.com/watch?v=GsNGR6vv_eU&utm_source=facebook&utm_medium=social&utm_campaign=2026-12-08-moving-pos-a-restaurant-pos-with-an-ai-companion&utm_content=reel\n\nDetails: https://www.devya.dev/projects/moving-pos-film?utm_source=facebook&utm_medium=social&utm_campaign=2026-12-08-moving-pos-a-restaurant-pos-with-an-ai-companion&utm_content=reel\n\n#BuildWithDevya #MovingPOS #RestaurantTech"
         },
         "instagram": {
           "lang": "ar",
-          "caption": "نظام نقاط البيع Moving POS: مساعد ذكي يجيب من مبيعات مطعمك أنت.\n\n#BuildWithDevya #MovingPOS #مطاعم #ذكاء_اصطناعي"
+          "caption": "نظام نقاط البيع Moving POS: مساعد ذكي يجيب من مبيعات مطعمك أنت.\n\nرابط المشروع: https://www.youtube.com/watch?v=GsNGR6vv_eU&utm_source=instagram&utm_medium=social&utm_campaign=2026-12-08-moving-pos-a-restaurant-pos-with-an-ai-companion&utm_content=reel\nالتفاصيل: https://www.devya.dev/projects/moving-pos-film?utm_source=instagram&utm_medium=social&utm_campaign=2026-12-08-moving-pos-a-restaurant-pos-with-an-ai-companion&utm_content=reel\n\n#BuildWithDevya #MovingPOS #مطاعم #ذكاء_اصطناعي"
         }
       },
       "stories": {
@@ -2073,7 +2073,7 @@
         },
         "instagram": {
           "lang": "en",
-          "caption": "Random 502s and nothing in the logs?\nNode.js closes idle connections after 5 seconds. An AWS load balancer keeps them for 60. When both act at once, the request never reaches your code.\nThe fix: set keepAliveTimeout above the proxy's idle timeout. We use 65 seconds behind a default ALB.\nLink in bio.\n\n#BuildWithDevya #NodeJS #NestJS #BackendDevelopment #WebDevelopment"
+          "caption": "Random 502s and nothing in the logs?\nNode.js closes idle connections after 5 seconds. An AWS load balancer keeps them for 60. When both act at once, the request never reaches your code.\nThe fix: set keepAliveTimeout above the proxy's idle timeout. We use 65 seconds behind a default ALB.\n\nDetails: https://www.devya.dev/blogs/nodejs-keep-alive-timeout-load-balancer-502-nestjs-field-notes?utm_source=instagram&utm_medium=social&utm_campaign=2026-12-09-random-502s-behind-a-load-balancer-the-node-js\n\n#BuildWithDevya #NodeJS #NestJS #BackendDevelopment #WebDevelopment"
         }
       },
       "day": 25,
@@ -2081,7 +2081,7 @@
       "reels": {
         "linkedin": {
           "lang": "en",
-          "caption": "Random 502s behind a load balancer and nothing in the logs? Check the Node.js keep-alive timeout.\n\n#NodeJS #NestJS #DevOps"
+          "caption": "Random 502s behind a load balancer and nothing in the logs? Check the Node.js keep-alive timeout.\n\nDetails: https://www.devya.dev/blogs/nodejs-keep-alive-timeout-load-balancer-502-nestjs-field-notes?utm_source=linkedin&utm_medium=social&utm_campaign=2026-12-09-random-502s-behind-a-load-balancer-the-node-js&utm_content=reel\n\n#NodeJS #NestJS #DevOps"
         },
         "facebook": {
           "lang": "ar",
@@ -2089,7 +2089,7 @@
         },
         "instagram": {
           "lang": "en",
-          "caption": "Random 502s behind a load balancer and nothing in the logs? Check the Node.js keep-alive timeout.\n\n#BuildWithDevya #NodeJS #NestJS #BackendDevelopment #WebDevelopment"
+          "caption": "Random 502s behind a load balancer and nothing in the logs? Check the Node.js keep-alive timeout.\n\nDetails: https://www.devya.dev/blogs/nodejs-keep-alive-timeout-load-balancer-502-nestjs-field-notes?utm_source=instagram&utm_medium=social&utm_campaign=2026-12-09-random-502s-behind-a-load-balancer-the-node-js&utm_content=reel\n\n#BuildWithDevya #NodeJS #NestJS #BackendDevelopment #WebDevelopment"
         }
       },
       "stories": {
@@ -2175,15 +2175,15 @@
       "posts": {
         "linkedin": {
           "lang": "en",
-          "caption": "Loyalty cards work best where customers already look: the wallet on their phone. That is the idea behind Moving Loyalty.\n\nMoving Loyalty puts a café's, restaurant's or shop's loyalty card in Apple Wallet and Google Wallet, in Arabic and English, for businesses in Egypt and Saudi Arabia.\n\nThe customer scans once and enters a mobile number. No app to install, no password, no e-mail.\nThe staff add a stamp in three taps at the counter, and the card in the customer's wallet updates itself.\nThe owner picks one of eight card templates, adds the brand and previews the card in the wallet before launch.\n\nThe pitch walks through the join, the stamp and the templates:\nhttps://www.youtube.com/watch?v=lvcq-RFultk&utm_source=linkedin&utm_medium=social&utm_campaign=2026-12-10-moving-loyalty-loyalty-cards-in-apple-wallet-and\n\n#MovingLoyalty #LoyaltyProgram #Retail #BuildWithDevya"
+          "caption": "Loyalty cards work best where customers already look: the wallet on their phone. That is the idea behind Moving Loyalty.\n\nMoving Loyalty puts a café's, restaurant's or shop's loyalty card in Apple Wallet and Google Wallet, in Arabic and English, for businesses in Egypt and Saudi Arabia.\n\nThe customer scans once and enters a mobile number. No app to install, no password, no e-mail.\nThe staff add a stamp in three taps at the counter, and the card in the customer's wallet updates itself.\nThe owner picks one of eight card templates, adds the brand and previews the card in the wallet before launch.\n\nThe pitch walks through the join, the stamp and the templates:\nhttps://www.youtube.com/watch?v=lvcq-RFultk&utm_source=linkedin&utm_medium=social&utm_campaign=2026-12-10-moving-loyalty-loyalty-cards-in-apple-wallet-and\n\nProject: https://loyalty.movingsystems.tech/?utm_source=linkedin&utm_medium=social&utm_campaign=2026-12-10-moving-loyalty-loyalty-cards-in-apple-wallet-and\nDetails: https://www.devya.dev/projects/moving-loyalty?utm_source=linkedin&utm_medium=social&utm_campaign=2026-12-10-moving-loyalty-loyalty-cards-in-apple-wallet-and\n\n#MovingLoyalty #LoyaltyProgram #Retail #BuildWithDevya"
         },
         "facebook": {
           "lang": "ar",
-          "caption": "بطاقة الولاء من Moving Loyalty تعيش في محفظة هاتف العميل: Apple Wallet وGoogle Wallet.\nيكفي أن يمسح العميل الرمز مرة واحدة ويكتب رقم هاتفه، بلا تطبيق ولا كلمة مرور ولا بريد إلكتروني. ويضيف الموظف الختم في ثلاث نقرات، فتتحدث البطاقة في المحفظة تلقائيًا.\nللمقاهي والمطاعم والمتاجر في مصر والسعودية، بالعربية والإنجليزية.\nشاهد فيديو العرض:\nhttps://www.youtube.com/watch?v=lvcq-RFultk&utm_source=facebook&utm_medium=social&utm_campaign=2026-12-10-moving-loyalty-loyalty-cards-in-apple-wallet-and\n\n#BuildWithDevya #برنامج_ولاء"
+          "caption": "بطاقة الولاء من Moving Loyalty تعيش في محفظة هاتف العميل: Apple Wallet وGoogle Wallet.\nيكفي أن يمسح العميل الرمز مرة واحدة ويكتب رقم هاتفه، بلا تطبيق ولا كلمة مرور ولا بريد إلكتروني. ويضيف الموظف الختم في ثلاث نقرات، فتتحدث البطاقة في المحفظة تلقائيًا.\nللمقاهي والمطاعم والمتاجر في مصر والسعودية، بالعربية والإنجليزية.\nشاهد فيديو العرض:\nhttps://www.youtube.com/watch?v=lvcq-RFultk&utm_source=facebook&utm_medium=social&utm_campaign=2026-12-10-moving-loyalty-loyalty-cards-in-apple-wallet-and\n\nرابط المشروع: https://loyalty.movingsystems.tech/?utm_source=facebook&utm_medium=social&utm_campaign=2026-12-10-moving-loyalty-loyalty-cards-in-apple-wallet-and\nالتفاصيل: https://www.devya.dev/projects/moving-loyalty?utm_source=facebook&utm_medium=social&utm_campaign=2026-12-10-moving-loyalty-loyalty-cards-in-apple-wallet-and\n\n#BuildWithDevya #برنامج_ولاء"
         },
         "instagram": {
           "lang": "en",
-          "caption": "Loyalty cards in Apple Wallet and Google Wallet, with no app to install.\nWith Moving Loyalty, customers join with one scan and a mobile number. Staff add a stamp in three taps, and the card updates itself in the wallet.\nFor cafés, restaurants and shops in Egypt and Saudi Arabia.\nWatch the pitch on Devya's YouTube channel.\n\n#BuildWithDevya #MovingLoyalty #LoyaltyProgram #SmallBusiness"
+          "caption": "Loyalty cards in Apple Wallet and Google Wallet, with no app to install.\nWith Moving Loyalty, customers join with one scan and a mobile number. Staff add a stamp in three taps, and the card updates itself in the wallet.\nFor cafés, restaurants and shops in Egypt and Saudi Arabia.\nWatch the pitch on Devya's YouTube channel.\n\nProject: https://loyalty.movingsystems.tech/?utm_source=instagram&utm_medium=social&utm_campaign=2026-12-10-moving-loyalty-loyalty-cards-in-apple-wallet-and\nDetails: https://www.devya.dev/projects/moving-loyalty?utm_source=instagram&utm_medium=social&utm_campaign=2026-12-10-moving-loyalty-loyalty-cards-in-apple-wallet-and\n\n#BuildWithDevya #MovingLoyalty #LoyaltyProgram #SmallBusiness"
         }
       },
       "day": 26,
@@ -2191,15 +2191,15 @@
       "reels": {
         "linkedin": {
           "lang": "en",
-          "caption": "Loyalty cards in Apple Wallet and Google Wallet: one scan to join, three taps to stamp. Moving Loyalty.\n\n#MovingLoyalty #LoyaltyProgram #Retail"
+          "caption": "Loyalty cards in Apple Wallet and Google Wallet: one scan to join, three taps to stamp. Moving Loyalty.\n\nProject: https://loyalty.movingsystems.tech/?utm_source=linkedin&utm_medium=social&utm_campaign=2026-12-10-moving-loyalty-loyalty-cards-in-apple-wallet-and&utm_content=reel\nDetails: https://www.devya.dev/projects/moving-loyalty?utm_source=linkedin&utm_medium=social&utm_campaign=2026-12-10-moving-loyalty-loyalty-cards-in-apple-wallet-and&utm_content=reel\n\n#MovingLoyalty #LoyaltyProgram #Retail"
         },
         "facebook": {
           "lang": "ar",
-          "caption": "بطاقة الولاء في محفظة الهاتف: مسحة واحدة للانضمام وثلاث نقرات للختم. Moving Loyalty.\n\nالتفاصيل: https://www.youtube.com/watch?v=lvcq-RFultk&utm_source=facebook&utm_medium=social&utm_campaign=2026-12-10-moving-loyalty-loyalty-cards-in-apple-wallet-and&utm_content=reel\n\n#BuildWithDevya #برنامج_ولاء"
+          "caption": "بطاقة الولاء في محفظة الهاتف: مسحة واحدة للانضمام وثلاث نقرات للختم. Moving Loyalty.\n\nالتفاصيل: https://www.youtube.com/watch?v=lvcq-RFultk&utm_source=facebook&utm_medium=social&utm_campaign=2026-12-10-moving-loyalty-loyalty-cards-in-apple-wallet-and&utm_content=reel\n\nرابط المشروع: https://loyalty.movingsystems.tech/?utm_source=facebook&utm_medium=social&utm_campaign=2026-12-10-moving-loyalty-loyalty-cards-in-apple-wallet-and&utm_content=reel\nالتفاصيل: https://www.devya.dev/projects/moving-loyalty?utm_source=facebook&utm_medium=social&utm_campaign=2026-12-10-moving-loyalty-loyalty-cards-in-apple-wallet-and&utm_content=reel\n\n#BuildWithDevya #برنامج_ولاء"
         },
         "instagram": {
           "lang": "en",
-          "caption": "Loyalty cards in Apple Wallet and Google Wallet: one scan to join, three taps to stamp. Moving Loyalty.\n\n#BuildWithDevya #MovingLoyalty #LoyaltyProgram #SmallBusiness"
+          "caption": "Loyalty cards in Apple Wallet and Google Wallet: one scan to join, three taps to stamp. Moving Loyalty.\n\nProject: https://loyalty.movingsystems.tech/?utm_source=instagram&utm_medium=social&utm_campaign=2026-12-10-moving-loyalty-loyalty-cards-in-apple-wallet-and&utm_content=reel\nDetails: https://www.devya.dev/projects/moving-loyalty?utm_source=instagram&utm_medium=social&utm_campaign=2026-12-10-moving-loyalty-loyalty-cards-in-apple-wallet-and&utm_content=reel\n\n#BuildWithDevya #MovingLoyalty #LoyaltyProgram #SmallBusiness"
         }
       },
       "stories": {
@@ -2218,7 +2218,7 @@
       "topic": "Rules an AI coding agent must never skip live in hooks, not the prompt",
       "source": "https://www.devya.dev/blogs/claude-code-hooks-deterministic-guardrails-field-notes",
       "basis": "Devya blog field notes: Claude Code hooks as deterministic guardrails (why Devya moved must-never-skip rules out of CLAUDE.md into hooks: secret-file guard, per-edit formatter, type-check gate on Stop)",
-      "linkedinLink": false,
+      "linkedinLink": true,
       "keywords": {
         "en": [
           "AI coding agent",
@@ -2251,7 +2251,7 @@
       "posts": {
         "linkedin": {
           "lang": "en",
-          "caption": "Our AI coding agent followed the rules in CLAUDE.md most of the time. \"Never touch .env files.\" \"Run the formatter after editing.\" Most of the time is fine for style advice. It isn't good enough for a guardrail.\n\nA rule in CLAUDE.md is text in the model's context, weighed on each turn. A Claude Code hook is a handler the harness itself runs every time an event fires.\n\nSo we sort every rule into one of three layers:\n→ CLAUDE.md for conventions, architecture notes and \"prefer X over Y\" advice.\n→ Permission rules for a hard allow or deny on tools and commands.\n→ Hooks for anything that must never be skipped: blocking secret files before a read or edit, formatting each file after Claude edits it, and refusing to finish while the type-check fails.\n\nOne lesson from setting it up: only exit code 2 blocks a tool call. Our first secrets guard exited 1, which Claude Code treats as a non-blocking error, so the call still ran.\n\nThe fix was never a louder instruction. It was moving the rule out of the prompt.\n\n#AI #ClaudeCode #DeveloperTools #SoftwareEngineering #BuildWithDevya"
+          "caption": "Our AI coding agent followed the rules in CLAUDE.md most of the time. \"Never touch .env files.\" \"Run the formatter after editing.\" Most of the time is fine for style advice. It isn't good enough for a guardrail.\n\nA rule in CLAUDE.md is text in the model's context, weighed on each turn. A Claude Code hook is a handler the harness itself runs every time an event fires.\n\nSo we sort every rule into one of three layers:\n→ CLAUDE.md for conventions, architecture notes and \"prefer X over Y\" advice.\n→ Permission rules for a hard allow or deny on tools and commands.\n→ Hooks for anything that must never be skipped: blocking secret files before a read or edit, formatting each file after Claude edits it, and refusing to finish while the type-check fails.\n\nOne lesson from setting it up: only exit code 2 blocks a tool call. Our first secrets guard exited 1, which Claude Code treats as a non-blocking error, so the call still ran.\n\nThe fix was never a louder instruction. It was moving the rule out of the prompt.\n\nDetails: https://www.devya.dev/blogs/claude-code-hooks-deterministic-guardrails-field-notes?utm_source=linkedin&utm_medium=social&utm_campaign=2026-12-11-rules-an-ai-coding-agent-must-never-skip-live-in\n\n#AI #ClaudeCode #DeveloperTools #SoftwareEngineering #BuildWithDevya"
         },
         "facebook": {
           "lang": "ar",
@@ -2259,7 +2259,7 @@
         },
         "instagram": {
           "lang": "en",
-          "caption": "Does your AI coding agent follow its rules every time? Ours did most of the time.\nThat's fine for style advice, not for a guardrail. So anything that must never be skipped (blocking secret files, formatting every edit, no finishing on a failing type-check) runs as a Claude Code hook, every time.\nLink in bio.\n\n#BuildWithDevya #AI #ClaudeCode #DeveloperTools #BehindTheScenes"
+          "caption": "Does your AI coding agent follow its rules every time? Ours did most of the time.\nThat's fine for style advice, not for a guardrail. So anything that must never be skipped (blocking secret files, formatting every edit, no finishing on a failing type-check) runs as a Claude Code hook, every time.\n\nDetails: https://www.devya.dev/blogs/claude-code-hooks-deterministic-guardrails-field-notes?utm_source=instagram&utm_medium=social&utm_campaign=2026-12-11-rules-an-ai-coding-agent-must-never-skip-live-in\n\n#BuildWithDevya #AI #ClaudeCode #DeveloperTools #BehindTheScenes"
         }
       },
       "day": 27,
@@ -2267,7 +2267,7 @@
       "reels": {
         "linkedin": {
           "lang": "en",
-          "caption": "Our AI coding agent followed CLAUDE.md most of the time. Rules that must hold every time now run as hooks.\n\n#AI #ClaudeCode #DeveloperTools"
+          "caption": "Our AI coding agent followed CLAUDE.md most of the time. Rules that must hold every time now run as hooks.\n\nDetails: https://www.devya.dev/blogs/claude-code-hooks-deterministic-guardrails-field-notes?utm_source=linkedin&utm_medium=social&utm_campaign=2026-12-11-rules-an-ai-coding-agent-must-never-skip-live-in&utm_content=reel\n\n#AI #ClaudeCode #DeveloperTools"
         },
         "facebook": {
           "lang": "ar",
@@ -2275,7 +2275,7 @@
         },
         "instagram": {
           "lang": "en",
-          "caption": "Our AI coding agent followed CLAUDE.md most of the time. Rules that must hold every time now run as hooks.\n\n#BuildWithDevya #AI #ClaudeCode #DeveloperTools #BehindTheScenes"
+          "caption": "Our AI coding agent followed CLAUDE.md most of the time. Rules that must hold every time now run as hooks.\n\nDetails: https://www.devya.dev/blogs/claude-code-hooks-deterministic-guardrails-field-notes?utm_source=instagram&utm_medium=social&utm_campaign=2026-12-11-rules-an-ai-coding-agent-must-never-skip-live-in&utm_content=reel\n\n#BuildWithDevya #AI #ClaudeCode #DeveloperTools #BehindTheScenes"
         }
       },
       "stories": {
@@ -2294,7 +2294,7 @@
       "topic": "Ask your vendor: can a retried payment charge twice?",
       "source": "https://www.devya.dev/blogs/idempotency-keys-retries-circuit-breakers-field-notes",
       "basis": "Devya blog field notes: when retries make an outage worse (idempotency keys, safe-to-retry failures, backoff with jitter, per-attempt timeouts, circuit breakers), phrased as buyer advice for any vendor",
-      "linkedinLink": false,
+      "linkedinLink": true,
       "keywords": {
         "en": [
           "payment",
@@ -2340,7 +2340,7 @@
       "posts": {
         "linkedin": {
           "lang": "en",
-          "caption": "A payment request times out. Did the charge go through? Your app doesn't know, and the code about to retry it doesn't either.\n\nThat's the hard case in every retry policy. A timeout or an HTTP 500 is ambiguous: the write may have committed before the response was lost. Retry it blindly and you risk a duplicate charge. Don't retry and you risk losing a legitimate payment.\n\nIf you're hiring a team to build anything that takes money, ask your vendor how they handle it:\n1. An idempotency key on every payment write, generated once per operation and reused on every retry, so a repeat returns the original result instead of charging again.\n2. A timeout on every call to an outside service, so one hung request can't hold a worker indefinitely.\n3. Retries only for failures that are safe to repeat, two or three at most, with random jitter so clients don't all come back at the same instant.\n4. A circuit breaker on a dependency that is fully down: fail fast instead of piling on.\n\nCareless retries make outages worse. With three retries per request, a service at its breaking point can receive up to four times its normal load.\n\n#Payments #Fintech #SoftwareArchitecture #BuildWithDevya"
+          "caption": "A payment request times out. Did the charge go through? Your app doesn't know, and the code about to retry it doesn't either.\n\nThat's the hard case in every retry policy. A timeout or an HTTP 500 is ambiguous: the write may have committed before the response was lost. Retry it blindly and you risk a duplicate charge. Don't retry and you risk losing a legitimate payment.\n\nIf you're hiring a team to build anything that takes money, ask your vendor how they handle it:\n1. An idempotency key on every payment write, generated once per operation and reused on every retry, so a repeat returns the original result instead of charging again.\n2. A timeout on every call to an outside service, so one hung request can't hold a worker indefinitely.\n3. Retries only for failures that are safe to repeat, two or three at most, with random jitter so clients don't all come back at the same instant.\n4. A circuit breaker on a dependency that is fully down: fail fast instead of piling on.\n\nCareless retries make outages worse. With three retries per request, a service at its breaking point can receive up to four times its normal load.\n\nDetails: https://www.devya.dev/blogs/idempotency-keys-retries-circuit-breakers-field-notes?utm_source=linkedin&utm_medium=social&utm_campaign=2026-12-12-ask-your-vendor-can-a-retried-payment-charge\n\n#Payments #Fintech #SoftwareArchitecture #BuildWithDevya"
         },
         "facebook": {
           "lang": "en",
@@ -2348,7 +2348,7 @@
         },
         "instagram": {
           "lang": "ar",
-          "caption": "إعادة المحاولة قد تجعل عميلك يدفع مرتين.\nعندما تنقطع الاستجابة أثناء الدفع، قد تكون العملية قد تمت فعلًا، وإعادة المحاولة دون حماية قد تكررها.\nاطلب من شركة البرمجة مفتاح منع تكرار لكل عملية دفع، ومهلة زمنية لكل اتصال خارجي، وإعادة محاولة محدودة للأخطاء الآمنة فقط.\nاحفظ المنشور لمشروعك القادم. الرابط في البايو.\n\n#الدفع_الإلكتروني #ريادة_الأعمال #تطوير_البرمجيات #السعودية #BuildWithDevya"
+          "caption": "إعادة المحاولة قد تجعل عميلك يدفع مرتين.\nعندما تنقطع الاستجابة أثناء الدفع، قد تكون العملية قد تمت فعلًا، وإعادة المحاولة دون حماية قد تكررها.\nاطلب من شركة البرمجة مفتاح منع تكرار لكل عملية دفع، ومهلة زمنية لكل اتصال خارجي، وإعادة محاولة محدودة للأخطاء الآمنة فقط.\nاحفظ المنشور لمشروعك القادم.\n\nالتفاصيل: https://www.devya.dev/blogs/idempotency-keys-retries-circuit-breakers-field-notes?utm_source=instagram&utm_medium=social&utm_campaign=2026-12-12-ask-your-vendor-can-a-retried-payment-charge\n\n#الدفع_الإلكتروني #ريادة_الأعمال #تطوير_البرمجيات #السعودية #BuildWithDevya"
         }
       },
       "day": 28,
@@ -2356,7 +2356,7 @@
       "reels": {
         "linkedin": {
           "lang": "en",
-          "caption": "Payment timed out? Ask your vendor whether the retry can charge your customer twice.\n\n#Payments #Fintech #SoftwareArchitecture"
+          "caption": "Payment timed out? Ask your vendor whether the retry can charge your customer twice.\n\nDetails: https://www.devya.dev/blogs/idempotency-keys-retries-circuit-breakers-field-notes?utm_source=linkedin&utm_medium=social&utm_campaign=2026-12-12-ask-your-vendor-can-a-retried-payment-charge&utm_content=reel\n\n#Payments #Fintech #SoftwareArchitecture"
         },
         "facebook": {
           "lang": "en",
@@ -2364,7 +2364,7 @@
         },
         "instagram": {
           "lang": "ar",
-          "caption": "انقطع الاتصال أثناء الدفع؟ اسأل شركة البرمجة: هل يمكن أن تخصم إعادة المحاولة المبلغ مرتين؟\n\n#الدفع_الإلكتروني #ريادة_الأعمال #تطوير_البرمجيات #السعودية #BuildWithDevya"
+          "caption": "انقطع الاتصال أثناء الدفع؟ اسأل شركة البرمجة: هل يمكن أن تخصم إعادة المحاولة المبلغ مرتين؟\n\nالتفاصيل: https://www.devya.dev/blogs/idempotency-keys-retries-circuit-breakers-field-notes?utm_source=instagram&utm_medium=social&utm_campaign=2026-12-12-ask-your-vendor-can-a-retried-payment-charge&utm_content=reel\n\n#الدفع_الإلكتروني #ريادة_الأعمال #تطوير_البرمجيات #السعودية #BuildWithDevya"
         }
       },
       "stories": {
@@ -2428,15 +2428,15 @@
       "posts": {
         "linkedin": {
           "lang": "en",
-          "caption": "An online store and a POS that don't talk to each other mean two menus and two price lists to keep in step. Moving Stores is built the other way round.\n\nMoving Stores builds an online store in Arabic and English for shops and restaurants in Egypt and the Gulf. Linked to Moving POS, the store takes its menu, prices and branches from the till.\n\nAn online order then behaves exactly like a counter sale: it lands on the kitchen screen, prints on the kitchen printer and takes the stock off. The till re-checks every price before it accepts the order, and the customer follows its progress live.\n\nThere's a free plan; the Moving POS link comes with the Growth and Enterprise plans.\n\nThe pitch follows an order from the store to the kitchen:\nhttps://www.youtube.com/watch?v=SbZVZ12EyBo&utm_source=linkedin&utm_medium=social&utm_campaign=2026-12-13-moving-stores-an-online-store-whose-menu-comes\n\n#MovingStores #Ecommerce #RestaurantTech #BuildWithDevya"
+          "caption": "An online store and a POS that don't talk to each other mean two menus and two price lists to keep in step. Moving Stores is built the other way round.\n\nMoving Stores builds an online store in Arabic and English for shops and restaurants in Egypt and the Gulf. Linked to Moving POS, the store takes its menu, prices and branches from the till.\n\nAn online order then behaves exactly like a counter sale: it lands on the kitchen screen, prints on the kitchen printer and takes the stock off. The till re-checks every price before it accepts the order, and the customer follows its progress live.\n\nThere's a free plan; the Moving POS link comes with the Growth and Enterprise plans.\n\nThe pitch follows an order from the store to the kitchen:\nhttps://www.youtube.com/watch?v=SbZVZ12EyBo&utm_source=linkedin&utm_medium=social&utm_campaign=2026-12-13-moving-stores-an-online-store-whose-menu-comes\n\nProject: https://stores.movingsystems.tech/?utm_source=linkedin&utm_medium=social&utm_campaign=2026-12-13-moving-stores-an-online-store-whose-menu-comes\nDetails: https://www.devya.dev/projects/moving-stores?utm_source=linkedin&utm_medium=social&utm_campaign=2026-12-13-moving-stores-an-online-store-whose-menu-comes\n\n#MovingStores #Ecommerce #RestaurantTech #BuildWithDevya"
         },
         "facebook": {
           "lang": "ar",
-          "caption": "متجر إلكتروني يأخذ قائمته وأسعاره وفروعه من الكاشير مباشرة: هذا هو Moving Stores.\nعند ربطه بنظام Moving POS، يصل الطلب الإلكتروني إلى شاشة المطبخ، ويُطبع على طابعة المطبخ، ويُخصم من المخزون، تمامًا مثل البيع عند الكاشير. ويتحقق الكاشير من كل سعر قبل قبول الطلب، ويتابع العميل حالة طلبه مباشرة.\nللمتاجر والمطاعم في مصر والخليج، بالعربية والإنجليزية، مع خطة مجانية.\nشاهد فيديو العرض:\nhttps://www.youtube.com/watch?v=SbZVZ12EyBo&utm_source=facebook&utm_medium=social&utm_campaign=2026-12-13-moving-stores-an-online-store-whose-menu-comes\n\n#BuildWithDevya #تجارة_إلكترونية"
+          "caption": "متجر إلكتروني يأخذ قائمته وأسعاره وفروعه من الكاشير مباشرة: هذا هو Moving Stores.\nعند ربطه بنظام Moving POS، يصل الطلب الإلكتروني إلى شاشة المطبخ، ويُطبع على طابعة المطبخ، ويُخصم من المخزون، تمامًا مثل البيع عند الكاشير. ويتحقق الكاشير من كل سعر قبل قبول الطلب، ويتابع العميل حالة طلبه مباشرة.\nللمتاجر والمطاعم في مصر والخليج، بالعربية والإنجليزية، مع خطة مجانية.\nشاهد فيديو العرض:\nhttps://www.youtube.com/watch?v=SbZVZ12EyBo&utm_source=facebook&utm_medium=social&utm_campaign=2026-12-13-moving-stores-an-online-store-whose-menu-comes\n\nرابط المشروع: https://stores.movingsystems.tech/?utm_source=facebook&utm_medium=social&utm_campaign=2026-12-13-moving-stores-an-online-store-whose-menu-comes\nالتفاصيل: https://www.devya.dev/projects/moving-stores?utm_source=facebook&utm_medium=social&utm_campaign=2026-12-13-moving-stores-an-online-store-whose-menu-comes\n\n#BuildWithDevya #تجارة_إلكترونية"
         },
         "instagram": {
           "lang": "en",
-          "caption": "An online store whose menu comes straight from the till.\nMoving Stores builds your store in Arabic and English. Linked to Moving POS, every online order lands on the kitchen screen and takes the stock off, just like a counter sale.\nFor shops and restaurants in Egypt and the Gulf, with a free plan.\nWatch the pitch on Devya's YouTube channel.\n\n#BuildWithDevya #MovingStores #Ecommerce #OnlineOrdering"
+          "caption": "An online store whose menu comes straight from the till.\nMoving Stores builds your store in Arabic and English. Linked to Moving POS, every online order lands on the kitchen screen and takes the stock off, just like a counter sale.\nFor shops and restaurants in Egypt and the Gulf, with a free plan.\nWatch the pitch on Devya's YouTube channel.\n\nProject: https://stores.movingsystems.tech/?utm_source=instagram&utm_medium=social&utm_campaign=2026-12-13-moving-stores-an-online-store-whose-menu-comes\nDetails: https://www.devya.dev/projects/moving-stores?utm_source=instagram&utm_medium=social&utm_campaign=2026-12-13-moving-stores-an-online-store-whose-menu-comes\n\n#BuildWithDevya #MovingStores #Ecommerce #OnlineOrdering"
         }
       },
       "day": 29,
@@ -2444,15 +2444,15 @@
       "reels": {
         "linkedin": {
           "lang": "en",
-          "caption": "An online store whose menu, prices and branches come from the till: Moving Stores.\n\n#MovingStores #Ecommerce #RestaurantTech"
+          "caption": "An online store whose menu, prices and branches come from the till: Moving Stores.\n\nProject: https://stores.movingsystems.tech/?utm_source=linkedin&utm_medium=social&utm_campaign=2026-12-13-moving-stores-an-online-store-whose-menu-comes&utm_content=reel\nDetails: https://www.devya.dev/projects/moving-stores?utm_source=linkedin&utm_medium=social&utm_campaign=2026-12-13-moving-stores-an-online-store-whose-menu-comes&utm_content=reel\n\n#MovingStores #Ecommerce #RestaurantTech"
         },
         "facebook": {
           "lang": "ar",
-          "caption": "متجر إلكتروني تأتي قائمته وأسعاره من الكاشير: Moving Stores.\n\nالتفاصيل: https://www.youtube.com/watch?v=SbZVZ12EyBo&utm_source=facebook&utm_medium=social&utm_campaign=2026-12-13-moving-stores-an-online-store-whose-menu-comes&utm_content=reel\n\n#BuildWithDevya #تجارة_إلكترونية"
+          "caption": "متجر إلكتروني تأتي قائمته وأسعاره من الكاشير: Moving Stores.\n\nالتفاصيل: https://www.youtube.com/watch?v=SbZVZ12EyBo&utm_source=facebook&utm_medium=social&utm_campaign=2026-12-13-moving-stores-an-online-store-whose-menu-comes&utm_content=reel\n\nرابط المشروع: https://stores.movingsystems.tech/?utm_source=facebook&utm_medium=social&utm_campaign=2026-12-13-moving-stores-an-online-store-whose-menu-comes&utm_content=reel\nالتفاصيل: https://www.devya.dev/projects/moving-stores?utm_source=facebook&utm_medium=social&utm_campaign=2026-12-13-moving-stores-an-online-store-whose-menu-comes&utm_content=reel\n\n#BuildWithDevya #تجارة_إلكترونية"
         },
         "instagram": {
           "lang": "en",
-          "caption": "An online store whose menu, prices and branches come from the till: Moving Stores.\n\n#BuildWithDevya #MovingStores #Ecommerce #OnlineOrdering"
+          "caption": "An online store whose menu, prices and branches come from the till: Moving Stores.\n\nProject: https://stores.movingsystems.tech/?utm_source=instagram&utm_medium=social&utm_campaign=2026-12-13-moving-stores-an-online-store-whose-menu-comes&utm_content=reel\nDetails: https://www.devya.dev/projects/moving-stores?utm_source=instagram&utm_medium=social&utm_campaign=2026-12-13-moving-stores-an-online-store-whose-menu-comes&utm_content=reel\n\n#BuildWithDevya #MovingStores #Ecommerce #OnlineOrdering"
         }
       },
       "stories": {
@@ -2520,7 +2520,7 @@
         },
         "instagram": {
           "lang": "en",
-          "caption": "Why does page 500 load slower than page 1?\nWith OFFSET pagination, LIMIT 20 OFFSET 10000 makes PostgreSQL produce 10,020 rows and throw away 10,000. Keyset pagination starts from the last row you saw, so page 500 costs about what page 1 costs.\nEnd the sort with a unique key, and index it in the same order.\nLink in bio.\n\n#BuildWithDevya #PostgreSQL #SQL #WebDevelopment #TechTips"
+          "caption": "Why does page 500 load slower than page 1?\nWith OFFSET pagination, LIMIT 20 OFFSET 10000 makes PostgreSQL produce 10,020 rows and throw away 10,000. Keyset pagination starts from the last row you saw, so page 500 costs about what page 1 costs.\nEnd the sort with a unique key, and index it in the same order.\n\nDetails: https://www.devya.dev/blogs/cursor-pagination-keyset-postgres-field-notes?utm_source=instagram&utm_medium=social&utm_campaign=2026-12-14-offset-pagination-slows-down-on-every-page\n\n#BuildWithDevya #PostgreSQL #SQL #WebDevelopment #TechTips"
         }
       },
       "day": 30,
@@ -2528,7 +2528,7 @@
       "reels": {
         "linkedin": {
           "lang": "en",
-          "caption": "OFFSET pagination gets slower on every page. Keyset cursors make page 500 cost about what page 1 costs.\n\n#PostgreSQL #BackendEngineering #SQL"
+          "caption": "OFFSET pagination gets slower on every page. Keyset cursors make page 500 cost about what page 1 costs.\n\nDetails: https://www.devya.dev/blogs/cursor-pagination-keyset-postgres-field-notes?utm_source=linkedin&utm_medium=social&utm_campaign=2026-12-14-offset-pagination-slows-down-on-every-page&utm_content=reel\n\n#PostgreSQL #BackendEngineering #SQL"
         },
         "facebook": {
           "lang": "ar",
@@ -2536,7 +2536,7 @@
         },
         "instagram": {
           "lang": "en",
-          "caption": "OFFSET pagination gets slower on every page. Keyset cursors make page 500 cost about what page 1 costs.\n\n#BuildWithDevya #PostgreSQL #SQL #WebDevelopment #TechTips"
+          "caption": "OFFSET pagination gets slower on every page. Keyset cursors make page 500 cost about what page 1 costs.\n\nDetails: https://www.devya.dev/blogs/cursor-pagination-keyset-postgres-field-notes?utm_source=instagram&utm_medium=social&utm_campaign=2026-12-14-offset-pagination-slows-down-on-every-page&utm_content=reel\n\n#BuildWithDevya #PostgreSQL #SQL #WebDevelopment #TechTips"
         }
       },
       "stories": {
@@ -2599,15 +2599,15 @@
       "posts": {
         "linkedin": {
           "lang": "en",
-          "caption": "Accounting that is rebuilt once a month from exports is always a month behind. Moving Accounting keeps the books current instead.\n\nMoving Accounting is double-entry accounting in Arabic and English for Saudi Arabia and Egypt. Follow an invoice line into the books and every entry balances; the database itself enforces it.\n\nTax invoices go to ZATCA or to Egypt's ETA from inside the system, and the VAT return builds itself from your own documents.\n\nOnce linked, Moving POS branches and a Moving Stores shop post their sales on their own: each day's close becomes one balanced entry per branch.\n\nThere's a free plan. The pitch follows one invoice line into the books:\nhttps://www.youtube.com/watch?v=dOvsiOFMj_E&utm_source=linkedin&utm_medium=social&utm_campaign=2026-12-15-moving-accounting-double-entry-books-with-zatca\n\n#MovingAccounting #EInvoicing #ZATCA #BuildWithDevya"
+          "caption": "Accounting that is rebuilt once a month from exports is always a month behind. Moving Accounting keeps the books current instead.\n\nMoving Accounting is double-entry accounting in Arabic and English for Saudi Arabia and Egypt. Follow an invoice line into the books and every entry balances; the database itself enforces it.\n\nTax invoices go to ZATCA or to Egypt's ETA from inside the system, and the VAT return builds itself from your own documents.\n\nOnce linked, Moving POS branches and a Moving Stores shop post their sales on their own: each day's close becomes one balanced entry per branch.\n\nThere's a free plan. The pitch follows one invoice line into the books:\nhttps://www.youtube.com/watch?v=dOvsiOFMj_E&utm_source=linkedin&utm_medium=social&utm_campaign=2026-12-15-moving-accounting-double-entry-books-with-zatca\n\nProject: https://accounting.movingsystems.tech/?utm_source=linkedin&utm_medium=social&utm_campaign=2026-12-15-moving-accounting-double-entry-books-with-zatca\nDetails: https://www.devya.dev/projects/moving-accounting?utm_source=linkedin&utm_medium=social&utm_campaign=2026-12-15-moving-accounting-double-entry-books-with-zatca\n\n#MovingAccounting #EInvoicing #ZATCA #BuildWithDevya"
         },
         "facebook": {
           "lang": "en",
-          "caption": "Moving Accounting: double-entry accounting in Arabic and English, with e-invoicing built in.\n\nTax invoices go to ZATCA in Saudi Arabia or the ETA in Egypt from inside the system, and the VAT return builds itself from your own documents. Linked to Moving POS and Moving Stores, each day's sales close into one balanced entry per branch.\n\nThere's a free plan. Watch the pitch video:\nhttps://www.youtube.com/watch?v=dOvsiOFMj_E&utm_source=facebook&utm_medium=social&utm_campaign=2026-12-15-moving-accounting-double-entry-books-with-zatca\n\n#BuildWithDevya #MovingAccounting #EInvoicing"
+          "caption": "Moving Accounting: double-entry accounting in Arabic and English, with e-invoicing built in.\n\nTax invoices go to ZATCA in Saudi Arabia or the ETA in Egypt from inside the system, and the VAT return builds itself from your own documents. Linked to Moving POS and Moving Stores, each day's sales close into one balanced entry per branch.\n\nThere's a free plan. Watch the pitch video:\nhttps://www.youtube.com/watch?v=dOvsiOFMj_E&utm_source=facebook&utm_medium=social&utm_campaign=2026-12-15-moving-accounting-double-entry-books-with-zatca\n\nProject: https://accounting.movingsystems.tech/?utm_source=facebook&utm_medium=social&utm_campaign=2026-12-15-moving-accounting-double-entry-books-with-zatca\nDetails: https://www.devya.dev/projects/moving-accounting?utm_source=facebook&utm_medium=social&utm_campaign=2026-12-15-moving-accounting-double-entry-books-with-zatca\n\n#BuildWithDevya #MovingAccounting #EInvoicing"
         },
         "instagram": {
           "lang": "ar",
-          "caption": "المحاسبة بالقيد المزدوج بالعربية والإنجليزية، مع الفواتير الإلكترونية من داخل النظام: هذا هو Moving Accounting.\nتُرسل الفواتير الضريبية إلى ZATCA في السعودية أو منظومة ETA في مصر، ويُبنى الإقرار الضريبي من مستنداتك أنت.\nومع ربطه بنظامي Moving POS وMoving Stores تُرحَّل مبيعات كل يوم في قيد واحد متوازن لكل فرع.\nشاهد فيديو العرض على قناة Devya في يوتيوب.\n\n#BuildWithDevya #MovingAccounting #محاسبة #فاتورة_إلكترونية"
+          "caption": "المحاسبة بالقيد المزدوج بالعربية والإنجليزية، مع الفواتير الإلكترونية من داخل النظام: هذا هو Moving Accounting.\nتُرسل الفواتير الضريبية إلى ZATCA في السعودية أو منظومة ETA في مصر، ويُبنى الإقرار الضريبي من مستنداتك أنت.\nومع ربطه بنظامي Moving POS وMoving Stores تُرحَّل مبيعات كل يوم في قيد واحد متوازن لكل فرع.\nشاهد فيديو العرض على قناة Devya في يوتيوب.\n\nرابط المشروع: https://accounting.movingsystems.tech/?utm_source=instagram&utm_medium=social&utm_campaign=2026-12-15-moving-accounting-double-entry-books-with-zatca\nالتفاصيل: https://www.devya.dev/projects/moving-accounting?utm_source=instagram&utm_medium=social&utm_campaign=2026-12-15-moving-accounting-double-entry-books-with-zatca\n\n#BuildWithDevya #MovingAccounting #محاسبة #فاتورة_إلكترونية"
         }
       },
       "day": 31,
@@ -2615,15 +2615,15 @@
       "reels": {
         "linkedin": {
           "lang": "en",
-          "caption": "Moving Accounting: every entry balances, and e-invoices reach ZATCA or Egypt's ETA from inside the system.\n\n#MovingAccounting #EInvoicing #ZATCA"
+          "caption": "Moving Accounting: every entry balances, and e-invoices reach ZATCA or Egypt's ETA from inside the system.\n\nProject: https://accounting.movingsystems.tech/?utm_source=linkedin&utm_medium=social&utm_campaign=2026-12-15-moving-accounting-double-entry-books-with-zatca&utm_content=reel\nDetails: https://www.devya.dev/projects/moving-accounting?utm_source=linkedin&utm_medium=social&utm_campaign=2026-12-15-moving-accounting-double-entry-books-with-zatca&utm_content=reel\n\n#MovingAccounting #EInvoicing #ZATCA"
         },
         "facebook": {
           "lang": "en",
-          "caption": "Moving Accounting: every entry balances, and e-invoices reach ZATCA or Egypt's ETA from inside the system.\n\nMore: https://www.youtube.com/watch?v=dOvsiOFMj_E&utm_source=facebook&utm_medium=social&utm_campaign=2026-12-15-moving-accounting-double-entry-books-with-zatca&utm_content=reel\n\n#BuildWithDevya #MovingAccounting #EInvoicing"
+          "caption": "Moving Accounting: every entry balances, and e-invoices reach ZATCA or Egypt's ETA from inside the system.\n\nMore: https://www.youtube.com/watch?v=dOvsiOFMj_E&utm_source=facebook&utm_medium=social&utm_campaign=2026-12-15-moving-accounting-double-entry-books-with-zatca&utm_content=reel\n\nProject: https://accounting.movingsystems.tech/?utm_source=facebook&utm_medium=social&utm_campaign=2026-12-15-moving-accounting-double-entry-books-with-zatca&utm_content=reel\nDetails: https://www.devya.dev/projects/moving-accounting?utm_source=facebook&utm_medium=social&utm_campaign=2026-12-15-moving-accounting-double-entry-books-with-zatca&utm_content=reel\n\n#BuildWithDevya #MovingAccounting #EInvoicing"
         },
         "instagram": {
           "lang": "ar",
-          "caption": "المحاسبة بالقيد المزدوج مع الفواتير الإلكترونية إلى ZATCA وETA: Moving Accounting.\n\n#BuildWithDevya #MovingAccounting #محاسبة #فاتورة_إلكترونية"
+          "caption": "المحاسبة بالقيد المزدوج مع الفواتير الإلكترونية إلى ZATCA وETA: Moving Accounting.\n\nرابط المشروع: https://accounting.movingsystems.tech/?utm_source=instagram&utm_medium=social&utm_campaign=2026-12-15-moving-accounting-double-entry-books-with-zatca&utm_content=reel\nالتفاصيل: https://www.devya.dev/projects/moving-accounting?utm_source=instagram&utm_medium=social&utm_campaign=2026-12-15-moving-accounting-double-entry-books-with-zatca&utm_content=reel\n\n#BuildWithDevya #MovingAccounting #محاسبة #فاتورة_إلكترونية"
         }
       },
       "stories": {

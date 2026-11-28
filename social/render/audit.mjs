@@ -21,15 +21,15 @@ import { readFileSync, writeFileSync, mkdirSync, existsSync } from 'node:fs';
 import { dirname, join, relative, resolve } from 'node:path';
 import { fileURLToPath, pathToFileURL } from 'node:url';
 import { spawnSync } from 'node:child_process';
-import { RULES_FROM, POST_TAGS, REEL_TAGS, BRAND_TAG, campaignSlug, captionLinks, linkProblems, mapLinks, tagUrl, hashtags, isDevyaHost } from './seo.mjs';
+import { RULES_FROM, POST_TAGS, REEL_TAGS, BRAND_TAG, MOVED, campaignSlug, captionLinks, linkProblems, mapLinks, tagUrl, hashtags, isDevyaHost, requiredLinkProblems, withRequiredLinks } from './seo.mjs';
 
 const HERE = dirname(fileURLToPath(import.meta.url));
 const SOCIAL = join(HERE, '..');
 const REPO = join(SOCIAL, '..');
 
 const NET = { linkedin: 'LinkedIn post', facebook: 'Facebook post', instagram: 'Instagram post', linkedin_video: 'LinkedIn video', facebook_reel: 'Facebook Reel', instagram_reel: 'Instagram Reel', facebook_story: 'Facebook Story', instagram_story: 'Instagram Story' };
-// www.devya.dev pages that now redirect, and where they went.
-export const MOVED = { 'https://www.devya.dev/services': 'https://www.devya.dev/solutions' };
+// www.devya.dev pages that now redirect, and where they went (defined in seo.mjs).
+export { MOVED };
 
 const isTagLine = (l) => /^\s*(#[\p{L}\p{N}_]+\s*)+$/u.test(l);
 
@@ -66,7 +66,8 @@ export function fixCaption(day, key, caption) {
   const linkedinTags = hashtags(day.posts?.linkedin?.caption || '').filter((t) => t !== BRAND_TAG);
   const n = hashtags(out).length;
   if (n < range[0] || n > range[1] || (!video && !hashtags(out).includes(BRAND_TAG))) out = fixHashtags(out, range, linkedinTags.slice(0, range[1] - 1));
-  return out;
+  // Every caption links a devya.dev page and, on a project day, the project's own link.
+  return withRequiredLinks(day, key, out, langOf(day, key));
 }
 
 // Problems a caption has under the current link and hashtag rules.
@@ -84,6 +85,7 @@ export function captionProblems(day, key, caption) {
   const n = hashtags(caption).length;
   if (n < lo || n > hi) out.push(`${n} hashtags, want ${lo}-${hi}`);
   if (!video && !hashtags(caption).includes(BRAND_TAG)) out.push(`no ${BRAND_TAG}`);
+  out.push(...requiredLinkProblems(day, caption));
   return out;
 }
 

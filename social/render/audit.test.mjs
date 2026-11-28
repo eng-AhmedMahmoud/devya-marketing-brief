@@ -24,14 +24,16 @@ test('every published post is audited, and every one made before 2026-11-28 fall
   for (const r of rows.filter((x) => x.date < '2026-11-28' && !x.fixedInPlace)) assert.ok(r.issues.length, `${r.date} ${r.network}`);
 });
 
-test('corrected captions pass the link checker and hashtag rules, keep the copy and only touch links and hashtags', () => {
+test('corrected captions pass the link checker and hashtag rules, keep the copy and only touch links, link lines and hashtags', () => {
   let edits = 0;
   for (const r of before) for (const a of r.actions.filter((x) => x.type === 'edit-caption')) {
     edits++;
     assert.deepEqual(a.remaining, [], `${r.date} ${r.network}`);
     const day = CAL.days.find((d) => d.date === r.date);
     const original = day.posts[r.network]?.caption ?? day.reels[r.network.split('_')[0]].caption;
-    const strip = (s) => s.replace(/https?:\/\/\S+/g, 'URL').replace(/#[\p{L}\p{N}_]+/gu, '').replace(/\s+/g, ' ').trim();
+    // The fix may add labelled link lines (seo.withRequiredLinks) and drop Instagram's "Link in bio".
+    const strip = (s) => s.replace(/^(Project|Details|رابط المشروع|التفاصيل): https?:\/\/\S+$/gmu, '').replace(/\s*(link in bio|الرابط في البايو)\.?/giu, '')
+      .replace(/https?:\/\/\S+/g, 'URL').replace(/#[\p{L}\p{N}_]+/gu, '').replace(/\s+/g, ' ').trim();
     assert.equal(strip(a.caption), strip(original), `${r.date} ${r.network}: copy unchanged`);
     for (const u of captionLinks(a.caption)) assert.ok(u.includes(`utm_campaign=${campaignSlug(day)}`), u);
   }
