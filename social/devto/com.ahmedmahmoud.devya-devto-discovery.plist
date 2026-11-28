@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<!-- Template: social/devto/ctl.sh install fills __LAUNCHER__ and __HOME__ and writes it to ~/Library/LaunchAgents. -->
+<plist version="1.0">
+<dict>
+  <key>Label</key>
+  <string>com.ahmedmahmoud.devya-devto-discovery</string>
+
+  <!-- Discovery mode only (drafts, never posts). Posting is `run-devto-replies.sh post`, by hand. -->
+  <key>ProgramArguments</key>
+  <array>
+    <string>/bin/bash</string>
+    <string>-lc</string>
+    <string>__LAUNCHER__ discover</string>
+  </array>
+
+  <!-- Daily 12:30 Cairo, between the replies run (08:30) and the social routine's 13:00 slot. -->
+  <key>StartCalendarInterval</key>
+  <dict><key>Hour</key><integer>12</integer><key>Minute</key><integer>30</integer></dict>
+
+  <key>EnvironmentVariables</key>
+  <dict>
+    <key>PATH</key>
+    <string>/opt/homebrew/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin</string>
+    <key>HOME</key>
+    <string>__HOME__</string>
+  </dict>
+
+  <key>StandardOutPath</key>
+  <string>__HOME__/Library/Logs/devya-devto-discovery.stdout.log</string>
+  <key>StandardErrorPath</key>
+  <string>__HOME__/Library/Logs/devya-devto-discovery.stderr.log</string>
+
+  <key>RunAtLoad</key>
+  <false/>
+</dict>
+</plist>

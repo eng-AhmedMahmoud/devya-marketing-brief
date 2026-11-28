@@ -31,7 +31,16 @@ test('draft mode never posts: no plan, no Chrome, no post-record; posting needs 
   assert.match(post, /--chrome/);
   assert.equal(sh.split('--chrome').length, 2, '--chrome appears only in post_run');
   assert.ok(!sh.replace(post, '').includes('$DEVTO post-'), 'post-plan/post-record run only inside post_run');
-  assert.match(sh, /if \[\[ "\$MODE" == "post" \]\]; then post_run; RC=\$\?; else draft_run; RC=\$\?; fi/);
+  assert.match(sh, /case "\$MODE" in\n  post\) post_run; RC=\$\? ;;\n  discover\) discover_run; RC=\$\? ;;\n  \*\) draft_run; RC=\$\? ;;\nesac/);
+  assert.equal(fn(sh, 'discover_run').trim(), 'discover_run() {\n  $DEVTO discover');
+});
+
+test('launchd runs discovery with the single argument "discover", daily at 12:30', () => {
+  const plist = read('com.ahmedmahmoud.devya-devto-discovery.plist');
+  const args = plist.match(/<key>ProgramArguments<\/key>\s*<array>([\s\S]*?)<\/array>/)[1];
+  assert.deepEqual([...args.matchAll(/<string>([^<]*)<\/string>/g)].map((m) => m[1]), ['/bin/bash', '-lc', '__LAUNCHER__ discover']);
+  assert.match(plist, /<key>Hour<\/key><integer>12<\/integer><key>Minute<\/key><integer>30<\/integer>/);
+  assert.match(plist, /<string>com\.ahmedmahmoud\.devya-devto-discovery<\/string>/);
 });
 
 test('the drafting session has no tools and the poster only Chrome tools', () => {

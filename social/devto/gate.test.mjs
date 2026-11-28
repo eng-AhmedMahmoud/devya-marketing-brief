@@ -25,7 +25,7 @@ test('approve writes a record with the sha256 of the exact text, and only then i
   const s = setup([draft('a'), draft('b')]);
   const r = approve(s.queue, ['a'], { addDecision: s.addDecision, by: 'tester', at: '2026-11-28T08:00:00Z' });
   assert.deepEqual(r, { done: ['a'], errors: [] });
-  assert.deepEqual(s.decisions[0], { id: 'a', commentId: 'a', decision: 'approve', sha256: sha256('Reply for a.'), chars: 12, at: '2026-11-28T08:00:00Z', by: 'tester' });
+  assert.deepEqual(s.decisions[0], { id: 'a', commentId: 'a', kind: 'reply', decision: 'approve', sha256: sha256('Reply for a.'), chars: 12, at: '2026-11-28T08:00:00Z', by: 'tester' });
   const plan = postPlan(s.queue, s.decisions, s.posted);
   assert.deepEqual(plan.ready.map((p) => [p.id, p.reply, p.sha256]), [['a', 'Reply for a.', sha256('Reply for a.')]]);
   assert.deepEqual(plan.blocked, []);

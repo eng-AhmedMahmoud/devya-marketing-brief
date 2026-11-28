@@ -1,0 +1,12 @@
+{
+  "about": "Settings for the dev.to discovery routine (discover.mjs). Tags and queries are merged with the most used tags of @ahmed_mahmoud360's own articles. Caps are per Cairo day, for what is queued and for what is posted.",
+  "tags": ["nextjs", "nestjs", "react", "node", "postgres", "typescript", "webdev", "ai", "security", "performance", "a11y", "rtl"],
+  "queries": ["Next.js App Router", "NestJS", "idempotency", "outbox pattern", "Claude Code", "Arabic RTL"],
+  "ownTags": 6,
+  "maxAgeDays": 3,
+  "minReadingMinutes": 3,
+  "maxExistingComments": 25,
+  "languages": ["en", "ar"],
+  "perAuthorPerDay": 1,
+  "caps": { "candidates": 8, "comment": 3, "reaction": 5, "follow": 2 }
+}
