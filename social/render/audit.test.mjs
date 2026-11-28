@@ -29,7 +29,14 @@ test('corrected captions pass the link checker and hashtag rules, keep the copy 
     assert.equal(strip(a.caption), strip(original), `${r.date} ${r.network}: copy unchanged`);
     for (const u of captionLinks(a.caption)) assert.ok(u.includes(`utm_campaign=${campaignSlug(day)}`), u);
   }
-  assert.ok(edits > 0);
+  // Every post not yet fixed in place whose caption still fails the checks gets an edit
+  // (counting edits broke once fix-published.sh had applied them all, d6d5cf5).
+  for (const r of rows.filter((x) => !x.fixedInPlace && !x.network.endsWith('_story'))) {
+    const day = CAL.days.find((d) => d.date === r.date);
+    const original = day.posts[r.network]?.caption ?? day.reels[r.network.split('_')[0]].caption;
+    if (captionProblems(day, r.network, original).length) assert.ok(r.actions.some((a) => a.type === 'edit-caption'), `${r.date} ${r.network}: caption needs an edit`);
+  }
+  assert.ok(edits > 0 || rows.some((r) => r.fixedInPlace), 'caption fixes are either proposed or already applied');
 });
 
 test('what each platform can fix in place', () => {
